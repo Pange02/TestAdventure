@@ -1,0 +1,45 @@
+Dungeon Game Informatikunterricht
+
+- Textadventure
+
+Aufgaben:
+Story
+Programmierung
+Character- / Bossdesign
+(Artwork / Coverart)
+
+
+
+To-Dos
+
+Story:
+- Stichpunkte
+- ausgeschrieben (grob)
+- in das Spiel einfügen
+
+Programmierung:
+- Spieler
+	. Inventar
+	. HP
+	. Perks
+	. Fähigkeiten
+- Items
+	. Waffen
+	. Rätsel-items
+	. Rüstung
+
+- Stages
+	. Lootboxen
+	. Gegner
+	. Raum
+	. Bossraum
+
+- Add-Ons
+	. Rüstungszonen (Helm etc.)
+	. Random Lootboxen
+
+
+Zeitplan:
+1. Spieler
+2. Items
+3. Teststage (1. Stage)
