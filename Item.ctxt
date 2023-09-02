@@ -1,0 +1,20 @@
+#BlueJ class context
+comment0.target=Item
+comment0.text=\r\n\ Beschreiben\ Sie\ hier\ die\ Klasse\ Item.\r\n\ \r\n\ @author\ (Ihr\ Name)\ \r\n\ @version\ (eine\ Versionsnummer\ oder\ ein\ Datum)\r\n
+comment1.params=parsename\ parsedamage\ parserarity
+comment1.target=Item(java.lang.String,\ int,\ int)
+comment1.text=\r\n\ Konstruktor\ f\u00FCr\ Objekte\ der\ Klasse\ Item\r\n
+comment2.params=
+comment2.target=void\ fillitemlist()
+comment2.text=\r\n\ Ein\ Beispiel\ einer\ Methode\ -\ ersetzen\ Sie\ diesen\ Kommentar\ mit\ Ihrem\ eigenen\r\n\ \r\n\ @param\ \ y\ \ \ \ ein\ Beispielparameter\ f\u00FCr\ eine\ Methode\r\n\ @return\ \ \ \ \ \ \ \ die\ Summe\ aus\ x\ und\ y\r\n
+comment3.params=arrayslot
+comment3.target=Item\ getitemfromlist(int)
+comment4.params=parseitem
+comment4.target=java.lang.String\ getitemname(Item)
+comment5.params=parseitem
+comment5.target=int\ getitemdamage(Item)
+comment6.params=
+comment6.target=int\ getitemlistlength()
+comment7.params=parseitem
+comment7.target=java.lang.String\ getitemrarity(Item)
+numComments=8

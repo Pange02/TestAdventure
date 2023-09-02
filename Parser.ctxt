@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.target=Parser
+comment0.text=\r\n\ Beschreiben\ Sie\ hier\ die\ Klasse\ Parser.\r\n\ \r\n\ @author\ (Ihr\ Name)\ \r\n\ @version\ (eine\ Versionsnummer\ oder\ ein\ Datum)\r\n
+comment1.params=parseplayer
+comment1.target=Parser(Player)
+comment1.text=\r\n\ Konstruktor\ f\u00FCr\ Objekte\ der\ Klasse\ Parser\r\n
+comment2.params=parseaction\ parseplayer
+comment2.target=void\ getaction(java.lang.String,\ Player)
+comment2.text=\r\n\ Ein\ Beispiel\ einer\ Methode\ -\ ersetzen\ Sie\ diesen\ Kommentar\ mit\ Ihrem\ eigenen\r\n\ \r\n\ @param\ \ y\ \ \ \ ein\ Beispielparameter\ f\u00FCr\ eine\ Methode\r\n\ @return\ \ \ \ \ \ \ \ die\ Summe\ aus\ x\ und\ y\r\n
+numComments=3

@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.target=Room
+comment1.params=parsehaschest
+comment1.target=Room(boolean)
+comment2.params=parseroom
+comment2.target=boolean\ getplayerinfo(Room)
+comment3.params=parseroom
+comment3.target=boolean\ getchestinfo(Room)
+comment4.params=parseroom
+comment4.target=Chest\ getchest(Room)
+numComments=5

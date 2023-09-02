@@ -1,0 +1,16 @@
+#BlueJ class context
+comment0.target=Player
+comment0.text=\r\n\ Beschreiben\ Sie\ hier\ die\ Klasse\ Player.\r\n\ \r\n\ @author\ (Ihr\ Name)\ \r\n\ @version\ (eine\ Versionsnummer\ oder\ ein\ Datum)\r\n
+comment1.params=parsename\ parseroom
+comment1.target=Player(java.lang.String,\ Room)
+comment1.text=\r\n\ Konstruktor\ f\u00FCr\ Objekte\ der\ Klasse\ Player\r\n
+comment2.params=parseitem
+comment2.target=void\ additemtoinventory(Item)
+comment2.text=\r\n\ Ein\ Beispiel\ einer\ Methode\ -\ ersetzen\ Sie\ diesen\ Kommentar\ mit\ Ihrem\ eigenen\r\n\ \r\n\ @param\ \ y\ \ \ \ ein\ Beispielparameter\ f\u00FCr\ eine\ Methode\r\n\ @return\ \ \ \ \ \ \ \ die\ Summe\ aus\ x\ und\ y\r\n
+comment3.params=parseplayer
+comment3.target=java.lang.String\ getplayername(Player)
+comment4.params=parseplayer
+comment4.target=Room\ getcurrentroom(Player)
+comment5.params=
+comment5.target=void\ getinventorycontent()
+numComments=6
