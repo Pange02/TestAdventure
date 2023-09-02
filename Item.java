@@ -7,17 +7,24 @@
  */
 public class Item
 {
-    // Instanzvariablen - ersetzen Sie das folgende Beispiel mit Ihren Variablen
+    // Attribute eines Items
     private int damage;
     private String name;
+    private String rarity;
+    
+    //Liste mit allen möglichen Items
     private static Item[] itemlist = new Item[2];
+    //Liste mit allen möglichen Seltenheitsgraden
+    private static String[] itemcolors = {"Common", "Uncommon", "Rare", "Epic", "Legendary", "Mythic"};
+    
     /**
      * Konstruktor für Objekte der Klasse Item
      */
-    public Item(String parsename, int parsedamage)
+    public Item(String parsename, int parsedamage, int parserarity)
     {
         name = parsename;
         damage = parsedamage;
+        rarity = itemcolors[parserarity];
     }
 
     /**
@@ -28,8 +35,8 @@ public class Item
      */
     public static void fillitemlist()
     {
-        Item item1 = new Item("Diamantschwert", 5);
-        Item item2 = new Item("Gifttrank", 2);
+        Item item1 = new Item("Diamantschwert", 5, 1);
+        Item item2 = new Item("Gifttrank", 2, 0);
         itemlist[0] = item1;
         itemlist[1] = item2;
     }
@@ -52,5 +59,10 @@ public class Item
     public static int getitemlistlength()
     {
         return itemlist.length;
+    }
+    
+    public static String getitemrarity(Item parseitem)
+    {
+        return parseitem.rarity;
     }
 }
