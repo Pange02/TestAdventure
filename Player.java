@@ -29,7 +29,7 @@ public class Player
      */
     public void additemtoinventory(Player parseplayer, Item parseitem)
     {
-        if(parseitem.getitemtype(parseitem) == "Weapon" || parseitem.getitemtype(parseitem) == "Potion") {
+        if(parseitem.getitemtype(parseitem) == "Weapon" || parseitem.getitemtype(parseitem) == "Potion" || parseitem.getitemtype(parseitem) == "Armor") {
             parseplayer.inventory.add(parseitem);
         }
         else if(parseitem.getitemtype(parseitem) == "Accessory") {
