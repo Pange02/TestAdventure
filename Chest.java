@@ -8,34 +8,48 @@ import java.util.Random;
  */
 public class Chest
 {
-    // Instanzvariablen - ersetzen Sie das folgende Beispiel mit Ihren Variablen
+    // Instanzvariablen der Kisten Klasse
+    
+    //number für eventuelle random Generierungen (aktuell nicht verwendet).
     private int number;
-    boolean isopenable;
-    private static ArrayList<Item> chestloot = new ArrayList<>();
+    
+    //isopenable gibt an, ob man die Kiste öffnen kann.
+    private boolean isopenable;
+    
+    //Der Loot für jede Kiste
+    private ArrayList<Item> chestloot;
+    
     /**
-     * Konstruktor für Objekte der Klasse Chest
+     * Konstruktor für Objekte der Klasse Chest mit der Loot ArrayList aus der Game Klasse als Argument.
      */
-    public Chest()
+    public Chest(ArrayList<Item> parseitemlist)
     {
+        chestloot = parseitemlist;
         isopenable = true;
-        fillchest();
     }
     
+    /**
+     * Methode für das Befüllen von Kisten. Nicht verwendet, da es aktuell klar definiert ist, welcher Loot wo zu finden ist.
+     */
     private void fillchest()
     {
         //Random r = new Random();
         //number = r.nextInt(Item.getitemlistlength());
         chestloot.add(Item.getitemfromlist(0));
         chestloot.add(Item.getitemfromlist(1));
+        chestloot.add(Item.getitemfromlist(2));
     }
     
-    public static void openchest(Chest parsechest)
+    /**
+     * Methode für das Öffnen von Kisten. 
+     */
+    public void openchest(Player parseplayer, Chest parsechest)
     {
-        if(parsechest.isopenable = true) {
+        if(parsechest.isopenable == true) {
             System.out.println("Die Kiste öffnet sich:");
             for(int i = 0; i < chestloot.size(); i++) {
-                Player.additemtoinventory(chestloot.get(i));
-                System.out.println("Du findest ein " + Item.getitemrarity(chestloot.get(i)) + " "+ Item.getitemname(chestloot.get(i)) + " mit " + Item.getitemdamage(chestloot.get(i)) + " Schaden.");
+                parseplayer.additemtoinventory(parseplayer, chestloot.get(i));
+                System.out.println("Du findest ein "  + " "+ chestloot.get(i).getitemname(chestloot.get(i)) + " " + chestloot.get(i).getitemrarity(chestloot.get(i)) + " mit " + chestloot.get(i).getitemdamage(chestloot.get(i)) + " Schaden.");
             }
             parsechest.isopenable = false;
         }
@@ -44,4 +58,11 @@ public class Chest
         }
     }
     
+    /**
+     * Methode zur Überprüfung von isopenable (privat).
+     */
+    public boolean getisopenable(Chest parsechest) 
+    {
+        return parsechest.isopenable;
+    }
 }

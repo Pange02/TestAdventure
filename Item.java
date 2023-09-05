@@ -1,4 +1,4 @@
-
+import java.util.ArrayList;
 /**
  * Beschreiben Sie hier die Klasse Item.
  * 
@@ -11,58 +11,69 @@ public class Item
     private int damage;
     private String name;
     private String rarity;
+    private String type;
     
     //Liste mit allen möglichen Items
-    private static Item[] itemlist = new Item[2];
-    //Liste mit allen möglichen Seltenheitsgraden
-    private static String[] itemcolors = {"Common", "Uncommon", "Rare", "Epic", "Legendary", "Mythic"};
+    private static ArrayList<Item> itemlist = new ArrayList<>();
+    
+    //Liste mit allen möglichen Seltenheitsgraden. Dient nur als Übersicht aktuell.
+    private static String[] itemcolors = {"(Gewöhnlich)", "(Ungewöhnlich)", "(Selten)", "(Episch)", "(Legendär)", "(Mythisch)"};
     
     /**
-     * Konstruktor für Objekte der Klasse Item
+     * Konstruktor für Objekte der Klasse Item mit Namen, Damage, Seltenheit und Typ.
      */
-    public Item(String parsename, int parsedamage, int parserarity)
+    public Item(String parsename, int parsedamage, String parserarity, String parsetype)
     {
         name = parsename;
         damage = parsedamage;
-        rarity = itemcolors[parserarity];
+        rarity = parserarity;
+        type = parsetype;
     }
 
     /**
-     * Ein Beispiel einer Methode - ersetzen Sie diesen Kommentar mit Ihrem eigenen
-     * 
-     * @param  y    ein Beispielparameter für eine Methode
-     * @return        die Summe aus x und y
+     * Methode zur Generierung von allen Items im Spiel. Wird am Anfang von der Game Klasse aufgerufen.
      */
     public static void fillitemlist()
     {
-        Item item1 = new Item("Diamantschwert", 5, 1);
-        Item item2 = new Item("Gifttrank", 2, 0);
-        itemlist[0] = item1;
-        itemlist[1] = item2;
+        Item item1 = new Item("Diamantschwert", 5, "(Ungewöhnlich)", "Weapon");
+        Item item2 = new Item("Gifttrank", 2, "(Gewöhnlich)", "Potion");
+        Item item3 = new Item("Ring der Stärke", 1, "(Selten)", "Accessory");
+        Item item4 = new Item("Goldene Brustplatte", 0, "(Ungewöhnlich)", "Armor");
+        Item item5 = new Item("Artefakt des Himmels", 2, "(Episch)", "Accessory");
+        itemlist.add(item1);
+        itemlist.add(item2);
+        itemlist.add(item3);
+        itemlist.add(item4);
+        itemlist.add(item5);
     }
     
     public static Item getitemfromlist(int arrayslot) 
     {
-        return itemlist[arrayslot];
+        return itemlist.get(arrayslot);
     }
     
-    public static String getitemname(Item parseitem)
+    public String getitemname(Item parseitem)
     {
         return parseitem.name;
     }
     
-    public static int getitemdamage(Item parseitem)
+    public int getitemdamage(Item parseitem)
     {
         return parseitem.damage;
     }
     
-    public static int getitemlistlength()
+    public static int getitemlistsize()
     {
-        return itemlist.length;
+        return itemlist.size();
     }
     
-    public static String getitemrarity(Item parseitem)
+    public String getitemrarity(Item parseitem)
     {
         return parseitem.rarity;
+    }
+    
+    public String getitemtype(Item parseitem)
+    {
+        return parseitem.type;
     }
 }

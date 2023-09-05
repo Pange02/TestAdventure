@@ -7,42 +7,59 @@ import java.util.ArrayList;
  */
 public class Player
 {
-    // Instanzvariablen - ersetzen Sie das folgende Beispiel mit Ihren Variablen
+    // Instanzvariablen - Attribute eines Spielers
     private String name;
-    private static ArrayList<Item> inventory = new ArrayList<>();
+    private ArrayList<Item> inventory;
+    private ArrayList<Item> accessories;
     private Room currentroom;
+    
     /**
-     * Konstruktor für Objekte der Klasse Player
+     * Konstruktor für Objekte der Klasse Player mit Namen und Anfangsraum.
      */
     public Player(String parsename, Room parseroom)
     {
         name = parsename;
+        inventory = new ArrayList<>();
+        accessories = new ArrayList<>();
         currentroom = parseroom;
     }
 
     /**
-     * Ein Beispiel einer Methode - ersetzen Sie diesen Kommentar mit Ihrem eigenen
-     * 
-     * @param  y    ein Beispielparameter für eine Methode
-     * @return        die Summe aus x und y
+     * Methode um die Items aus den Kisten zum Inventar des Spielers hinzuzufügen.
      */
-    public static void additemtoinventory(Item parseitem)
+    public void additemtoinventory(Player parseplayer, Item parseitem)
     {
-        inventory.add(parseitem);        
+        if(parseitem.getitemtype(parseitem) == "Weapon" || parseitem.getitemtype(parseitem) == "Potion") {
+            parseplayer.inventory.add(parseitem);
+        }
+        else if(parseitem.getitemtype(parseitem) == "Accessory") {
+            parseplayer.accessories.add(parseitem);
+        }
     }
     
-    public static String getplayername(Player parseplayer) {
+    public String getplayername(Player parseplayer) {
         return parseplayer.name;
     }
     
-    public static Room getcurrentroom(Player parseplayer) {
+    public Room getcurrentroom(Player parseplayer) {
         return parseplayer.currentroom;
     }
     
-    public static void getinventorycontent() {
+    public void setcurrentroom(Player parseplayer, Room parseroom) {
+        parseplayer.currentroom = parseroom;
+    }
+    
+    /**
+     * Gibt den Inventarinhalt des Spielers auf der Konsole aus.
+     */
+    public void getinventorycontent(Player parseplayer) {
         System.out.println("Dein Inventar:");
-        for(int i = 0; i < inventory.size(); i++) {
-            System.out.println(i + " - " + Item.getitemname(inventory.get(i)));
+        for(int i = 0; i < parseplayer.inventory.size(); i++) {
+            System.out.println(i + " - " + parseplayer.inventory.get(i).getitemname(parseplayer.inventory.get(i)) + " " + parseplayer.inventory.get(i).getitemrarity(parseplayer.inventory.get(i)));
+        }
+        System.out.println("Deine Accessoires:");
+        for(int i = 0; i < parseplayer.accessories.size(); i++) {
+            System.out.println(i + " - " + parseplayer.accessories.get(i).getitemname(parseplayer.accessories.get(i)) + " " + parseplayer.accessories.get(i).getitemrarity(parseplayer.accessories.get(i)));
         }
     }
 }
