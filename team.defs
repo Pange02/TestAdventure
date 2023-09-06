@@ -1,11 +1,19 @@
+<<<<<<< HEAD
 #Wed Sep 06 15:59:39 CEST 2023
+=======
+#Wed Sep 06 15:55:24 CEST 2023
+>>>>>>> 77919c61b48f82177d73171996a473ae90eb0a60
 bluej.teamsettings.ignore1=.*\\.class
-bluej.teamsettings.yourName=Pange02
+bluej.teamsettings.yourName=Finja23
 bluej.teamsettings.git.server=github.com
+<<<<<<< HEAD
 bluej.teamsettings.yourEmail=138622374+Pange02@users.noreply.github.com
+=======
+bluej.teamsettings.yourEmail=finja.hansen@gymkaki.net
+>>>>>>> 77919c61b48f82177d73171996a473ae90eb0a60
 bluej.teamsettings.git.repositoryPrefix=/Pange02/TestAdventure
 bluej.teamsettings.vcs=git
-bluej.teamsettings.user=Pange02
+bluej.teamsettings.user=Finja23
 bluej.teamsettings.ignore3=team\\.defs
 bluej.teamsettings.ignore2=bluej\\.pkh
 bluej.teamsettings.ignore5=.*\\~
