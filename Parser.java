@@ -41,7 +41,7 @@ public class Parser
      */
     public void getaction(String parseaction, Player parseplayer)
     {
-        input = parseaction.split("\\s+");
+        input = parseaction.toLowerCase().split("\\s+");
         if(input[0].equals("hilfe")) {
             System.out.println("Aktuell kannst du folgenden Aktionen machen:");
             for(int i = 1; i < actionlist.length; i++) {
