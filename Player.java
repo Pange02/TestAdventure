@@ -9,6 +9,7 @@ public class Player
 {
     // Instanzvariablen - Attribute eines Spielers
     private String name;
+    private int health;
     private ArrayList<Item> inventory;
     private ArrayList<Item> accessories;
     private Room currentroom;
@@ -19,6 +20,7 @@ public class Player
     public Player(String parsename, Room parseroom)
     {
         name = parsename;
+        health = 10;
         inventory = new ArrayList<>();
         accessories = new ArrayList<>();
         currentroom = parseroom;
