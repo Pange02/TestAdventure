@@ -39,6 +39,10 @@ public class Player
         }
     }
     
+    public Item getitemfrominventory(Player parseplayer, int itemnumber) {
+        return parseplayer.inventory.get(itemnumber);
+    }
+    
     public String getplayername(Player parseplayer) {
         return parseplayer.name;
     }

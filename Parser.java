@@ -26,6 +26,10 @@ public class Parser
     //Aktiver Spieler vom Parser
     private static Player activeplayer;
     
+    private int weaponnumber;
+    
+    private Item playerweapon;
+    
     private Mob mob1;
     
     /**
@@ -150,16 +154,23 @@ public class Parser
         }
     }
     
+    public void entercomat(Player parseplayer, Mob parsemob) {
+        System.out.println("Welche Waffe möchtest du für den Kampf benutzen?");
+        parseplayer.getinventorycontent(parseplayer);
+        Scanner weaponparser = new Scanner(System.in);
+        playerweapon = parseplayer.getitemfrominventory(parseplayer, Integer.parseInt(weaponparser.nextLine()));
+    }
+    
     public void getcombataction(String parseaction, Player parseplayer, Mob parsemob) {
-       input = parseaction.toLowerCase().split("\\s+"); 
-       if(input[0].equals("hilfe")) {
+        input = parseaction.toLowerCase().split("\\s+"); 
+        if(input[0].equals("hilfe")) {
             System.out.println("Aktuell kannst du folgenden Aktionen machen:");
             for(int i = 1; i < combatactionlist.length; i++) {
                 System.out.println(combatactionlist[i]);
             }
-       }
-       else if(input[0].equals("attackiere")) {
-           
-       }
+        }
+        else if(input[0].equals("attackiere")) {
+           parseplayer.attack(parseplayer, parsemob, playerweapon);
+        }
     }
 }
