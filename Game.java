@@ -17,40 +17,40 @@ public class Game {
          * 
          * Items aus der Liste zum Loot der Kiste hinzufügen
          * Chest <name> = new Chest(ArrayList mit Loot)
-         * Room <name> = new Room(Kiste ja/nein)
+         * Room <name> = new Room(Kiste ja/nein, Mob ja/nein)
          * 
          */
         
-        Room startroom = new Room(null);
+        Room startroom = new Room(null, null);
         
         room1loot.add(Item.getitemfromlist(0));
         Chest chest1 = new Chest(room1loot);
-        Room room1 = new Room(chest1);
+        Room room1 = new Room(chest1, null);
         
         room2loot.add(Item.getitemfromlist(1));
         Chest chest2 = new Chest(room2loot);
-        Room room2 = new Room(chest2);
+        Room room2 = new Room(chest2, null);
         
-        Room room3 = new Room(null);
+        Room room3 = new Room(null, null);
         
-        Room room4 = new Room(null);
+        Room room4 = new Room(null, null);
         
         room5loot.add(Item.getitemfromlist(2));
         Chest chest5 = new Chest(room5loot);
-        Room room5 = new Room(chest5);
+        Room room5 = new Room(chest5, null);
         
-        Room room6 = new Room(null);
+        Room room6 = new Room(null, null);
         
         room7loot.add(Item.getitemfromlist(3));        
         Chest chest7 = new Chest(room7loot);
-        Room room7 = new Room(chest7);
+        Room room7 = new Room(chest7, null);
         
-        Room room8 = new Room(null);
+        Room room8 = new Room(null, null);
         
         room9loot.add(Item.getitemfromlist(4));
         room9loot.add(Item.getitemfromlist(1));
         Chest chest9 = new Chest(room9loot);
-        Room room9 = new Room(chest9);
+        Room room9 = new Room(chest9, null);
         
         //Hier werden alle Verbindungen zwischen den Räumen eingetraden mit (Raum, Norden, Osten, Süden, Westen).
         startroom.setconnectedrooms(startroom, room1, room6, null, room4);

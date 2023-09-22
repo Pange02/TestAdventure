@@ -40,11 +40,13 @@ public class Item
         Item item3 = new Item("Ring der Stärke", 1, "(Selten)", "Accessory");
         Item item4 = new Item("Goldene Brustplatte", 0, "(Ungewöhnlich)", "Armor");
         Item item5 = new Item("Artefakt des Himmels", 2, "(Episch)", "Accessory");
+        Item item6 = new Item("Holzschwert", 1, "(Gewöhnlich)", "Weapon");
         itemlist.add(item1);
         itemlist.add(item2);
         itemlist.add(item3);
         itemlist.add(item4);
         itemlist.add(item5);
+        itemlist.add(item6);
     }
     
     public static Item getitemfromlist(int arrayslot) 

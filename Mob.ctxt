@@ -1,0 +1,15 @@
+#BlueJ class context
+comment0.target=Mob
+comment0.text=\r\n\ Beschreiben\ Sie\ hier\ die\ Klasse\ Mob.\r\n\ \r\n\ @author\ (Ihr\ Name)\ \r\n\ @version\ (eine\ Versionsnummer\ oder\ ein\ Datum)\r\n
+comment1.params=parsename\ parsehealth\ weapon\ parsemobloot
+comment1.target=Mob(java.lang.String,\ int,\ Item,\ java.util.ArrayList)
+comment1.text=\r\n\ Konstruktor\ f\u00FCr\ Objekte\ der\ Klasse\ Mob\r\n
+comment2.params=parseplayer\ parsemob
+comment2.target=void\ droploot(Player,\ Mob)
+comment3.params=parsemob
+comment3.target=int\ getmobhealth(Mob)
+comment4.params=parsemob\ parsehealth
+comment4.target=void\ setmobhealth(Mob,\ int)
+comment5.params=parseplayer\ parsemob
+comment5.target=void\ attack(Player,\ Mob)
+numComments=6

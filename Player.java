@@ -9,6 +9,7 @@ public class Player
 {
     // Instanzvariablen - Attribute eines Spielers
     private String name;
+    private int health;
     private ArrayList<Item> inventory;
     private ArrayList<Item> accessories;
     private Room currentroom;
@@ -19,6 +20,7 @@ public class Player
     public Player(String parsename, Room parseroom)
     {
         name = parsename;
+        health = 10;
         inventory = new ArrayList<>();
         accessories = new ArrayList<>();
         currentroom = parseroom;
@@ -41,6 +43,14 @@ public class Player
         return parseplayer.name;
     }
     
+    public int getplayerhealth(Player parseplayer) {
+        return parseplayer.health;
+    }
+    
+    public void setplayerhealth(Player parseplayer, int parsehealth) {
+        parseplayer.health = parsehealth;
+    }
+    
     public Room getcurrentroom(Player parseplayer) {
         return parseplayer.currentroom;
     }
@@ -61,5 +71,9 @@ public class Player
         for(int i = 0; i < parseplayer.accessories.size(); i++) {
             System.out.println(i + " - " + parseplayer.accessories.get(i).getitemname(parseplayer.accessories.get(i)) + " " + parseplayer.accessories.get(i).getitemrarity(parseplayer.accessories.get(i)));
         }
+    }
+    
+    public void attack(Player parseplayer, Mob parsemob, Item parseweapon) {
+        parsemob.setmobhealth(parsemob, parsemob.getmobhealth(parsemob) - parseweapon.getitemdamage(parseweapon));
     }
 }

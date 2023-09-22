@@ -13,26 +13,37 @@ public class Parser
     //Aktionsliste für alle möglichen Aktionen. Verwendet von help Befehl.
     private String[] actionlist = {"hilfe", "öffne", "inv", "umgucken", "gehe"};
     
+    private String[] combatactionlist = {"attackiere"};
+    
     //Array für den Input des Spielers
     private String[] input = new String[10];
     
     //Boolean gibt an, ob der Parser (das Spiel) aktiv ist.
     private boolean running;
     
+    private boolean combat;
+    
     //Aktiver Spieler vom Parser
     private static Player activeplayer;
-
+    
+    private Mob mob1;
+    
     /**
      * Konstruktor für Objekte der Klasse Parser mit Spieler
      */
     public Parser(Player parseplayer)
     {
         running = true;
+        combat = false;
         activeplayer = parseplayer;
         System.out.println("Was möchtest du tun? Für Hilfe: hilfe");
-        while(running) {
+        while(running && !combat) {
             Scanner parser = new Scanner(System.in);
             getaction(parser.nextLine(), activeplayer);
+        }
+        while(running && combat) {
+            Scanner parser = new Scanner(System.in);
+            getcombataction(parser.nextLine(), activeplayer, mob1);
         }
     }
 
@@ -88,6 +99,9 @@ public class Parser
                 if(input[1].equals("norden") && parseplayer.getcurrentroom(parseplayer).getconnectedrooms(parseplayer.getcurrentroom(parseplayer), "north") != null) {
                     System.out.println("Du bewegst dich durch die Tür in den neuen Raum im Norden");
                     parseplayer.setcurrentroom(parseplayer, parseplayer.getcurrentroom(parseplayer).getconnectedrooms(parseplayer.getcurrentroom(parseplayer), "north"));
+                    if(parseplayer.getcurrentroom(parseplayer).getmobinfo(parseplayer.getcurrentroom(parseplayer)) == true) {
+                        combat = true;
+                    }
                 }
                 else if(input[1].equals("norden") && parseplayer.getcurrentroom(parseplayer).getconnectedrooms(parseplayer.getcurrentroom(parseplayer), "north") == null) {
                     System.out.println("In dieser Richtung befindet sich keine Tür in einen anderen Raum.");
@@ -95,6 +109,9 @@ public class Parser
                 else if(input[1].equals("osten") && parseplayer.getcurrentroom(parseplayer).getconnectedrooms(parseplayer.getcurrentroom(parseplayer), "east") != null) {
                     System.out.println("Du bewegst dich durch die Tür in den neuen Raum im Osten");
                     parseplayer.setcurrentroom(parseplayer, parseplayer.getcurrentroom(parseplayer).getconnectedrooms(parseplayer.getcurrentroom(parseplayer), "east"));
+                    if(parseplayer.getcurrentroom(parseplayer).getmobinfo(parseplayer.getcurrentroom(parseplayer)) == true) {
+                        combat = true;
+                    }
                 }
                 else if(input[1].equals("osten") && parseplayer.getcurrentroom(parseplayer).getconnectedrooms(parseplayer.getcurrentroom(parseplayer), "east") == null) {
                     System.out.println("In dieser Richtung befindet sich keine Tür in einen anderen Raum.");
@@ -102,6 +119,9 @@ public class Parser
                 else if(input[1].equals("süden") && parseplayer.getcurrentroom(parseplayer).getconnectedrooms(parseplayer.getcurrentroom(parseplayer), "south") != null) {
                     System.out.println("Du bewegst dich durch die Tür in den neuen Raum im Süden");
                     parseplayer.setcurrentroom(parseplayer, parseplayer.getcurrentroom(parseplayer).getconnectedrooms(parseplayer.getcurrentroom(parseplayer), "south"));
+                    if(parseplayer.getcurrentroom(parseplayer).getmobinfo(parseplayer.getcurrentroom(parseplayer)) == true) {
+                        combat = true;
+                    }
                 }
                 else if(input[1].equals("süden") && parseplayer.getcurrentroom(parseplayer).getconnectedrooms(parseplayer.getcurrentroom(parseplayer), "south") == null) {
                     System.out.println("In dieser Richtung befindet sich keine Tür in einen anderen Raum.");
@@ -109,6 +129,9 @@ public class Parser
                 else if(input[1].equals("westen") && parseplayer.getcurrentroom(parseplayer).getconnectedrooms(parseplayer.getcurrentroom(parseplayer), "west") != null) {
                     System.out.println("Du bewegst dich durch die Tür in den neuen Raum im Westen");
                     parseplayer.setcurrentroom(parseplayer, parseplayer.getcurrentroom(parseplayer).getconnectedrooms(parseplayer.getcurrentroom(parseplayer), "west"));
+                    if(parseplayer.getcurrentroom(parseplayer).getmobinfo(parseplayer.getcurrentroom(parseplayer)) == true) {
+                        combat = true;
+                    }
                 }
                 else if(input[1].equals("westen") && parseplayer.getcurrentroom(parseplayer).getconnectedrooms(parseplayer.getcurrentroom(parseplayer), "west") == null) {
                     System.out.println("In dieser Richtung befindet sich keine Tür in einen anderen Raum.");
@@ -125,5 +148,18 @@ public class Parser
             System.out.println("Du verlässt das Dungeon.");
             running = false;
         }
+    }
+    
+    public void getcombataction(String parseaction, Player parseplayer, Mob parsemob) {
+       input = parseaction.toLowerCase().split("\\s+"); 
+       if(input[0].equals("hilfe")) {
+            System.out.println("Aktuell kannst du folgenden Aktionen machen:");
+            for(int i = 1; i < combatactionlist.length; i++) {
+                System.out.println(combatactionlist[i]);
+            }
+       }
+       else if(input[0].equals("attackiere")) {
+           
+       }
     }
 }

@@ -7,4 +7,6 @@ comment1.text=\r\n\ Konstruktor\ f\u00FCr\ Objekte\ der\ Klasse\ Parser\ mit\ Sp
 comment2.params=parseaction\ parseplayer
 comment2.target=void\ getaction(java.lang.String,\ Player)
 comment2.text=\r\n\ Alle\ m\u00F6glichen\ Inputs\ werden\ vom\ Parser\ nach\ Leerzeichen\ getrennt\ und\ \u00FCberpr\u00FCft,\ ob\ sie\ einer\ Aktion\ entsprechen\ und\ dann\ von\ ihm\ ausgef\u00FChrt.\r\n
-numComments=3
+comment3.params=parseaction\ parseplayer\ parsemob
+comment3.target=void\ getcombataction(java.lang.String,\ Player,\ Mob)
+numComments=4
