@@ -70,6 +70,10 @@ public class Room {
         }
     }
     
+    public Mob getroommob(Room parseroom) {
+        return parseroom.mob1;
+    }
+    
     /**
      * Hier werden alle verbundenen Räume definiert nach (Raum, Norden, Osten, Süden, Westen).
      */

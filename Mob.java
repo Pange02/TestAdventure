@@ -38,7 +38,12 @@ public class Mob
         parsemob.health = parsehealth;
     }
     
+    public String getmobname(Mob parsemob) {
+        return parsemob.name;
+    }
+    
     public void attack(Player parseplayer, Mob parsemob) {
         parseplayer.setplayerhealth(parseplayer, parseplayer.getplayerhealth(parseplayer) - parsemob.damage);
     }
+    
 }

@@ -30,7 +30,7 @@ public class Parser
     
     private Item playerweapon;
     
-    private Mob mob1;
+    private Mob activemob;
     
     /**
      * Konstruktor für Objekte der Klasse Parser mit Spieler
@@ -44,10 +44,10 @@ public class Parser
         while(running && !combat) {
             Scanner parser = new Scanner(System.in);
             getaction(parser.nextLine(), activeplayer);
-        }
-        while(running && combat) {
-            Scanner parser = new Scanner(System.in);
-            getcombataction(parser.nextLine(), activeplayer, mob1);
+            while(running && combat) {
+                Scanner compatparser = new Scanner(System.in);
+                getcombataction(parser.nextLine(), activeplayer, activemob);
+                }
         }
     }
 
@@ -104,6 +104,7 @@ public class Parser
                     System.out.println("Du bewegst dich durch die Tür in den neuen Raum im Norden");
                     parseplayer.setcurrentroom(parseplayer, parseplayer.getcurrentroom(parseplayer).getconnectedrooms(parseplayer.getcurrentroom(parseplayer), "north"));
                     if(parseplayer.getcurrentroom(parseplayer).getmobinfo(parseplayer.getcurrentroom(parseplayer)) == true) {
+                        entercombat(parseplayer, parseplayer.getcurrentroom(parseplayer).getroommob(parseplayer.getcurrentroom(parseplayer)));
                         combat = true;
                     }
                 }
@@ -114,6 +115,7 @@ public class Parser
                     System.out.println("Du bewegst dich durch die Tür in den neuen Raum im Osten");
                     parseplayer.setcurrentroom(parseplayer, parseplayer.getcurrentroom(parseplayer).getconnectedrooms(parseplayer.getcurrentroom(parseplayer), "east"));
                     if(parseplayer.getcurrentroom(parseplayer).getmobinfo(parseplayer.getcurrentroom(parseplayer)) == true) {
+                        entercombat(parseplayer, parseplayer.getcurrentroom(parseplayer).getroommob(parseplayer.getcurrentroom(parseplayer)));
                         combat = true;
                     }
                 }
@@ -124,6 +126,7 @@ public class Parser
                     System.out.println("Du bewegst dich durch die Tür in den neuen Raum im Süden");
                     parseplayer.setcurrentroom(parseplayer, parseplayer.getcurrentroom(parseplayer).getconnectedrooms(parseplayer.getcurrentroom(parseplayer), "south"));
                     if(parseplayer.getcurrentroom(parseplayer).getmobinfo(parseplayer.getcurrentroom(parseplayer)) == true) {
+                        entercombat(parseplayer, parseplayer.getcurrentroom(parseplayer).getroommob(parseplayer.getcurrentroom(parseplayer)));
                         combat = true;
                     }
                 }
@@ -134,6 +137,7 @@ public class Parser
                     System.out.println("Du bewegst dich durch die Tür in den neuen Raum im Westen");
                     parseplayer.setcurrentroom(parseplayer, parseplayer.getcurrentroom(parseplayer).getconnectedrooms(parseplayer.getcurrentroom(parseplayer), "west"));
                     if(parseplayer.getcurrentroom(parseplayer).getmobinfo(parseplayer.getcurrentroom(parseplayer)) == true) {
+                        entercombat(parseplayer, parseplayer.getcurrentroom(parseplayer).getroommob(parseplayer.getcurrentroom(parseplayer)));
                         combat = true;
                     }
                 }
@@ -154,23 +158,46 @@ public class Parser
         }
     }
     
-    public void entercomat(Player parseplayer, Mob parsemob) {
+    public void entercombat(Player parseplayer, Mob parsemob) {
+        activemob = parsemob;
+        System.out.println("Als du den Raum betrittst, entdeckst du ein " + parsemob.getmobname(parsemob) + ". Es kommt zum Kampf.");
         System.out.println("Welche Waffe möchtest du für den Kampf benutzen?");
         parseplayer.getinventorycontent(parseplayer);
         Scanner weaponparser = new Scanner(System.in);
-        playerweapon = parseplayer.getitemfrominventory(parseplayer, Integer.parseInt(weaponparser.nextLine()));
+        try {
+            weaponnumber = Integer.parseInt(weaponparser.nextLine()); 
+        }
+        catch(Exception e) {
+            System.out.println("Dies ist keine gültige Zahl für dein Inventar");
+        }
+        playerweapon = parseplayer.getitemfrominventory(parseplayer, weaponnumber);
+        System.out.println("Du wählst die " + playerweapon.getitemname(playerweapon) + ".");
     }
     
     public void getcombataction(String parseaction, Player parseplayer, Mob parsemob) {
         input = parseaction.toLowerCase().split("\\s+"); 
         if(input[0].equals("hilfe")) {
             System.out.println("Aktuell kannst du folgenden Aktionen machen:");
-            for(int i = 1; i < combatactionlist.length; i++) {
+            for(int i = 0; i < combatactionlist.length; i++) {
                 System.out.println(combatactionlist[i]);
             }
         }
         else if(input[0].equals("attackiere")) {
-           parseplayer.attack(parseplayer, parsemob, playerweapon);
+            parseplayer.attack(parseplayer, parsemob, playerweapon);
+            if(parsemob.getmobhealth(parsemob) <= 0) {
+               System.out.println("Du hast den " + parsemob.getmobname(parsemob) + " besiegt. ");
+               parsemob.droploot(parseplayer, parsemob);
+               combat = false;
+               running = true;
+            }
+            else {
+                System.out.println("Du greifst den " + parsemob.getmobname(parsemob) + " mit " + playerweapon.getitemname(playerweapon) + " an und machst " + playerweapon.getitemdamage(playerweapon) + " Schaden.");
+                System.out.println("Der " + parsemob.getmobname(parsemob) + " hat nun " + parsemob.getmobhealth(parsemob) + " Leben.");
+            }
+        }
+        else if(input[0].equals("exit")) {
+            System.out.println("Du verlässt den Kampf.");
+            combat = false;
         }
     }
 }

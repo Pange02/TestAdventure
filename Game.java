@@ -3,6 +3,7 @@ import java.util.ArrayList;
 public class Game {
     //Hier wird der Loot der einzelnen Räume als ArrayList definiert.
     private ArrayList<Item> room1loot = new ArrayList<>();
+    private ArrayList<Item> mob1loot = new ArrayList<>();
     private ArrayList<Item> room2loot = new ArrayList<>();
     private ArrayList<Item> room5loot = new ArrayList<>();
     private ArrayList<Item> room7loot = new ArrayList<>();
@@ -25,7 +26,9 @@ public class Game {
         
         room1loot.add(Item.getitemfromlist(0));
         Chest chest1 = new Chest(room1loot);
-        Room room1 = new Room(chest1, null);
+        mob1loot.add(Item.getitemfromlist(8));
+        Mob mob1 = new Mob("Zombie", 10, Item.getitemfromlist(1), mob1loot);
+        Room room1 = new Room(chest1, mob1);
         
         room2loot.add(Item.getitemfromlist(1));
         Chest chest2 = new Chest(room2loot);
