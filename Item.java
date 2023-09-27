@@ -14,8 +14,11 @@ public class Item
     private String type;
     
     //Liste mit allen möglichen Items
-    private static ArrayList<Item> itemlist = new ArrayList<>();
-    
+    private static ArrayList<Item> weapons = new ArrayList<>();
+    private static ArrayList<Item> potions = new ArrayList<>();
+    private static ArrayList<Item> armor = new ArrayList<>();
+    private static ArrayList<Item> accessories = new ArrayList<>();
+        
     //Liste mit allen möglichen Seltenheitsgraden. Dient nur als Übersicht aktuell.
     private static String[] itemtiers = {"(Gewöhnlich)", "(Ungewöhnlich)", "(Selten)", "(Episch)", "(Legendär)", "(Mythisch)"};
     
@@ -38,51 +41,51 @@ public class Item
         // Erstellen von Items Name entsteht aus item + itemnr + Kategorie
         
         // Waffen (w)
-        Item item1w = new Item("Langschwert", 5, "(Ungewöhnlich)", "Weapon");
-        Item item2w = new Item("Holzstock", 1, "(Gewöhnlich)", "Weapon");
-        Item item3w = new Item("Streitaxt" , 3, "(Gewöhnlich)", "Weapon");
-        Item item4w = new Item("Dolch" , 2, "(Selten)", "Weapon");
-        Item item5w = new Item("Speer", 4, "(Selten)", "Weapon");
-        Item item6w = new Item("Katana", 8, "(Legendär)", "Weapon");
+        Item weapon1 = new Item("Langschwert", 5, "(Ungewöhnlich)", "Weapon");
+        Item weapon2 = new Item("Holzstock", 1, "(Gewöhnlich)", "Weapon");
+        Item weapon3 = new Item("Streitaxt" , 3, "(Gewöhnlich)", "Weapon");
+        Item weapon4 = new Item("Dolch" , 2, "(Selten)", "Weapon");
+        Item weapon5 = new Item("Speer", 4, "(Selten)", "Weapon");
+        Item weapon6 = new Item("Katana", 8, "(Legendär)", "Weapon");
         
         // Potions (p)
-        Item item1p = new Item("Gifttrank", 2, "(Gewöhnlich)", "Potion");
-        Item item2p = new Item("Schadenstrank", 3, "(Ungewöhnlich)", "Potion");
-        Item item3p = new Item("Heilungstrank", 0, "(Selten)", "Potion");
+        Item potion1 = new Item("Gifttrank", 2, "(Gewöhnlich)", "Potion");
+        Item potion2 = new Item("Schadenstrank", 3, "(Ungewöhnlich)", "Potion");
+        Item potion3 = new Item("Heilungstrank", 0, "(Selten)", "Potion");
         
         // Armor (a)
-        Item item1a = new Item("Verrostete Brustplatte", 0, "(Ungewöhnlich)", "Armor");
-        Item item2a = new Item("Kettenhemd", 0, "(Gewöhnlich)", "Armor");
-        Item item3a = new Item("Lederkappe", 0, "(Gewöhnlich)", "Armor");
-        Item item4a = new Item("Alte Stiefel", 0, "(Gewöhnlich)", "Armor");
-        Item item5a = new Item("Ritterhelm", 0, "Ungewöhnlich)", "Armor");
+        Item armor1 = new Item("Verrostete Brustplatte", 0, "(Ungewöhnlich)", "Armor");
+        Item armor2 = new Item("Kettenhemd", 0, "(Gewöhnlich)", "Armor");
+        Item armor3 = new Item("Lederkappe", 0, "(Gewöhnlich)", "Armor");
+        Item armor4 = new Item("Alte Stiefel", 0, "(Gewöhnlich)", "Armor");
+        Item armor5 = new Item("Ritterhelm", 0, "(Ungewöhnlich)", "Armor");
         
         // Accessory (x)
-        Item item1x = new Item("Artefakt des Himmels", 2, "(Episch)", "Accessory");
-        Item item2x = new Item("Ring der Stärke", 1, "(Selten)", "Accessory");
+        Item accessorie1 = new Item("Artefakt des Himmels", 2, "(Episch)", "Accessory");
+        Item accessorie2 = new Item("Ring der Stärke", 1, "(Selten)", "Accessory");
         
         
         // Hinzufügen der Items zur Liste aller Items
         
-        itemlist.add(item1w);
-        itemlist.add(item2w);
-        itemlist.add(item3w);
-        itemlist.add(item4w);
-        itemlist.add(item5w);
-        itemlist.add(item6w);
+        weapons.add(weapon1);
+        weapons.add(weapon2);
+        weapons.add(weapon3);
+        weapons.add(weapon4);
+        weapons.add(weapon5);
+        weapons.add(weapon6);
         
-        itemlist.add(item1p);
-        itemlist.add(item2p);
-        itemlist.add(item3p);
+        potions.add(potion1);
+        potions.add(potion2);
+        potions.add(potion3);
         
-        itemlist.add(item1a);
-        itemlist.add(item2a);
-        itemlist.add(item3a);
-        itemlist.add(item4a);
-        itemlist.add(item5a);
+        armor.add(armor1);
+        armor.add(armor2);
+        armor.add(armor3);
+        armor.add(armor4);
+        armor.add(armor5);
         
-        itemlist.add(item1x);
-        itemlist.add(item2x);
+        accessories.add(accessorie1);
+        accessories.add(accessorie2);
     }
     
     public static Item getitemfromlist(int arrayslot) 
