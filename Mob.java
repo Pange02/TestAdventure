@@ -42,6 +42,10 @@ public class Mob
         return parsemob.name;
     }
     
+    public int getmobdamage(Mob parsemob) {
+        return parsemob.damage;
+    }
+    
     public void attack(Player parseplayer, Mob parsemob) {
         parseplayer.setplayerhealth(parseplayer, parseplayer.getplayerhealth(parseplayer) - parsemob.damage);
     }

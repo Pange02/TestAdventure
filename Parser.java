@@ -32,6 +32,8 @@ public class Parser
     
     private Mob activemob;
     
+    boolean firstfight;
+    
     /**
      * Konstruktor für Objekte der Klasse Parser mit Spieler
      */
@@ -39,14 +41,27 @@ public class Parser
     {
         running = true;
         combat = false;
+        firstfight = true;
         activeplayer = parseplayer;
         System.out.println("Was möchtest du tun? Für Hilfe: hilfe");
         while(running && !combat) {
             Scanner parser = new Scanner(System.in);
             getaction(parser.nextLine(), activeplayer);
             while(running && combat) {
+                if(firstfight == true) {
+                    firstfight = false;
+                    System.out.println("Aktuell kannst du folgenden Kampfaktionen machen:");
+                    for(int i = 0; i < combatactionlist.length; i++) {
+                        System.out.println(combatactionlist[i]);
+                    }
+                }
                 Scanner compatparser = new Scanner(System.in);
                 getcombataction(parser.nextLine(), activeplayer, activemob);
+                if(activemob.getmobhealth(activemob) > 0) {
+                    activemob.attack(activeplayer, activemob);
+                    System.out.println("Der " + activemob.getmobname(activemob) + " greift dich an und macht " + activemob.getmobdamage(activemob) + " Schaden.");
+                    System.out.println("Du hast durch den Angriff jetzt " + parseplayer.getplayerhealth(parseplayer) + " Leben.");
+                }
                 }
         }
     }
