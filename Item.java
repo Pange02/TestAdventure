@@ -14,6 +14,7 @@ public class Item
     //Liste mit allen möglichen Seltenheitsgraden. Dient nur als Übersicht aktuell.
     private static String[] itemtiers = {"(Gewöhnlich)", "(Ungewöhnlich)", "(Selten)", "(Episch)", "(Legendär)", "(Mythisch)"};
     
+    private static ArrayList[] itemlist = new ArrayList[4];
     /**
      * Konstruktor für Objekte der Klasse Item mit Namen, Damage, Seltenheit und Typ.
      */
@@ -28,25 +29,10 @@ public class Item
      */
     public static void fillitemlist()
     {
-        // Erstellen von Items Name entsteht aus item + itemnr + Kategorie
-        
-        
-        
-        // Potions (p)
-        Item potion1 = new Item("Gifttrank", 2, "(Gewöhnlich)", "Potion");
-        Item potion2 = new Item("Schadenstrank", 3, "(Ungewöhnlich)", "Potion");
-        Item potion3 = new Item("Heilungstrank", 0, "(Selten)", "Potion");
-        
-        // Armor (a)
-        Item armor1 = new Item("Verrostete Brustplatte", 0, "(Ungewöhnlich)", "Armor");
-        Item armor2 = new Item("Kettenhemd", 0, "(Gewöhnlich)", "Armor");
-        Item armor3 = new Item("Lederkappe", 0, "(Gewöhnlich)", "Armor");
-        Item armor4 = new Item("Alte Stiefel", 0, "(Gewöhnlich)", "Armor");
-        Item armor5 = new Item("Ritterhelm", 0, "(Ungewöhnlich)", "Armor");
-        
-        // Accessory (x)
-        Item accessorie1 = new Item("Artefakt des Himmels", 2, "(Episch)", "Accessory");
-        Item accessorie2 = new Item("Ring der Stärke", 1, "(Selten)", "Accessory");
+        itemlist[0] = Weapon.weaponlist;
+        itemlist[1] = Armor.armorlist;
+        itemlist[2] = Potion.potionlist;
+        itemlist[3] = Accessory.accessorylist;
     }
     
     public static Item getitemfromlist(int arrayslot) 

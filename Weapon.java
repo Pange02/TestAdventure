@@ -1,4 +1,4 @@
-
+import java.util.ArrayList;
 /**
  * Write a description of class Weapon here.
  *
@@ -10,14 +10,14 @@ public class Weapon extends Item
 {
     // instance variables - replace the example below with your own
     private int damage;
-
+    protected static ArrayList<Weapon> weaponlist = new ArrayList<>();
+    
     /**
      * Constructor for objects of class Weapon
      */
     public Weapon(String parsename, String parserarity, int parsedamage)
     {
-        name = parsename;
-        rarity = parserarity;
+        super(parsename, parserarity);
         damage = parsedamage;
     }
 
@@ -27,14 +27,22 @@ public class Weapon extends Item
      * @param  y  a sample parameter for a method
      * @return    the sum of x and y
      */
-    public int sampleMethod(int y)
+    public static void createWeapons()
     {
         // Waffen (w)
-        Weapon weapon1 = new Weapon("Langschwert", "(Ungewöhnlich)", 5);
-        Weapon weapon2 = new Weapon("Holzstock", "(Gewöhnlich)", 1);
-        Weapon weapon3 = new Weapon("Streitaxt" , "(Gewöhnlich)", 3);
-        Weapon weapon4 = new Weapon("Dolch" , "(Selten)", 2);
-        Weapon weapon5 = new Weapon("Speer", "(Selten)", 4);
-        Weapon weapon6 = new Weapon("Katana", "(Legendär)", 8);
+        Weapon weapon0 = new Weapon("Langschwert", "(Ungewöhnlich)", 5);
+        Weapon weapon1 = new Weapon("Holzstock", "(Gewöhnlich)", 1);
+        Weapon weapon2 = new Weapon("Streitaxt" , "(Gewöhnlich)", 3);
+        Weapon weapon3 = new Weapon("Dolch" , "(Selten)", 2);
+        Weapon weapon4 = new Weapon("Speer", "(Selten)", 4);
+        Weapon weapon5 = new Weapon("Katana", "(Legendär)", 8);
+        //Waffen zur Waffenliste hinzufügen
+        weaponlist.add(weapon0);
+        weaponlist.add(weapon1);
+        weaponlist.add(weapon2);
+        weaponlist.add(weapon3);
+        weaponlist.add(weapon4);
+        weaponlist.add(weapon5);
     }
+    
 }

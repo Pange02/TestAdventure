@@ -1,4 +1,4 @@
-
+import java.util.ArrayList;
 /**
  * Write a description of class Potion here.
  *
@@ -8,15 +8,17 @@
 public class Potion extends Item
 {
     // instance variables - replace the example below with your own
-    private int x;
-
+    private int effect;
+    private String type;
+    protected static ArrayList<Potion> potionlist = new ArrayList<>();
     /**
      * Constructor for objects of class Potion
      */
-    public Potion()
+    public Potion(String parsename, String parserarity, String parsetype, int parseeffect)
     {
-        // initialise instance variables
-        x = 0;
+        super(parsename, parserarity);
+        effect = parseeffect;
+        type = parsetype;
     }
 
     /**
@@ -25,9 +27,15 @@ public class Potion extends Item
      * @param  y  a sample parameter for a method
      * @return    the sum of x and y
      */
-    public int sampleMethod(int y)
+    public static void createPotions()
     {
-        // put your code here
-        return x + y;
+        // Potions (p)
+        Potion potion0 = new Potion("Gifttrank", "(Gewöhnlich)", "Damage", 1);
+        Potion potion1 = new Potion("Schadenstrank", "(Ungewöhnlich)", "Damage", 2);
+        Potion potion2 = new Potion("Heilungstrank", "(Selten)", "Healing", 3);
+        //Potions zur Potionlist hinzufügen
+        potionlist.add(potion0);
+        potionlist.add(potion1);
+        potionlist.add(potion2);
     }
 }

@@ -1,4 +1,4 @@
-
+import java.util.ArrayList;
 /**
  * Write a description of class Armor here.
  *
@@ -7,16 +7,15 @@
  */
 public class Armor extends Item
 {
-    // instance variables - replace the example below with your own
-    private int x;
-
+    private int defense;
+    protected static ArrayList<Armor> armorlist = new ArrayList<>();
     /**
      * Constructor for objects of class Armor
      */
-    public Armor()
+    public Armor(String parsename, String parserarity, int parsedefense)
     {
-        // initialise instance variables
-        x = 0;
+        super(parsename, parserarity);
+        defense = parsedefense;
     }
 
     /**
@@ -25,9 +24,19 @@ public class Armor extends Item
      * @param  y  a sample parameter for a method
      * @return    the sum of x and y
      */
-    public int sampleMethod(int y)
+    public static void createArmor()
     {
-        // put your code here
-        return x + y;
+        // Armor (a)
+        Armor armor0 = new Armor("Verrostete Brustplatte", "(Ungewöhnlich)", 2);
+        Armor armor1 = new Armor("Kettenhemd", "(Gewöhnlich)", 3);
+        Armor armor2 = new Armor("Lederkappe", "(Gewöhnlich)", 1);
+        Armor armor3 = new Armor("Alte Stiefel", "(Gewöhnlich)", 1);
+        Armor armor4 = new Armor("Ritterhelm", "(Selten)", 3);
+        //Armor zur Armorliste hinzufügen
+        armorlist.add(armor0);
+        armorlist.add(armor1);
+        armorlist.add(armor2);
+        armorlist.add(armor3);
+        armorlist.add(armor4);
     }
 }
