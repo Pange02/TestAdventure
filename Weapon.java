@@ -45,4 +45,8 @@ public class Weapon extends Item
         weaponlist.add(weapon5);
     }
     
+    public int getweapondamage()
+    {
+        return damage;
+    }
 }

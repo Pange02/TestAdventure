@@ -33,4 +33,8 @@ public class Accessory extends Item
         accessorylist.add(accessory0);
         accessorylist.add(accessory1);
     }
+    
+    public int getaccessorystrength() {
+        return strength;
+    }
 }

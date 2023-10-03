@@ -35,9 +35,9 @@ public class Chest
     {
         //Random r = new Random();
         //number = r.nextInt(Item.getitemlistlength());
-        chestloot.add(Item.getitemfromlist(0));
-        chestloot.add(Item.getitemfromlist(1));
-        chestloot.add(Item.getitemfromlist(2));
+        //chestloot.add(Item.getitemfromlist(0));
+        //chestloot.add(Item.getitemfromlist(1));
+        //chestloot.add(Item.getitemfromlist(2));
     }
     
     /**
@@ -49,7 +49,21 @@ public class Chest
             System.out.println("Die Kiste öffnet sich:");
             for(int i = 0; i < chestloot.size(); i++) {
                 parseplayer.additemtoinventory(parseplayer, chestloot.get(i));
-                System.out.println("Du findest ein "  + " "+ chestloot.get(i).getitemname(chestloot.get(i)) + " " + chestloot.get(i).getitemrarity(chestloot.get(i)) + " mit " + chestloot.get(i).getitemdamage(chestloot.get(i)) + " Schaden.");
+                if(chestloot.get(i).getClass() == Weapon.class) {
+                   System.out.println("Du findest ein "  + " "+ chestloot.get(i).getitemname() + " " + chestloot.get(i).getitemrarity() + " mit " + ((Weapon) chestloot.get(i)).getweapondamage() + " Schaden."); 
+                }
+                if(chestloot.get(i).getClass() == Armor.class) {
+                   System.out.println("Du findest eine "  + " "+ chestloot.get(i).getitemname() + " " + chestloot.get(i).getitemrarity() + " mit " + ((Armor) chestloot.get(i)).getarmordefense() + " Verteidigung."); 
+                }
+                if(chestloot.get(i).getClass() == Potion.class && ((Potion) chestloot.get(i)).getpotiontype() == "Damage") {
+                   System.out.println("Du findest eine "  + " "+ chestloot.get(i).getitemname() + " " + chestloot.get(i).getitemrarity() + " mit " + ((Potion) chestloot.get(i)).getpotioneffect() + " Schaden."); 
+                }
+                if(chestloot.get(i).getClass() == Potion.class && ((Potion) chestloot.get(i)).getpotiontype() == "Healing") {
+                   System.out.println("Du findest eine "  + " "+ chestloot.get(i).getitemname() + " " + chestloot.get(i).getitemrarity() + " mit " + ((Potion) chestloot.get(i)).getpotioneffect() + " Heilung."); 
+                }
+                if(chestloot.get(i).getClass() == Accessory.class) {
+                   System.out.println("Du findest eine "  + " "+ chestloot.get(i).getitemname() + " " + chestloot.get(i).getitemrarity() + " mit " + ((Accessory) chestloot.get(i)).getaccessorystrength() + " Heilung."); 
+                }
             }
             parsechest.isopenable = false;
         }

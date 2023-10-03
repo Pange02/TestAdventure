@@ -12,6 +12,10 @@ public class Game {
     public Game() 
     {
         //Es werden alle Items aus der Item Klasse in die Liste eingefügt.
+        Weapon.createWeapons();
+        Armor.createArmor();
+        Potion.createPotions();
+        Accessory.createAccessories();
         Item.fillitemlist();
         
         /* Hier werden alle Räume im Spiel nach folgendem Schema erstellt:
@@ -24,13 +28,14 @@ public class Game {
         
         Room startroom = new Room(null, null);
         
-        room1loot.add(Item.getitemfromlist(0));
+        room1loot.add(Item.getitemfromlist("Potion", 0));
         Chest chest1 = new Chest(room1loot);
-        mob1loot.add(Item.getitemfromlist(8));
-        Mob mob1 = new Mob("Zombie", 10, Item.getitemfromlist(1), mob1loot);
+        mob1loot.add(Item.getitemfromlist("Potion", 2));
+        System.out.println(mob1loot.get(0));
+        Mob mob1 = new Mob("Zombie", 10, ((Weapon) Item.getitemfromlist("Weapon", 1)), mob1loot);
         Room room1 = new Room(chest1, mob1);
         
-        room2loot.add(Item.getitemfromlist(1));
+        room2loot.add(Item.getitemfromlist("Potion", 1));
         Chest chest2 = new Chest(room2loot);
         Room room2 = new Room(chest2, null);
         
@@ -38,20 +43,20 @@ public class Game {
         
         Room room4 = new Room(null, null);
         
-        room5loot.add(Item.getitemfromlist(2));
+        room5loot.add(Item.getitemfromlist("Weapon", 2));
         Chest chest5 = new Chest(room5loot);
         Room room5 = new Room(chest5, null);
         
         Room room6 = new Room(null, null);
         
-        room7loot.add(Item.getitemfromlist(3));        
+        room7loot.add(Item.getitemfromlist("Accessory", 1));        
         Chest chest7 = new Chest(room7loot);
         Room room7 = new Room(chest7, null);
         
         Room room8 = new Room(null, null);
         
-        room9loot.add(Item.getitemfromlist(4));
-        room9loot.add(Item.getitemfromlist(1));
+        room9loot.add(Item.getitemfromlist("Accessory", 0));
+        room9loot.add(Item.getitemfromlist("Potion", 2));
         Chest chest9 = new Chest(room9loot);
         Room room9 = new Room(chest9, null);
         

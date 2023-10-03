@@ -10,7 +10,9 @@ public class Player
     // Instanzvariablen - Attribute eines Spielers
     private String name;
     private int health;
+    private int defense;
     private ArrayList<Item> inventory;
+    private ArrayList<Item> armor;
     private ArrayList<Item> accessories;
     private Room currentroom;
     
@@ -22,6 +24,7 @@ public class Player
         name = parsename;
         health = 10;
         inventory = new ArrayList<>();
+        armor = new ArrayList<>();
         accessories = new ArrayList<>();
         currentroom = parseroom;
     }
@@ -31,10 +34,13 @@ public class Player
      */
     public void additemtoinventory(Player parseplayer, Item parseitem)
     {
-        if(parseitem.getitemtype(parseitem) == "Weapon" || parseitem.getitemtype(parseitem) == "Potion" || parseitem.getitemtype(parseitem) == "Armor") {
+        if(parseitem.getClass() == Weapon.class || parseitem.getClass() == Potion.class) {
             parseplayer.inventory.add(parseitem);
         }
-        else if(parseitem.getitemtype(parseitem) == "Accessory") {
+        else if(parseitem.getClass() == Armor.class) {
+            parseplayer.armor.add(parseitem);
+        }
+        else if(parseitem.getClass() == Accessory.class) {
             parseplayer.accessories.add(parseitem);
         }
     }
@@ -69,15 +75,19 @@ public class Player
     public void getinventorycontent(Player parseplayer) {
         System.out.println("Dein Inventar:");
         for(int i = 0; i < parseplayer.inventory.size(); i++) {
-            System.out.println(i + " - " + parseplayer.inventory.get(i).getitemname(parseplayer.inventory.get(i)) + " " + parseplayer.inventory.get(i).getitemrarity(parseplayer.inventory.get(i)));
+            System.out.println(i + " - " + parseplayer.inventory.get(i).getitemname() + " " + parseplayer.inventory.get(i).getitemrarity());
+        }
+        System.out.println("Deine Rüstung:");
+        for(int i = 0; i < parseplayer.armor.size(); i++) {
+            System.out.println(i + " - " + parseplayer.armor.get(i).getitemname() + " " + parseplayer.armor.get(i).getitemrarity());
         }
         System.out.println("Deine Accessoires:");
         for(int i = 0; i < parseplayer.accessories.size(); i++) {
-            System.out.println(i + " - " + parseplayer.accessories.get(i).getitemname(parseplayer.accessories.get(i)) + " " + parseplayer.accessories.get(i).getitemrarity(parseplayer.accessories.get(i)));
+            System.out.println(i + " - " + parseplayer.accessories.get(i).getitemname() + " " + parseplayer.accessories.get(i).getitemrarity());
         }
     }
     
-    public void attack(Player parseplayer, Mob parsemob, Item parseweapon) {
-        parsemob.setmobhealth(parsemob, parsemob.getmobhealth(parsemob) - parseweapon.getitemdamage(parseweapon));
+    public void attack(Player parseplayer, Mob parsemob, Weapon parseweapon) {
+        parsemob.setmobhealth(parsemob, parsemob.getmobhealth(parsemob) - parseweapon.getweapondamage());
     }
 }

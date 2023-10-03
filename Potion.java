@@ -38,4 +38,12 @@ public class Potion extends Item
         potionlist.add(potion1);
         potionlist.add(potion2);
     }
+    
+    public String getpotiontype() {
+        return type;
+    }
+    
+    public int getpotioneffect() {
+        return effect;
+    }
 }

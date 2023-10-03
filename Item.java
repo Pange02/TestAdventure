@@ -35,28 +35,37 @@ public class Item
         itemlist[3] = Accessory.accessorylist;
     }
     
-    public static Item getitemfromlist(int arrayslot) 
+    public static Item getitemfromlist(String type, int arrayslot) 
     {
-        return itemlist.get(arrayslot);
+        if(type.toLowerCase().equals("weapon")) {
+            return ((Weapon) itemlist[0].get(arrayslot));
+        }
+        else if(type.toLowerCase().equals("armor")) {
+            return ((Armor) itemlist[1].get(arrayslot));
+        }
+        else if(type.toLowerCase().equals("potion")) {
+            return ((Potion) itemlist[2].get(arrayslot));
+        }
+        else if(type.toLowerCase().equals("accessory")) {
+            return ((Accessory) itemlist[3].get(arrayslot));
+        }
+        else {
+            return null;
+        }
     }
     
-    public String getitemname(Item parseitem)
+    public String getitemname()
     {
-        return parseitem.name;
-    }
-    
-    public int getitemdamage(Item parseitem)
-    {
-        return parseitem.damage;
+        return name;
     }
     
     public static int getitemlistsize()
     {
-        return itemlist.size();
+        return itemlist.length;
     }
     
-    public String getitemrarity(Item parseitem)
+    public String getitemrarity()
     {
-        return parseitem.rarity;
+        return rarity;
     }
 }

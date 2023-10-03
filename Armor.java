@@ -39,4 +39,8 @@ public class Armor extends Item
         armorlist.add(armor3);
         armorlist.add(armor4);
     }
+    
+    public int getarmordefense() {
+        return defense;
+    }
 }
