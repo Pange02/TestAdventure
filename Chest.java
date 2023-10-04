@@ -62,7 +62,7 @@ public class Chest
                    System.out.println("Du findest eine "  + " "+ chestloot.get(i).getitemname() + " " + chestloot.get(i).getitemrarity() + " mit " + ((Potion) chestloot.get(i)).getpotioneffect() + " Heilung."); 
                 }
                 if(chestloot.get(i).getClass() == Accessory.class) {
-                   System.out.println("Du findest eine "  + " "+ chestloot.get(i).getitemname() + " " + chestloot.get(i).getitemrarity() + " mit " + ((Accessory) chestloot.get(i)).getaccessorystrength() + " Heilung."); 
+                   System.out.println("Du findest eine "  + " "+ chestloot.get(i).getitemname() + " " + chestloot.get(i).getitemrarity() + " mit " + ((Accessory) chestloot.get(i)).getaccessorystrength() + " Stärke."); 
                 }
             }
             parsechest.isopenable = false;

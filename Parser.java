@@ -32,7 +32,9 @@ public class Parser
     
     private Mob activemob;
     
-    boolean firstfight;
+    private boolean firstfight;
+    
+    private boolean weaponselected;
     
     /**
      * Konstruktor für Objekte der Klasse Parser mit Spieler
@@ -42,6 +44,7 @@ public class Parser
         running = true;
         combat = false;
         firstfight = true;
+        weaponselected = false;
         activeplayer = parseplayer;
         System.out.println("Was möchtest du tun? Für Hilfe: hilfe");
         while(running && !combat) {
@@ -179,18 +182,21 @@ public class Parser
         System.out.println("Als du den Raum betrittst, entdeckst du ein " + parsemob.getmobname(parsemob) + ". Es kommt zum Kampf.");
         System.out.println("Welche Waffe möchtest du für den Kampf benutzen?");
         parseplayer.getinventorycontent();
-        Scanner weaponparser = new Scanner(System.in);
-        try {
-            weaponnumber = Integer.parseInt(weaponparser.nextLine()); 
-        }
-        catch(Exception e) {
-            System.out.println("Dies ist keine gültige Zahl für dein Inventar");
-        }
-        try {
-            playerweapon = ((Weapon) parseplayer.getitemfrominventory(weaponnumber));
-        }
-        catch(Exception e) {
-            System.out.println("Du musst eine Waffe für den Kampf wähen");
+        while(!weaponselected) {
+            Scanner weaponparser = new Scanner(System.in);
+            try {
+                weaponnumber = Integer.parseInt(weaponparser.nextLine()); 
+            }
+            catch(Exception e) {
+                System.out.println("Dies ist keine gültige Zahl für dein Inventar");
+            }
+            try {
+                playerweapon = ((Weapon) parseplayer.getitemfrominventory(weaponnumber));
+                weaponselected = true;
+            }
+            catch(Exception e) {
+                System.out.println("Du musst eine Waffe für den Kampf wählen. Benutze dafür eine Zahl aus deinem Inventar mit einer Waffe.");
+            }  
         }
         System.out.println("Du wählst die " + playerweapon.getitemname() + ".");
     }

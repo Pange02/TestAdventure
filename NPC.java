@@ -1,4 +1,5 @@
-
+import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
 /**
  * Write a description of class NPC here.
  *
@@ -8,15 +9,16 @@
 public class NPC
 {
     // instance variables - replace the example below with your own
-    private int x;
+    private ArrayList<String> dialogue = new ArrayList<>();
 
     /**
      * Constructor for objects of class NPC
      */
     public NPC()
     {
-        // initialise instance variables
-        x = 0;
+        dialogue.add("Test NPC Satz.");
+        dialogue.add("Nach 1 Sekunde kommt das hier");
+        dialogue.add("2 Sekunden");
     }
 
     /**
@@ -25,9 +27,16 @@ public class NPC
      * @param  y  a sample parameter for a method
      * @return    the sum of x and y
      */
-    public int sampleMethod(int y)
+    public void speak()
     {
-        // put your code here
-        return x + y;
+        for(int i = 0; i < dialogue.size(); i++) {
+            System.out.println(dialogue.get(i));
+            try {
+                Thread.sleep(3000);
+            }
+            catch(Exception e) {
+                Thread.currentThread().interrupt();
+            }
+        }
     }
 }
