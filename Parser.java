@@ -60,7 +60,7 @@ public class Parser
                 if(activemob.getmobhealth(activemob) > 0) {
                     activemob.attack(activeplayer, activemob);
                     System.out.println("Der " + activemob.getmobname(activemob) + " greift dich an und macht " + activemob.getmobdamage(activemob) + " Schaden.");
-                    System.out.println("Du hast durch den Angriff jetzt " + parseplayer.getplayerhealth(parseplayer) + " Leben.");
+                    System.out.println("Du hast durch den Angriff jetzt " + parseplayer.getplayerhealth() + " Leben.");
                 }
                 }
         }
@@ -81,10 +81,10 @@ public class Parser
         
         else if(input[0].equals("öffne")) {
             try {
-                if(input[1].equals("truhe") && parseplayer.getcurrentroom(parseplayer).getchestinfo(parseplayer.getcurrentroom(parseplayer))) {
-                    parseplayer.getcurrentroom(parseplayer).getchest(parseplayer.getcurrentroom(parseplayer)).openchest(Parser.activeplayer, parseplayer.getcurrentroom(parseplayer).getchest(parseplayer.getcurrentroom(parseplayer)));
+                if(input[1].equals("truhe") && parseplayer.getcurrentroom().getchestinfo()) {
+                    parseplayer.getcurrentroom().getchest().openchest(Parser.activeplayer, parseplayer.getcurrentroom().getchest());
                 }
-                else if(input[1].equals("truhe") && (parseplayer.getcurrentroom(parseplayer).getchestinfo(parseplayer.getcurrentroom(parseplayer)) == false)) {
+                else if(input[1].equals("truhe") && (parseplayer.getcurrentroom().getchestinfo() == false)) {
                     System.out.println("Dieser Raum hat keine Truhe");
                 }
                 else {
@@ -97,67 +97,67 @@ public class Parser
             }
         }    
         else if(input[0].equals("umgucken")) {
-            if(parseplayer.getcurrentroom(parseplayer).getchestinfo(parseplayer.getcurrentroom(parseplayer))) {
+            if(parseplayer.getcurrentroom().getchestinfo()) {
                 System.out.println("Du entdeckst eine Truhe in dem Raum.");
                 System.out.println("Du siehst Türen im:");
-                for(int i = 0; i < parseplayer.getcurrentroom(parseplayer).getroomdirections(parseplayer.getcurrentroom(parseplayer)).size(); i++) {
-                    System.out.println(parseplayer.getcurrentroom(parseplayer).getroomdirections(parseplayer.getcurrentroom(parseplayer)).get(i));
+                for(int i = 0; i < parseplayer.getcurrentroom().getroomdirections().size(); i++) {
+                    System.out.println(parseplayer.getcurrentroom().getroomdirections().get(i));
                 }
             }
             else {
                 System.out.println("Du siehst Türen im:");
-                for(int i = 0; i < parseplayer.getcurrentroom(parseplayer).getroomdirections(parseplayer.getcurrentroom(parseplayer)).size(); i++) {
-                    System.out.println(parseplayer.getcurrentroom(parseplayer).getroomdirections(parseplayer.getcurrentroom(parseplayer)).get(i));
+                for(int i = 0; i < parseplayer.getcurrentroom().getroomdirections().size(); i++) {
+                    System.out.println(parseplayer.getcurrentroom().getroomdirections().get(i));
                 }
             }
         }
         else if(input[0].equals("inv")) {
-            parseplayer.getinventorycontent(Parser.activeplayer);
+            parseplayer.getinventorycontent();
         }
         else if(input[0].equals("gehe")) {
             try {
-                if(input[1].equals("norden") && parseplayer.getcurrentroom(parseplayer).getconnectedrooms(parseplayer.getcurrentroom(parseplayer), "north") != null) {
+                if(input[1].equals("norden") && parseplayer.getcurrentroom().getconnectedrooms("north") != null) {
                     System.out.println("Du bewegst dich durch die Tür in den neuen Raum im Norden");
-                    parseplayer.setcurrentroom(parseplayer, parseplayer.getcurrentroom(parseplayer).getconnectedrooms(parseplayer.getcurrentroom(parseplayer), "north"));
-                    if(parseplayer.getcurrentroom(parseplayer).getmobinfo(parseplayer.getcurrentroom(parseplayer)) == true && parseplayer.getcurrentroom(parseplayer).getroommob(parseplayer.getcurrentroom(parseplayer)).getmobstatus() == true) {
-                        entercombat(parseplayer, parseplayer.getcurrentroom(parseplayer).getroommob(parseplayer.getcurrentroom(parseplayer)));
+                    parseplayer.setcurrentroom(parseplayer.getcurrentroom().getconnectedrooms("north"));
+                    if(parseplayer.getcurrentroom().getmobinfo() == true && parseplayer.getcurrentroom().getroommob().getmobstatus() == true) {
+                        entercombat(parseplayer, parseplayer.getcurrentroom().getroommob());
                         combat = true;
                     }
                 }
-                else if(input[1].equals("norden") && parseplayer.getcurrentroom(parseplayer).getconnectedrooms(parseplayer.getcurrentroom(parseplayer), "north") == null) {
+                else if(input[1].equals("norden") && parseplayer.getcurrentroom().getconnectedrooms("north") == null) {
                     System.out.println("In dieser Richtung befindet sich keine Tür in einen anderen Raum.");
                 }
-                else if(input[1].equals("osten") && parseplayer.getcurrentroom(parseplayer).getconnectedrooms(parseplayer.getcurrentroom(parseplayer), "east") != null) {
+                else if(input[1].equals("osten") && parseplayer.getcurrentroom().getconnectedrooms("east") != null) {
                     System.out.println("Du bewegst dich durch die Tür in den neuen Raum im Osten");
-                    parseplayer.setcurrentroom(parseplayer, parseplayer.getcurrentroom(parseplayer).getconnectedrooms(parseplayer.getcurrentroom(parseplayer), "east"));
-                    if(parseplayer.getcurrentroom(parseplayer).getmobinfo(parseplayer.getcurrentroom(parseplayer)) == true && parseplayer.getcurrentroom(parseplayer).getroommob(parseplayer.getcurrentroom(parseplayer)).getmobstatus() == true) {
-                        entercombat(parseplayer, parseplayer.getcurrentroom(parseplayer).getroommob(parseplayer.getcurrentroom(parseplayer)));
+                    parseplayer.setcurrentroom(parseplayer.getcurrentroom().getconnectedrooms("east"));
+                    if(parseplayer.getcurrentroom().getmobinfo() == true && parseplayer.getcurrentroom().getroommob().getmobstatus() == true) {
+                        entercombat(parseplayer, parseplayer.getcurrentroom().getroommob());
                         combat = true;
                     }
                 }
-                else if(input[1].equals("osten") && parseplayer.getcurrentroom(parseplayer).getconnectedrooms(parseplayer.getcurrentroom(parseplayer), "east") == null) {
+                else if(input[1].equals("osten") && parseplayer.getcurrentroom().getconnectedrooms("east") == null) {
                     System.out.println("In dieser Richtung befindet sich keine Tür in einen anderen Raum.");
                 }
-                else if(input[1].equals("süden") && parseplayer.getcurrentroom(parseplayer).getconnectedrooms(parseplayer.getcurrentroom(parseplayer), "south") != null) {
+                else if(input[1].equals("süden") && parseplayer.getcurrentroom().getconnectedrooms("south") != null) {
                     System.out.println("Du bewegst dich durch die Tür in den neuen Raum im Süden");
-                    parseplayer.setcurrentroom(parseplayer, parseplayer.getcurrentroom(parseplayer).getconnectedrooms(parseplayer.getcurrentroom(parseplayer), "south"));
-                    if(parseplayer.getcurrentroom(parseplayer).getmobinfo(parseplayer.getcurrentroom(parseplayer)) == true && parseplayer.getcurrentroom(parseplayer).getroommob(parseplayer.getcurrentroom(parseplayer)).getmobstatus() == true) {
-                        entercombat(parseplayer, parseplayer.getcurrentroom(parseplayer).getroommob(parseplayer.getcurrentroom(parseplayer)));
+                    parseplayer.setcurrentroom(parseplayer.getcurrentroom().getconnectedrooms("south"));
+                    if(parseplayer.getcurrentroom().getmobinfo() == true && parseplayer.getcurrentroom().getroommob().getmobstatus() == true) {
+                        entercombat(parseplayer, parseplayer.getcurrentroom().getroommob());
                         combat = true;
                     }
                 }
-                else if(input[1].equals("süden") && parseplayer.getcurrentroom(parseplayer).getconnectedrooms(parseplayer.getcurrentroom(parseplayer), "south") == null) {
+                else if(input[1].equals("süden") && parseplayer.getcurrentroom().getconnectedrooms("south") == null) {
                     System.out.println("In dieser Richtung befindet sich keine Tür in einen anderen Raum.");
                 }
-                else if(input[1].equals("westen") && parseplayer.getcurrentroom(parseplayer).getconnectedrooms(parseplayer.getcurrentroom(parseplayer), "west") != null) {
+                else if(input[1].equals("westen") && parseplayer.getcurrentroom().getconnectedrooms("west") != null) {
                     System.out.println("Du bewegst dich durch die Tür in den neuen Raum im Westen");
-                    parseplayer.setcurrentroom(parseplayer, parseplayer.getcurrentroom(parseplayer).getconnectedrooms(parseplayer.getcurrentroom(parseplayer), "west"));
-                    if(parseplayer.getcurrentroom(parseplayer).getmobinfo(parseplayer.getcurrentroom(parseplayer)) == true && parseplayer.getcurrentroom(parseplayer).getroommob(parseplayer.getcurrentroom(parseplayer)).getmobstatus() == true) {
-                        entercombat(parseplayer, parseplayer.getcurrentroom(parseplayer).getroommob(parseplayer.getcurrentroom(parseplayer)));
+                    parseplayer.setcurrentroom(parseplayer.getcurrentroom().getconnectedrooms("west"));
+                    if(parseplayer.getcurrentroom().getmobinfo() == true && parseplayer.getcurrentroom().getroommob().getmobstatus() == true) {
+                        entercombat(parseplayer, parseplayer.getcurrentroom().getroommob());
                         combat = true;
                     }
                 }
-                else if(input[1].equals("westen") && parseplayer.getcurrentroom(parseplayer).getconnectedrooms(parseplayer.getcurrentroom(parseplayer), "west") == null) {
+                else if(input[1].equals("westen") && parseplayer.getcurrentroom().getconnectedrooms("west") == null) {
                     System.out.println("In dieser Richtung befindet sich keine Tür in einen anderen Raum.");
                 }
                 else {
@@ -178,7 +178,7 @@ public class Parser
         activemob = parsemob;
         System.out.println("Als du den Raum betrittst, entdeckst du ein " + parsemob.getmobname(parsemob) + ". Es kommt zum Kampf.");
         System.out.println("Welche Waffe möchtest du für den Kampf benutzen?");
-        parseplayer.getinventorycontent(parseplayer);
+        parseplayer.getinventorycontent();
         Scanner weaponparser = new Scanner(System.in);
         try {
             weaponnumber = Integer.parseInt(weaponparser.nextLine()); 
@@ -187,7 +187,7 @@ public class Parser
             System.out.println("Dies ist keine gültige Zahl für dein Inventar");
         }
         try {
-            playerweapon = ((Weapon) parseplayer.getitemfrominventory(parseplayer, weaponnumber));
+            playerweapon = ((Weapon) parseplayer.getitemfrominventory(weaponnumber));
         }
         catch(Exception e) {
             System.out.println("Du musst eine Waffe für den Kampf wähen");
@@ -204,7 +204,7 @@ public class Parser
             }
         }
         else if(input[0].equals("attackiere")) {
-            parseplayer.attack(parseplayer, parsemob, playerweapon);
+            parseplayer.attack(parsemob, playerweapon);
             if(parsemob.getmobhealth(parsemob) <= 0) {
                 parsemob.setmobstatus(false);
                 System.out.println("Du hast den " + parsemob.getmobname(parsemob) + " besiegt. ");

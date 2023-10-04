@@ -32,62 +32,62 @@ public class Player
     /**
      * Methode um die Items aus den Kisten zum Inventar des Spielers hinzuzufügen.
      */
-    public void additemtoinventory(Player parseplayer, Item parseitem)
+    public void additemtoinventory(Item parseitem)
     {
         if(parseitem.getClass() == Weapon.class || parseitem.getClass() == Potion.class) {
-            parseplayer.inventory.add(parseitem);
+            inventory.add(parseitem);
         }
         else if(parseitem.getClass() == Armor.class) {
-            parseplayer.armor.add(parseitem);
+            armor.add(parseitem);
         }
         else if(parseitem.getClass() == Accessory.class) {
-            parseplayer.accessories.add(parseitem);
+            accessories.add(parseitem);
         }
     }
     
-    public Item getitemfrominventory(Player parseplayer, int itemnumber) {
-        return parseplayer.inventory.get(itemnumber);
+    public Item getitemfrominventory(int itemnumber) {
+        return inventory.get(itemnumber);
     }
     
-    public String getplayername(Player parseplayer) {
-        return parseplayer.name;
+    public String getplayername() {
+        return name;
     }
     
-    public int getplayerhealth(Player parseplayer) {
-        return parseplayer.health;
+    public int getplayerhealth() {
+        return health;
     }
     
-    public void setplayerhealth(Player parseplayer, int parsehealth) {
-        parseplayer.health = parsehealth;
+    public void setplayerhealth(int parsehealth) {
+        health = parsehealth;
     }
     
-    public Room getcurrentroom(Player parseplayer) {
-        return parseplayer.currentroom;
+    public Room getcurrentroom() {
+        return currentroom;
     }
     
-    public void setcurrentroom(Player parseplayer, Room parseroom) {
-        parseplayer.currentroom = parseroom;
+    public void setcurrentroom(Room parseroom) {
+        currentroom = parseroom;
     }
     
     /**
      * Gibt den Inventarinhalt des Spielers auf der Konsole aus.
      */
-    public void getinventorycontent(Player parseplayer) {
+    public void getinventorycontent() {
         System.out.println("Dein Inventar:");
-        for(int i = 0; i < parseplayer.inventory.size(); i++) {
-            System.out.println(i + " - " + parseplayer.inventory.get(i).getitemname() + " " + parseplayer.inventory.get(i).getitemrarity());
+        for(int i = 0; i < inventory.size(); i++) {
+            System.out.println(i + " - " + inventory.get(i).getitemname() + " " + inventory.get(i).getitemrarity());
         }
         System.out.println("Deine Rüstung:");
-        for(int i = 0; i < parseplayer.armor.size(); i++) {
-            System.out.println(i + " - " + parseplayer.armor.get(i).getitemname() + " " + parseplayer.armor.get(i).getitemrarity());
+        for(int i = 0; i < armor.size(); i++) {
+            System.out.println(i + " - " + armor.get(i).getitemname() + " " + armor.get(i).getitemrarity());
         }
         System.out.println("Deine Accessoires:");
-        for(int i = 0; i < parseplayer.accessories.size(); i++) {
-            System.out.println(i + " - " + parseplayer.accessories.get(i).getitemname() + " " + parseplayer.accessories.get(i).getitemrarity());
+        for(int i = 0; i < accessories.size(); i++) {
+            System.out.println(i + " - " + accessories.get(i).getitemname() + " " + accessories.get(i).getitemrarity());
         }
     }
     
-    public void attack(Player parseplayer, Mob parsemob, Weapon parseweapon) {
+    public void attack(Mob parsemob, Weapon parseweapon) {
         parsemob.setmobhealth(parsemob, parsemob.getmobhealth(parsemob) - parseweapon.getweapondamage());
     }
 }

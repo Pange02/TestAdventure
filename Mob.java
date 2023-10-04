@@ -27,7 +27,7 @@ public class Mob
     
     public void droploot(Player parseplayer, Mob parsemob) {
         for(int i = 0; i < parsemob.mobloot.size(); i++) {
-                parseplayer.additemtoinventory(parseplayer, parsemob.mobloot.get(i));
+                parseplayer.additemtoinventory(parsemob.mobloot.get(i));
                 if(parsemob.mobloot.get(i).getClass() == Weapon.class) {
                    System.out.println("Du findest ein "  + " "+ parsemob.mobloot.get(i).getitemname() + " " + parsemob.mobloot.get(i).getitemrarity() + " mit " + ((Weapon) parsemob.mobloot.get(i)).getweapondamage() + " Schaden."); 
                 }
@@ -71,7 +71,7 @@ public class Mob
     }
     
     public void attack(Player parseplayer, Mob parsemob) {
-        parseplayer.setplayerhealth(parseplayer, parseplayer.getplayerhealth(parseplayer) - parsemob.damage);
+        parseplayer.setplayerhealth(parseplayer.getplayerhealth() - parsemob.damage);
     }
     
 }

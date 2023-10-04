@@ -48,7 +48,7 @@ public class Chest
         if(parsechest.isopenable == true) {
             System.out.println("Die Kiste öffnet sich:");
             for(int i = 0; i < chestloot.size(); i++) {
-                parseplayer.additemtoinventory(parseplayer, chestloot.get(i));
+                parseplayer.additemtoinventory(chestloot.get(i));
                 if(chestloot.get(i).getClass() == Weapon.class) {
                    System.out.println("Du findest ein "  + " "+ chestloot.get(i).getitemname() + " " + chestloot.get(i).getitemrarity() + " mit " + ((Weapon) chestloot.get(i)).getweapondamage() + " Schaden."); 
                 }
