@@ -76,6 +76,13 @@ public class Game {
         System.out.println("Lege deinen Namen fest:");
         Scanner nameparser = new Scanner(System.in);
         Player player1 = new Player(nameparser.nextLine(), startroom);
+        if(player1.getplayername().equals("Leonard")) {
+            for(int i = 0; i < Item.itemlist.length; i++) {
+                for(int j = 0; j < Item.itemlist[i].size(); j++) {
+                    player1.additemtoinventory(((Item) Item.itemlist[i].get(j)));
+                }
+            }
+        }
         System.out.println("Willkommen " + player1.getplayername() + "!");
         System.out.println(" ");
         

@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.math.BigDecimal;
 /**
  * Beschreiben Sie hier die Klasse Player.
  * 
@@ -9,8 +10,15 @@ public class Player
 {
     // Instanzvariablen - Attribute eines Spielers
     private String name;
-    private int health;
-    private int defense;
+    private double healthcap;
+    private double health;
+    private double defense;
+    private double weapondamage;
+    private double damagemultiplicator;
+    private double playerdamage;
+    private double strength;
+    private double critchance;
+    private double critdamage;
     private ArrayList<Item> inventory;
     private ArrayList<Item> armor;
     private ArrayList<Item> accessories;
@@ -22,6 +30,7 @@ public class Player
     public Player(String parsename, Room parseroom)
     {
         name = parsename;
+        healthcap = 10;
         health = 10;
         inventory = new ArrayList<>();
         armor = new ArrayList<>();
@@ -42,6 +51,8 @@ public class Player
         }
         else if(parseitem.getClass() == Accessory.class) {
             accessories.add(parseitem);
+            strength += ((Accessory) parseitem).getaccessorystrength();
+            System.out.println(strength);
         }
     }
     
@@ -53,11 +64,11 @@ public class Player
         return name;
     }
     
-    public int getplayerhealth() {
+    public double getplayerhealth() {
         return health;
     }
     
-    public void setplayerhealth(int parsehealth) {
+    public void setplayerhealth(double parsehealth) {
         health = parsehealth;
     }
     
@@ -88,6 +99,13 @@ public class Player
     }
     
     public void attack(Mob parsemob, Weapon parseweapon) {
-        parsemob.setmobhealth(parsemob, parsemob.getmobhealth(parsemob) - parseweapon.getweapondamage());
+        weapondamage = parseweapon.getweapondamage();
+        damagemultiplicator = (1 + (strength)/10);
+        playerdamage = Math.round(weapondamage * damagemultiplicator * 10.0) / 10.0;
+        parsemob.setmobhealth(Math.round((parsemob.getmobhealth() - playerdamage) * 10.0) / 10.0);
+    }
+    
+    public double getplayerdamage() {
+        return playerdamage;
     }
 }

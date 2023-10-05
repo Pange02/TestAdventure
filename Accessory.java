@@ -28,7 +28,7 @@ public class Accessory extends Item
     {
         // Accessory (x)
         Accessory accessory0 = new Accessory("Artefakt des Himmels", "(Episch)", 3);
-        Accessory accessory1 = new Accessory("Ring der Stärke", "(Selten)", 2);
+        Accessory accessory1 = new Accessory("Ring der Stärke", "(Selten)", 10);
         //Accessories zur accessorylist hinzufügen
         accessorylist.add(accessory0);
         accessorylist.add(accessory1);

@@ -14,7 +14,7 @@ public class Item
     //Liste mit allen möglichen Seltenheitsgraden. Dient nur als Übersicht aktuell.
     private static String[] itemtiers = {"(Gewöhnlich)", "(Ungewöhnlich)", "(Selten)", "(Episch)", "(Legendär)", "(Mythisch)"};
     
-    private static ArrayList[] itemlist = new ArrayList[4];
+    public static ArrayList[] itemlist = new ArrayList[4];
     /**
      * Konstruktor für Objekte der Klasse Item mit Namen, Damage, Seltenheit und Typ.
      */

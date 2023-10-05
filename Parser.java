@@ -60,9 +60,9 @@ public class Parser
                 }
                 Scanner compatparser = new Scanner(System.in);
                 getcombataction(parser.nextLine(), activeplayer, activemob);
-                if(activemob.getmobhealth(activemob) > 0) {
-                    activemob.attack(activeplayer, activemob);
-                    System.out.println("Der " + activemob.getmobname(activemob) + " greift dich an und macht " + activemob.getmobdamage(activemob) + " Schaden.");
+                if(activemob.getmobhealth() > 0) {
+                    activemob.attack(activeplayer);
+                    System.out.println("Der " + activemob.getmobname() + " greift dich an und macht " + activemob.getmobdamage() + " Schaden.");
                     System.out.println("Du hast durch den Angriff jetzt " + parseplayer.getplayerhealth() + " Leben.");
                 }
                 }
@@ -179,7 +179,7 @@ public class Parser
     
     public void entercombat(Player parseplayer, Mob parsemob) {
         activemob = parsemob;
-        System.out.println("Als du den Raum betrittst, entdeckst du ein " + parsemob.getmobname(parsemob) + ". Es kommt zum Kampf.");
+        System.out.println("Als du den Raum betrittst, entdeckst du ein " + parsemob.getmobname() + ". Es kommt zum Kampf.");
         System.out.println("Welche Waffe möchtest du für den Kampf benutzen?");
         parseplayer.getinventorycontent();
         while(!weaponselected) {
@@ -211,16 +211,16 @@ public class Parser
         }
         else if(input[0].equals("attackiere")) {
             parseplayer.attack(parsemob, playerweapon);
-            if(parsemob.getmobhealth(parsemob) <= 0) {
+            if(parsemob.getmobhealth() <= 0) {
                 parsemob.setmobstatus(false);
-                System.out.println("Du hast den " + parsemob.getmobname(parsemob) + " besiegt. ");
+                System.out.println("Du hast den " + parsemob.getmobname() + " besiegt. ");
                 parsemob.droploot(parseplayer, parsemob);
                 combat = false;
                 running = true;
             }
             else {
-                System.out.println("Du greifst den " + parsemob.getmobname(parsemob) + " mit " + playerweapon.getitemname() + " an und machst " + ((Weapon) playerweapon).getweapondamage() + " Schaden.");
-                System.out.println("Der " + parsemob.getmobname(parsemob) + " hat nun " + parsemob.getmobhealth(parsemob) + " Leben.");
+                System.out.println("Du greifst den " + parsemob.getmobname() + " mit " + playerweapon.getitemname() + " an und machst " + parseplayer.getplayerdamage() + " Schaden.");
+                System.out.println("Der " + parsemob.getmobname() + " hat nun " + parsemob.getmobhealth() + " Leben.");
             }
         }
         else if(input[0].equals("exit")) {

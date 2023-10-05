@@ -9,7 +9,7 @@ public class Mob
 {
     // Instanzvariablen - ersetzen Sie das folgende Beispiel mit Ihren Variablen
     private String name;
-    private int health;
+    private double health;
     private int damage;
     private boolean alive;
     private ArrayList<Item> mobloot = new ArrayList<>();
@@ -46,12 +46,12 @@ public class Mob
         }
     }
     
-    public int getmobhealth(Mob parsemob) {
-        return parsemob.health;
+    public double getmobhealth() {
+        return health;
     }
     
-    public void setmobhealth(Mob parsemob, int parsehealth) {
-        parsemob.health = parsehealth;
+    public void setmobhealth(double parsehealth) {
+        health = parsehealth;
     }
     
     public void setmobstatus(boolean parsestatus) {
@@ -62,16 +62,16 @@ public class Mob
         return alive;
     }
     
-    public String getmobname(Mob parsemob) {
-        return parsemob.name;
+    public String getmobname() {
+        return name;
     }
     
-    public int getmobdamage(Mob parsemob) {
-        return parsemob.damage;
+    public int getmobdamage() {
+        return damage;
     }
     
-    public void attack(Player parseplayer, Mob parsemob) {
-        parseplayer.setplayerhealth(parseplayer.getplayerhealth() - parsemob.damage);
+    public void attack(Player parseplayer) {
+        parseplayer.setplayerhealth(parseplayer.getplayerhealth() - damage);
     }
     
 }
