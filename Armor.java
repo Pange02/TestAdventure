@@ -8,13 +8,15 @@ import java.util.ArrayList;
 public class Armor extends Item
 {
     private int defense;
+    private String armortype;
     protected static ArrayList<Armor> armorlist = new ArrayList<>();
     /**
      * Constructor for objects of class Armor
      */
-    public Armor(String parsename, String parserarity, int parsedefense)
+    public Armor(String parsename, String parserarity, String parsearmortype, int parsedefense)
     {
         super(parsename, parserarity);
+        armortype = parsearmortype;
         defense = parsedefense;
     }
 
@@ -27,11 +29,11 @@ public class Armor extends Item
     public static void createArmor()
     {
         // Armor (a)
-        Armor armor0 = new Armor("Verrostete Brustplatte", "(Ungewöhnlich)", 2);
-        Armor armor1 = new Armor("Kettenhemd", "(Gewöhnlich)", 3);
-        Armor armor2 = new Armor("Lederkappe", "(Gewöhnlich)", 1);
-        Armor armor3 = new Armor("Alte Stiefel", "(Gewöhnlich)", 1);
-        Armor armor4 = new Armor("Ritterhelm", "(Selten)", 3);
+        Armor armor0 = new Armor("Verrostete Brustplatte", "(Ungewöhnlich)", "Chestplate", 2);
+        Armor armor1 = new Armor("Kettenhemd", "(Gewöhnlich)", "Chestplate", 3);
+        Armor armor2 = new Armor("Lederkappe", "(Gewöhnlich)", "Helmet", 1);
+        Armor armor3 = new Armor("Alte Stiefel", "(Gewöhnlich)", "Boots", 1);
+        Armor armor4 = new Armor("Ritterhelm", "(Selten)", "Helmet", 3);
         //Armor zur Armorliste hinzufügen
         armorlist.add(armor0);
         armorlist.add(armor1);
@@ -42,5 +44,9 @@ public class Armor extends Item
     
     public int getarmordefense() {
         return defense;
+    }
+    
+    public String getarmortype() {
+        return armortype;
     }
 }

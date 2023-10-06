@@ -28,6 +28,8 @@ public class Parser
     
     private int weaponnumber;
     
+    private int inventorynumber;
+    
     private Weapon playerweapon;
     
     private Mob activemob;
@@ -117,6 +119,26 @@ public class Parser
         else if(input[0].equals("inv")) {
             parseplayer.getinventorycontent();
         }
+        else if(input[0].equals("benutze")) {
+            try {
+                inventorynumber = Integer.parseInt(input[1]);
+                if(parseplayer.getitemfrominventory(inventorynumber).getClass() == Potion.class) {
+                    if(((Potion) parseplayer.getitemfrominventory(inventorynumber)).getpotiontype() == "Healing") {
+                        parseplayer.setplayerhealth(parseplayer.getplayerhealth() + ((Potion) parseplayer.getitemfrominventory(inventorynumber)).getpotioneffect());
+                        System.out.println("Du benutzt den Heilungstrank und hast nun " + parseplayer.getplayerhealth() + " Leben.");
+                    }
+                    if(((Potion) parseplayer.getitemfrominventory(inventorynumber)).getpotiontype() == "Damage") {
+                        System.out.println("Du kannst diesen Schadenstrank nur im Kampf verwenden");
+                    }
+                }
+                else if(parseplayer.getitemfrominventory(inventorynumber).getClass() == Armor.class) {
+                    parseplayer.equiparmor(((Armor) parseplayer.getitemfrominventory(inventorynumber)));
+                }
+            }
+            catch(Exception e) {
+                System.out.println("Dies ist keine gültige Zahl aus deinem Inventar!");
+            }
+        }
         else if(input[0].equals("gehe")) {
             try {
                 if(input[1].equals("norden") && parseplayer.getcurrentroom().getconnectedrooms("north") != null) {
@@ -174,6 +196,9 @@ public class Parser
         else if(input[0].equals("exit")) {
             System.out.println("Du verlässt das Dungeon.");
             running = false;
+        }
+        else {
+            System.out.println("Dies ist kein gültiger Befehl");
         }
     }
     

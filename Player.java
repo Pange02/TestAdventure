@@ -21,6 +21,10 @@ public class Player
     private double critdamage;
     private ArrayList<Item> inventory;
     private ArrayList<Item> armor;
+    private Armor helmet;
+    private Armor chestplate;
+    private Armor leggings;
+    private Armor boots;
     private ArrayList<Item> accessories;
     private Room currentroom;
     
@@ -107,5 +111,20 @@ public class Player
     
     public double getplayerdamage() {
         return playerdamage;
+    }
+    
+    public void equiparmor(Armor parsearmor) {
+       if(parsearmor.getarmortype() == "Helmet") {
+           helmet = parsearmor;
+       }
+       if(parsearmor.getarmortype() == "Chestplate") {
+           chestplate = parsearmor;
+       }
+       if(parsearmor.getarmortype() == "Leggings") {
+           leggings = parsearmor;
+       }
+       if(parsearmor.getarmortype() == "Boots") {
+           boots = parsearmor;
+       }
     }
 }
