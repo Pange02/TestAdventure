@@ -64,8 +64,6 @@ public class Parser
                 getcombataction(parser.nextLine(), activeplayer, activemob);
                 if(activemob.getmobhealth() > 0) {
                     activemob.attack(activeplayer);
-                    System.out.println("Der " + activemob.getmobname() + " greift dich an und macht " + activemob.getmobdamage() + " Schaden.");
-                    System.out.println("Du hast durch den Angriff jetzt " + parseplayer.getplayerhealth() + " Leben.");
                 }
                 }
         }

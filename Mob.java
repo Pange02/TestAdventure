@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.lang.Math;
 /**
  * Beschreiben Sie hier die Klasse Mob.
  * 
@@ -11,6 +12,7 @@ public class Mob
     private String name;
     private double health;
     private int damage;
+    private double finaldamage;
     private boolean alive;
     private ArrayList<Item> mobloot = new ArrayList<>();
     /**
@@ -71,7 +73,10 @@ public class Mob
     }
     
     public void attack(Player parseplayer) {
-        parseplayer.setplayerhealth(parseplayer.getplayerhealth() - damage);
+        finaldamage = Math.round((1 - (parseplayer.getplayerdefense()/(10 + parseplayer.getplayerdefense()))) * damage * 10.0) / 10.0;
+        parseplayer.setplayerhealth(Math.round((parseplayer.getplayerhealth() - finaldamage) * 10.0) / 10.0);
+        System.out.println("Der " + name + " greift dich an und macht " + finaldamage + " Schaden.");
+        System.out.println("Du hast durch den Angriff jetzt " + parseplayer.getplayerhealth() + " Leben.");
     }
     
 }

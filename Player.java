@@ -20,7 +20,6 @@ public class Player
     private double critchance;
     private double critdamage;
     private ArrayList<Item> inventory;
-    private ArrayList<Item> armor;
     private Armor helmet;
     private Armor chestplate;
     private Armor leggings;
@@ -36,8 +35,11 @@ public class Player
         name = parsename;
         healthcap = 10;
         health = 10;
+        helmet = null;
+        chestplate = null;
+        leggings = null;
+        boots = null;
         inventory = new ArrayList<>();
-        armor = new ArrayList<>();
         accessories = new ArrayList<>();
         currentroom = parseroom;
     }
@@ -47,21 +49,21 @@ public class Player
      */
     public void additemtoinventory(Item parseitem)
     {
-        if(parseitem.getClass() == Weapon.class || parseitem.getClass() == Potion.class) {
+        if(parseitem.getClass() == Weapon.class || parseitem.getClass() == Potion.class || parseitem.getClass() == Armor.class) {
             inventory.add(parseitem);
-        }
-        else if(parseitem.getClass() == Armor.class) {
-            armor.add(parseitem);
         }
         else if(parseitem.getClass() == Accessory.class) {
             accessories.add(parseitem);
             strength += ((Accessory) parseitem).getaccessorystrength();
-            System.out.println(strength);
         }
     }
     
     public Item getitemfrominventory(int itemnumber) {
         return inventory.get(itemnumber);
+    }
+    
+    public void removeitemfrominventory(int itemnumber) {
+        inventory.remove(itemnumber);
     }
     
     public String getplayername() {
@@ -93,8 +95,29 @@ public class Player
             System.out.println(i + " - " + inventory.get(i).getitemname() + " " + inventory.get(i).getitemrarity());
         }
         System.out.println("Deine Rüstung:");
-        for(int i = 0; i < armor.size(); i++) {
-            System.out.println(i + " - " + armor.get(i).getitemname() + " " + armor.get(i).getitemrarity());
+        if(helmet != null) {
+            System.out.println("Helm: " + helmet.getitemname());
+        }
+        else {
+            System.out.println("Helm: ");
+        }
+        if(chestplate != null) {
+            System.out.println("Brustplatte: " + chestplate.getitemname());
+        }
+        else {
+            System.out.println("Brustplatte: ");
+        }
+        if(leggings != null) {
+            System.out.println("Hose: " + leggings.getitemname());
+        }
+        else {
+            System.out.println("Hose: ");
+        }
+        if(boots != null) {
+            System.out.println("Schuhe: " + boots.getitemname());
+        }
+        else {
+            System.out.println("Schuhe: ");
         }
         System.out.println("Deine Accessoires:");
         for(int i = 0; i < accessories.size(); i++) {
@@ -113,18 +136,32 @@ public class Player
         return playerdamage;
     }
     
+    public double getplayerdefense() {
+        return defense;
+    }
+    
     public void equiparmor(Armor parsearmor) {
        if(parsearmor.getarmortype() == "Helmet") {
            helmet = parsearmor;
+           defense += helmet.getarmordefense();
+           System.out.println(defense);
        }
        if(parsearmor.getarmortype() == "Chestplate") {
            chestplate = parsearmor;
+           defense += chestplate.getarmordefense();
+           System.out.println(defense);
        }
        if(parsearmor.getarmortype() == "Leggings") {
            leggings = parsearmor;
+           defense += leggings.getarmordefense();
+           System.out.println(defense);
        }
        if(parsearmor.getarmortype() == "Boots") {
            boots = parsearmor;
+           defense += boots.getarmordefense();
+           System.out.println(defense);
        }
+       System.out.println("Du legst die " + parsearmor.getitemname() + " an.");
+       removeitemfrominventory(inventory.indexOf(parsearmor));
     }
 }
