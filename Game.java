@@ -2,6 +2,7 @@ import java.util.Scanner;
 import java.util.ArrayList;
 public class Game {
     
+    private static boolean firstgame = true;
     // Hier wird der Loot der einzelnen Räume als ArrayList definiert.
     private ArrayList<Item> startroomloot = new ArrayList<>();
     private ArrayList<Item> room1loot = new ArrayList<>();
@@ -13,12 +14,15 @@ public class Game {
     
     public Game() 
     {
-        //Es werden alle Items aus der Item Klasse in die Liste eingefügt.
-        Weapon.createWeapons();
-        Armor.createArmor();
-        Potion.createPotions();
-        Accessory.createAccessories();
-        Item.fillitemlist();
+        if(firstgame) {
+            //Es werden alle Items aus der Item Klasse in die Liste eingefügt.
+            Weapon.createWeapons();
+            Armor.createArmor();
+            Potion.createPotions();
+            Accessory.createAccessories();
+            Item.fillitemlist();
+            firstgame = false;
+        }
         
         /* Hier werden alle Räume im Spiel nach folgendem Schema erstellt:
          * 

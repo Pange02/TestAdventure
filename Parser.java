@@ -11,7 +11,7 @@ public class Parser
     // Instanzvariablen - ersetzen Sie das folgende Beispiel mit Ihren Variablen
     
     //Aktionsliste für alle möglichen Aktionen. Verwendet von help Befehl.
-    private String[] actionlist = {"hilfe", "öffne", "inv", "umgucken", "gehe"};
+    private String[] actionlist = {"hilfe", "öffne", "stats", "inv", "benutze", "umgucken", "gehe"};
     
     private String[] combatactionlist = {"attackiere"};
     
@@ -117,16 +117,35 @@ public class Parser
         else if(input[0].equals("inv")) {
             parseplayer.getinventorycontent();
         }
+        else if(input[0].equals("stats")) {
+            parseplayer.getplayerstats();
+        }
         else if(input[0].equals("benutze")) {
             try {
                 inventorynumber = Integer.parseInt(input[1]);
                 if(parseplayer.getitemfrominventory(inventorynumber).getClass() == Potion.class) {
                     if(((Potion) parseplayer.getitemfrominventory(inventorynumber)).getpotiontype() == "Healing") {
-                        parseplayer.setplayerhealth(parseplayer.getplayerhealth() + ((Potion) parseplayer.getitemfrominventory(inventorynumber)).getpotioneffect());
-                        System.out.println("Du benutzt den Heilungstrank und hast nun " + parseplayer.getplayerhealth() + " Leben.");
+                        if(parseplayer.getplayerhealth() == parseplayer.getplayerhealthcap()) {
+                            System.out.println("Du hast bereits " + parseplayer.getplayerhealth() + "/" + parseplayer.getplayerhealthcap() + " Leben."); 
+                        }
+                        else {
+                            if(parseplayer.getplayerhealth() + ((Potion) parseplayer.getitemfrominventory(inventorynumber)).getpotioneffect() >= parseplayer.getplayerhealthcap()) {
+                                parseplayer.setplayerhealth(parseplayer.getplayerhealthcap());
+                                parseplayer.removeitemfrominventory(inventorynumber);
+                                System.out.println("Du benutzt den Heilungstrank und hast nun " + parseplayer.getplayerhealth() + " Leben.");
+                            }
+                            else {
+                                parseplayer.setplayerhealth(parseplayer.getplayerhealth() + ((Potion) parseplayer.getitemfrominventory(inventorynumber)).getpotioneffect());
+                                parseplayer.removeitemfrominventory(inventorynumber);
+                                System.out.println("Du benutzt den Heilungstrank und hast nun " + parseplayer.getplayerhealth() + " Leben.");
+                            } 
+                        }
                     }
-                    if(((Potion) parseplayer.getitemfrominventory(inventorynumber)).getpotiontype() == "Damage") {
+                    else if(((Potion) parseplayer.getitemfrominventory(inventorynumber)).getpotiontype() == "Damage") {
                         System.out.println("Du kannst diesen Schadenstrank nur im Kampf verwenden");
+                    }
+                    else {
+                        System.out.println("Diese Zahl aus deinem Inventar ist nicht belegt! Wähle eine gültige Zahl.");
                     }
                 }
                 else if(parseplayer.getitemfrominventory(inventorynumber).getClass() == Armor.class) {
@@ -135,6 +154,29 @@ public class Parser
             }
             catch(Exception e) {
                 System.out.println("Dies ist keine gültige Zahl aus deinem Inventar!");
+                System.out.println(e);
+            }
+        }
+        else if(input[0].equals("ablegen")) {
+            try {
+                if(input[1].toLowerCase().equals("helm")) {
+                    parseplayer.unequiparmor("helmet");
+                }
+                else if(input[1].toLowerCase().equals("brustplatte")) {
+                    parseplayer.unequiparmor("chestplate");
+                }
+                else if(input[1].toLowerCase().equals("hose") || input[1].toLowerCase().equals("beinschutz")) {
+                    parseplayer.unequiparmor("leggings");
+                }
+                else if(input[1].toLowerCase().equals("schuhe")) {
+                    parseplayer.unequiparmor("boots");
+                }
+                else {
+                    System.out.println("Du kannst dies nicht ablegen! Wähle zwischen Helm, Brustplatte, Hose und Schuhe.");
+                }
+            }
+            catch(Exception e) {
+                System.out.println("Du musst das Rüstungsteil, welches du ablegen willst, angeben.");
             }
         }
         else if(input[0].equals("gehe")) {
