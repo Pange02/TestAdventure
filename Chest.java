@@ -3,7 +3,8 @@ import java.util.Random;
 /**
  * Beschreiben Sie hier die Klasse Chest.
  * 
- * @author (Ihr Name) 
+ * @creator: Leonard
+ * @editors: 
  * @version (eine Versionsnummer oder ein Datum)
  */
 public class Chest
@@ -13,59 +14,59 @@ public class Chest
     //number für eventuelle random Generierungen (aktuell nicht verwendet).
     private int number;
     
-    //isopenable gibt an, ob man die Kiste öffnen kann.
-    private boolean isopenable;
+    //isOpenable gibt an, ob man die Kiste öffnen kann.
+    private boolean isOpenable;
     
     //Der Loot für jede Kiste
-    private ArrayList<Item> chestloot;
+    private ArrayList<Item> chestLoot;
     
-    /**
-     * Konstruktor für Objekte der Klasse Chest mit der Loot ArrayList aus der Game Klasse als Argument.
-     */
-    public Chest(ArrayList<Item> parseitemlist)
+
+    // Konstruktor für Objekte der Klasse Chest mit der Loot ArrayList aus der Game Klasse als Argument.
+    public Chest(ArrayList<Item> parseItemList)
     {
-        chestloot = parseitemlist;
-        isopenable = true;
+        chestLoot = parseItemList;
+        isOpenable = true;
     }
     
-    /**
-     * Methode für das Befüllen von Kisten. Nicht verwendet, da es aktuell klar definiert ist, welcher Loot wo zu finden ist.
-     */
-    private void fillchest()
+    // Methode für das Befüllen von Kisten. Nicht verwendet, da es aktuell klar definiert ist, welcher Loot wo zu finden ist.
+    private void fillChest()
     {
         //Random r = new Random();
         //number = r.nextInt(Item.getitemlistlength());
-        //chestloot.add(Item.getitemfromlist(0));
-        //chestloot.add(Item.getitemfromlist(1));
-        //chestloot.add(Item.getitemfromlist(2));
+        //chestLoot.add(Item.getitemfromlist(0));
+        //chestLoot.add(Item.getitemfromlist(1));
+        //chestLoot.add(Item.getitemfromlist(2));
     }
+   
     
-    /**
-     * Methode für das Öffnen von Kisten. 
-     */
-    public void openchest(Player parseplayer, Chest parsechest)
+    // Methode für das Öffnen von Kisten. 
+    public void openChest(Player parsePlayer, Chest parseChest)
     {
-        if(parsechest.isopenable == true) {
+        if(parseChest.isOpenable == true) {
             System.out.println("Die Kiste öffnet sich:");
-            for(int i = 0; i < chestloot.size(); i++) {
-                parseplayer.additemtoinventory(chestloot.get(i));
-                if(chestloot.get(i).getClass() == Weapon.class) {
-                   System.out.println("Du findest ein "  + " "+ chestloot.get(i).getitemname() + " " + chestloot.get(i).getitemrarity() + " mit " + ((Weapon) chestloot.get(i)).getweapondamage() + " Schaden."); 
+            for(int i = 0; i < chestLoot.size(); i++) {
+                // Hinzufügen des Loots in das Inventar des Spielers
+                parsePlayer.additemtoinventory(chestLoot.get(i));
+                
+                // Überprüfen der Art von Loot und Beschreibung des Loots
+                if(chestLoot.get(i).getClass() == Weapon.class) {
+                   System.out.println("Du findest ein "  + " "+ chestLoot.get(i).getitemname() + " " + chestLoot.get(i).getitemrarity() + " mit " + ((Weapon) chestLoot.get(i)).getweapondamage() + " Schaden."); 
                 }
-                if(chestloot.get(i).getClass() == Armor.class) {
-                   System.out.println("Du findest eine "  + " "+ chestloot.get(i).getitemname() + " " + chestloot.get(i).getitemrarity() + " mit " + ((Armor) chestloot.get(i)).getarmordefense() + " Verteidigung."); 
+                if(chestLoot.get(i).getClass() == Armor.class) {
+                   System.out.println("Du findest eine "  + " "+ chestLoot.get(i).getitemname() + " " + chestLoot.get(i).getitemrarity() + " mit " + ((Armor) chestLoot.get(i)).getarmordefense() + " Verteidigung."); 
                 }
-                if(chestloot.get(i).getClass() == Potion.class && ((Potion) chestloot.get(i)).getpotiontype() == "Damage") {
-                   System.out.println("Du findest eine "  + " "+ chestloot.get(i).getitemname() + " " + chestloot.get(i).getitemrarity() + " mit " + ((Potion) chestloot.get(i)).getpotioneffect() + " Schaden."); 
+                if(chestLoot.get(i).getClass() == Potion.class && ((Potion) chestLoot.get(i)).getpotiontype() == "Damage") {
+                   System.out.println("Du findest eine "  + " "+ chestLoot.get(i).getitemname() + " " + chestLoot.get(i).getitemrarity() + " mit " + ((Potion) chestLoot.get(i)).getpotioneffect() + " Schaden."); 
                 }
-                if(chestloot.get(i).getClass() == Potion.class && ((Potion) chestloot.get(i)).getpotiontype() == "Healing") {
-                   System.out.println("Du findest eine "  + " "+ chestloot.get(i).getitemname() + " " + chestloot.get(i).getitemrarity() + " mit " + ((Potion) chestloot.get(i)).getpotioneffect() + " Heilung."); 
+                if(chestLoot.get(i).getClass() == Potion.class && ((Potion) chestLoot.get(i)).getpotiontype() == "Healing") {
+                   System.out.println("Du findest eine "  + " "+ chestLoot.get(i).getitemname() + " " + chestLoot.get(i).getitemrarity() + " mit " + ((Potion) chestLoot.get(i)).getpotioneffect() + " Heilung."); 
                 }
-                if(chestloot.get(i).getClass() == Accessory.class) {
-                   System.out.println("Du findest eine "  + " "+ chestloot.get(i).getitemname() + " " + chestloot.get(i).getitemrarity() + " mit " + ((Accessory) chestloot.get(i)).getaccessorystrength() + " Stärke."); 
+                if(chestLoot.get(i).getClass() == Accessory.class) {
+                   System.out.println("Du findest eine "  + " "+ chestLoot.get(i).getitemname() + " " + chestLoot.get(i).getitemrarity() + " mit " + ((Accessory) chestLoot.get(i)).getaccessorystrength() + " Stärke."); 
                 }
             }
-            parsechest.isopenable = false;
+            // Kiste wird "verschlossen" und kann nicht mehr geöffnet werden
+            parseChest.isOpenable = false;
         }
         else {
             System.out.println("Du hast diese Kiste bereits geöffnet!");
@@ -75,8 +76,8 @@ public class Chest
     /**
      * Methode zur Überprüfung von isopenable (privat).
      */
-    public boolean getisopenable(Chest parsechest) 
+    public boolean getIsOpenable(Chest parseChest) 
     {
-        return parsechest.isopenable;
+        return parseChest.isOpenable;
     }
 }

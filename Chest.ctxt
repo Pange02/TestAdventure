@@ -1,16 +1,13 @@
 #BlueJ class context
 comment0.target=Chest
-comment0.text=\r\n\ Beschreiben\ Sie\ hier\ die\ Klasse\ Chest.\r\n\ \r\n\ @author\ (Ihr\ Name)\ \r\n\ @version\ (eine\ Versionsnummer\ oder\ ein\ Datum)\r\n
-comment1.params=parseitemlist
+comment0.text=\r\n\ Beschreiben\ Sie\ hier\ die\ Klasse\ Chest.\r\n\ \r\n\ @creator\:\ Leonard\r\n\ @editors\:\ \r\n\ @version\ (eine\ Versionsnummer\ oder\ ein\ Datum)\r\n
+comment1.params=parseItemList
 comment1.target=Chest(java.util.ArrayList)
-comment1.text=\r\n\ Konstruktor\ f\u00FCr\ Objekte\ der\ Klasse\ Chest\ mit\ der\ Loot\ ArrayList\ aus\ der\ Game\ Klasse\ als\ Argument.\r\n
 comment2.params=
-comment2.target=void\ fillchest()
-comment2.text=\r\n\ Methode\ f\u00FCr\ das\ Bef\u00FCllen\ von\ Kisten.\ Nicht\ verwendet,\ da\ es\ aktuell\ klar\ definiert\ ist,\ welcher\ Loot\ wo\ zu\ finden\ ist.\r\n
-comment3.params=parseplayer\ parsechest
-comment3.target=void\ openchest(Player,\ Chest)
-comment3.text=\r\n\ Methode\ f\u00FCr\ das\ \u00D6ffnen\ von\ Kisten.\ \r\n
-comment4.params=parsechest
-comment4.target=boolean\ getisopenable(Chest)
+comment2.target=void\ fillChest()
+comment3.params=parsePlayer\ parseChest
+comment3.target=void\ openChest(Player,\ Chest)
+comment4.params=parseChest
+comment4.target=boolean\ getIsOpenable(Chest)
 comment4.text=\r\n\ Methode\ zur\ \u00DCberpr\u00FCfung\ von\ isopenable\ (privat).\r\n
 numComments=5

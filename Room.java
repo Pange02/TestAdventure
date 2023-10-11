@@ -1,20 +1,20 @@
 import java.util.ArrayList;
 public class Room {
     //Boolean zur Überprüfung, ob sich eine Kiste im Raum befindet.
-    private boolean haschest;
+    private boolean hasChest;
     
     //Boolean zur Überprüfung, ob sich ein Mob im Raum befindet.
-    private boolean hasmob;
+    private boolean hasMob;
     
     //ArrayList mit allen Richtungen, die aus einem Raum führen.
-    private ArrayList<String> roomdirections;
+    private ArrayList<String> roomDirections;
     
     //Welche Räume in den Himmelsrichtungen angrenzen.
-    private ArrayList<Room> connectedrooms = new ArrayList<>();
-    private Room connectedroomnorth;
-    private Room connectedroomeast;
-    private Room connectedroomsouth;
-    private Room connectedroomwest;
+    private ArrayList<Room> connectedRooms = new ArrayList<>();
+    private Room connectedRoomNorth;
+    private Room connectedRoomEast;
+    private Room connectedRoomSouth;
+    private Room connectedRoomWest;
     
     //Ein Truhenobjekt für den Raum.
     Chest chest1;
@@ -24,29 +24,29 @@ public class Room {
     /**
      *  Konstruktor für die Klasse Raum mit dem Truhenobjekt als Argument.
      */    
-    public Room(Chest parsechest, Mob parsemob) {
-        if(parsechest != null) {
-            haschest = true;
-            chest1 = parsechest;
+    public Room(Chest parseChest, Mob parseMob) {
+        if(parseChest != null) {
+            hasChest = true;
+            chest1 = parseChest;
         }
         else {
-            haschest = false;
+            hasChest = false;
         }
-        if(parsemob != null) {
-            hasmob = true;
-            mob1 = parsemob;
+        if(parseMob != null) {
+            hasMob = true;
+            mob1 = parseMob;
         }
         else {
-            hasmob = false;
+            hasMob = false;
         }
-        roomdirections = new ArrayList<>();
+        roomDirections = new ArrayList<>();
     }
     
     /**
      * Methode prüft, ob sich in dem Raum eine Kiste befindet.
      */
-    public boolean getchestinfo() {
-        if(haschest == true) {
+    public boolean getChestInfo() {
+        if(hasChest == true) {
             return true;
         }
         else {
@@ -57,12 +57,12 @@ public class Room {
     /**
      * Methode gibt die Kiste des Raumes zurück.
      */
-    public Chest getchest() {
+    public Chest getChest() {
         return chest1;
     }
     
-    public boolean getmobinfo() {
-        if(hasmob == true) {
+    public boolean getMobInfo() {
+        if(hasMob == true) {
             return true;
         }
         else {
@@ -70,29 +70,29 @@ public class Room {
         }
     }
     
-    public Mob getroommob() {
+    public Mob getRoomMob() {
         return mob1;
     }
     
     /**
      * Hier werden alle verbundenen Räume definiert nach (Raum, Norden, Osten, Süden, Westen).
      */
-    public void setconnectedrooms(Room parseconnectedroomnorth, Room parseconnectedroomeast, Room parseconnectedroomsouth, Room parseconnectedroomwest) {
-        connectedroomnorth = parseconnectedroomnorth;
-        connectedroomeast = parseconnectedroomeast;
-        connectedroomsouth = parseconnectedroomsouth;
-        connectedroomwest = parseconnectedroomwest;
-        if(connectedroomnorth != null) {
-            roomdirections.add("Norden");
+    public void setConnectedRooms(Room parseConnectedRoomNorth, Room parseConnectedRoomEast, Room parseConnectedRoomSouth, Room parseConnectedRoomWest) {
+        connectedRoomNorth = parseConnectedRoomNorth;
+        connectedRoomEast = parseConnectedRoomEast;
+        connectedRoomSouth = parseConnectedRoomSouth;
+        connectedRoomWest = parseConnectedRoomWest;
+        if(connectedRoomNorth != null) {
+            roomDirections.add("Norden");
         }
-        if(connectedroomeast != null) {
-            roomdirections.add("Osten");
+        if(connectedRoomEast != null) {
+            roomDirections.add("Osten");
         }
-        if(connectedroomsouth != null) {
-            roomdirections.add("Süden");
+        if(connectedRoomSouth != null) {
+            roomDirections.add("Süden");
         }
-        if(connectedroomwest != null) {
-            roomdirections.add("Westen");
+        if(connectedRoomWest != null) {
+            roomDirections.add("Westen");
         }
     }
     
@@ -100,18 +100,18 @@ public class Room {
     /**
      * Methode zur Rückgabe von dem Raum in der Richtung des Arguments.
      */
-    public Room getconnectedrooms(String parsedirection) {
-        if(parsedirection == "north") {
-            return connectedroomnorth;
+    public Room getConnectedRooms(String parseDirection) {
+        if(parseDirection == "north") {
+            return connectedRoomNorth;
         }
-        else if(parsedirection == "east") {
-            return connectedroomeast;
+        else if(parseDirection == "east") {
+            return connectedRoomEast;
         }
-        else if(parsedirection == "south") {
-            return connectedroomsouth;
+        else if(parseDirection == "south") {
+            return connectedRoomSouth;
         }
-        else if(parsedirection == "west") {
-            return connectedroomwest;
+        else if(parseDirection == "west") {
+            return connectedRoomWest;
         }
         else {
             System.out.println("In dieser Richtung liegt keine Tür zu einem anderen Raum.");
@@ -122,7 +122,7 @@ public class Room {
     /**
      * Rückgabe von allen Richtungen als ArrayList. Zuvor definiert für jeden Raum in setconnectedrooms(...)
      */
-    public ArrayList<String> getroomdirections() {
-        return roomdirections;
+    public ArrayList<String> getRoomDirections() {
+        return roomDirections;
     }
 }
