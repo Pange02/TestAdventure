@@ -15,9 +15,9 @@ public class Weapon extends Item
     /**
      * Constructor for objects of class Weapon
      */
-    public Weapon(String parsename, String parserarity, int parsedamage)
+    public Weapon(String parsename, String parserarity, String weaponGender, int parsedamage)
     {
-        super(parsename, parserarity);
+        super(parsename, parserarity, weaponGender);
         damage = parsedamage;
     }
 
@@ -30,12 +30,12 @@ public class Weapon extends Item
     public static void createWeapons()
     {
         // Waffen (w)
-        Weapon weapon0 = new Weapon("Langschwert", "(Ungewöhnlich)", 5);
-        Weapon weapon1 = new Weapon("Holzstock", "(Gewöhnlich)", 1);
-        Weapon weapon2 = new Weapon("Streitaxt" , "(Gewöhnlich)", 3);
-        Weapon weapon3 = new Weapon("Dolch" , "(Selten)", 2);
-        Weapon weapon4 = new Weapon("Speer", "(Selten)", 4);
-        Weapon weapon5 = new Weapon("Katana", "(Legendär)", 8);
+        Weapon weapon0 = new Weapon("Langschwert", "(Ungewöhnlich)", "neutrum", 5);
+        Weapon weapon1 = new Weapon("Holzstock", "(Gewöhnlich)", "maskulin", 1);
+        Weapon weapon2 = new Weapon("Streitaxt" , "(Gewöhnlich)", "feminin", 3);
+        Weapon weapon3 = new Weapon("Dolch" , "(Selten)", "maskulin", 2);
+        Weapon weapon4 = new Weapon("Speer", "(Selten)", "maskulin", 4);
+        Weapon weapon5 = new Weapon("Katana", "(Legendär)", "neutrum", 8);
         //Waffen zur Waffenliste hinzufügen
         weaponlist.add(weapon0);
         weaponlist.add(weapon1);

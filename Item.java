@@ -10,18 +10,23 @@ public class Item
     // Attribute eines Items
     protected String name;
     protected String rarity;
+    protected String gender;
         
     //Liste mit allen möglichen Seltenheitsgraden. Dient nur als Übersicht aktuell.
     private static String[] itemtiers = {"(Gewöhnlich)", "(Ungewöhnlich)", "(Selten)", "(Episch)", "(Legendär)", "(Mythisch)"};
     
-    public static final ArrayList[] itemlist = new ArrayList[4];
+    private static ArrayList[] itemlist = new ArrayList[4];
+    
+    Grammar grammar = new Grammar();
+    
     /**
      * Konstruktor für Objekte der Klasse Item mit Namen, Damage, Seltenheit und Typ.
      */
-    public Item(String parsename, String parserarity)
+    public Item(String parsename, String parserarity, String parsegender)
     {
         name = parsename;
         rarity = parserarity;
+        gender = parsegender;
     }
 
     /**
@@ -67,5 +72,20 @@ public class Item
     public String getitemrarity()
     {
         return rarity;
+    }
+    
+    /**
+     * Gibt zu einem Item und einem Kasus einen bestimmten oder unbestimmten Artikel aus.
+     */
+    public String getArtikel(String kasus, String art){
+        if (art.toLowerCase().equals("bestimmter")){
+            return grammar.getArtikel(kasus, gender);
+        }
+        else if (art.toLowerCase().equals("unbestimmter")){
+            return grammar.getUnArtikel(kasus, gender);
+        }
+        else {
+            return null;
+        }
     }
 }
