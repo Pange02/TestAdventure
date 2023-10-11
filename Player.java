@@ -228,4 +228,18 @@ public class Player
             boots = null;
         }
     }
+    
+    public void consume(Consumable parseconsumable) {
+        if(health + parseconsumable.getconsumableeffect() > healthcap) {
+            health = healthcap;
+            System.out.println("Du hast durch den " + parseconsumable.getitemname() + " jetzt " + health + "/" + healthcap + " Leben.");
+        }
+        else if(health == healthcap) {
+            System.out.println("Du hast bereits " + health + "/" + healthcap);
+        }
+        else {
+            health += parseconsumable.getconsumableeffect();
+            System.out.println("Du hast durch den " + parseconsumable.getitemname() + " jetzt " + health + "/" + healthcap + " Leben.");
+        }
+    }
 }
