@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=Consumable
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ Consumable\ here.\r\n\r\n\ @author\ (your\ name)\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=parsename\ parserarity\ parseeffect
+comment1.target=Consumable(java.lang.String,\ java.lang.String,\ int)
+comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ Consumable\r\n
+comment2.params=
+comment2.target=int\ getconsumableeffect()
+numComments=3
