@@ -27,9 +27,12 @@ public class Game {
             Armor.createArmor();
             Potion.createPotions();
             Accessory.createAccessories();
+            Consumable.createConsumables();
             Item.fillitemlist();
             firstGame = false;
         }
+        
+        Grammar grammar = new Grammar();
         
         /* Hier werden alle Räume im Spiel nach folgendem Schema erstellt:
          * 
@@ -122,9 +125,9 @@ public class Game {
         Player player1 = new Player(nameParser.nextLine(), startRoom);
         // Cheatcode zum Testen
         if(player1.getplayername().equals("Leonard")) {
-            for(int i = 0; i < Item.itemlist.length; i++) {
-                for(int j = 0; j < Item.itemlist[i].size(); j++) {
-                    player1.additemtoinventory(((Item) Item.itemlist[i].get(j)));
+            for(int i = 0; i < Item.getitemlist().length; i++) {
+                for(int j = 0; j < Item.getitemlist()[i].size(); j++) {
+                    player1.additemtoinventory(((Item) Item.getitemlist()[i].get(j)));
                 }
             }
         }

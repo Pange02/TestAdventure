@@ -51,7 +51,7 @@ public class Player
      */
     public void additemtoinventory(Item parseitem)
     {
-        if(parseitem.getClass() == Weapon.class || parseitem.getClass() == Potion.class || parseitem.getClass() == Armor.class) {
+        if(parseitem.getClass() == Weapon.class || parseitem.getClass() == Potion.class || parseitem.getClass() == Armor.class || parseitem.getClass() == Consumable.class) {
             inventory.add(parseitem);
         }
         else if(parseitem.getClass() == Accessory.class) {

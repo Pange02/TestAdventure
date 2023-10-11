@@ -74,7 +74,7 @@ public class Grammar
     /**
      * Gibt zugehörig zu einem Geschlecht und dem Kasus ein bestimmten Artikel zurück.
      */
-    public String getArtikel(String kasus, String gender){
+    public static String getArtikel(String kasus, String gender){
         if (kasus.toLowerCase().equals("nominativ")){
             
             return nArtikelMap.get(gender);
@@ -99,7 +99,7 @@ public class Grammar
     /**
      * Gibt zugehörig zu einem Geschlecht und dem Kasus ein unbestimmten Artikel zurück.
      */
-    public String getUnArtikel(String kasus, String gender){
+    public static String getUnArtikel(String kasus, String gender){
         if (kasus.toLowerCase().equals("nominativ")){
             
             return nUnArtikelMap.get(gender);

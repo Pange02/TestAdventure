@@ -15,9 +15,7 @@ public class Item
     //Liste mit allen möglichen Seltenheitsgraden. Dient nur als Übersicht aktuell.
     private static String[] itemtiers = {"(Gewöhnlich)", "(Ungewöhnlich)", "(Selten)", "(Episch)", "(Legendär)", "(Mythisch)"};
     
-    private static ArrayList[] itemlist = new ArrayList[4];
-    
-    Grammar grammar = new Grammar();
+    private static ArrayList[] itemlist = new ArrayList[5];
     
     /**
      * Konstruktor für Objekte der Klasse Item mit Namen, Damage, Seltenheit und Typ.
@@ -38,6 +36,7 @@ public class Item
         itemlist[1] = Armor.armorlist;
         itemlist[2] = Potion.potionlist;
         itemlist[3] = Accessory.accessorylist;
+        itemlist[4] = Consumable.consumablelist;
     }
     
     public static Item getitemfromlist(String type, int arrayslot) 
@@ -52,6 +51,9 @@ public class Item
             return ((Potion) itemlist[2].get(arrayslot));
         }
         else if(type.toLowerCase().equals("accessory")) {
+            return ((Accessory) itemlist[3].get(arrayslot));
+        }
+        else if(type.toLowerCase().equals("consumable")) {
             return ((Accessory) itemlist[3].get(arrayslot));
         }
         else {
@@ -74,15 +76,19 @@ public class Item
         return rarity;
     }
     
+    public static ArrayList[] getitemlist() {
+        return itemlist;
+    }
+    
     /**
      * Gibt zu einem Item und einem Kasus einen bestimmten oder unbestimmten Artikel aus.
      */
     public String getArtikel(String kasus, String art){
         if (art.toLowerCase().equals("bestimmter")){
-            return grammar.getArtikel(kasus, gender);
+            return Grammar.getArtikel(kasus, gender);
         }
         else if (art.toLowerCase().equals("unbestimmter")){
-            return grammar.getUnArtikel(kasus, gender);
+            return Grammar.getUnArtikel(kasus, gender);
         }
         else {
             return null;
