@@ -1,8 +1,8 @@
 #BlueJ class context
 comment0.target=Item
 comment0.text=\r\n\ Beschreiben\ Sie\ hier\ die\ Klasse\ Item.\r\n\ \r\n\ @author\ (Ihr\ Name)\ \r\n\ @version\ (eine\ Versionsnummer\ oder\ ein\ Datum)\r\n
-comment1.params=parsename\ parserarity
-comment1.target=Item(java.lang.String,\ java.lang.String)
+comment1.params=parsename\ parserarity\ parsegender
+comment1.target=Item(java.lang.String,\ java.lang.String,\ java.lang.String)
 comment1.text=\r\n\ Konstruktor\ f\u00FCr\ Objekte\ der\ Klasse\ Item\ mit\ Namen,\ Damage,\ Seltenheit\ und\ Typ.\r\n
 comment2.params=
 comment2.target=void\ fillitemlist()
@@ -15,4 +15,7 @@ comment5.params=
 comment5.target=int\ getitemlistsize()
 comment6.params=
 comment6.target=java.lang.String\ getitemrarity()
-numComments=7
+comment7.params=kasus\ art
+comment7.target=java.lang.String\ getArtikel(java.lang.String,\ java.lang.String)
+comment7.text=\r\n\ Gibt\ zu\ einem\ Item\ und\ einem\ Kasus\ einen\ bestimmten\ oder\ unbestimmten\ Artikel\ aus.\r\n
+numComments=8

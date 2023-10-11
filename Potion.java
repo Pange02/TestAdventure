@@ -14,9 +14,9 @@ public class Potion extends Item
     /**
      * Constructor for objects of class Potion
      */
-    public Potion(String parsename, String parserarity, String parsetype, int parseeffect)
+    public Potion(String parsename, String parserarity, String potionGender, String parsetype, int parseeffect)
     {
-        super(parsename, parserarity);
+        super(parsename, parserarity, potionGender);
         effect = parseeffect;
         type = parsetype;
     }
@@ -30,9 +30,9 @@ public class Potion extends Item
     public static void createPotions()
     {
         // Potions (p)
-        Potion potion0 = new Potion("Gifttrank", "(Gewöhnlich)", "Damage", 1);
-        Potion potion1 = new Potion("Schadenstrank", "(Ungewöhnlich)", "Damage", 2);
-        Potion potion2 = new Potion("Heilungstrank", "(Selten)", "Healing", 3);
+        Potion potion0 = new Potion("Gifttrank", "(Gewöhnlich)", "maskulin", "Damage", 1);
+        Potion potion1 = new Potion("Schadenstrank", "(Ungewöhnlich)", "maskulin", "Damage", 2);
+        Potion potion2 = new Potion("Heilungstrank", "(Selten)", "maskulin", "Healing", 3);
         //Potions zur Potionlist hinzufügen
         potionlist.add(potion0);
         potionlist.add(potion1);

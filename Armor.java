@@ -13,9 +13,9 @@ public class Armor extends Item
     /**
      * Constructor for objects of class Armor
      */
-    public Armor(String parsename, String parserarity, String parsearmortype, int parsedefense)
+    public Armor(String parsename, String parserarity, String armorGender, String parsearmortype, int parsedefense)
     {
-        super(parsename, parserarity);
+        super(parsename, parserarity, armorGender);
         armortype = parsearmortype;
         defense = parsedefense;
     }
@@ -29,11 +29,11 @@ public class Armor extends Item
     public static void createArmor()
     {
         // Armor (a)
-        Armor armor0 = new Armor("Verrostete Brustplatte", "(Ungewöhnlich)", "Chestplate", 2);
-        Armor armor1 = new Armor("Kettenhemd", "(Gewöhnlich)", "Chestplate", 3);
-        Armor armor2 = new Armor("Lederkappe", "(Gewöhnlich)", "Helmet", 1);
-        Armor armor3 = new Armor("Alte Stiefel", "(Gewöhnlich)", "Boots", 1);
-        Armor armor4 = new Armor("Ritterhelm", "(Selten)", "Helmet", 3);
+        Armor armor0 = new Armor("Verrostete Brustplatte", "(Ungewöhnlich)", "feminin", "Chestplate", 2);
+        Armor armor1 = new Armor("Kettenhemd", "(Gewöhnlich)", "Chestplate", "neutrum", 3);
+        Armor armor2 = new Armor("Lederkappe", "(Gewöhnlich)", "feminin", "Helmet", 1);
+        Armor armor3 = new Armor("Alte Stiefel", "(Gewöhnlich)", "maskulin", "Boots", 1);
+        Armor armor4 = new Armor("Ritterhelm", "(Selten)", "maskulin", "Helmet", 3);
         //Armor zur Armorliste hinzufügen
         armorlist.add(armor0);
         armorlist.add(armor1);
