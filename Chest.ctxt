@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=Chest
+comment0.text=\r\n\ Beschreiben\ Sie\ hier\ die\ Klasse\ Chest.\r\n\ \r\n\ @creator\:\ Leonard\r\n\ @editors\:\ \r\n\ @version\ (eine\ Versionsnummer\ oder\ ein\ Datum)\r\n
+comment1.params=parseItemList
+comment1.target=Chest(java.util.ArrayList)
+comment2.params=
+comment2.target=void\ fillChest()
+comment3.params=parsePlayer\ parseChest
+comment3.target=void\ openChest(Player,\ Chest)
+comment4.params=parseChest
+comment4.target=boolean\ getIsOpenable(Chest)
+comment4.text=\r\n\ Methode\ zur\ \u00DCberpr\u00FCfung\ von\ isopenable\ (privat).\r\n
+numComments=5

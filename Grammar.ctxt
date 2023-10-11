@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=Grammar
+comment0.text=\r\n\ Dient\ zur\ korrekten\ Anwendung\ von\ Grammatik\r\n\r\n\ @author\ (your\ name)\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=
+comment1.target=Grammar()
+comment1.text=\r\n\ Hinterlegt\ zu\ den\ Geschlechtern\ und\ zu\ jedem\ Kasus\ einen\ bestimmte/unbestimmte\ Artikel.\r\n
+comment2.params=kasus\ gender
+comment2.target=java.lang.String\ getArtikel(java.lang.String,\ java.lang.String)
+comment2.text=\r\n\ Gibt\ zugeh\u00F6rig\ zu\ einem\ Geschlecht\ und\ dem\ Kasus\ ein\ bestimmten\ Artikel\ zur\u00FCck.\r\n
+comment3.params=kasus\ gender
+comment3.target=java.lang.String\ getUnArtikel(java.lang.String,\ java.lang.String)
+comment3.text=\r\n\ Gibt\ zugeh\u00F6rig\ zu\ einem\ Geschlecht\ und\ dem\ Kasus\ ein\ unbestimmten\ Artikel\ zur\u00FCck.\r\n
+numComments=4

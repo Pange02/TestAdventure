@@ -1,0 +1,25 @@
+#BlueJ class context
+comment0.target=Room
+comment1.params=parseChest\ parseMob
+comment1.target=Room(Chest,\ Mob)
+comment1.text=\r\n\ \ Konstruktor\ f\u00FCr\ die\ Klasse\ Raum\ mit\ dem\ Truhenobjekt\ als\ Argument.\r\n
+comment2.params=
+comment2.target=boolean\ getChestInfo()
+comment2.text=\r\n\ Methode\ pr\u00FCft,\ ob\ sich\ in\ dem\ Raum\ eine\ Kiste\ befindet.\r\n
+comment3.params=
+comment3.target=Chest\ getChest()
+comment3.text=\r\n\ Methode\ gibt\ die\ Kiste\ des\ Raumes\ zur\u00FCck.\r\n
+comment4.params=
+comment4.target=boolean\ getMobInfo()
+comment5.params=
+comment5.target=Mob\ getRoomMob()
+comment6.params=parseConnectedRoomNorth\ parseConnectedRoomEast\ parseConnectedRoomSouth\ parseConnectedRoomWest
+comment6.target=void\ setConnectedRooms(Room,\ Room,\ Room,\ Room)
+comment6.text=\r\n\ Hier\ werden\ alle\ verbundenen\ R\u00E4ume\ definiert\ nach\ (Raum,\ Norden,\ Osten,\ S\u00FCden,\ Westen).\r\n
+comment7.params=parseDirection
+comment7.target=Room\ getConnectedRooms(java.lang.String)
+comment7.text=\r\n\ Methode\ zur\ R\u00FCckgabe\ von\ dem\ Raum\ in\ der\ Richtung\ des\ Arguments.\r\n
+comment8.params=
+comment8.target=java.util.ArrayList\ getRoomDirections()
+comment8.text=\r\n\ R\u00FCckgabe\ von\ allen\ Richtungen\ als\ ArrayList.\ Zuvor\ definiert\ f\u00FCr\ jeden\ Raum\ in\ setconnectedrooms(...)\r\n
+numComments=9

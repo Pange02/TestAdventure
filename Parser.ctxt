@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.target=Parser
+comment0.text=\r\n\ Beschreiben\ Sie\ hier\ die\ Klasse\ Parser.\r\n\ \r\n\ @author\ (Ihr\ Name)\ \r\n\ @version\ (eine\ Versionsnummer\ oder\ ein\ Datum)\r\n
+comment1.params=parseplayer
+comment1.target=Parser(Player)
+comment1.text=\r\n\ Konstruktor\ f\u00FCr\ Objekte\ der\ Klasse\ Parser\ mit\ Spieler\r\n
+comment2.params=parseaction\ parseplayer
+comment2.target=void\ getaction(java.lang.String,\ Player)
+comment2.text=\r\n\ Alle\ m\u00F6glichen\ Inputs\ werden\ vom\ Parser\ nach\ Leerzeichen\ getrennt\ und\ \u00FCberpr\u00FCft,\ ob\ sie\ einer\ Aktion\ entsprechen\ und\ dann\ von\ ihm\ ausgef\u00FChrt.\r\n
+comment3.params=parseplayer\ parsemob
+comment3.target=void\ entercombat(Player,\ Mob)
+comment4.params=parseaction\ parseplayer\ parsemob
+comment4.target=void\ getcombataction(java.lang.String,\ Player,\ Mob)
+numComments=5
