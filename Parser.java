@@ -263,7 +263,7 @@ public class Parser
                 System.out.println("Du musst eine Waffe für den Kampf wählen. Benutze dafür eine Zahl aus deinem Inventar mit einer Waffe.");
             }  
         }
-        System.out.println("Du wählst die " + playerweapon.getitemname() + ".");
+        System.out.println("Du wählst " + playerweapon.getArtikel("nominativ", "bestimmter") + " " + playerweapon.getitemname() + ".");
     }
     
     public void getcombataction(String parseaction, Player parseplayer, Mob parsemob) {
