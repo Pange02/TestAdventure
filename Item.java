@@ -84,14 +84,14 @@ public class Item
      * Gibt zu einem Item und einem Kasus einen bestimmten oder unbestimmten Artikel aus.
      */
     public String getArtikel(String kasus, String art){
-        if (art.toLowerCase().equals("bestimmter")){
+        if (art.toLowerCase().equals("bestimmt")){
             return Grammar.getArtikel(kasus, gender);
         }
-        else if (art.toLowerCase().equals("unbestimmter")){
+        else if (art.toLowerCase().equals("unbestimmt")){
             return Grammar.getUnArtikel(kasus, gender);
         }
         else {
-            return null;
+            return "kein Artikel in Item";
         }
     }
 }

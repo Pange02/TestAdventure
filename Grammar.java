@@ -92,7 +92,7 @@ public class Grammar
             return aArtikelMap.get(gender);
         }
         else {
-            return null;
+            return "kein Artikel in Grammar";
         }
     }
     
@@ -101,7 +101,7 @@ public class Grammar
      */
     public static String getUnArtikel(String kasus, String gender){
         if (kasus.toLowerCase().equals("nominativ")){
-            
+
             return nUnArtikelMap.get(gender);
         }
         else if (kasus.toLowerCase().equals("genetiv")){
@@ -117,7 +117,7 @@ public class Grammar
             return aUnArtikelMap.get(gender);
         }
         else {
-            return null;
+            return "kein Artikel in Grammar";
         }
     }
 }

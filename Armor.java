@@ -30,7 +30,7 @@ public class Armor extends Item
     {
         // Armor (a)
         Armor armor0 = new Armor("Verrostete Brustplatte", "(Ungewöhnlich)", "feminin", "Chestplate", 2);
-        Armor armor1 = new Armor("Kettenhemd", "(Gewöhnlich)", "Chestplate", "neutrum", 3);
+        Armor armor1 = new Armor("Kettenhemd", "(Gewöhnlich)", "neutrum", "Chestplate", 3);
         Armor armor2 = new Armor("Lederkappe", "(Gewöhnlich)", "feminin", "Helmet", 1);
         Armor armor3 = new Armor("Alte Stiefel", "(Gewöhnlich)", "maskulin", "Boots", 1);
         Armor armor4 = new Armor("Ritterhelm", "(Selten)", "maskulin", "Helmet", 3);

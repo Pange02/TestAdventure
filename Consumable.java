@@ -20,7 +20,7 @@ public class Consumable extends Item
     }
     
     public static void createConsumables() {
-        Consumable consumable1 = new Consumable("Apfel", "(Gewöhnlich)", "masuklin", 2);
+        Consumable consumable1 = new Consumable("Apfel", "(Gewöhnlich)", "maskulin", 2);
         consumablelist.add(consumable1);
     }
     

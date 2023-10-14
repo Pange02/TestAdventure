@@ -132,12 +132,12 @@ public class Parser
                             if(parseplayer.getplayerhealth() + ((Potion) parseplayer.getitemfrominventory(inventorynumber)).getpotioneffect() >= parseplayer.getplayerhealthcap()) {
                                 parseplayer.setplayerhealth(parseplayer.getplayerhealthcap());
                                 parseplayer.removeitemfrominventory(inventorynumber);
-                                System.out.println("Du benutzt das Heilungstrank und hast nun " + parseplayer.getplayerhealth() + " Leben.");
+                                System.out.println("Du benutzt den Heilungstrank und hast nun " + parseplayer.getplayerhealth() + " Leben.");
                             }
                             else {
                                 parseplayer.setplayerhealth(parseplayer.getplayerhealth() + ((Potion) parseplayer.getitemfrominventory(inventorynumber)).getpotioneffect());
                                 parseplayer.removeitemfrominventory(inventorynumber);
-                                System.out.println("Du benutzt das Heilungstrank und hast nun " + parseplayer.getplayerhealth() + " Leben.");
+                                System.out.println("Du benutzt den Heilungstrank und hast nun " + parseplayer.getplayerhealth() + " Leben.");
                             } 
                         }
                     }
@@ -154,18 +154,18 @@ public class Parser
                 else if(parseplayer.getitemfrominventory(inventorynumber).getClass() == Consumable.class) {
                     if(parseplayer.getplayerhealth() + ((Consumable) parseplayer.getitemfrominventory(inventorynumber)).getconsumableeffect() == parseplayer.getplayerhealthcap()) {
                         parseplayer.setplayerhealth(parseplayer.getplayerhealth() + ((Consumable) parseplayer.getitemfrominventory(inventorynumber)).getconsumableeffect());
+                        System.out.println("Du konsumierst " + parseplayer.getitemfrominventory(inventorynumber).getArtikel("akkusativ", "bestimmt") + " " + parseplayer.getitemfrominventory(inventorynumber).getitemname() + " und hast nun " + parseplayer.getplayerhealth() + " Leben.");
                         parseplayer.removeitemfrominventory(inventorynumber);
-                        System.out.println("Du konsumierst den " + parseplayer.getitemfrominventory(inventorynumber).getitemname() + " und hast nun " + parseplayer.getplayerhealth() + " Leben.");
                     }
                     else {
                         if(parseplayer.getplayerhealth() + ((Consumable) parseplayer.getitemfrominventory(inventorynumber)).getconsumableeffect() >= parseplayer.getplayerhealthcap()) {
                             parseplayer.setplayerhealth(parseplayer.getplayerhealthcap());
-                            System.out.println("Du konsumierst den " + parseplayer.getitemfrominventory(inventorynumber).getitemname() + " und hast nun " + parseplayer.getplayerhealth() + " Leben.");
+                            System.out.println("Du konsumierst " + parseplayer.getitemfrominventory(inventorynumber).getArtikel("akkusativ", "bestimmt") + " " + parseplayer.getitemfrominventory(inventorynumber).getitemname() + " und hast nun " + parseplayer.getplayerhealth() + " Leben.");
                             parseplayer.removeitemfrominventory(inventorynumber);
                         }
                         else {
                             parseplayer.setplayerhealth(parseplayer.getplayerhealth() + ((Consumable) parseplayer.getitemfrominventory(inventorynumber)).getconsumableeffect());
-                            System.out.println("Du konsumierst den " + parseplayer.getitemfrominventory(inventorynumber).getitemname() + " und hast nun " + parseplayer.getplayerhealth() + " Leben.");
+                            System.out.println("Du konsumierst " + parseplayer.getitemfrominventory(inventorynumber).getArtikel("akkusativ", "bestimmt") + " " + parseplayer.getitemfrominventory(inventorynumber).getitemname() + " und hast nun " + parseplayer.getplayerhealth() + " Leben.");
                             parseplayer.removeitemfrominventory(inventorynumber);
                         } 
                     }
@@ -282,7 +282,7 @@ public class Parser
                 System.out.println("Du musst eine Waffe für den Kampf wählen. Benutze dafür eine Zahl aus deinem Inventar mit einer Waffe.");
             }  
         }
-        System.out.println("Du wählst " + playerweapon.getArtikel("nominativ", "bestimmter") + " " + playerweapon.getitemname() + ".");
+        System.out.println("Du wählst " + playerweapon.getArtikel("akkusativ", "bestimmt") + " " + playerweapon.getitemname() + ".");
     }
     
     public void getcombataction(String parseaction, Player parseplayer, Mob parsemob) {
