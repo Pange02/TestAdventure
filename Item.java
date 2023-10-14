@@ -54,7 +54,7 @@ public class Item
             return ((Accessory) itemlist[3].get(arrayslot));
         }
         else if(type.toLowerCase().equals("consumable")) {
-            return ((Accessory) itemlist[3].get(arrayslot));
+            return ((Consumable) itemlist[4].get(arrayslot));
         }
         else {
             return null;

@@ -160,7 +160,7 @@ public class Player
                helmet = parsearmor;
                defense += helmet.getarmordefense();
                System.out.println(defense);
-               System.out.println("Du legst die " + parsearmor.getitemname() + " an.");
+               System.out.println("Du legst " + parsearmor.getArtikel("akkusativ", "bestimmt") + " " + parsearmor.getitemname() + " an.");
                removeitemfrominventory(inventory.indexOf(parsearmor));
            }
        }
@@ -172,7 +172,7 @@ public class Player
                chestplate = parsearmor;
                defense += chestplate.getarmordefense();
                System.out.println(defense);
-               System.out.println("Du legst die " + parsearmor.getitemname() + " an.");
+               System.out.println("Du legst " + parsearmor.getArtikel("akkusativ", "bestimmt") + " " + parsearmor.getitemname() + " an.");
                removeitemfrominventory(inventory.indexOf(parsearmor));
            }
        }
@@ -184,7 +184,7 @@ public class Player
                leggings = parsearmor;
                defense += leggings.getarmordefense();
                System.out.println(defense);
-               System.out.println("Du legst die " + parsearmor.getitemname() + " an.");
+               System.out.println("Du legst " + parsearmor.getArtikel("akkusativ", "bestimmt") + " " + parsearmor.getitemname() + " an.");
                removeitemfrominventory(inventory.indexOf(parsearmor));
             }
        }
@@ -196,7 +196,7 @@ public class Player
                boots = parsearmor;
                defense += boots.getarmordefense();
                System.out.println(defense); 
-               System.out.println("Du legst die " + parsearmor.getitemname() + " an.");
+               System.out.println("Du legst " + parsearmor.getArtikel("akkusativ", "bestimmt") + " " + parsearmor.getitemname() + " an.");
                removeitemfrominventory(inventory.indexOf(parsearmor));
            }
        }

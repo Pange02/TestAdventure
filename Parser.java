@@ -263,6 +263,7 @@ public class Parser
     
     public void entercombat(Player parseplayer, Mob parsemob) {
         activemob = parsemob;
+        weaponselected = false;
         System.out.println("Als du den Raum betrittst, entdeckst du ein " + parsemob.getmobname() + ". Es kommt zum Kampf.");
         System.out.println("Welche Waffe möchtest du für den Kampf benutzen?");
         parseplayer.getinventorycontent();

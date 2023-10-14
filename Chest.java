@@ -50,19 +50,22 @@ public class Chest
                 
                 // Überprüfen der Art von Loot und Beschreibung des Loots
                 if(chestLoot.get(i).getClass() == Weapon.class) {
-                   System.out.println("Du findest " + chestLoot.get(i).getArtikel("nominativ", "unbestimmt") +  " " + chestLoot.get(i).getitemname() + " " + chestLoot.get(i).getitemrarity() + " mit " + ((Weapon) chestLoot.get(i)).getweapondamage() + " Schaden."); 
+                   System.out.println("Du findest " + chestLoot.get(i).getArtikel("akkusativ", "unbestimmt") +  " " + chestLoot.get(i).getitemname() + " " + chestLoot.get(i).getitemrarity() + " mit " + ((Weapon) chestLoot.get(i)).getweapondamage() + " Schaden."); 
+                }
+                if(chestLoot.get(i).getClass() == Consumable.class) {
+                   System.out.println("Du findest " + chestLoot.get(i).getArtikel("akkusativ", "unbestimmt") +  " " + chestLoot.get(i).getitemname() + " " + chestLoot.get(i).getitemrarity() + " mit " + ((Consumable) chestLoot.get(i)).getconsumableeffect() + " Heilung."); 
                 }
                 if(chestLoot.get(i).getClass() == Armor.class) {
-                   System.out.println("Du findest " + chestLoot.get(i).getArtikel("nominativ", "unbestimmt") +  " " + chestLoot.get(i).getitemname() + " " + chestLoot.get(i).getitemrarity() + " mit " + ((Armor) chestLoot.get(i)).getarmordefense() + " Verteidigung."); 
+                   System.out.println("Du findest " + chestLoot.get(i).getArtikel("akkusativ", "unbestimmt") +  " " + chestLoot.get(i).getitemname() + " " + chestLoot.get(i).getitemrarity() + " mit " + ((Armor) chestLoot.get(i)).getarmordefense() + " Verteidigung."); 
                 }
                 if(chestLoot.get(i).getClass() == Potion.class && ((Potion) chestLoot.get(i)).getpotiontype() == "Damage") {
-                   System.out.println("Du findest " + chestLoot.get(i).getArtikel("nominativ", "unbestimmt") + " " + chestLoot.get(i).getitemname() + " " + chestLoot.get(i).getitemrarity() + " mit " + ((Potion) chestLoot.get(i)).getpotioneffect() + " Schaden."); 
+                   System.out.println("Du findest " + chestLoot.get(i).getArtikel("akkusativ", "unbestimmt") + " " + chestLoot.get(i).getitemname() + " " + chestLoot.get(i).getitemrarity() + " mit " + ((Potion) chestLoot.get(i)).getpotioneffect() + " Schaden."); 
                 }
                 if(chestLoot.get(i).getClass() == Potion.class && ((Potion) chestLoot.get(i)).getpotiontype() == "Healing") {
-                   System.out.println("Du findest " + chestLoot.get(i).getArtikel("nominativ", "unbestimmt") +  " " + chestLoot.get(i).getitemname() + " " + chestLoot.get(i).getitemrarity() + " mit " + ((Potion) chestLoot.get(i)).getpotioneffect() + " Heilung."); 
+                   System.out.println("Du findest " + chestLoot.get(i).getArtikel("akkusativ", "unbestimmt") +  " " + chestLoot.get(i).getitemname() + " " + chestLoot.get(i).getitemrarity() + " mit " + ((Potion) chestLoot.get(i)).getpotioneffect() + " Heilung."); 
                 }
                 if(chestLoot.get(i).getClass() == Accessory.class) {
-                   System.out.println("Du findest " + chestLoot.get(i).getArtikel("nominativ", "unbestimmt") +  " " + chestLoot.get(i).getitemname() + " " + chestLoot.get(i).getitemrarity() + " mit " + ((Accessory) chestLoot.get(i)).getaccessorystrength() + " Stärke."); 
+                   System.out.println("Du findest " + chestLoot.get(i).getArtikel("akkusativ", "unbestimmt") +  " " + chestLoot.get(i).getitemname() + " " + chestLoot.get(i).getitemrarity() + " mit " + ((Accessory) chestLoot.get(i)).getaccessorystrength() + " Stärke."); 
                 }
             }
             // Kiste wird "verschlossen" und kann nicht mehr geöffnet werden

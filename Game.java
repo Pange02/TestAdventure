@@ -70,6 +70,7 @@ public class Game {
         
         // Raum 5 eine Truhe
         room5Loot.add(Item.getitemfromlist("Weapon", 2));
+        room5Loot.add(Item.getitemfromlist("Consumable", 0));
         Chest chest5 = new Chest(room5Loot);
         Room room5 = new Room(chest5, null);
         
