@@ -54,7 +54,7 @@ public class Game {
         room1Loot.add(Item.getitemfromlist("Potion", 0));
         Chest chest1 = new Chest(room1Loot);
         mob1Loot.add(Item.getitemfromlist("Potion", 2));
-        Mob mob1 = new Mob("Zombie", 10, ((Weapon) Item.getitemfromlist("Weapon", 1)), mob1Loot);
+        Mob mob1 = new Mob("Zombie", 10, ((Weapon) Item.getitemfromlist("Weapon", 1)), mob1Loot, "maskulin");
         Room room1 = new Room(chest1, mob1);
         
         // Raum 2 mit einer Truhe

@@ -11,7 +11,7 @@ public class Parser
     // Instanzvariablen - ersetzen Sie das folgende Beispiel mit Ihren Variablen
     
     //Aktionsliste für alle möglichen Aktionen. Verwendet von help Befehl.
-    private String[] actionlist = {"hilfe", "öffne", "stats", "inv", "benutze", "umgucken", "gehe"};
+    private String[] actionlist = {"hilfe", "öffne (truhe)", "stats", "inv", "benutze <Inventarslot>", "ablegen <Inventarslot>", "umgucken", "gehe <Himmelsrichtung>"};
     
     private String[] combatactionlist = {"attackiere"};
     
@@ -52,6 +52,7 @@ public class Parser
         while(running && !combat) {
             Scanner parser = new Scanner(System.in);
             getaction(parser.nextLine(), activeplayer);
+            System.out.println(" ");
             while(running && combat) {
                 if(firstfight == true) {
                     firstfight = false;
@@ -59,12 +60,14 @@ public class Parser
                     for(int i = 0; i < combatactionlist.length; i++) {
                         System.out.println(combatactionlist[i]);
                     }
+                    System.out.println(" ");
                 }
                 Scanner compatparser = new Scanner(System.in);
                 getcombataction(parser.nextLine(), activeplayer, activemob);
                 if(activemob.getmobhealth() > 0) {
                     activemob.attack(activeplayer);
                 }
+                System.out.println(" ");
                 }
         }
     }
@@ -264,9 +267,10 @@ public class Parser
     public void entercombat(Player parseplayer, Mob parsemob) {
         activemob = parsemob;
         weaponselected = false;
-        System.out.println("Als du den Raum betrittst, entdeckst du ein " + parsemob.getmobname() + ". Es kommt zum Kampf.");
+        System.out.println("Als du den Raum betrittst, entdeckst du " + parsemob.getArtikel("akkusativ", "unbestimmt") + " " + parsemob.getmobname() + ". Es kommt zum Kampf.");
         System.out.println("Welche Waffe möchtest du für den Kampf benutzen?");
         parseplayer.getinventorycontent();
+        System.out.println(" ");
         while(!weaponselected) {
             Scanner weaponparser = new Scanner(System.in);
             try {
@@ -284,6 +288,7 @@ public class Parser
             }  
         }
         System.out.println("Du wählst " + playerweapon.getArtikel("akkusativ", "bestimmt") + " " + playerweapon.getitemname() + ".");
+        System.out.println(" ");
     }
     
     public void getcombataction(String parseaction, Player parseplayer, Mob parsemob) {
@@ -304,8 +309,8 @@ public class Parser
                 running = true;
             }
             else {
-                System.out.println("Du greifst den " + parsemob.getmobname() + " mit " + playerweapon.getitemname() + " an und machst " + parseplayer.getplayerdamage() + " Schaden.");
-                System.out.println("Der " + parsemob.getmobname() + " hat nun " + parsemob.getmobhealth() + " Leben.");
+                System.out.println("Du greifst " + parsemob.getArtikel("akkusativ", "bestimmt") + " " + parsemob.getmobname() + " mit " + playerweapon.getArtikel("dativ", "bestimmt") + " " + playerweapon.getitemname() + " an und machst " + parseplayer.getplayerdamage() + " Schaden.");
+                System.out.println(parsemob.getArtikel("nominativ", "bestimmt").substring(0, 1).toUpperCase() + parsemob.getArtikel("nominativ", "bestimmt").substring(1) + " " + parsemob.getmobname() + " hat nun " + parsemob.getmobhealth() + " Leben.");
             }
         }
         else if(input[0].equals("exit")) {

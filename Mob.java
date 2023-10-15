@@ -14,17 +14,19 @@ public class Mob
     private int damage;
     private double finaldamage;
     private boolean alive;
+    private String gender;
     private ArrayList<Item> mobloot = new ArrayList<>();
     /**
      * Konstruktor für Objekte der Klasse Mob
      */
-    public Mob(String parsename, int parsehealth, Weapon weapon, ArrayList parsemobloot)
+    public Mob(String parsename, int parsehealth, Weapon weapon, ArrayList parsemobloot, String parsegender)
     {
         name = parsename;
         health = parsehealth;
         damage = weapon.getweapondamage();
         mobloot = parsemobloot;
         alive = true;
+        gender = parsegender;
     }
     
     public void droploot(Player parseplayer, Mob parsemob) {
@@ -75,8 +77,22 @@ public class Mob
     public void attack(Player parseplayer) {
         finaldamage = Math.round((1 - (parseplayer.getplayerdefense()/(10 + parseplayer.getplayerdefense()))) * damage * 10.0) / 10.0;
         parseplayer.setplayerhealth(Math.round((parseplayer.getplayerhealth() - finaldamage) * 10.0) / 10.0);
-        System.out.println("Der " + name + " greift dich an und macht " + finaldamage + " Schaden.");
+        System.out.println(getArtikel("nominativ", "bestimmt").substring(0, 1).toUpperCase() + getArtikel("nominativ", "bestimmt").substring(1) + " " + name + " greift dich an und macht " + finaldamage + " Schaden.");
         System.out.println("Du hast durch den Angriff jetzt " + parseplayer.getplayerhealth() + " Leben.");
     }
     
+    /**
+     * Gibt zu einem Item und einem Kasus einen bestimmten oder unbestimmten Artikel aus.
+     */
+    public String getArtikel(String kasus, String art){
+        if (art.toLowerCase().equals("bestimmt")){
+            return Grammar.getArtikel(kasus, gender);
+        }
+        else if (art.toLowerCase().equals("unbestimmt")){
+            return Grammar.getUnArtikel(kasus, gender);
+        }
+        else {
+            return "kein Artikel in Mob";
+        }
+    }
 }
