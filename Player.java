@@ -1,5 +1,5 @@
 import java.util.ArrayList;
-import java.math.BigDecimal;
+import java.util.Random;
 /**
  * Beschreiben Sie hier die Klasse Player.
  * 
@@ -14,7 +14,7 @@ public class Player
     private double health;
     private double defense;
     private double weapondamage;
-    private double damagemultiplicator;
+    private double damagemultiplier;
     private double playerdamage;
     private double strength;
     private double critchance;
@@ -129,13 +129,20 @@ public class Player
     
     public void getplayerstats() {
         System.out.println(health + "/" + healthcap + " Leben  " + defense + " Verteidigung  ");
-        System.out.println(strength + " Stärke  " + critchance + " Crit Chance  " + critdamage + "% Crit Schaden");
+        System.out.println(strength + " Stärke  " + critchance + "% Crit Chance  " + critdamage + "% Crit Schaden");
     }
     
     public void attack(Mob parsemob, Weapon parseweapon) {
         weapondamage = parseweapon.getweapondamage();
-        damagemultiplicator = (1 + (strength)/10);
-        playerdamage = Math.round(weapondamage * damagemultiplicator * 10.0) / 10.0;
+        damagemultiplier = (1 + (strength)/10);
+        Random critidentifier = new Random();
+        if(critidentifier.nextInt(101) <= critchance) {
+            playerdamage = Math.round(((weapondamage * damagemultiplier) * (1 + (critdamage/100))) * 10.0) / 10.0;
+            System.out.println("Du landest einen kritischen Treffer!");
+        }
+        else {
+            playerdamage = Math.round(weapondamage * damagemultiplier * 10.0) / 10.0;
+        }
         parsemob.setmobhealth(Math.round((parsemob.getmobhealth() - playerdamage) * 10.0) / 10.0);
     }
     

@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.target=Merchant
+comment0.text=\r\n\ Beschreiben\ Sie\ hier\ die\ Klasse\ Merchant.\r\n\ \r\n\ @author\ (Ihr\ Name)\ \r\n\ @version\ (eine\ Versionsnummer\ oder\ ein\ Datum)\r\n
+comment1.params=parsemerchantshop
+comment1.target=Merchant(java.util.ArrayList)
+comment1.text=\r\n\ Konstruktor\ f\u00FCr\ Objekte\ der\ Klasse\ Merchant\r\n
+comment2.params=
+comment2.target=void\ getmerchantshop()
+comment3.params=parseplayer\ arrayslot
+comment3.target=void\ buyitem(Player,\ int)
+numComments=4

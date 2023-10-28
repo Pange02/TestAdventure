@@ -12,7 +12,7 @@ public class Accessory extends Item
     /**
      * Constructor for objects of class Accessories
      */
-    public Accessory(String parsename, String parserarity, String accessoryGender, int parsestrength)
+    public Accessory(String parsename, String parserarity, String accessoryGender, int parsestrength, int parsecritchance, int parsecritdamage)
     {
         super(parsename, parserarity, accessoryGender);
         strength = parsestrength;
@@ -27,8 +27,8 @@ public class Accessory extends Item
     public static void createAccessories()
     {
         // Accessory (x)
-        Accessory accessory0 = new Accessory("Artefakt des Himmels", "(Episch)", "neutrum", 3);
-        Accessory accessory1 = new Accessory("Ring der Stärke", "(Selten)", "maskulin", 10);
+        Accessory accessory0 = new Accessory("Artefakt des Himmels", "(Episch)", "neutrum", 3, 2, 5);
+        Accessory accessory1 = new Accessory("Ring der Stärke", "(Selten)", "maskulin", 5, 2, 3);
         //Accessories zur accessorylist hinzufügen
         accessorylist.add(accessory0);
         accessorylist.add(accessory1);

@@ -274,18 +274,18 @@ public class Parser
         while(!weaponselected) {
             Scanner weaponparser = new Scanner(System.in);
             try {
-                weaponnumber = Integer.parseInt(weaponparser.nextLine()); 
+                weaponnumber = Integer.parseInt(weaponparser.nextLine());
+                try {
+                    playerweapon = ((Weapon) parseplayer.getitemfrominventory(weaponnumber));
+                    weaponselected = true;
+                }
+                catch(Exception e) {
+                    System.out.println("Du musst eine Waffe für den Kampf wählen. Benutze dafür eine Zahl aus deinem Inventar mit einer Waffe.");
+                }
             }
             catch(Exception e) {
                 System.out.println("Dies ist keine gültige Zahl für dein Inventar");
             }
-            try {
-                playerweapon = ((Weapon) parseplayer.getitemfrominventory(weaponnumber));
-                weaponselected = true;
-            }
-            catch(Exception e) {
-                System.out.println("Du musst eine Waffe für den Kampf wählen. Benutze dafür eine Zahl aus deinem Inventar mit einer Waffe.");
-            }  
         }
         System.out.println("Du wählst " + playerweapon.getArtikel("akkusativ", "bestimmt") + " " + playerweapon.getitemname() + ".");
         System.out.println(" ");
@@ -302,6 +302,7 @@ public class Parser
         else if(input[0].equals("attackiere")) {
             parseplayer.attack(parsemob, playerweapon);
             if(parsemob.getmobhealth() <= 0) {
+                System.out.println("Du greifst " + parsemob.getArtikel("akkusativ", "bestimmt") + " " + parsemob.getmobname() + " mit " + playerweapon.getArtikel("dativ", "bestimmt") + " " + playerweapon.getitemname() + " an und machst " + parseplayer.getplayerdamage() + " Schaden.");
                 parsemob.setmobstatus(false);
                 System.out.println("Du hast den " + parsemob.getmobname() + " besiegt. ");
                 parsemob.droploot(parseplayer, parsemob);
