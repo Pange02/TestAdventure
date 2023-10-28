@@ -24,7 +24,7 @@ public class Player
     private Armor chestplate;
     private Armor leggings;
     private Armor boots;
-    private ArrayList<Item> accessories;
+    private ArrayList<Accessory> accessories;
     private Room currentroom;
     
     /**
@@ -55,13 +55,17 @@ public class Player
             inventory.add(parseitem);
         }
         else if(parseitem.getClass() == Accessory.class) {
-            accessories.add(parseitem);
+            accessories.add((Accessory) parseitem);
             strength += ((Accessory) parseitem).getaccessorystrength();
         }
     }
     
     public Item getitemfrominventory(int itemnumber) {
         return inventory.get(itemnumber);
+    }
+    
+    public Item getitemfromaccessories(int itemnumber) {
+        return accessories.get(itemnumber);
     }
     
     public void removeitemfrominventory(int itemnumber) {

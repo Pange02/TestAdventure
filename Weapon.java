@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.lang.Math;
 /**
  * Write a description of class Weapon here.
  *
@@ -15,9 +16,9 @@ public class Weapon extends Item
     /**
      * Constructor for objects of class Weapon
      */
-    public Weapon(String parsename, String parserarity, String weaponGender, int parsedamage)
+    public Weapon(String parsename, String parsedescription, String parserarity, String weaponGender, int parsedamage)
     {
-        super(parsename, parserarity, weaponGender);
+        super(parsename, parsedescription, parserarity, weaponGender);
         damage = parsedamage;
     }
 
@@ -30,12 +31,12 @@ public class Weapon extends Item
     public static void createWeapons()
     {
         // Waffen (w)
-        Weapon weapon0 = new Weapon("Langschwert", "(Ungewöhnlich)", "neutrum", 5);
-        Weapon weapon1 = new Weapon("Holzstock", "(Gewöhnlich)", "maskulin", 1);
-        Weapon weapon2 = new Weapon("Streitaxt" , "(Gewöhnlich)", "feminin", 3);
-        Weapon weapon3 = new Weapon("Dolch" , "(Selten)", "maskulin", 2);
-        Weapon weapon4 = new Weapon("Speer", "(Selten)", "maskulin", 4);
-        Weapon weapon5 = new Weapon("Katana", "(Legendär)", "neutrum", 8);
+        Weapon weapon0 = new Weapon("Langschwert", "Ein Langschwert", "(Ungewöhnlich)", "neutrum", 5);
+        Weapon weapon1 = new Weapon("Holzstock", "Ein Holzstock", "(Gewöhnlich)", "maskulin", 1);
+        Weapon weapon2 = new Weapon("Streitaxt" , "Eine Streitaxt", "(Gewöhnlich)", "feminin", 3);
+        Weapon weapon3 = new Weapon("Dolch" , "Ein Dolch", "(Selten)", "maskulin", 2);
+        Weapon weapon4 = new Weapon("Speer", "Ein Speer", "(Selten)", "maskulin", 4);
+        Weapon weapon5 = new Weapon("Katana", "Ein Katana", "(Legendär)", "neutrum", 8);
         //Waffen zur Waffenliste hinzufügen
         weaponlist.add(weapon0);
         weaponlist.add(weapon1);
@@ -48,5 +49,36 @@ public class Weapon extends Item
     public int getweapondamage()
     {
         return damage;
+    }
+    
+    @Override public void getiteminfo() {
+        descriptionstring = " " + description;
+        statsstring = " " + "Schaden: " + damage;
+        spaces = Math.max(descriptionstring.length(), statsstring.length());
+        for(int i = 0; i <= (spaces - name.length())/2 - 1; i++) {
+            System.out.print("-");
+        }
+        System.out.print(" ");
+        System.out.print(name);
+        System.out.print(" ");
+        for(int i = 0; i <= (spaces - name.length())/2 - 1; i++) {
+            if(i == (spaces - name.length())/2 - 1) {
+                System.out.println("-");
+            }
+            else {
+                System.out.print("-");
+            }
+        }
+        System.out.println(descriptionstring);
+        System.out.println(statsstring);
+        for(int i = 0; i <= (spaces - rarity.length() + 1)/2 - 1; i++) {
+            System.out.print("-");
+        }
+        System.out.print(" ");
+        System.out.print(rarity);
+        System.out.print(" ");
+        for(int i = 0; i <= (spaces - rarity.length() + 1)/2 - 1; i++) {
+            System.out.print("-");
+        }
     }
 }

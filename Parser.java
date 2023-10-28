@@ -11,7 +11,7 @@ public class Parser
     // Instanzvariablen - ersetzen Sie das folgende Beispiel mit Ihren Variablen
     
     //Aktionsliste für alle möglichen Aktionen. Verwendet von help Befehl.
-    private String[] actionlist = {"hilfe", "öffne (truhe)", "stats", "inv", "benutze <Inventarslot>", "ablegen <Inventarslot>", "umgucken", "gehe <Himmelsrichtung>"};
+    private String[] actionlist = {"hilfe", "öffne (truhe)", "stats", "inv", "info <Inventarslot>", "benutze <Inventarslot>", "ablegen <Inventarslot>", "umgucken", "gehe <Himmelsrichtung>"};
     
     private String[] combatactionlist = {"attackiere"};
     
@@ -199,6 +199,34 @@ public class Parser
             }
             catch(Exception e) {
                 System.out.println("Du musst das Rüstungsteil, welches du ablegen willst, angeben.");
+            }
+        }
+        else if(input[0].equals("info")) {
+            try {
+                try {
+                   inventorynumber = Integer.parseInt(input[1]);
+                   parseplayer.getitemfrominventory(inventorynumber).getiteminfo();
+                }
+                catch(Exception e) {
+                    System.out.println("Dies ist keine gültige Zahl für dein Inventar");
+                }
+            }
+            catch(Exception e) {
+                System.out.println("Du musst einen Inventarslot angeben");
+            }
+        }
+        else if(input[0].equals("ainfo")) {
+            try {
+                try {
+                   inventorynumber = Integer.parseInt(input[1]);
+                   parseplayer.getitemfromaccessories(inventorynumber).getiteminfo();
+                }
+                catch(Exception e) {
+                    System.out.println("Dies ist keine gültige Zahl für dein Inventar");
+                }
+            }
+            catch(Exception e) {
+                System.out.println("Du musst einen Inventarslot angeben");
             }
         }
         else if(input[0].equals("gehe")) {

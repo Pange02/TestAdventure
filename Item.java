@@ -9,7 +9,11 @@ public class Item
 {
     // Attribute eines Items
     protected String name;
+    protected String description;
     protected String rarity;
+    protected String descriptionstring;
+    protected String statsstring;
+    protected int spaces;
     protected String gender;
         
     //Liste mit allen möglichen Seltenheitsgraden. Dient nur als Übersicht aktuell.
@@ -20,10 +24,12 @@ public class Item
     /**
      * Konstruktor für Objekte der Klasse Item mit Namen, Damage, Seltenheit und Typ.
      */
-    public Item(String parsename, String parserarity, String parsegender)
+    public Item(String parsename, String parsedescription, String parserarity, String parsegender)
     {
         name = parsename;
+        description = parsedescription;
         rarity = parserarity;
+        
         gender = parsegender;
     }
 
@@ -78,6 +84,29 @@ public class Item
     
     public static ArrayList[] getitemlist() {
         return itemlist;
+    }
+    
+    public void getiteminfo() {
+        for(int i = 0; i <= (description.length() - name.length())/2; i++) {
+            System.out.print("-");
+        }
+        System.out.print(name);
+        for(int i = 0; i <= (description.length() - name.length())/2; i++) {
+            if(i == (description.length() - name.length())/2) {
+                System.out.println("-");
+            }
+            else {
+                System.out.print("-");
+            }
+        }
+        System.out.println(" " + description);
+        for(int i = 0; i <= (description.length() - rarity.length() + 1)/2; i++) {
+            System.out.print("-");
+        }
+        System.out.print(rarity);
+        for(int i = 0; i <= (description.length() - rarity.length() + 1)/2; i++) {
+            System.out.print("-");
+        }
     }
     
     /**
