@@ -79,5 +79,6 @@ public class Armor extends Item
         for(int i = 0; i <= (spaces - rarity.length() + 1)/2 - 1; i++) {
             System.out.print("-");
         }
+        System.out.println();
     }
 }

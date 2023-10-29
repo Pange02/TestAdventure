@@ -10,6 +10,8 @@ public class Player
 {
     // Instanzvariablen - Attribute eines Spielers
     private String name;
+    private int level;
+    private int xp;
     private double healthcap;
     private double health;
     private double defense;
@@ -33,6 +35,8 @@ public class Player
     public Player(String parsename, Room parseroom)
     {
         name = parsename;
+        level = 1;
+        xp = 0;
         healthcap = 10;
         health = 10;
         critchance = 10;
@@ -132,6 +136,7 @@ public class Player
     }
     
     public void getplayerstats() {
+        System.out.println("Level: " + level + " Erfahrungspunkte: " + xp + " Fehlende Erfahrung zum nächsten Level: " + ((level+1)*(level+1) - xp));
         System.out.println(health + "/" + healthcap + " Leben  " + defense + " Verteidigung  ");
         System.out.println(strength + " Stärke  " + critchance + "% Crit Chance  " + critdamage + "% Crit Schaden");
     }
@@ -170,7 +175,6 @@ public class Player
            else {
                helmet = parsearmor;
                defense += helmet.getarmordefense();
-               System.out.println(defense);
                System.out.println("Du legst " + parsearmor.getArtikel("akkusativ", "bestimmt") + " " + parsearmor.getitemname() + " an.");
                removeitemfrominventory(inventory.indexOf(parsearmor));
            }
@@ -182,7 +186,6 @@ public class Player
            else {
                chestplate = parsearmor;
                defense += chestplate.getarmordefense();
-               System.out.println(defense);
                System.out.println("Du legst " + parsearmor.getArtikel("akkusativ", "bestimmt") + " " + parsearmor.getitemname() + " an.");
                removeitemfrominventory(inventory.indexOf(parsearmor));
            }
@@ -194,7 +197,6 @@ public class Player
            else {
                leggings = parsearmor;
                defense += leggings.getarmordefense();
-               System.out.println(defense);
                System.out.println("Du legst " + parsearmor.getArtikel("akkusativ", "bestimmt") + " " + parsearmor.getitemname() + " an.");
                removeitemfrominventory(inventory.indexOf(parsearmor));
             }
@@ -206,7 +208,6 @@ public class Player
            else {
                boots = parsearmor;
                defense += boots.getarmordefense();
-               System.out.println(defense); 
                System.out.println("Du legst " + parsearmor.getArtikel("akkusativ", "bestimmt") + " " + parsearmor.getitemname() + " an.");
                removeitemfrominventory(inventory.indexOf(parsearmor));
            }
@@ -251,6 +252,19 @@ public class Player
         else {
             health += parseconsumable.getconsumableeffect();
             System.out.println("Du hast durch den " + parseconsumable.getitemname() + " jetzt " + health + "/" + healthcap + " Leben.");
+        }
+    }
+    
+    public void addexperience(int parsexp) {
+        xp += parsexp;
+        for(int i = level; i <= 100; i++) {
+            if(xp >= ((i+1) * (i+1))) {
+                level += 1;
+                System.out.println("Du hast ein neues Level erreicht! Du bist jetzt Level: " + level);
+            }
+            else {
+                break;
+            }
         }
     }
 }

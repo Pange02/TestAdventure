@@ -107,6 +107,7 @@ public class Item
         for(int i = 0; i <= (description.length() - rarity.length() + 1)/2; i++) {
             System.out.print("-");
         }
+        System.out.println();
     }
     
     /**

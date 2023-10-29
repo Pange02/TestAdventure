@@ -52,7 +52,7 @@ public class Parser
         while(running && !combat) {
             Scanner parser = new Scanner(System.in);
             getaction(parser.nextLine(), activeplayer);
-            System.out.println(" ");
+            System.out.println();
             while(running && combat) {
                 if(firstfight == true) {
                     firstfight = false;
@@ -60,14 +60,14 @@ public class Parser
                     for(int i = 0; i < combatactionlist.length; i++) {
                         System.out.println(combatactionlist[i]);
                     }
-                    System.out.println(" ");
+                    System.out.println();
                 }
                 Scanner compatparser = new Scanner(System.in);
                 getcombataction(parser.nextLine(), activeplayer, activemob);
                 if(activemob.getmobhealth() > 0) {
                     activemob.attack(activeplayer);
                 }
-                System.out.println(" ");
+                System.out.println();
                 }
         }
     }
@@ -89,6 +89,7 @@ public class Parser
             try {
                 if(input[1].equals("truhe") && parseplayer.getcurrentroom().getChestInfo()) {
                     parseplayer.getcurrentroom().getChest().openChest(Parser.activeplayer, parseplayer.getcurrentroom().getChest());
+                    parseplayer.addexperience(5);
                 }
                 else if(input[1].equals("truhe") && (parseplayer.getcurrentroom().getChestInfo() == false)) {
                     System.out.println("Dieser Raum hat keine Truhe");
@@ -298,7 +299,7 @@ public class Parser
         System.out.println("Als du den Raum betrittst, entdeckst du " + parsemob.getArtikel("akkusativ", "unbestimmt") + " " + parsemob.getmobname() + ". Es kommt zum Kampf.");
         System.out.println("Welche Waffe möchtest du für den Kampf benutzen?");
         parseplayer.getinventorycontent();
-        System.out.println(" ");
+        System.out.println();
         while(!weaponselected) {
             Scanner weaponparser = new Scanner(System.in);
             try {
@@ -316,7 +317,7 @@ public class Parser
             }
         }
         System.out.println("Du wählst " + playerweapon.getArtikel("akkusativ", "bestimmt") + " " + playerweapon.getitemname() + ".");
-        System.out.println(" ");
+        System.out.println();
     }
     
     public void getcombataction(String parseaction, Player parseplayer, Mob parsemob) {
@@ -334,6 +335,7 @@ public class Parser
                 parsemob.setmobstatus(false);
                 System.out.println("Du hast den " + parsemob.getmobname() + " besiegt. ");
                 parsemob.droploot(parseplayer, parsemob);
+                parseplayer.addexperience(parsemob.getmobxp());
                 combat = false;
                 running = true;
             }
