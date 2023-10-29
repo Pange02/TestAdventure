@@ -12,6 +12,7 @@ public class Player
     private String name;
     private int level;
     private int xp;
+    private int coins;
     private double healthcap;
     private double health;
     private double defense;
@@ -37,6 +38,7 @@ public class Player
         name = parsename;
         level = 1;
         xp = 0;
+        coins = 100;
         healthcap = 10;
         health = 10;
         critchance = 10;
@@ -86,6 +88,18 @@ public class Player
     
     public void setplayerhealth(double parsehealth) {
         health = parsehealth;
+    }
+    
+    public int getcoins() {
+        return coins;
+    }
+    
+    public void addcoins(int parseamount) {
+        coins += parseamount;
+    }
+    
+    public void removecoins(int parseamount) {
+        coins -= parseamount;
     }
     
     public Room getcurrentroom() {

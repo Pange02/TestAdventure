@@ -6,6 +6,9 @@ public class Room {
     //Boolean zur Überprüfung, ob sich ein Mob im Raum befindet.
     private boolean hasMob;
     
+    //Boolean zur Überprüfung, ob sich ein NPC im Raum befindet.
+    private boolean hasNPC;
+    
     //ArrayList mit allen Richtungen, die aus einem Raum führen.
     private ArrayList<String> roomDirections;
     
@@ -21,10 +24,12 @@ public class Room {
     
     Mob mob1;
     
+    NPC npc1;
+    
     /**
      *  Konstruktor für die Klasse Raum mit dem Truhenobjekt als Argument.
      */    
-    public Room(Chest parseChest, Mob parseMob) {
+    public Room(Chest parseChest, Mob parseMob, NPC parseNPC) {
         if(parseChest != null) {
             hasChest = true;
             chest1 = parseChest;
@@ -39,6 +44,13 @@ public class Room {
         else {
             hasMob = false;
         }
+        if(parseNPC != null) {
+            hasNPC = true;
+            npc1 = parseNPC;
+        }
+        else {
+            hasNPC = false;
+        }
         roomDirections = new ArrayList<>();
     }
     
@@ -46,12 +58,7 @@ public class Room {
      * Methode prüft, ob sich in dem Raum eine Kiste befindet.
      */
     public boolean getChestInfo() {
-        if(hasChest == true) {
-            return true;
-        }
-        else {
-            return false;
-        }
+        return hasChest;
     }
     
     /**
@@ -62,16 +69,19 @@ public class Room {
     }
     
     public boolean getMobInfo() {
-        if(hasMob == true) {
-            return true;
-        }
-        else {
-            return false;
-        }
+        return hasMob;
     }
     
     public Mob getRoomMob() {
         return mob1;
+    }
+    
+    public boolean getNPCInfo() {
+        return hasNPC;
+    }
+    
+    public NPC getNPC() {
+        return npc1;
     }
     
     /**

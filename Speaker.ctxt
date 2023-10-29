@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=Speaker
+comment0.text=\r\n\ Beschreiben\ Sie\ hier\ die\ Klasse\ Speaker.\r\n\ \r\n\ @author\ (Ihr\ Name)\ \r\n\ @version\ (eine\ Versionsnummer\ oder\ ein\ Datum)\r\n
+comment1.params=parsename\ parsedialogue
+comment1.target=Speaker(java.lang.String,\ java.util.ArrayList)
+comment1.text=\r\n\ Konstruktor\ f\u00FCr\ Objekte\ der\ Klasse\ Speaker\r\n
+comment2.params=
+comment2.target=void\ speak()
+numComments=3

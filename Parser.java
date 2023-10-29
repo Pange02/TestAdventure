@@ -11,12 +11,15 @@ public class Parser
     // Instanzvariablen - ersetzen Sie das folgende Beispiel mit Ihren Variablen
     
     //Aktionsliste für alle möglichen Aktionen. Verwendet von help Befehl.
-    private String[] actionlist = {"hilfe", "öffne (truhe)", "stats", "inv", "info <Inventarslot>", "benutze <Inventarslot>", "ablegen <Inventarslot>", "umgucken", "gehe <Himmelsrichtung>"};
+    private String[] actionlist = {"hilfe", "öffne (truhe)", "stats", "inv", "rede <Name>", "info <Inventarslot>", "benutze <Inventarslot>", "ablegen <Inventarslot>", "umgucken", "gehe <Himmelsrichtung>"};
     
     private String[] combatactionlist = {"attackiere"};
     
     //Array für den Input des Spielers
     private String[] input = new String[10];
+    
+    //Array für den BuyInput des Spielers
+    private String[] buyinput = new String[10];
     
     //Boolean gibt an, ob der Parser (das Spiel) aktiv ist.
     private boolean running;
@@ -67,6 +70,20 @@ public class Parser
                 if(activemob.getmobhealth() > 0) {
                     activemob.attack(activeplayer);
                 }
+                if(parseplayer.getplayerhealth() <= 0) {
+                    System.out.println("Du bist gestorben!");
+                    System.out.println("Schreibe \"Neustart\" um das Level zu wiederholen.");
+                    Scanner endparser = new Scanner(System.in);
+                    if(endparser.nextLine().equals("Neustart")) {
+                        combat = false;
+                        running = false;
+                        Game nextGame = new Game();
+                    }
+                    else {
+                        combat = false;
+                        running = false;
+                    }
+                }
                 System.out.println();
                 }
         }
@@ -106,16 +123,34 @@ public class Parser
         else if(input[0].equals("umgucken")) {
             if(parseplayer.getcurrentroom().getChestInfo()) {
                 System.out.println("Du entdeckst eine Truhe in dem Raum.");
-                System.out.println("Du siehst Türen im:");
-                for(int i = 0; i < parseplayer.getcurrentroom().getRoomDirections().size(); i++) {
+            }
+            if(parseplayer.getcurrentroom().getNPCInfo()) {
+                System.out.println("Du entdeckst die Person " + parseplayer.getcurrentroom().getNPC().getNPCname() + " im Raum.");
+            }
+            System.out.println("Du siehst Türen im:");
+            for(int i = 0; i < parseplayer.getcurrentroom().getRoomDirections().size(); i++) {
                     System.out.println(parseplayer.getcurrentroom().getRoomDirections().get(i));
+            }            
+        }
+        else if(input[0].equals("rede")) {
+            try {
+                if(input[1].toLowerCase().equals(parseplayer.getcurrentroom().getNPC().getNPCname().toLowerCase())) {
+                    parseplayer.getcurrentroom().getNPC().speak(); 
+                    if(parseplayer.getcurrentroom().getNPC().getClass() == Merchant.class) {
+                        Scanner buyparser = new Scanner(System.in);
+                        buyinput = buyparser.nextLine().toLowerCase().split("\\s+");
+                        if(buyinput[0].equals("kaufe")) {
+                            ((Merchant) parseplayer.getcurrentroom().getNPC()).buyitem(activeplayer, buyinput[1]);
+                        }
+                    }
+                }
+                else {
+                    System.out.println(parseplayer.getcurrentroom().getNPC().getNPCname());
+                    System.out.println("Diese Person scheint nicht im Raum zu sein!");
                 }
             }
-            else {
-                System.out.println("Du siehst Türen im:");
-                for(int i = 0; i < parseplayer.getcurrentroom().getRoomDirections().size(); i++) {
-                    System.out.println(parseplayer.getcurrentroom().getRoomDirections().get(i));
-                }
+            catch(Exception e) {
+                System.out.println("Du musst angeben, mit wem du reden willst!");
             }
         }
         else if(input[0].equals("inv")) {
