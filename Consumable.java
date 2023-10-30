@@ -30,7 +30,7 @@ public class Consumable extends Item
     
     @Override public void getiteminfo() {
         descriptionstring = " " + description;
-        statsstring = " " + "Effekt: " + effect;
+        statsstring = " " + "Effekt: +" + effect + " HP";
         spaces = Math.max(descriptionstring.length(), statsstring.length());
         for(int i = 0; i <= (spaces - name.length())/2 - 1; i++) {
             System.out.print("-");

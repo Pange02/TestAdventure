@@ -50,7 +50,7 @@ public class Game {
         // Spawnraum mit einem Holzschwert zum Anfang
         startroomLoot.add(Item.getitemfromlist("Weapon", 1));
         merchantloot1.put(Item.getitemfromlist("Potion", 2), 100);
-        merchantloot1.put(Item.getitemfromlist("Potion", 1), 50);
+        merchantloot1.put(Item.getitemfromlist("Potion", 0), 50);
         Merchant merchant1 = new Merchant("TraderJoe", merchantloot1);
         Chest startChest = new Chest(startroomLoot);
         Room startRoom = new Room(startChest, null, merchant1);    

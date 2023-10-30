@@ -29,7 +29,6 @@ public class Item
         name = parsename;
         description = parsedescription;
         rarity = parserarity;
-        
         gender = parsegender;
     }
 

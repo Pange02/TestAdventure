@@ -30,7 +30,7 @@ public class Potion extends Item
     public static void createPotions()
     {
         // Potions (p)
-        Potion potion0 = new Potion("Gifttrank", "Ein Gifttrank", "(Gewöhnlich)", "maskulin", "Damage", 1);
+        Potion potion0 = new Potion("Gifttrank", "Ein Gifttrank", "(Gewöhnlich)", "maskulin", "Poison", 1);
         Potion potion1 = new Potion("Schadenstrank", "Ein Schadestrank", "(Ungewöhnlich)", "maskulin", "Damage", 2);
         Potion potion2 = new Potion("Heilungstrank", "Ein Heilungstrank", "(Selten)", "maskulin", "Healing", 3);
         //Potions zur Potionlist hinzufügen
@@ -49,7 +49,15 @@ public class Potion extends Item
     
     @Override public void getiteminfo() {
         descriptionstring = " " + description;
-        statsstring = " " + "Effekt: " + effect;
+        if(type == "Damage") {
+            statsstring = " " + "Effekt: " + effect + " Schaden";
+        }
+        else if(type == "Poison") {
+            statsstring = " " + "Effekt: " + effect + " Schaden über 3 Runden";
+        }
+        else if(type == "Healing") {
+            statsstring = " " + "Effekt: +" + effect + " HP";
+        }
         spaces = Math.max(descriptionstring.length(), statsstring.length());
         for(int i = 0; i <= (spaces - name.length())/2 - 1; i++) {
             System.out.print("-");

@@ -11,9 +11,9 @@ public class Parser
     // Instanzvariablen - ersetzen Sie das folgende Beispiel mit Ihren Variablen
     
     //Aktionsliste für alle möglichen Aktionen. Verwendet von help Befehl.
-    private String[] actionlist = {"hilfe", "öffne (truhe)", "stats", "inv", "rede <Name>", "info <Inventarslot>", "benutze <Inventarslot>", "ablegen <Inventarslot>", "umgucken", "gehe <Himmelsrichtung>"};
+    private String[] actionlist = {"hilfe", "öffne (truhe)", "stats", "inv", "rede <Name>", "kaufe <Item>", "info <Inventarslot>", "benutze <Inventarslot>", "ablegen <Inventarslot>", "umgucken", "gehe <Himmelsrichtung>"};
     
-    private String[] combatactionlist = {"attackiere"};
+    private String[] combatactionlist = {"attackiere", "benutze <Inventarslot>"};
     
     //Array für den Input des Spielers
     private String[] input = new String[10];
@@ -37,6 +37,12 @@ public class Parser
     
     private Mob activemob;
     
+    private boolean mobattack;
+    
+    private int poisonrounds;
+    
+    private int poisoneffect;
+    
     private boolean firstfight;
     
     private boolean weaponselected;
@@ -50,6 +56,7 @@ public class Parser
         combat = false;
         firstfight = true;
         weaponselected = false;
+        mobattack = true;
         activeplayer = parseplayer;
         System.out.println("Was möchtest du tun? Für Hilfe: hilfe");
         while(running && !combat) {
@@ -65,9 +72,21 @@ public class Parser
                     }
                     System.out.println();
                 }
+                if(poisonrounds > 1 && mobattack) {
+                    activemob.setmobhealth(activemob.getmobhealth() - poisoneffect);
+                    poisonrounds -= 1;
+                    System.out.println("Durch das Gift nimmt " + activemob.getArtikel("nominativ", "bestimmt") + " " + activemob.getmobname() + " " + poisoneffect + " Schaden. " + activemob.getArtikel("nominativ", "bestimmt").substring(0, 1).toUpperCase() 
+                    + activemob.getArtikel("nominativ", "bestimmt").substring(1) + " " + activemob.getmobname() + " hat jetzt " + activemob.getmobhealth() + " Leben. Das Gift hält noch " + poisonrounds + " weitere Runden.");
+                }
+                else if(poisonrounds == 1 && mobattack) {
+                    activemob.setmobhealth(activemob.getmobhealth() - poisoneffect);
+                    poisonrounds -= 1;
+                    System.out.println("Durch das Gift nimmt " + activemob.getArtikel("nominativ", "bestimmt") + " " + activemob.getmobname() + " " + poisoneffect + " Schaden. " + activemob.getArtikel("nominativ", "bestimmt").substring(0, 1).toUpperCase() 
+                    + activemob.getArtikel("nominativ", "bestimmt").substring(1) + " " + activemob.getmobname() + " hat jetzt " + activemob.getmobhealth() + " Leben. Der Gifteffekt hat nun seine Wirkung verloren.");
+                }
                 Scanner compatparser = new Scanner(System.in);
                 getcombataction(parser.nextLine(), activeplayer, activemob);
-                if(activemob.getmobhealth() > 0) {
+                if(activemob.getmobhealth() > 0 && mobattack) {
                     activemob.attack(activeplayer);
                 }
                 if(parseplayer.getplayerhealth() <= 0) {
@@ -84,6 +103,7 @@ public class Parser
                         running = false;
                     }
                 }
+                mobattack = true;
                 System.out.println();
                 }
         }
@@ -145,7 +165,6 @@ public class Parser
                     }
                 }
                 else {
-                    System.out.println(parseplayer.getcurrentroom().getNPC().getNPCname());
                     System.out.println("Diese Person scheint nicht im Raum zu sein!");
                 }
             }
@@ -163,51 +182,13 @@ public class Parser
             try {
                 inventorynumber = Integer.parseInt(input[1]);
                 if(parseplayer.getitemfrominventory(inventorynumber).getClass() == Potion.class) {
-                    if(((Potion) parseplayer.getitemfrominventory(inventorynumber)).getpotiontype() == "Healing") {
-                        if(parseplayer.getplayerhealth() == parseplayer.getplayerhealthcap()) {
-                            System.out.println("Du hast bereits " + parseplayer.getplayerhealth() + "/" + parseplayer.getplayerhealthcap() + " Leben."); 
-                        }
-                        else {
-                            if(parseplayer.getplayerhealth() + ((Potion) parseplayer.getitemfrominventory(inventorynumber)).getpotioneffect() >= parseplayer.getplayerhealthcap()) {
-                                parseplayer.setplayerhealth(parseplayer.getplayerhealthcap());
-                                parseplayer.removeitemfrominventory(inventorynumber);
-                                System.out.println("Du benutzt den Heilungstrank und hast nun " + parseplayer.getplayerhealth() + " Leben.");
-                            }
-                            else {
-                                parseplayer.setplayerhealth(parseplayer.getplayerhealth() + ((Potion) parseplayer.getitemfrominventory(inventorynumber)).getpotioneffect());
-                                parseplayer.removeitemfrominventory(inventorynumber);
-                                System.out.println("Du benutzt den Heilungstrank und hast nun " + parseplayer.getplayerhealth() + " Leben.");
-                            } 
-                        }
-                    }
-                    else if(((Potion) parseplayer.getitemfrominventory(inventorynumber)).getpotiontype() == "Damage") {
-                        System.out.println("Du kannst diesen Schadenstrank nur im Kampf verwenden");
-                    }
-                    else {
-                        System.out.println("Diese Zahl aus deinem Inventar ist nicht belegt! Wähle eine gültige Zahl.");
-                    }
+                    parseplayer.drink(inventorynumber);
                 }
                 else if(parseplayer.getitemfrominventory(inventorynumber).getClass() == Armor.class) {
                     parseplayer.equiparmor(((Armor) parseplayer.getitemfrominventory(inventorynumber)));
                 }
                 else if(parseplayer.getitemfrominventory(inventorynumber).getClass() == Consumable.class) {
-                    if(parseplayer.getplayerhealth() + ((Consumable) parseplayer.getitemfrominventory(inventorynumber)).getconsumableeffect() == parseplayer.getplayerhealthcap()) {
-                        parseplayer.setplayerhealth(parseplayer.getplayerhealth() + ((Consumable) parseplayer.getitemfrominventory(inventorynumber)).getconsumableeffect());
-                        System.out.println("Du konsumierst " + parseplayer.getitemfrominventory(inventorynumber).getArtikel("akkusativ", "bestimmt") + " " + parseplayer.getitemfrominventory(inventorynumber).getitemname() + " und hast nun " + parseplayer.getplayerhealth() + " Leben.");
-                        parseplayer.removeitemfrominventory(inventorynumber);
-                    }
-                    else {
-                        if(parseplayer.getplayerhealth() + ((Consumable) parseplayer.getitemfrominventory(inventorynumber)).getconsumableeffect() >= parseplayer.getplayerhealthcap()) {
-                            parseplayer.setplayerhealth(parseplayer.getplayerhealthcap());
-                            System.out.println("Du konsumierst " + parseplayer.getitemfrominventory(inventorynumber).getArtikel("akkusativ", "bestimmt") + " " + parseplayer.getitemfrominventory(inventorynumber).getitemname() + " und hast nun " + parseplayer.getplayerhealth() + " Leben.");
-                            parseplayer.removeitemfrominventory(inventorynumber);
-                        }
-                        else {
-                            parseplayer.setplayerhealth(parseplayer.getplayerhealth() + ((Consumable) parseplayer.getitemfrominventory(inventorynumber)).getconsumableeffect());
-                            System.out.println("Du konsumierst " + parseplayer.getitemfrominventory(inventorynumber).getArtikel("akkusativ", "bestimmt") + " " + parseplayer.getitemfrominventory(inventorynumber).getitemname() + " und hast nun " + parseplayer.getplayerhealth() + " Leben.");
-                            parseplayer.removeitemfrominventory(inventorynumber);
-                        } 
-                    }
+                    parseplayer.consume(inventorynumber);
                 }
             }
             catch(Exception e) {
@@ -361,6 +342,41 @@ public class Parser
             System.out.println("Aktuell kannst du folgenden Aktionen machen:");
             for(int i = 0; i < combatactionlist.length; i++) {
                 System.out.println(combatactionlist[i]);
+            }
+            mobattack = false;
+        }
+        else if(input[0].equals("inv")) {
+            parseplayer.getinventorycontent();
+            mobattack = false;
+        }
+        else if(input[0].equals("benutze")) {
+            try {
+                inventorynumber = Integer.parseInt(input[1]);
+                if(parseplayer.getitemfrominventory(inventorynumber).getClass() == Potion.class) {
+                    if(((Potion) parseplayer.getitemfrominventory(inventorynumber)).getpotiontype() == "Damage") {
+                        parsemob.setmobhealth(parsemob.getmobhealth() - ((Potion) parseplayer.getitemfrominventory(inventorynumber)).getpotioneffect());
+                        parseplayer.removeitemfrominventory(inventorynumber);
+                        System.out.println("Du wirfst den Schadenstrank auf " + parsemob.getArtikel("akkusativ", "bestimmt") + " " + parsemob.getmobname() + " und machst " + ((Potion) parseplayer.getitemfrominventory(inventorynumber)).getpotioneffect() + " Schaden!");
+                    }
+                    else if(((Potion) parseplayer.getitemfrominventory(inventorynumber)).getpotiontype() == "Poison") {
+                        poisonrounds = 3;
+                        poisoneffect = ((Potion) parseplayer.getitemfrominventory(inventorynumber)).getpotioneffect();
+                        parseplayer.removeitemfrominventory(inventorynumber);
+                        System.out.println("Du wirfst den Gifttrank auf " + parsemob.getArtikel("akkusativ", "bestimmt") + " " + parsemob.getmobname() + ". " + parsemob.getArtikel("nominativ", "bestimmt").substring(0, 1).toUpperCase() + parsemob.getArtikel("nominativ", "bestimmt").substring(1) + " " + parsemob.getmobname() + " ist nun vergiftet.");
+                    }
+                    else if(((Potion) parseplayer.getitemfrominventory(inventorynumber)).getpotiontype() == "Healing") {
+                        parseplayer.drink(inventorynumber);
+                    }
+                }
+                else if(parseplayer.getitemfrominventory(inventorynumber).getClass() == Consumable.class) {
+                    parseplayer.consume(inventorynumber);
+                }
+                else {
+                    System.out.println("Du kannst nur Tränke und Essen im Kampf verwenden");
+                }
+            }
+            catch(Exception e) {
+                System.out.println("Dies ist keine gültige Zahl für dein Inventar");
             }
         }
         else if(input[0].equals("attackiere")) {

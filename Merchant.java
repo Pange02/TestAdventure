@@ -20,7 +20,19 @@ public class Merchant extends NPC
     
     @Override public void speak() {
         System.out.println("Hallo! Ich bin " + name);
+        try {
+            Thread.sleep(2000);
+        }   
+        catch(Exception e) {
+            Thread.currentThread().interrupt();
+        }
         System.out.println("Möchtest du vielleicht etwas aus meinem Shop kaufen?");
+        try {
+            Thread.sleep(2000);
+        }   
+        catch(Exception e) {
+            Thread.currentThread().interrupt();
+        }
         getmerchantshop();
     }
     
@@ -28,7 +40,7 @@ public class Merchant extends NPC
         for(Map.Entry<Item, Integer> entry : merchantshop.entrySet()) {
             Item key = entry.getKey();
             int value = entry.getValue();
-            System.out.println(key.getitemname() + " - " + value);
+            System.out.println(key.getitemname() + " - " + value + " Coins");
         }
     }
     

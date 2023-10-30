@@ -20,12 +20,15 @@ public class Chest
     //Der Loot für jede Kiste
     private ArrayList<Item> chestLoot;
     
-
+    private int coinamount;
+    
     // Konstruktor für Objekte der Klasse Chest mit der Loot ArrayList aus der Game Klasse als Argument.
     public Chest(ArrayList<Item> parseItemList)
     {
         chestLoot = parseItemList;
         isOpenable = true;
+        Random coingenerator = new Random();
+        coinamount = coingenerator.nextInt(10, 26);
     }
     
     // Methode für das Befüllen von Kisten. Nicht verwendet, da es aktuell klar definiert ist, welcher Loot wo zu finden ist.
@@ -61,6 +64,9 @@ public class Chest
                 if(chestLoot.get(i).getClass() == Potion.class && ((Potion) chestLoot.get(i)).getpotiontype() == "Damage") {
                    System.out.println("Du findest " + chestLoot.get(i).getArtikel("akkusativ", "unbestimmt") + " " + chestLoot.get(i).getitemname() + " " + chestLoot.get(i).getitemrarity() + " mit " + ((Potion) chestLoot.get(i)).getpotioneffect() + " Schaden."); 
                 }
+                if(chestLoot.get(i).getClass() == Potion.class && ((Potion) chestLoot.get(i)).getpotiontype() == "Poison") {
+                   System.out.println("Du findest " + chestLoot.get(i).getArtikel("akkusativ", "unbestimmt") + " " + chestLoot.get(i).getitemname() + " " + chestLoot.get(i).getitemrarity() + " mit " + ((Potion) chestLoot.get(i)).getpotioneffect() + " Schaden über 3 Runden."); 
+                }
                 if(chestLoot.get(i).getClass() == Potion.class && ((Potion) chestLoot.get(i)).getpotiontype() == "Healing") {
                    System.out.println("Du findest " + chestLoot.get(i).getArtikel("akkusativ", "unbestimmt") +  " " + chestLoot.get(i).getitemname() + " " + chestLoot.get(i).getitemrarity() + " mit " + ((Potion) chestLoot.get(i)).getpotioneffect() + " Heilung."); 
                 }
@@ -68,6 +74,8 @@ public class Chest
                    System.out.println("Du findest " + chestLoot.get(i).getArtikel("akkusativ", "unbestimmt") +  " " + chestLoot.get(i).getitemname() + " " + chestLoot.get(i).getitemrarity() + " mit " + ((Accessory) chestLoot.get(i)).getaccessorystrength() + " Stärke."); 
                 }
             }
+            parsePlayer.addcoins(coinamount);
+            System.out.println("Du findest " + coinamount + " Coins in der Truhe.");
             // Kiste wird "verschlossen" und kann nicht mehr geöffnet werden
             parseChest.isOpenable = false;
         }

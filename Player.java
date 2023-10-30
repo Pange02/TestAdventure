@@ -151,6 +151,7 @@ public class Player
     
     public void getplayerstats() {
         System.out.println("Level: " + level + " Erfahrungspunkte: " + xp + " Fehlende Erfahrung zum nächsten Level: " + ((level+1)*(level+1) - xp));
+        System.out.println("Coins: " + coins);
         System.out.println(health + "/" + healthcap + " Leben  " + defense + " Verteidigung  ");
         System.out.println(strength + " Stärke  " + critchance + "% Crit Chance  " + critdamage + "% Crit Schaden");
     }
@@ -255,17 +256,52 @@ public class Player
         }
     }
     
-    public void consume(Consumable parseconsumable) {
-        if(health + parseconsumable.getconsumableeffect() > healthcap) {
-            health = healthcap;
-            System.out.println("Du hast durch den " + parseconsumable.getitemname() + " jetzt " + health + "/" + healthcap + " Leben.");
-        }
-        else if(health == healthcap) {
-            System.out.println("Du hast bereits " + health + "/" + healthcap);
+    public void consume(int inventorynumber) {
+        if(getplayerhealth() + ((Consumable) getitemfrominventory(inventorynumber)).getconsumableeffect() == getplayerhealthcap()) {
+            setplayerhealth(getplayerhealth() + ((Consumable) getitemfrominventory(inventorynumber)).getconsumableeffect());
+            System.out.println("Du konsumierst " + getitemfrominventory(inventorynumber).getArtikel("akkusativ", "bestimmt") + " " + getitemfrominventory(inventorynumber).getitemname() + " und hast nun " + getplayerhealth() + " Leben.");
+            removeitemfrominventory(inventorynumber);
         }
         else {
-            health += parseconsumable.getconsumableeffect();
-            System.out.println("Du hast durch den " + parseconsumable.getitemname() + " jetzt " + health + "/" + healthcap + " Leben.");
+            if(getplayerhealth() + ((Consumable) getitemfrominventory(inventorynumber)).getconsumableeffect() >= getplayerhealthcap()) {
+                setplayerhealth(getplayerhealthcap());
+                System.out.println("Du konsumierst " + getitemfrominventory(inventorynumber).getArtikel("akkusativ", "bestimmt") + " " + getitemfrominventory(inventorynumber).getitemname() + " und hast nun " + getplayerhealth() + " Leben.");
+                removeitemfrominventory(inventorynumber);
+            }
+            else {
+                setplayerhealth(getplayerhealth() + ((Consumable) getitemfrominventory(inventorynumber)).getconsumableeffect());
+                System.out.println("Du konsumierst " + getitemfrominventory(inventorynumber).getArtikel("akkusativ", "bestimmt") + " " + getitemfrominventory(inventorynumber).getitemname() + " und hast nun " +getplayerhealth() + " Leben.");
+                removeitemfrominventory(inventorynumber);
+            } 
+        }
+    }
+    
+    public void drink(int inventorynumber) {
+        if(((Potion) getitemfrominventory(inventorynumber)).getpotiontype() == "Healing") {
+            if(getplayerhealth() == getplayerhealthcap()) {
+                System.out.println("Du hast bereits " + getplayerhealth() + "/" + getplayerhealthcap() + " Leben."); 
+            }
+            else {
+                if(getplayerhealth() + ((Potion) getitemfrominventory(inventorynumber)).getpotioneffect() >= getplayerhealthcap()) {
+                    setplayerhealth(getplayerhealthcap());
+                    removeitemfrominventory(inventorynumber);
+                    System.out.println("Du benutzt den Heilungstrank und hast nun " + getplayerhealth() + " Leben.");
+                }
+                else {
+                    setplayerhealth(getplayerhealth() + ((Potion) getitemfrominventory(inventorynumber)).getpotioneffect());
+                    removeitemfrominventory(inventorynumber);
+                    System.out.println("Du benutzt den Heilungstrank und hast nun " + getplayerhealth() + " Leben.");
+                } 
+            }
+        }
+        else if(((Potion) getitemfrominventory(inventorynumber)).getpotiontype() == "Damage") {
+                System.out.println("Du kannst diesen Schadenstrank nur im Kampf verwenden");
+        }
+        else if(((Potion) getitemfrominventory(inventorynumber)).getpotiontype() == "Poison") {
+                System.out.println("Du kannst diesen Gifttrank nur im Kampf verwenden");
+        }
+        else {
+                System.out.println("Diese Zahl aus deinem Inventar ist nicht belegt! Wähle eine gültige Zahl.");
         }
     }
     
