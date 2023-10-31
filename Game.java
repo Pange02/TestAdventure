@@ -20,7 +20,7 @@ public class Game {
     private ArrayList<Item> room9Loot = new ArrayList<>();
     
     private HashMap merchantloot1 = new HashMap<Item, Integer>();
-    
+    private ArrayList<String> speakerdialogue = new ArrayList<>();
     public Game() 
     {
         if(firstGame) {
@@ -70,8 +70,12 @@ public class Game {
         // Raum 3 leer
         Room room3 = new Room(null, null, null);
         
-        // Raum 4 leer
-        Room room4 = new Room(null, null, null);
+        // Raum 4 
+        speakerdialogue.add("Hallo " );
+        speakerdialogue.add("Ich bin " );
+        speakerdialogue.add("Whats up?");
+        Speaker speaker4 = new Speaker("Harry", speakerdialogue);
+        Room room4 = new Room(null, null, speaker4);
         
         // Raum 5 eine Truhe
         room5Loot.add(Item.getitemfromlist("Weapon", 2));

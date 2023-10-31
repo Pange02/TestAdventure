@@ -17,8 +17,10 @@ public class Speaker extends NPC
         super(parsename);
         dialogue = parsedialogue;
     }
-
-    public void speak() {
+    
+    public void speak(Player parseplayer) {
+        dialogue.set(0, dialogue.get(0).concat(parseplayer.getplayername()));
+        dialogue.set(1, dialogue.get(1).concat(name));
         for(int i = 0; i < dialogue.size(); i++) {
             System.out.println(dialogue.get(i));
             try {

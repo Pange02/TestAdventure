@@ -163,6 +163,9 @@ public class Parser
                             ((Merchant) parseplayer.getcurrentroom().getNPC()).buyitem(activeplayer, buyinput[1]);
                         }
                     }
+                    else if(parseplayer.getcurrentroom().getNPC().getClass() == Speaker.class) {
+                        ((Speaker) parseplayer.getcurrentroom().getNPC()).speak(parseplayer);
+                    }
                 }
                 else {
                     System.out.println("Diese Person scheint nicht im Raum zu sein!");
