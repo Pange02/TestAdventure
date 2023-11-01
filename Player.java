@@ -317,4 +317,16 @@ public class Player
             }
         }
     }
+    
+    public double getPlayerStrength(){
+        return strength;
+    }
+    
+    public void reduceStrength(double amount){
+        strength =- amount;
+    }
+    
+    public void increaseStrength(double amount){
+        strength =+ amount;
+    }
 }
