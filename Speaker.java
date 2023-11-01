@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Random;
 /**
  * Beschreiben Sie hier die Klasse Speaker.
  * 
@@ -8,7 +9,7 @@ import java.util.ArrayList;
 public class Speaker extends NPC
 {
     private ArrayList<String> dialogue = new ArrayList<>();
-    
+    private int entrydialogue;
     /**
      * Konstruktor für Objekte der Klasse Speaker
      */
@@ -19,12 +20,77 @@ public class Speaker extends NPC
     }
     
     public void speak(Player parseplayer) {
-        dialogue.set(0, dialogue.get(0).concat(parseplayer.getplayername()));
-        dialogue.set(1, dialogue.get(1).concat(name));
+        Random randomentry = new Random();
+        entrydialogue = randomentry.nextInt(0, 4);
+        if(entrydialogue == 0) {
+            System.out.println("Hallo " + parseplayer.getplayername() + "!");
+            try {
+                Thread.sleep(1500);
+            }   
+            catch(Exception e) {
+                Thread.currentThread().interrupt();
+            }
+            System.out.println("Ich bin " + name + "! ");
+            try {
+                Thread.sleep(1500);
+            }   
+            catch(Exception e) {
+                Thread.currentThread().interrupt();
+            }
+        }
+        else if(entrydialogue == 1) {
+            System.out.println("Sei gegrüßt Reisender " + parseplayer.getplayername() + "!");
+            try {
+                Thread.sleep(1500);
+            }   
+            catch(Exception e) {
+                Thread.currentThread().interrupt();
+            }
+            System.out.println(name + " mein Name. ");
+            try {
+                Thread.sleep(1500);
+            }   
+            catch(Exception e) {
+                Thread.currentThread().interrupt();
+            }
+        }
+        else if(entrydialogue == 2) {
+            System.out.println("Ich habe schon von euch gehört " + parseplayer.getplayername() + "!");
+            try {
+                Thread.sleep(1500);
+            }   
+            catch(Exception e) {
+                Thread.currentThread().interrupt();
+            }
+            System.out.println("Erlaubt mir mich vorzustellen. Ich bin " + name + ".");
+            try {
+                Thread.sleep(1500);
+            }   
+            catch(Exception e) {
+                Thread.currentThread().interrupt();
+            }
+        }
+        else if(entrydialogue == 3) {
+            System.out.println("Grüßs Gotthle " + parseplayer.getplayername() + "!");
+            try {
+                Thread.sleep(1500);
+            }   
+            catch(Exception e) {
+                Thread.currentThread().interrupt();
+            }
+            System.out.println("Mein Noome ischt " + name + "! ");
+            try {
+                Thread.sleep(1500);
+            }   
+            catch(Exception e) {
+                Thread.currentThread().interrupt();
+            }
+        }
+        
         for(int i = 0; i < dialogue.size(); i++) {
             System.out.println(dialogue.get(i));
             try {
-                Thread.sleep(1000);
+                Thread.sleep(1500);
             }   
             catch(Exception e) {
                 Thread.currentThread().interrupt();
