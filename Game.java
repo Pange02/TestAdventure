@@ -53,7 +53,7 @@ public class Game {
         merchantloot1.put(Item.getitemfromlist("Potion", 0), 50);
         Merchant merchant1 = new Merchant("TraderJoe", merchantloot1);
         Chest startChest = new Chest(startroomLoot);
-        Room startRoom = new Room(startChest, null, merchant1);    
+        Room startRoom = new Room(startChest, null, merchant1);
         
         // Raum 1 mit einer Truhe und einem Gegner
         room1Loot.add(Item.getitemfromlist("Potion", 0));
@@ -71,9 +71,8 @@ public class Game {
         Room room3 = new Room(null, null, null);
         
         // Raum 4 
-        speakerdialogue.add("Hallo " );
-        speakerdialogue.add("Ich bin " );
-        speakerdialogue.add("Whats up?");
+        speakerdialogue.add("Einst gingen Legenden diese Pfade. " );
+        speakerdialogue.add("Es scheint du bist der Auserwählte!");
         Speaker speaker4 = new Speaker("Harry", speakerdialogue);
         Room room4 = new Room(null, null, speaker4);
         

@@ -21,14 +21,14 @@ public class Merchant extends NPC
     @Override public void speak() {
         System.out.println("Hallo! Ich bin " + name);
         try {
-            Thread.sleep(2000);
+            Thread.sleep(1500);
         }   
         catch(Exception e) {
             Thread.currentThread().interrupt();
         }
         System.out.println("Möchtest du vielleicht etwas aus meinem Shop kaufen?");
         try {
-            Thread.sleep(2000);
+            Thread.sleep(1500);
         }   
         catch(Exception e) {
             Thread.currentThread().interrupt();

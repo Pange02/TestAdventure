@@ -155,7 +155,6 @@ public class Parser
         else if(input[0].equals("rede")) {
             try {
                 if(input[1].toLowerCase().equals(parseplayer.getcurrentroom().getNPC().getNPCname().toLowerCase())) {
-                    parseplayer.getcurrentroom().getNPC().speak(); 
                     if(parseplayer.getcurrentroom().getNPC().getClass() == Merchant.class) {
                         Scanner buyparser = new Scanner(System.in);
                         buyinput = buyparser.nextLine().toLowerCase().split("\\s+");
