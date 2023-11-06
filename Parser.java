@@ -192,6 +192,32 @@ public class Parser
                 else if(parseplayer.getitemfrominventory(inventorynumber).getClass() == Consumable.class) {
                     parseplayer.consume(inventorynumber);
                 }
+                else if(parseplayer.getitemfrominventory(inventorynumber).getClass() == Key.class) {
+                    try {
+                        if(input[2].toLowerCase().equals("norden")) {
+                            parseplayer.getcurrentroom().getLock("north").openLock(parseplayer.getcurrentroom(), ((Key) parseplayer.getitemfrominventory(inventorynumber)));
+                            parseplayer.removeitemfrominventory(inventorynumber);
+                        }
+                        else if(parseplayer.getcurrentroom().getLock(input[2]) != null && input[2].toLowerCase().equals("osten")) {
+                            parseplayer.getcurrentroom().getLock("east").openLock(parseplayer.getcurrentroom(), ((Key) parseplayer.getitemfrominventory(inventorynumber)));
+                            parseplayer.removeitemfrominventory(inventorynumber);
+                        }
+                        else if(parseplayer.getcurrentroom().getLock(input[2]) != null && input[2].toLowerCase().equals("süden")) {
+                            parseplayer.getcurrentroom().getLock("south").openLock(parseplayer.getcurrentroom(), ((Key) parseplayer.getitemfrominventory(inventorynumber)));
+                            parseplayer.removeitemfrominventory(inventorynumber);
+                        }
+                        else if(parseplayer.getcurrentroom().getLock(input[2]) != null && input[2].toLowerCase().equals("westen")) {
+                            parseplayer.getcurrentroom().getLock("west").openLock(parseplayer.getcurrentroom(), ((Key) parseplayer.getitemfrominventory(inventorynumber)));
+                            parseplayer.removeitemfrominventory(inventorynumber);
+                        }
+                        else {
+                            System.out.println("Dies ist keine gültige Richtung. Gültige Richtungen sind: Norden, Osten, Süden, Westen.");
+                        }
+                    }
+                    catch(Exception e) {
+                        System.out.println("Du musst eine Richtung angeben, in welcher du den Schlüssel benutzen möchtest!");
+                    }
+                }
             }
             catch(Exception e) {
                 System.out.println("Dies ist keine gültige Zahl aus deinem Inventar!");
@@ -251,44 +277,64 @@ public class Parser
         else if(input[0].equals("gehe")) {
             try {
                 if(input[1].equals("norden") && parseplayer.getcurrentroom().getConnectedRooms("north") != null) {
-                    System.out.println("Du bewegst dich durch die Tür in den neuen Raum im Norden");
-                    parseplayer.setcurrentroom(parseplayer.getcurrentroom().getConnectedRooms("north"));
-                    if(parseplayer.getcurrentroom().getMobInfo() == true && parseplayer.getcurrentroom().getRoomMob().getmobstatus() == true) {
-                        entercombat(parseplayer, parseplayer.getcurrentroom().getRoomMob());
-                        combat = true;
+                    if(parseplayer.getcurrentroom().getLock("north") != null) {
+                        System.out.println("Du entdeckst " + parseplayer.getcurrentroom().getLock("north").getArtikel("akkusativ", "unbestimmt") + " " + parseplayer.getcurrentroom().getLock("north").getname() + " an der Tür. Du benötigst ein Schlüssel für dieses Schloss.");
+                    }
+                    else {
+                        System.out.println("Du bewegst dich durch die Tür in den neuen Raum im Norden");
+                        parseplayer.setcurrentroom(parseplayer.getcurrentroom().getConnectedRooms("north"));
+                        if(parseplayer.getcurrentroom().getMobInfo() == true && parseplayer.getcurrentroom().getRoomMob().getmobstatus() == true) {
+                            entercombat(parseplayer, parseplayer.getcurrentroom().getRoomMob());
+                            combat = true;
+                        }
                     }
                 }
                 else if(input[1].equals("norden") && parseplayer.getcurrentroom().getConnectedRooms("north") == null) {
                     System.out.println("In dieser Richtung befindet sich keine Tür in einen anderen Raum.");
                 }
                 else if(input[1].equals("osten") && parseplayer.getcurrentroom().getConnectedRooms("east") != null) {
-                    System.out.println("Du bewegst dich durch die Tür in den neuen Raum im Osten");
-                    parseplayer.setcurrentroom(parseplayer.getcurrentroom().getConnectedRooms("east"));
-                    if(parseplayer.getcurrentroom().getMobInfo() == true && parseplayer.getcurrentroom().getRoomMob().getmobstatus() == true) {
-                        entercombat(parseplayer, parseplayer.getcurrentroom().getRoomMob());
-                        combat = true;
+                    if(parseplayer.getcurrentroom().getLock("east") != null) {
+                        System.out.println("Du entdeckst " + parseplayer.getcurrentroom().getLock("east").getArtikel("akkusativ", "unbestimmt") + " " + parseplayer.getcurrentroom().getLock("east").getname() + " an der Tür. Du benötigst ein Schlüssel für dieses Schloss.");
+                    }
+                    else {
+                        System.out.println("Du bewegst dich durch die Tür in den neuen Raum im Osten");
+                        parseplayer.setcurrentroom(parseplayer.getcurrentroom().getConnectedRooms("east"));
+                        if(parseplayer.getcurrentroom().getMobInfo() == true && parseplayer.getcurrentroom().getRoomMob().getmobstatus() == true) {
+                            entercombat(parseplayer, parseplayer.getcurrentroom().getRoomMob());
+                            combat = true;
+                        }   
                     }
                 }
                 else if(input[1].equals("osten") && parseplayer.getcurrentroom().getConnectedRooms("east") == null) {
                     System.out.println("In dieser Richtung befindet sich keine Tür in einen anderen Raum.");
                 }
                 else if(input[1].equals("süden") && parseplayer.getcurrentroom().getConnectedRooms("south") != null) {
-                    System.out.println("Du bewegst dich durch die Tür in den neuen Raum im Süden");
-                    parseplayer.setcurrentroom(parseplayer.getcurrentroom().getConnectedRooms("south"));
-                    if(parseplayer.getcurrentroom().getMobInfo() == true && parseplayer.getcurrentroom().getRoomMob().getmobstatus() == true) {
-                        entercombat(parseplayer, parseplayer.getcurrentroom().getRoomMob());
-                        combat = true;
+                    if(parseplayer.getcurrentroom().getLock("south") != null) {
+                        System.out.println("Du entdeckst " + parseplayer.getcurrentroom().getLock("south").getArtikel("akkusativ", "unbestimmt") + " " + parseplayer.getcurrentroom().getLock("south").getname() + " an der Tür. Du benötigst ein Schlüssel für dieses Schloss.");
+                    }
+                    else {
+                        System.out.println("Du bewegst dich durch die Tür in den neuen Raum im Süden");
+                        parseplayer.setcurrentroom(parseplayer.getcurrentroom().getConnectedRooms("south"));
+                        if(parseplayer.getcurrentroom().getMobInfo() == true && parseplayer.getcurrentroom().getRoomMob().getmobstatus() == true) {
+                            entercombat(parseplayer, parseplayer.getcurrentroom().getRoomMob());
+                            combat = true;
+                        }
                     }
                 }
                 else if(input[1].equals("süden") && parseplayer.getcurrentroom().getConnectedRooms("south") == null) {
                     System.out.println("In dieser Richtung befindet sich keine Tür in einen anderen Raum.");
                 }
                 else if(input[1].equals("westen") && parseplayer.getcurrentroom().getConnectedRooms("west") != null) {
-                    System.out.println("Du bewegst dich durch die Tür in den neuen Raum im Westen");
-                    parseplayer.setcurrentroom(parseplayer.getcurrentroom().getConnectedRooms("west"));
-                    if(parseplayer.getcurrentroom().getMobInfo() == true && parseplayer.getcurrentroom().getRoomMob().getmobstatus() == true) {
-                        entercombat(parseplayer, parseplayer.getcurrentroom().getRoomMob());
-                        combat = true;
+                    if(parseplayer.getcurrentroom().getLock("west") != null) {
+                        System.out.println("Du entdeckst " + parseplayer.getcurrentroom().getLock("west").getArtikel("akkusativ", "unbestimmt") + " " + parseplayer.getcurrentroom().getLock("west").getname() + " an der Tür. Du benötigst ein Schlüssel für dieses Schloss.");
+                    }
+                    else {
+                        System.out.println("Du bewegst dich durch die Tür in den neuen Raum im Westen");
+                        parseplayer.setcurrentroom(parseplayer.getcurrentroom().getConnectedRooms("west"));
+                        if(parseplayer.getcurrentroom().getMobInfo() == true && parseplayer.getcurrentroom().getRoomMob().getmobstatus() == true) {
+                            entercombat(parseplayer, parseplayer.getcurrentroom().getRoomMob());
+                            combat = true;
+                        }
                     }
                 }
                 else if(input[1].equals("westen") && parseplayer.getcurrentroom().getConnectedRooms("west") == null) {

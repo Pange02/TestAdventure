@@ -1,9 +1,16 @@
 #BlueJ class context
 comment0.target=Lock
 comment0.text=\r\n\ Beschreiben\ Sie\ hier\ die\ Klasse\ Lock.\r\n\ \r\n\ @author\ (Ihr\ Name)\ \r\n\ @version\ (eine\ Versionsnummer\ oder\ ein\ Datum)\r\n
-comment1.params=parsename\ parseroom\ parsedirection\ parsekey
-comment1.target=Lock(java.lang.String,\ Room,\ java.lang.String,\ Key)
+comment1.params=parsename\ parseroom\ parsedirection\ parsekey\ parsegender
+comment1.target=Lock(java.lang.String,\ Room,\ java.lang.String,\ Key,\ java.lang.String)
 comment1.text=\r\n\ Konstruktor\ f\u00FCr\ Objekte\ der\ Klasse\ Lock\r\n
-comment2.params=parsekey
-comment2.target=void\ openLock(Key)
-numComments=3
+comment2.params=
+comment2.target=java.lang.String\ getname()
+comment3.params=parseroom\ parsekey
+comment3.target=void\ openLock(Room,\ Key)
+comment4.params=
+comment4.target=java.lang.String\ getDirection()
+comment5.params=kasus\ art
+comment5.target=java.lang.String\ getArtikel(java.lang.String,\ java.lang.String)
+comment5.text=\r\n\ Gibt\ zu\ einem\ Item\ und\ einem\ Kasus\ einen\ bestimmten\ oder\ unbestimmten\ Artikel\ aus.\r\n
+numComments=6

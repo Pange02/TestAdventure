@@ -48,12 +48,15 @@ public class Game {
          */
         
         // Spawnraum mit einem Holzschwert zum Anfang
+        Key key1 = new Key("Holzschlüssel", "Ein einfacher Holzschlüssel", "(Gewöhnlich)", "maskulin");
         startroomLoot.add(Item.getitemfromlist("Weapon", 1));
+        startroomLoot.add(key1);
         merchantloot1.put(Item.getitemfromlist("Potion", 2), 100);
         merchantloot1.put(Item.getitemfromlist("Potion", 0), 50);
         Merchant merchant1 = new Merchant("TraderJoe", merchantloot1);
         Chest startChest = new Chest(startroomLoot);
         Room startRoom = new Room(startChest, null, merchant1);
+        Lock lock1 = new Lock("Holzschloss", startRoom, "north", key1, "neutrum");
         
         // Raum 1 mit einer Truhe und einem Gegner
         room1Loot.add(Item.getitemfromlist("Potion", 0));

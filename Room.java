@@ -92,6 +92,19 @@ public class Room {
         lock = parseLock;
     }
     
+    public Lock getLock(String parseLockDirection) {
+        if(lock != null && parseLockDirection == lock.getDirection()) {
+            return lock;
+        }
+        else {
+            return null;
+        }
+    }
+    
+    public String getLockDirection(Lock parseLock) {
+        return parseLock.getDirection();
+    }
+    
     /**
      * Hier werden alle verbundenen Räume definiert nach (Raum, Norden, Osten, Süden, Westen).
      */

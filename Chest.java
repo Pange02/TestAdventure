@@ -73,6 +73,9 @@ public class Chest
                 if(chestLoot.get(i).getClass() == Accessory.class) {
                    System.out.println("Du findest " + chestLoot.get(i).getArtikel("akkusativ", "unbestimmt") +  " " + chestLoot.get(i).getitemname() + " " + chestLoot.get(i).getitemrarity() + " mit " + ((Accessory) chestLoot.get(i)).getaccessorystrength() + " Stärke."); 
                 }
+                if(chestLoot.get(i).getClass() == Key.class) {
+                   System.out.println("Du findest " + chestLoot.get(i).getArtikel("akkusativ", "unbestimmt") +  " " + chestLoot.get(i).getitemname() + " " + chestLoot.get(i).getitemrarity());
+                }
             }
             parsePlayer.addcoins(coinamount);
             System.out.println("Du findest " + coinamount + " Coins in der Truhe.");

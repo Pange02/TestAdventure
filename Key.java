@@ -16,7 +16,7 @@ public class Key extends Item
         super(parsename, parsedescription, parserarity, parsegender);
     }
     
-    public String getname(Key parsekey) {
+    public String getname() {
         return name;
     }
 }
