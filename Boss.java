@@ -24,7 +24,7 @@ public class Boss extends Mob //die Klasse Boss wird aus der Klasse Mob vererbt
      * @param  y  a sample parameter for a method
      * @return    the sum of x and y
      */
-    public void weakingHit(int amount, Player parseplayer) {
+    public void weakeningHit(Player parseplayer) {
         if (parseplayer.getPlayerStrength() != 0){
             parseplayer.reduceStrength(parseplayer.getPlayerStrength() * 0.8);
         }

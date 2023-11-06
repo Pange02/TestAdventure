@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=Lock
+comment0.text=\r\n\ Beschreiben\ Sie\ hier\ die\ Klasse\ Lock.\r\n\ \r\n\ @author\ (Ihr\ Name)\ \r\n\ @version\ (eine\ Versionsnummer\ oder\ ein\ Datum)\r\n
+comment1.params=parsename\ parseroom\ parsedirection\ parsekey
+comment1.target=Lock(java.lang.String,\ Room,\ java.lang.String,\ Key)
+comment1.text=\r\n\ Konstruktor\ f\u00FCr\ Objekte\ der\ Klasse\ Lock\r\n
+comment2.params=parsekey
+comment2.target=void\ openLock(Key)
+numComments=3

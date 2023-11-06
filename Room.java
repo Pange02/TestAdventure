@@ -9,6 +9,8 @@ public class Room {
     //Boolean zur Überprüfung, ob sich ein NPC im Raum befindet.
     private boolean hasNPC;
     
+    private boolean hasLock;
+    
     //ArrayList mit allen Richtungen, die aus einem Raum führen.
     private ArrayList<String> roomDirections;
     
@@ -25,6 +27,8 @@ public class Room {
     Mob mob1;
     
     NPC npc1;
+    
+    Lock lock;
     
     /**
      *  Konstruktor für die Klasse Raum mit dem Truhenobjekt als Argument.
@@ -82,6 +86,10 @@ public class Room {
     
     public NPC getNPC() {
         return npc1;
+    }
+    
+    public void setLock(Lock parseLock) {
+        lock = parseLock;
     }
     
     /**

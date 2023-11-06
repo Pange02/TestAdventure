@@ -21,7 +21,7 @@ public class Speaker extends NPC
     
     public void speak(Player parseplayer) {
         Random randomentry = new Random();
-        entrydialogue = randomentry.nextInt(0, 4);
+        entrydialogue = randomentry.nextInt(0, 3);
         if(entrydialogue == 0) {
             System.out.println("Hallo " + parseplayer.getplayername() + "!");
             try {
@@ -63,22 +63,6 @@ public class Speaker extends NPC
                 Thread.currentThread().interrupt();
             }
             System.out.println("Erlaubt mir mich vorzustellen. Ich bin " + name + ".");
-            try {
-                Thread.sleep(1500);
-            }   
-            catch(Exception e) {
-                Thread.currentThread().interrupt();
-            }
-        }
-        else if(entrydialogue == 3) {
-            System.out.println("Grüßs Gotthle " + parseplayer.getplayername() + "!");
-            try {
-                Thread.sleep(1500);
-            }   
-            catch(Exception e) {
-                Thread.currentThread().interrupt();
-            }
-            System.out.println("Mein Noome ischt " + name + "! ");
             try {
                 Thread.sleep(1500);
             }   
