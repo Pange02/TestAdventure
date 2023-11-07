@@ -218,10 +218,12 @@ public class Parser
                         System.out.println("Du musst eine Richtung angeben, in welcher du den Schlüssel benutzen möchtest!");
                     }
                 }
+                else {
+                    System.out.println("Du kannst dieses Item akutell nicht benutzen!");
+                }
             }
             catch(Exception e) {
                 System.out.println("Dies ist keine gültige Zahl aus deinem Inventar!");
-                System.out.println(e);
             }
         }
         else if(input[0].equals("ablegen")) {
