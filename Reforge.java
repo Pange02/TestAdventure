@@ -14,7 +14,8 @@ public class Reforge
     private int strength;
     private int critchance;
     private int critdamage;
-    private static ArrayList<Reforge> reforgelist;
+    private static ArrayList<Reforge> weaponreforgelist;
+    private static ArrayList<Reforge> armorreforgelist;
     /**
      * Constructor for objects of class Reforge
      */
@@ -26,16 +27,27 @@ public class Reforge
         strength = parsestrength;
         critchance = parsecritchance;
         critdamage = parsecritdamage;
-        reforgelist = new ArrayList<>();
     }
     
     public static void makeReforges() {
-        Reforge reforge1 = new Reforge("Stark", 3, 2, 5, 0, 0);
-        reforgelist.add(reforge1);
+        weaponreforgelist = new ArrayList<>();
+        armorreforgelist = new ArrayList<>();
+        
+        Reforge weaponreforge0 = new Reforge("Stark", 0, 0, 5, 0, 0);
+        Reforge weaponreforge1 = new Reforge("Schnell", 0, 0, 0, 10, 20);
+        weaponreforgelist.add(weaponreforge0);
+        weaponreforgelist.add(weaponreforge1);
+        
+        Reforge armorreforge0 = new Reforge("Solide", 0, 5, 0, 0, 0);
+        armorreforgelist.add(armorreforge0);
     }
     
-    public static ArrayList<Reforge> getreforgelist() {
-        return reforgelist;
+    public static ArrayList<Reforge> getweaponreforgelist() {
+        return weaponreforgelist;
+    }
+    
+    public static ArrayList<Reforge> getarmorreforgelist() {
+        return armorreforgelist;
     }
     
     public String getname() {
@@ -48,6 +60,10 @@ public class Reforge
     
     public int getdefense() {
         return defense;
+    }
+    
+    public int getstrength() {
+        return strength;
     }
     
     public int getcritchance() {

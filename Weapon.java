@@ -92,6 +92,8 @@ public class Weapon extends Item
     
     public void applyreforge(Reforge parsereforge) {
         reforge = parsereforge;
-                
+        strength += parsereforge.getstrength();
+        critchance += parsereforge.getcritchance();
+        critdamage += parsereforge.getcritdamage();
     }
 }

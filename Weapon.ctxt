@@ -1,8 +1,8 @@
 #BlueJ class context
 comment0.target=Weapon
 comment0.text=\r\n\ Write\ a\ description\ of\ class\ Weapon\ here.\r\n\r\n\ @author\ (your\ name)\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
-comment1.params=parsename\ parsedescription\ parserarity\ weaponGender\ parsedamage
-comment1.target=Weapon(java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ int)
+comment1.params=parsename\ parsedescription\ parserarity\ weaponGender\ parsedamage\ parsestrength\ parsecritchance\ parsecritdamage
+comment1.target=Weapon(java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ int,\ int,\ int,\ int)
 comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ Weapon\r\n
 comment2.params=
 comment2.target=void\ createWeapons()
@@ -11,4 +11,6 @@ comment3.params=
 comment3.target=int\ getweapondamage()
 comment4.params=
 comment4.target=void\ getiteminfo()
-numComments=5
+comment5.params=parsereforge
+comment5.target=void\ applyreforge(Reforge)
+numComments=6

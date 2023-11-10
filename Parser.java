@@ -21,6 +21,8 @@ public class Parser
     //Array für den BuyInput des Spielers
     private String[] buyinput = new String[10];
     
+    private int reforgeinputint;
+    
     //Boolean gibt an, ob der Parser (das Spiel) aktiv ist.
     private boolean running;
     
@@ -156,6 +158,7 @@ public class Parser
             try {
                 if(input[1].toLowerCase().equals(parseplayer.getcurrentroom().getNPC().getNPCname().toLowerCase())) {
                     if(parseplayer.getcurrentroom().getNPC().getClass() == Merchant.class) {
+                        ((Merchant) parseplayer.getcurrentroom().getNPC()).speak();
                         Scanner buyparser = new Scanner(System.in);
                         buyinput = buyparser.nextLine().toLowerCase().split("\\s+");
                         if(buyinput[0].equals("kaufe")) {
@@ -164,6 +167,29 @@ public class Parser
                     }
                     else if(parseplayer.getcurrentroom().getNPC().getClass() == Speaker.class) {
                         ((Speaker) parseplayer.getcurrentroom().getNPC()).speak(parseplayer);
+                    }
+                    else if(parseplayer.getcurrentroom().getNPC().getClass() == Blacksmith.class) {
+                        ((Blacksmith) parseplayer.getcurrentroom().getNPC()).speak(parseplayer);
+                        Scanner reforgeparser = new Scanner(System.in);
+                        String[] reforgeinput = new String[10];
+                        reforgeinput = reforgeparser.nextLine().toLowerCase().split("\\s+");
+                        if(reforgeinput[0].equals("verbessere")) {
+                            try {
+                                ((Blacksmith) parseplayer.getcurrentroom().getNPC()).reforge(parseplayer.getitemfrominventory(Integer.parseInt(reforgeinput[1])));
+                                while(reforgeparser.nextLine().toLowerCase().split("\\s+")[0].toLowerCase().equals("ja")) {
+                                    ((Blacksmith) parseplayer.getcurrentroom().getNPC()).reforge(parseplayer.getitemfrominventory(Integer.parseInt(reforgeinput[1])));
+                                    System.out.println("Deine Coins: " + parseplayer.getcoins());
+                                }
+                                System.out.println("Ok, vielen Dank für das Geschäft.");
+                            }
+                            catch(Exception e) {
+                                System.out.println("Du musst eine Zahl für dein Inventar angeben");
+                                System.out.println(e);
+                            }  
+                        }
+                        else {
+                            System.out.println("Ok, vielleicht beim nächsten Mal!");
+                        }
                     }
                 }
                 else {

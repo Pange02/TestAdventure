@@ -82,4 +82,13 @@ public class Armor extends Item
         }
         System.out.println();
     }
+    
+    public void applyreforge(Reforge parsereforge) {
+        reforge = parsereforge;
+        defense += parsereforge.getdefense();
+    }
+    
+    public boolean getreforge() {
+        return (reforge != null);
+    }
 }

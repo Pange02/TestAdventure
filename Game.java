@@ -30,6 +30,7 @@ public class Game {
             Potion.createPotions();
             Accessory.createAccessories();
             Consumable.createConsumables();
+            Reforge.makeReforges();
             Item.fillitemlist();
             firstGame = false;
         }
@@ -86,7 +87,8 @@ public class Game {
         Room room5 = new Room(chest5, null, null);
         
         // Raum 6 leer
-        Room room6 = new Room(null, null, null);
+        Blacksmith blacksmith1 = new Blacksmith("Elliot");
+        Room room6 = new Room(null, null, blacksmith1);
         
         // Raum 7 eine Truhe mit 2 Loot
         room7Loot.add(Item.getitemfromlist("Accessory", 1));
