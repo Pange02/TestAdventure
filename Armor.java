@@ -8,6 +8,7 @@ import java.util.ArrayList;
 public class Armor extends Item
 {
     private int defense;
+    private Reforge reforge;
     private String armortype;
     protected static ArrayList<Armor> armorlist = new ArrayList<>();
     /**
