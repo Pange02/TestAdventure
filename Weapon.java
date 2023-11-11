@@ -23,6 +23,7 @@ public class Weapon extends Item
     public Weapon(String parsename, String parsedescription, String parserarity, String weaponGender, int parsedamage, int parsestrength, int parsecritchance, int parsecritdamage)
     {
         super(parsename, parsedescription, parserarity, weaponGender);
+        reforge = null;
         damage = parsedamage;
         strength = parsestrength;
         critchance = parsecritchance;
@@ -58,9 +59,23 @@ public class Weapon extends Item
         return damage;
     }
     
+    public int getstrength() {
+        return strength;
+    }
+    
+    public int getcritchance()
+    {
+        return critchance;
+    }
+    
+    public int getcritdamage()
+    {
+        return critdamage;
+    }
+    
     @Override public void getiteminfo() {
         descriptionstring = " " + description;
-        statsstring = " " + "Schaden: " + damage;
+        statsstring = " " + "Schaden: " + damage + " Stärke: " + strength + " Crit Chance: " + critchance + " Crit Schaden: " + critdamage;
         spaces = Math.max(descriptionstring.length(), statsstring.length());
         for(int i = 0; i <= (spaces - name.length())/2 - 1; i++) {
             System.out.print("-");
@@ -91,9 +106,20 @@ public class Weapon extends Item
     }
     
     public void applyreforge(Reforge parsereforge) {
-        reforge = parsereforge;
-        strength += parsereforge.getstrength();
-        critchance += parsereforge.getcritchance();
-        critdamage += parsereforge.getcritdamage();
+        if(reforge != null) {
+            strength -= reforge.getstrength();
+            critchance -= reforge.getcritchance();
+            critdamage -= reforge.getcritdamage();
+            reforge = parsereforge;
+            strength += parsereforge.getstrength();
+            critchance += parsereforge.getcritchance();
+            critdamage += parsereforge.getcritdamage();
+        }
+        else {
+            reforge = parsereforge;
+            strength += parsereforge.getstrength();
+            critchance += parsereforge.getcritchance();
+            critdamage += parsereforge.getcritdamage();
+        }
     }
 }

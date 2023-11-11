@@ -175,16 +175,28 @@ public class Parser
                         reforgeinput = reforgeparser.nextLine().toLowerCase().split("\\s+");
                         if(reforgeinput[0].equals("verbessere")) {
                             try {
-                                ((Blacksmith) parseplayer.getcurrentroom().getNPC()).reforge(parseplayer.getitemfrominventory(Integer.parseInt(reforgeinput[1])));
-                                while(reforgeparser.nextLine().toLowerCase().split("\\s+")[0].toLowerCase().equals("ja")) {
+                                if(parseplayer.getcoins() >= 5) {
                                     ((Blacksmith) parseplayer.getcurrentroom().getNPC()).reforge(parseplayer.getitemfrominventory(Integer.parseInt(reforgeinput[1])));
+                                    parseplayer.removecoins(5);
                                     System.out.println("Deine Coins: " + parseplayer.getcoins());
+                                    while(reforgeparser.nextLine().toLowerCase().split("\\s+")[0].toLowerCase().equals("ja")) {
+                                        if(parseplayer.getcoins() >= 5) {
+                                            ((Blacksmith) parseplayer.getcurrentroom().getNPC()).reforge(parseplayer.getitemfrominventory(Integer.parseInt(reforgeinput[1])));
+                                            parseplayer.removecoins(5);
+                                            System.out.println("Deine Coins: " + parseplayer.getcoins());
+                                        }
+                                        else {
+                                            System.out.println("Du hast nicht genügend Coins dafür!");
+                                        }
+                                    }
+                                }
+                                else {
+                                    System.out.println("Du hast nicht genügend Coins dafür!");
                                 }
                                 System.out.println("Ok, vielen Dank für das Geschäft.");
                             }
                             catch(Exception e) {
                                 System.out.println("Du musst eine Zahl für dein Inventar angeben");
-                                System.out.println(e);
                             }  
                         }
                         else {

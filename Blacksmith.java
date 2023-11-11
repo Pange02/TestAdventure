@@ -39,7 +39,6 @@ public class Blacksmith extends NPC
     
     public void reforge(Item parseitem) {
         if(parseitem.getClass() == Weapon.class) {
-            System.out.println(Reforge.getweaponreforgelist().size());
             randomreforge = Reforge.getweaponreforgelist().get(reforgegenerator.nextInt(Reforge.getweaponreforgelist().size()));  
             ((Weapon) parseitem).applyreforge(randomreforge);
             System.out.println("Du verbesserst " + parseitem.getArtikel("akkusativ", "bestimmt") + " " + parseitem.getitemname() + " zu " + randomreforge.getname() + " " + parseitem.getitemname());

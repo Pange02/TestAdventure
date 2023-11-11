@@ -158,6 +158,9 @@ public class Player
     
     public void attack(Mob parsemob, Weapon parseweapon) {
         weapondamage = parseweapon.getweapondamage();
+        strength += parseweapon.getstrength();
+        critchance += parseweapon.getcritchance();
+        critdamage += parseweapon.getcritdamage();
         damagemultiplier = (1 + (strength)/10);
         Random critidentifier = new Random();
         if(critidentifier.nextInt(101) <= critchance) {
@@ -168,6 +171,9 @@ public class Player
             playerdamage = Math.round(weapondamage * damagemultiplier * 10.0) / 10.0;
         }
         parsemob.setmobhealth(Math.round((parsemob.getmobhealth() - playerdamage) * 10.0) / 10.0);
+        strength -= parseweapon.getstrength();
+        critchance -= parseweapon.getcritchance();
+        critdamage -= parseweapon.getcritdamage();
     }
     
     public double getplayerdamage() {
