@@ -106,20 +106,21 @@ public class Weapon extends Item
     }
     
     public void applyreforge(Reforge parsereforge) {
+        
         if(reforge != null) {
-            strength -= reforge.getstrength();
-            critchance -= reforge.getcritchance();
-            critdamage -= reforge.getcritdamage();
+            strength -= reforge.getstrength()[getreforgerarity()];
+            critchance -= reforge.getcritchance()[getreforgerarity()];
+            critdamage -= reforge.getcritdamage()[getreforgerarity()];
             reforge = parsereforge;
-            strength += parsereforge.getstrength();
-            critchance += parsereforge.getcritchance();
-            critdamage += parsereforge.getcritdamage();
+            strength += parsereforge.getstrength()[getreforgerarity()];
+            critchance += parsereforge.getcritchance()[getreforgerarity()];
+            critdamage += parsereforge.getcritdamage()[getreforgerarity()];
         }
         else {
             reforge = parsereforge;
-            strength += parsereforge.getstrength();
-            critchance += parsereforge.getcritchance();
-            critdamage += parsereforge.getcritdamage();
+            strength += parsereforge.getstrength()[getreforgerarity()];
+            critchance += parsereforge.getcritchance()[getreforgerarity()];
+            critdamage += parsereforge.getcritdamage()[getreforgerarity()];
         }
     }
 }

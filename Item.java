@@ -85,6 +85,30 @@ public class Item
         return itemlist;
     }
     
+    public int getreforgerarity() {
+        if(rarity.equals("(Gewöhnlich)")) {
+            return 0;
+        }
+        else if(rarity.equals("(Ungewöhnlich)")) {
+            return 1;
+        }
+        else if(rarity.equals("(Selten)")) {
+            return 2;
+        }
+        else if(rarity.equals("(Episch)")) {
+            return 3;
+        }
+        else if(rarity.equals("(Legendär)")) {
+            return 4;
+        }
+        else if(rarity.equals("(Mytisch)")) {
+            return 5;
+        }
+        else {
+            return -1;
+        }
+    }
+    
     public void getiteminfo() {
         for(int i = 0; i <= (description.length() - name.length())/2; i++) {
             System.out.print("-");

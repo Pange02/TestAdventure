@@ -91,6 +91,7 @@ public class Game {
         Room room6 = new Room(null, null, blacksmith1);
         
         // Raum 7 eine Truhe mit 2 Loot
+        room7Loot.add(Item.getitemfromlist("Weapon", 3));
         room7Loot.add(Item.getitemfromlist("Accessory", 1));
         room7Loot.add(Item.getitemfromlist("Armor", 1));
         Chest chest7 = new Chest(room7Loot);

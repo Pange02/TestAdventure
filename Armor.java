@@ -85,7 +85,7 @@ public class Armor extends Item
     
     public void applyreforge(Reforge parsereforge) {
         reforge = parsereforge;
-        defense += parsereforge.getdefense();
+        defense += parsereforge.getdefense()[getreforgerarity()];
     }
     
     public boolean getreforge() {
