@@ -11,7 +11,7 @@ public class Parser
     // Instanzvariablen - ersetzen Sie das folgende Beispiel mit Ihren Variablen
     
     //Aktionsliste für alle möglichen Aktionen. Verwendet von help Befehl.
-    private String[] actionlist = {"hilfe", "öffne (truhe)", "stats", "inv", "rede <Name>", "kaufe <Item>", "info <Inventarslot>", "benutze <Inventarslot>", "ablegen <Inventarslot>", "umgucken", "gehe <Himmelsrichtung>"};
+    private String[] actionlist = {"hilfe", "öffne (truhe)", "stats", "inv", "rede <Name>", "info <Inventarslot>", "benutze <Inventarslot>", "ablegen <Inventarslot>", "umgucken", "gehe <Himmelsrichtung>"};
     
     private String[] combatactionlist = {"attackiere", "benutze <Inventarslot>"};
     
@@ -138,8 +138,7 @@ public class Parser
                 } 
             }
             catch(Exception e) {
-                System.out.println(e);
-                System.out.println("Du kannst dies nicht öffnen!");
+                System.out.println("Du musst angeben, was du öffnen willst.");
             }
         }    
         else if(input[0].equals("umgucken")) {
@@ -162,7 +161,18 @@ public class Parser
                         Scanner buyparser = new Scanner(System.in);
                         buyinput = buyparser.nextLine().toLowerCase().split("\\s+");
                         if(buyinput[0].equals("kaufe")) {
-                            ((Merchant) parseplayer.getcurrentroom().getNPC()).buyitem(activeplayer, buyinput[1]);
+                            if(buyinput[1] != null) {
+                               ((Merchant) parseplayer.getcurrentroom().getNPC()).buyitem(activeplayer, buyinput[1]);
+                            }
+                            else {
+                                System.out.println("Du musst das Item angeben, was du kaufen willst.");
+                            }
+                        }
+                        else if(buyinput[0].equals("ja")) {
+                            System.out.println("Dazu musst du sagen: kaufe + Itemname");
+                        }
+                        else {
+                            System.out.println("Ok, vielleicht später!");
                         }
                     }
                     else if(parseplayer.getcurrentroom().getNPC().getClass() == Speaker.class) {
