@@ -1,12 +1,11 @@
 #BlueJ class context
 comment0.target=Item
-comment0.text=\r\n\ Beschreiben\ Sie\ hier\ die\ Klasse\ Item.\r\n\ \r\n\ @author\ (Ihr\ Name)\ \r\n\ @version\ (eine\ Versionsnummer\ oder\ ein\ Datum)\r\n
+comment0.text=\r\n\ Diese\ Klasse\ macht\ es\ dem\ Spieler\ m\u00F6glich\ auf\ Gegenst\u00E4nde\ zuzugreifen.\r\n\ \r\n\ @author\ (Ihr\ Name)\ \r\n\ @version\ 1.1.1\r\n
 comment1.params=parsename\ parsedescription\ parserarity\ parsegender
 comment1.target=Item(java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String)
 comment1.text=\r\n\ Konstruktor\ f\u00FCr\ Objekte\ der\ Klasse\ Item\ mit\ Namen,\ Damage,\ Seltenheit\ und\ Typ.\r\n
 comment10.params=kasus\ art
 comment10.target=java.lang.String\ getArtikel(java.lang.String,\ java.lang.String)
-comment10.text=\r\n\ Gibt\ zu\ einem\ Item\ und\ einem\ Kasus\ einen\ bestimmten\ oder\ unbestimmten\ Artikel\ aus.\r\n
 comment2.params=
 comment2.target=void\ fillitemlist()
 comment2.text=\r\n\ Methode\ zur\ Generierung\ von\ allen\ Items\ im\ Spiel.\ Wird\ am\ Anfang\ von\ der\ Game\ Klasse\ aufgerufen.\r\n

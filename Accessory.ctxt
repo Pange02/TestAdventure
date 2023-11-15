@@ -1,12 +1,12 @@
 #BlueJ class context
 comment0.target=Accessory
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ Accessories\ here.\r\n\r\n\ @author\ (your\ name)\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\r\n\ Diese\ Klasse\ erstellt\ besondere\ sammelbare\ Objekte.\r\n\r\n\ @author\ (your\ name)\r\n\ @version\ 1.0.1\r\n
 comment1.params=parsename\ parsedescription\ parserarity\ accessoryGender\ parsestrength\ parsecritchance\ parsecritdamage
 comment1.target=Accessory(java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ int,\ int,\ int)
-comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ Accessories\r\n
+comment1.text=\r\n\ Konstruktor\ der\ Klasse\ f\u00FCr\ Accessories\r\n
 comment2.params=
 comment2.target=void\ createAccessories()
-comment2.text=\r\n\ An\ example\ of\ a\ method\ -\ replace\ this\ comment\ with\ your\ own\r\n\r\n\ @param\ \ y\ \ a\ sample\ parameter\ for\ a\ method\r\n\ @return\ \ \ \ the\ sum\ of\ x\ and\ y\r\n
+comment2.text=\r\n\ In\ dieser\ Methode\ werden\ Accessories\ erstellt\ und\ in\ ihrer\ ArrayList\ gespeichert.\r\n
 comment3.params=
 comment3.target=int\ getaccessorystrength()
 comment4.params=

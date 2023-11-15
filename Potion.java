@@ -1,19 +1,21 @@
 import java.util.ArrayList;
 /**
- * Write a description of class Potion here.
+ * Diese Klasse erstellt verschieden Tränke, welche verschieden Eigenschaften und Effekte haben.
  *
  * @author (your name)
- * @version (a version number or a date)
+ * @version 1.0.1
  */
 public class Potion extends Item
 {
-    // instance variables - replace the example below with your own
+    // die Variablen für die Werte der Tränke + ArrayList zum Speichern der Tränke
     private int effect;
     private String type;
     protected static ArrayList<Potion> potionlist = new ArrayList<>();
+    
     /**
-     * Constructor for objects of class Potion
+     * Konstruktor der Trankklasse
      */
+    
     public Potion(String parsename, String parsedescription, String parserarity, String potionGender, String parsetype, int parseeffect)
     {
         super(parsename, parsedescription, parserarity, potionGender);
@@ -22,31 +24,32 @@ public class Potion extends Item
     }
 
     /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
+     * In dieser Methode werden die Tränke erstellt und in der ArrayList gespeichert.
      */
     public static void createPotions()
     {
-        // Potions (p)
+        // Potions (Name, Beschreibung, Seltenheit, Grammatikalisches Geschlecht, Art des Trankes, Stärke des Effektes)
         Potion potion0 = new Potion("Gifttrank", "Eine Flasche  mit grüner leicht brodelnder Flüssigkeit. Die Hexe die diesen Trank braute hinterließ eine Notiz an der Flasche: 'nicht trinken'.", "(Gewöhnlich)", "maskulin", "Poison", 1);
         Potion potion1 = new Potion("Schadenstrank", "Ein mächtiger Trank, gebraut von den Hexen der Sumpfgebiete. Wenn er einen Gegner trifft verursacht er Schaden.", "(Ungewöhnlich)", "maskulin", "Damage", 2);
         Potion potion2 = new Potion("Heilungstrank", "Rot leuchtend stahlt dieser Trank wärme aus. Wenn Ihr die Flasche berührt wirbeln kleine orangene Partikel vom Boden der Flasche auf und verteilen sich dort wo die Finger die Flasche berühren.", "(Selten)", "maskulin", "Healing", 3);
+        
         //Potions zur Potionlist hinzufügen
         potionlist.add(potion0);
         potionlist.add(potion1);
         potionlist.add(potion2);
     }
     
+    //Rückgabe der Art des Trankes
     public String getpotiontype() {
         return type;
     }
     
+    //Rückgabe der Stärke des Effekt
     public int getpotioneffect() {
         return effect;
     }
     
+    //Ausgeben der Beschreibung und der Werte eines Trankes.
     @Override public void getiteminfo() {
         descriptionstring = " " + description;
         if(type == "Damage") {

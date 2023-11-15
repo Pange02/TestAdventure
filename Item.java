@@ -1,9 +1,9 @@
 import java.util.ArrayList;
 /**
- * Beschreiben Sie hier die Klasse Item.
+ * Diese Klasse macht es dem Spieler möglich auf Gegenstände zuzugreifen.
  * 
  * @author (Ihr Name) 
- * @version (eine Versionsnummer oder ein Datum)
+ * @version 1.1.1
  */
 public class Item
 {
@@ -16,7 +16,7 @@ public class Item
     protected int spaces;
     protected String gender;
         
-    //Liste mit allen möglichen Seltenheitsgraden. Dient nur als Übersicht aktuell.
+    //Liste mit allen möglichen Seltenheitsgraden.
     private static String[] itemtiers = {"(Gewöhnlich)", "(Ungewöhnlich)", "(Selten)", "(Episch)", "(Legendär)", "(Mythisch)"};
     
     private static ArrayList[] itemlist = new ArrayList[5];
@@ -44,6 +44,7 @@ public class Item
         itemlist[4] = Consumable.consumablelist;
     }
     
+    //Zugriff auf jedes Item im game übergeben wird die Art von Item und sein Platz in der entsprechenden Liste.
     public static Item getitemfromlist(String type, int arrayslot) 
     {
         if(type.toLowerCase().equals("weapon")) {
@@ -66,25 +67,30 @@ public class Item
         }
     }
     
+    //Rückgabe des Namen eines Items
     public String getitemname()
     {
         return name;
     }
     
+    //Rückgabe der Menge an Items in einer Kategorie
     public static int getitemlistsize()
     {
         return itemlist.length;
     }
     
+    //Rückgabe der Seltenheit eines Items
     public String getitemrarity()
     {
         return rarity;
     }
     
+    //Rückgabe der ArrayList eines Itemtypes
     public static ArrayList[] getitemlist() {
         return itemlist;
     }
     
+    //Rückgabe der Seltenheit eines Reforges
     public int getreforgerarity() {
         if(rarity.equals("(Gewöhnlich)")) {
             return 0;
@@ -109,6 +115,7 @@ public class Item
         }
     }
     
+    //Ausgabe der Informationen eines Items
     public void getiteminfo() {
         for(int i = 0; i <= (description.length() - name.length())/2; i++) {
             System.out.print("-");
@@ -133,9 +140,7 @@ public class Item
         System.out.println();
     }
     
-    /**
-     * Gibt zu einem Item und einem Kasus einen bestimmten oder unbestimmten Artikel aus.
-     */
+    //Gibt zu einem Item und einem Kasus einen bestimmten oder unbestimmten Artikel aus.
     public String getArtikel(String kasus, String art){
         if (art.toLowerCase().equals("bestimmt")){
             return Grammar.getArtikel(kasus, gender);
