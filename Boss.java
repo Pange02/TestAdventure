@@ -9,7 +9,7 @@ public class Boss extends Mob //die Klasse Boss wird aus der Klasse Mob vererbt
 {
     // instance variables - replace the example below with your own
     private String name;
-
+    
     /**
      * Constructor for objects of class Boss
      */
@@ -31,4 +31,19 @@ public class Boss extends Mob //die Klasse Boss wird aus der Klasse Mob vererbt
             System.out.println(name + " hat einen schwächenden Schlag ausgeführt, deine Stärke wurde um 20% reduziert. Deine Stärke beträgt nun: " + parseplayer.getPlayerStrength() + ".");
         }
     }
+    
+    public void doubleAttack(Player parseplayer){
+        System.out.println(getArtikel("nominativ", "bestimmt").substring(0, 1).toUpperCase() + getArtikel("nominativ", "bestimmt").substring(1) + " " + name + " führt zwei schnelle Schläge durch.");
+        finaldamage = Math.round((1 - (parseplayer.getplayerdefense()/(10 + parseplayer.getplayerdefense()))) * damage * 10.0) / 10.0;
+        parseplayer.setplayerhealth(Math.round((parseplayer.getplayerhealth() - finaldamage) * 10.0) / 10.0);
+        System.out.println(getArtikel("nominativ", "bestimmt").substring(0, 1).toUpperCase() + getArtikel("nominativ", "bestimmt").substring(1) + " " + name + " greift dich an und macht " + finaldamage + " Schaden.");
+        System.out.println("Du hast durch den Angriff jetzt " + parseplayer.getplayerhealth() + " Leben.");
+    }
+    
+    public void reduceDamage(){
+        System.out.println(getArtikel("nominativ", "bestimmt").substring(0, 1).toUpperCase() + getArtikel("nominativ", "bestimmt").substring(1) + " " + name + " legt eine Rüstung an er hat nun 91% Rüstung.");
+        setMobDefense(100);
+    }
 }
+
+

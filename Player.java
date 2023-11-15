@@ -164,11 +164,11 @@ public class Player
         damagemultiplier = (1 + (strength)/10);
         Random critidentifier = new Random();
         if(critidentifier.nextInt(101) <= critchance) {
-            playerdamage = Math.round(((weapondamage * damagemultiplier) * (1 + (critdamage/100))) * 10.0) / 10.0;
+            playerdamage = Math.round((weapondamage * damagemultiplier * (1 - (parsemob.getMobDefense()/(10 + parsemob.getMobDefense()))) * (1 + (critdamage/100))) * 10.0) / 10.0;
             System.out.println("Du landest einen kritischen Treffer!");
         }
         else {
-            playerdamage = Math.round(weapondamage * damagemultiplier * 10.0) / 10.0;
+            playerdamage = Math.round(weapondamage * damagemultiplier * (1 - (parsemob.getMobDefense()/(10 + parsemob.getMobDefense()))) * 10.0) / 10.0;
         }
         parsemob.setmobhealth(Math.round((parsemob.getmobhealth() - playerdamage) * 10.0) / 10.0);
         strength -= parseweapon.getstrength();
