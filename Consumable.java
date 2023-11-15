@@ -20,7 +20,7 @@ public class Consumable extends Item
     }
     
     public static void createConsumables() {
-        Consumable consumable1 = new Consumable("Apfel", "Ein leckerer Apfel", "(Gewöhnlich)", "maskulin", 2);
+        Consumable consumable1 = new Consumable("Apfel", "Was ist schlimmer als ein angebissener Apfel mit einem ganzen Wurm drin? ... Ein angebissener Apfel mit einem halben Wurm.", "(Gewöhnlich)", "maskulin", 2);
         consumablelist.add(consumable1);
     }
     

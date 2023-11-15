@@ -31,8 +31,8 @@ public class Accessory extends Item
     public static void createAccessories()
     {
         // Accessory (x)
-        Accessory accessory0 = new Accessory("Artefakt des Himmels", "Ein Artefakt, das von den Göttern erschaffen wurde", "(Episch)", "neutrum", 3, 2, 5);
-        Accessory accessory1 = new Accessory("Ring der Stärke", "Der Ring ist strahlend und vibriert leicht", "(Selten)", "maskulin", 5, 2, 3);
+        Accessory accessory0 = new Accessory("Artefakt des Himmels", "Ein von den Göttern geschaffenes Artefakt. Gefallen von einer Wolke unterstützt es nun Euch und verleiht euch Stärke.", "(Episch)", "neutrum", 3, 2, 5);
+        Accessory accessory1 = new Accessory("Ring der Stärke", "Der Ring sieht aus wie ein Drache, der sich um Euren Finger wickelt. Ein roter Stein ist in das Maul des Drachens eingelassen. Der Stein leuchtet rot und strahlt die Stärke die der Ring Euch verleiht aus. Es sieht so aus als würde der Ring Feuer speien.", "(Selten)", "maskulin", 5, 2, 3);
         //Accessories zur accessorylist hinzufügen
         accessorylist.add(accessory0);
         accessorylist.add(accessory1);

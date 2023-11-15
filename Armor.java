@@ -30,11 +30,11 @@ public class Armor extends Item
     public static void createArmor()
     {
         // Armor (a)
-        Armor armor0 = new Armor("Verrostete Brustplatte", "Eine verrostete Brustplatte", "(Ungewöhnlich)", "feminin", "Chestplate", 2);
-        Armor armor1 = new Armor("Kettenhemd", "Ein Kettenhemd", "(Gewöhnlich)", "neutrum", "Chestplate", 3);
-        Armor armor2 = new Armor("Lederkappe", "Eine Lederkappe", "(Gewöhnlich)", "feminin", "Helmet", 1);
-        Armor armor3 = new Armor("Alte Stiefel", "Normale alte Stiefel", "(Gewöhnlich)", "maskulin", "Boots", 1);
-        Armor armor4 = new Armor("Ritterhelm", "Ein Ritterhelm", "(Selten)", "maskulin", "Helmet", 3);
+        Armor armor0 = new Armor("Verrostete Brustplatte", "Eine einst mächtiges Rüstungsstück. Allerdings haben die Zeit und ihre vielen Einsätze ihre Zeichen hinterlassen. Der Vorbesitzer scheint nicht besonder sorgsam mit ihr umgegangen zu sein.", "(Ungewöhnlich)", "feminin", "Chestplate", 2);
+        Armor armor1 = new Armor("Kettenhemd", "Ein Kettenhemd, herrgestellt von Kobolden in ihren Höhlen ist sie zwar nicht sonderlich stark, dafür aber sehr leicht.", "(Gewöhnlich)", "neutrum", "Chestplate", 3);
+        Armor armor2 = new Armor("Lederkappe", "Eine Lederkappe. Sie bietet werder guten Schutz, noch sieht sie sonderlich gut aus. Vielleicht hätte man aus dem Leder besser einen Türstopper mach sollen.", "(Gewöhnlich)", "feminin", "Helmet", 1);
+        Armor armor3 = new Armor("Alte Stiefel", "Normale alte Stiefel. Etwas heruntergekommen und wirklich wasserdicht sind Sie auch nicht mehr. Aber besser als garkein Schutz... wenn sie nur nicht so stinken würden.", "(Gewöhnlich)", "maskulin", "Boots", 1);
+        Armor armor4 = new Armor("Ritterhelm", "Ein Ritterhelm. So gut wie neu. Der Schmied der diesen Helm hergestellt hat versteht sein Handwerk. Der Helm schützt deinen Kopf und glänzt auch noch... was will man mehr?", "(Selten)", "maskulin", "Helmet", 3);
         //Armor zur Armorliste hinzufügen
         armorlist.add(armor0);
         armorlist.add(armor1);
