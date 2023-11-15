@@ -9,6 +9,7 @@ import java.util.Map;
 public class Merchant extends NPC
 {
     private HashMap<Item, Integer> merchantshop = new HashMap<>();
+    private boolean itembought;
     /**
      * Konstruktor für Objekte der Klasse Merchant
      */
@@ -16,6 +17,7 @@ public class Merchant extends NPC
     {
         super(parsename);
         merchantshop = parsemerchantshop;
+        itembought = false;
     }
     
     @Override public void speak() {
@@ -52,11 +54,16 @@ public class Merchant extends NPC
                     parseplayer.additemtoinventory(entry.getKey());
                     System.out.println("Du kaufst " + entry.getKey().getArtikel("akkusativ", "bestimmt") + " " + entry.getKey().getitemname() + " für " + entry.getValue() + " Coins.");
                     System.out.println("Du hast jetzt " + parseplayer.getcoins() + " Coins.");
+                    itembought = true;
                 }
                 else {
                     System.out.println("Du hast für dieses Item nicht genug Coins!");
                 }
             }
+        }
+        if(!itembought) {
+            System.out.println("Dieses Item wird nicht angeboten.");
+            System.out.println("Ok, vielleicht später!");
         }
     }
 }

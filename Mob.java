@@ -12,11 +12,13 @@ public class Mob
     private String name;
     private double health;
     private int mobxp;
-    private int damage;
-    private double finaldamage;
+    protected int damage;
+    protected double finaldamage;
     private boolean alive;
     private String gender;
     private ArrayList<Item> mobloot = new ArrayList<>();
+    protected double defense;
+    
     /**
      * Konstruktor für Objekte der Klasse Mob
      */
@@ -29,6 +31,7 @@ public class Mob
         mobxp = parsemobxp;
         alive = true;
         gender = parsegender;
+        defense = 0.0;
     }
     
     public void droploot(Player parseplayer, Mob parsemob) {
@@ -100,5 +103,13 @@ public class Mob
         else {
             return "kein Artikel in Mob";
         }
+    }
+    
+    public void setMobDefense(double newDefense){
+        defense = newDefense;
+    }
+    
+    public double getMobDefense(){
+        return defense;
     }
 }
