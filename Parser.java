@@ -75,23 +75,26 @@ public class Parser
                     System.out.println();
                 }
                 if(poisonrounds > 1 && mobattack) {
-                    activemob.setmobhealth(activemob.getmobhealth() - poisoneffect);
+                    activemob.setmobhealth(activemob.getmobhealth() - (activemob.getmobhealth() * (poisoneffect/100)));
                     poisonrounds -= 1;
-                    System.out.println("Durch das Gift nimmt " + activemob.getArtikel("nominativ", "bestimmt") + " " + activemob.getmobname() + " " + poisoneffect + " Schaden. " + activemob.getArtikel("nominativ", "bestimmt").substring(0, 1).toUpperCase() 
+                    System.out.println("Durch das Gift nimmt " + activemob.getArtikel("nominativ", "bestimmt") + " " + activemob.getmobname() + " " + poisoneffect + "% Schaden. " + activemob.getArtikel("nominativ", "bestimmt").substring(0, 1).toUpperCase() 
                     + activemob.getArtikel("nominativ", "bestimmt").substring(1) + " " + activemob.getmobname() + " hat jetzt " + activemob.getmobhealth() + " Leben. Das Gift hält noch " + poisonrounds + " weitere Runden.");
                 }
                 else if(poisonrounds == 1 && mobattack) {
-                    activemob.setmobhealth(activemob.getmobhealth() - poisoneffect);
+                    activemob.setmobhealth(activemob.getmobhealth() - (activemob.getmobhealth() * (poisoneffect/100)));
                     poisonrounds -= 1;
-                    System.out.println("Durch das Gift nimmt " + activemob.getArtikel("nominativ", "bestimmt") + " " + activemob.getmobname() + " " + poisoneffect + " Schaden. " + activemob.getArtikel("nominativ", "bestimmt").substring(0, 1).toUpperCase() 
+                    System.out.println("Durch das Gift nimmt " + activemob.getArtikel("nominativ", "bestimmt") + " " + activemob.getmobname() + " " + poisoneffect + "% Schaden. " + activemob.getArtikel("nominativ", "bestimmt").substring(0, 1).toUpperCase() 
                     + activemob.getArtikel("nominativ", "bestimmt").substring(1) + " " + activemob.getmobname() + " hat jetzt " + activemob.getmobhealth() + " Leben. Der Gifteffekt hat nun seine Wirkung verloren.");
                 }
                 Scanner compatparser = new Scanner(System.in);
                 getcombataction(parser.nextLine(), activeplayer, activemob);
                 if(activemob.getmobhealth() > 0 && mobattack) {
                     activemob.attack(activeplayer);
+                    if(activeplayer.getplayerhealth() < 0) {
+                        activeplayer.setplayerhealth(0);
+                    }
                 }
-                if(parseplayer.getplayerhealth() <= 0) {
+                if(parseplayer.getplayerhealth() == 0) {
                     System.out.println("Du bist gestorben!");
                     System.out.println("Schreibe \"Neustart\" um das Level zu wiederholen.");
                     Scanner endparser = new Scanner(System.in);
@@ -410,7 +413,7 @@ public class Parser
     public void entercombat(Player parseplayer, Mob parsemob) {
         activemob = parsemob;
         weaponselected = false;
-        System.out.println("Als du den Raum betrittst, entdeckst du " + parsemob.getArtikel("akkusativ", "unbestimmt") + " " + parsemob.getmobname() + ". Es kommt zum Kampf.");
+        System.out.println("Als du den Raum betrittst, entdeckst du " + parsemob.getArtikel("akkusativ", "unbestimmt") + " [Level " + parsemob.getlevel() + "] " + parsemob.getmobname() + ". Es kommt zum Kampf.");
         System.out.println("Welche Waffe möchtest du für den Kampf benutzen?");
         parseplayer.getinventorycontent();
         System.out.println();

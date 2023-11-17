@@ -63,7 +63,7 @@ public class Game {
         room1Loot.add(Item.getitemfromlist("Potion", 0));
         Chest chest1 = new Chest(room1Loot);
         mob1Loot.add(Item.getitemfromlist("Potion", 2));
-        Mob mob1 = new Mob("Zombie", 10, ((Weapon) Item.getitemfromlist("Weapon", 1)), mob1Loot, 10, "maskulin");
+        Mob mob1 = new Mob("Zombie", 5, 10, ((Weapon) Item.getitemfromlist("Weapon", 1)), mob1Loot, 10, "maskulin");
         Room room1 = new Room(chest1, mob1, null);
         
         // Raum 2 mit einer Truhe
@@ -72,7 +72,10 @@ public class Game {
         Room room2 = new Room(chest2, null, null);
         
         // Raum 3 leer
-        Room room3 = new Room(null, null, null);
+        ArrayList<Item> henchman3loot = new ArrayList<>();
+        henchman3loot.add(Item.getitemfromlist("Weapon", 5));
+        Henchman henchman3 = new Henchman("Hans der Handlanger", 100, 100, ((Weapon) Item.getitemfromlist("Weapon", 1)), henchman3loot, 1000, "maskulin");
+        Room room3 = new Room(null, henchman3, null);
         
         // Raum 4 
         speakerdialogue.add("Einst gingen Legenden diese Pfade. " );

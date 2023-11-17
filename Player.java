@@ -22,6 +22,7 @@ public class Player
     private double strength;
     private double critchance;
     private double critdamage;
+    private boolean weakened;
     private ArrayList<Item> inventory;
     private Armor helmet;
     private Armor chestplate;
@@ -43,6 +44,7 @@ public class Player
         health = 10;
         critchance = 10;
         critdamage = 50;
+        weakened = false;
         helmet = null;
         chestplate = null;
         leggings = null;
@@ -328,11 +330,15 @@ public class Player
         return strength;
     }
     
-    public void reduceStrength(double amount){
-        strength =- amount;
+    public void setStrength(double amount){
+        strength = amount;
     }
     
-    public void increaseStrength(double amount){
-        strength =+ amount;
+    public void setWeakened(boolean parsestatus) {
+        weakened = parsestatus;
+    }
+    
+    public boolean getWeakened() {
+        return weakened;
     }
 }
