@@ -23,6 +23,11 @@ public class Player
     private double critchance;
     private double critdamage;
     private boolean weakened;
+    private int skillpoints;
+    private int strengthskillpoints;
+    private int defenseskillpoints;
+    private int intelligenceskillpoints;
+    private int luckskillpoints;
     private ArrayList<Item> inventory;
     private Armor helmet;
     private Armor chestplate;
@@ -153,6 +158,8 @@ public class Player
     
     public void getplayerstats() {
         System.out.println("Level: " + level + " Erfahrungspunkte: " + xp + " Fehlende Erfahrung zum nächsten Level: " + ((level+1)*(level+1) - xp));
+        System.out.println("Skill: " + strengthskillpoints + " Stärke " + defenseskillpoints + " Verteidigung");
+        System.out.println("Aktuell verfügbare Skillpunkte: " + skillpoints);
         System.out.println("Coins: " + coins);
         System.out.println(health + "/" + healthcap + " Leben  " + defense + " Verteidigung  ");
         System.out.println(strength + " Stärke  " + critchance + "% Crit Chance  " + critdamage + "% Crit Schaden");
@@ -318,7 +325,8 @@ public class Player
         for(int i = level; i <= 100; i++) {
             if(xp >= ((i+1) * (i+1))) {
                 level += 1;
-                System.out.println("Du hast ein neues Level erreicht! Du bist jetzt Level: " + level);
+                skillpoints += 1;
+                System.out.println("Du hast ein neues Level erreicht und einen Skillpunkt verdient! Du bist jetzt Level: " + level);
             }
             else {
                 break;
@@ -340,5 +348,28 @@ public class Player
     
     public boolean getWeakened() {
         return weakened;
+    }
+    
+    public void addskillpoints(String type, int amount) {
+        if(type.equals("strength")) {
+            strength -= strengthskillpoints;
+            strengthskillpoints += amount;
+            skillpoints -= amount;
+            strength += strengthskillpoints;
+            System.out.println("Du fügst " + amount + " Skillpunkte zu Stärke hinzu. Du hast jetzt " + strengthskillpoints + " Punkte in Stärke");
+        }
+        else if(type.equals("defense")) {
+            defense -= defenseskillpoints;
+            defenseskillpoints += amount;
+            skillpoints -= amount;
+            defense += defenseskillpoints;
+            System.out.println("Du fügst " + amount + " Skillpunkte zu Verteidigung hinzu. Du hast jetzt " + defenseskillpoints + " Punkte in Verteidigung");
+        }
+        else if(type.equals("intelligence")) {
+            
+        }
+        else if(type.equals("luck")) {
+            
+        }
     }
 }

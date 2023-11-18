@@ -327,6 +327,29 @@ public class Parser
                 System.out.println("Du musst einen Inventarslot angeben");
             }
         }
+        else if(input[0].equals("skill")) {
+            try {
+                if(input[1].toLowerCase().equals("stärke")) {
+                    try {
+                        parseplayer.addskillpoints("strength", Integer.parseInt(input[2]));
+                    }
+                    catch(Exception e) {
+                        System.out.println("Du musst als Zahl angeben, wie viele Punkte du in Stärke investieren möchtest.");
+                    }
+                }
+                else if(input[1].toLowerCase().equals("verteidigung")) {
+                    try {
+                        parseplayer.addskillpoints("defense", Integer.parseInt(input[2]));
+                    }
+                    catch(Exception e) {
+                        System.out.println("Du musst als Zahl angeben, wie viele Punkte du in Verteidigung investieren möchtest.");
+                    }
+                }
+            }
+            catch(Exception e) {
+                System.out.println("Du musst angeben, in welche Fähigkeit du deine Skillpunkte investieren möchtest. Möglich sind Stärke und Verteidigung");
+            }
+        }
         else if(input[0].equals("gehe")) {
             try {
                 if(input[1].equals("norden") && parseplayer.getcurrentroom().getConnectedRooms("north") != null) {
