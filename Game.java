@@ -19,6 +19,8 @@ public class Game {
     private ArrayList<Item> room7Loot = new ArrayList<>();
     private ArrayList<Item> room9Loot = new ArrayList<>();
     
+    private static ArrayList<Room> roomlist = new ArrayList<>();
+    
     private HashMap merchantloot1 = new HashMap<Item, Integer>();
     private ArrayList<String> speakerdialogue = new ArrayList<>();
     public Game() 
@@ -56,7 +58,7 @@ public class Game {
         merchantloot1.put(Item.getitemfromlist("Potion", 0), 50);
         Merchant merchant1 = new Merchant("TraderJoe", merchantloot1);
         Chest startChest = new Chest(startroomLoot);
-        Room startRoom = new Room(startChest, null, merchant1);
+        Room startRoom = new Room(0, startChest, null, merchant1);
         Lock lock1 = new Lock("Holzschloss", startRoom, "north", key1, "neutrum");
         
         // Raum 1 mit einer Truhe und einem Gegner
@@ -64,50 +66,50 @@ public class Game {
         Chest chest1 = new Chest(room1Loot);
         mob1Loot.add(Item.getitemfromlist("Potion", 2));
         Mob mob1 = new Mob("Zombie", 5, 10, ((Weapon) Item.getitemfromlist("Weapon", 1)), mob1Loot, 10, "maskulin");
-        Room room1 = new Room(chest1, mob1, null);
+        Room room1 = new Room(1, chest1, mob1, null);
         
         // Raum 2 mit einer Truhe
         room2Loot.add(Item.getitemfromlist("Potion", 1));
         Chest chest2 = new Chest(room2Loot);
-        Room room2 = new Room(chest2, null, null);
+        Room room2 = new Room(2, chest2, null, null);
         
         // Raum 3 leer
         ArrayList<Item> henchman3loot = new ArrayList<>();
         henchman3loot.add(Item.getitemfromlist("Weapon", 5));
         Henchman henchman3 = new Henchman("Hans der Handlanger", 100, 100, ((Weapon) Item.getitemfromlist("Weapon", 1)), henchman3loot, 1000, "maskulin");
-        Room room3 = new Room(null, henchman3, null);
+        Room room3 = new Room(3, null, henchman3, null);
         
         // Raum 4 
         speakerdialogue.add("Einst gingen Legenden diese Pfade. " );
         speakerdialogue.add("Es scheint du bist der Auserwählte!");
         Speaker speaker4 = new Speaker("Harry", speakerdialogue);
-        Room room4 = new Room(null, null, speaker4);
+        Room room4 = new Room(4, null, null, speaker4);
         
         // Raum 5 eine Truhe
         room5Loot.add(Item.getitemfromlist("Weapon", 2));
         room5Loot.add(Item.getitemfromlist("Consumable", 0));
         Chest chest5 = new Chest(room5Loot);
-        Room room5 = new Room(chest5, null, null);
+        Room room5 = new Room(5, chest5, null, null);
         
         // Raum 6 leer
         Blacksmith blacksmith1 = new Blacksmith("Elliot");
-        Room room6 = new Room(null, null, blacksmith1);
+        Room room6 = new Room(6, null, null, blacksmith1);
         
         // Raum 7 eine Truhe mit 2 Loot
         room7Loot.add(Item.getitemfromlist("Weapon", 3));
         room7Loot.add(Item.getitemfromlist("Accessory", 1));
         room7Loot.add(Item.getitemfromlist("Armor", 1));
         Chest chest7 = new Chest(room7Loot);
-        Room room7 = new Room(chest7, null, null);
+        Room room7 = new Room(7, chest7, null, null);
         
         // Raum 8 leer
-        Room room8 = new Room(null, null, null);
+        Room room8 = new Room(8, null, null, null);
         
         // Raum 9 eine Truhe mit 2 Loot
         room9Loot.add(Item.getitemfromlist("Accessory", 0));
         room9Loot.add(Item.getitemfromlist("Potion", 2));
         Chest chest9 = new Chest(room9Loot);
-        Room room9 = new Room(chest9, null, null);
+        Room room9 = new Room(9, chest9, null, null);
         
         //Hier werden alle Verbindungen zwischen den Räumen eingetraden mit (Norden, Osten, Süden, Westen).
         // <Raumname>.setchonnectedrooms(<Raum im Norden>, <Raum im Osten>, <Raum im Süden>, <Raum im Westen>);
@@ -133,6 +135,16 @@ public class Game {
         // Raum 9 verbunden mit Raum 8
         room9.setConnectedRooms(null, null, room8, null);
         
+        roomlist.add(startRoom);
+        roomlist.add(room1);
+        roomlist.add(room2);
+        roomlist.add(room3);
+        roomlist.add(room4);
+        roomlist.add(room5);
+        roomlist.add(room6);
+        roomlist.add(room7);
+        roomlist.add(room8);
+        roomlist.add(room9);
         
         // Die Einführung in das Spiel
         
@@ -155,5 +167,9 @@ public class Game {
         
         //Ein neuen Parser erstellen für das Spielerobjekt.
         Parser mainParser = new Parser(player1);
+    }
+    
+    public static ArrayList<Room> getroomlist() {
+        return roomlist;
     }
 }

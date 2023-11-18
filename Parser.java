@@ -401,6 +401,13 @@ public class Parser
                 System.out.println("Du musst eine Richtung angeben. Gültige Richtung sind: north, east, south, west.");
             }
         }
+        else if(input[0].equals("tp") && parseplayer.getplayername().equals("Leonard")) {
+            parseplayer.setcurrentroom(Game.getroomlist().get(Integer.parseInt(input[1])));
+            if(parseplayer.getcurrentroom().getMobInfo() == true && parseplayer.getcurrentroom().getRoomMob().getmobstatus() == true) {
+                entercombat(parseplayer, parseplayer.getcurrentroom().getRoomMob());
+                combat = true;
+            }
+        }
         else if(input[0].equals("exit")) {
             System.out.println("Du verlässt das Dungeon.");
             running = false;
@@ -474,6 +481,7 @@ public class Parser
                 }
                 else {
                     System.out.println("Du kannst nur Tränke und Essen im Kampf verwenden");
+                    mobattack = false;
                 }
             }
             catch(Exception e) {
@@ -499,6 +507,10 @@ public class Parser
         else if(input[0].equals("exit")) {
             System.out.println("Du verlässt den Kampf.");
             combat = false;
+        }
+        else {
+            System.out.println("Dies ist kein gültiger Befehl");
+            mobattack = false;
         }
     }
 }

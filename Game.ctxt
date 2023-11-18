@@ -3,4 +3,6 @@ comment0.target=Game
 comment0.text=\r\n\ Beschreibung\ der\ Klasse\ Game.\r\n\r\n\ @author\ (your\ name)\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
 comment1.params=
 comment1.target=Game()
-numComments=2
+comment2.params=
+comment2.target=java.util.ArrayList\ getroomlist()
+numComments=3
