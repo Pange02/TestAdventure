@@ -27,6 +27,7 @@ public class Boss extends Mob //die Klasse Boss wird aus der Klasse Mob vererbt
     public void weakeningHit(Player parseplayer) {
         if (parseplayer.getPlayerStrength() != 0){
             parseplayer.setStrength(parseplayer.getPlayerStrength() * 0.8);
+            parseplayer.setWeakened(true);
             System.out.println(name + " hat einen schwächenden Schlag ausgeführt, deine Stärke wurde um 20% reduziert. Deine Stärke beträgt nun: " + parseplayer.getPlayerStrength() + ".");
         }
     }

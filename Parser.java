@@ -26,6 +26,8 @@ public class Parser
     //Boolean gibt an, ob der Parser (das Spiel) aktiv ist.
     private boolean running;
     
+    private Game activegame;
+    
     private boolean combat;
     
     //Aktiver Spieler vom Parser
@@ -52,9 +54,10 @@ public class Parser
     /**
      * Konstruktor für Objekte der Klasse Parser mit Spieler
      */
-    public Parser(Player parseplayer)
+    public Parser(Game parsegame, Player parseplayer)
     {
         running = true;
+        activegame = parsegame;
         combat = false;
         firstfight = true;
         weaponselected = false;
@@ -425,7 +428,7 @@ public class Parser
             }
         }
         else if(input[0].equals("tp") && parseplayer.getplayername().equals("Leonard")) {
-            parseplayer.setcurrentroom(Game.getroomlist().get(Integer.parseInt(input[1])));
+            parseplayer.setcurrentroom(activegame.getroomlist().get(Integer.parseInt(input[1])));
             if(parseplayer.getcurrentroom().getMobInfo() == true && parseplayer.getcurrentroom().getRoomMob().getmobstatus() == true) {
                 entercombat(parseplayer, parseplayer.getcurrentroom().getRoomMob());
                 combat = true;
@@ -514,6 +517,10 @@ public class Parser
         else if(input[0].equals("attackiere")) {
             parseplayer.attack(parsemob, playerweapon);
             if(parsemob.getmobhealth() <= 0) {
+                if(parseplayer.getWeakened()) {
+                    parseplayer.setStrength(parseplayer.getPlayerStrength() * 1.25);
+                    parseplayer.setWeakened(false);
+                }
                 System.out.println("Du greifst " + parsemob.getArtikel("akkusativ", "bestimmt") + " " + parsemob.getmobname() + " mit " + playerweapon.getArtikel("dativ", "bestimmt") + " " + playerweapon.getitemname() + " an und machst " + parseplayer.getplayerdamage() + " Schaden.");
                 parsemob.setmobstatus(false);
                 System.out.println("Du hast den " + parsemob.getmobname() + " besiegt. ");

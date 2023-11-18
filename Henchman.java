@@ -81,7 +81,12 @@ public class Henchman extends Boss
                         shieldactive = true;
                         shieldrounds = 3;
                     }
-                    specialattacklist.get(zufall).invoke(this, parseplayer);
+                    if(zufall == 0 && parseplayer.getWeakened()) {
+                        System.out.println("Hans der Handlanger nutzt einen schwächenden Schlag. Da du bereits geschwächt bist, verliert die Spezialattacke ihre Wirkung");
+                    }
+                    else {
+                        specialattacklist.get(zufall).invoke(this, parseplayer);
+                    }
                     randombound = 13;
                     specialAttack = false;
                     nextSpecialAttack = 4;

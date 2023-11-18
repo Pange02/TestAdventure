@@ -19,7 +19,7 @@ public class Game {
     private ArrayList<Item> room7Loot = new ArrayList<>();
     private ArrayList<Item> room9Loot = new ArrayList<>();
     
-    private static ArrayList<Room> roomlist = new ArrayList<>();
+    private ArrayList<Room> roomlist = new ArrayList<>();
     
     private HashMap merchantloot1 = new HashMap<Item, Integer>();
     private ArrayList<String> speakerdialogue = new ArrayList<>();
@@ -76,7 +76,7 @@ public class Game {
         // Raum 3 leer
         ArrayList<Item> henchman3loot = new ArrayList<>();
         henchman3loot.add(Item.getitemfromlist("Weapon", 5));
-        Henchman henchman3 = new Henchman("Hans der Handlanger", 100, 100, ((Weapon) Item.getitemfromlist("Weapon", 1)), henchman3loot, 1000, "maskulin");
+        Henchman henchman3 = new Henchman("Hans der Handlanger", 100, 100, ((Weapon) Item.getitemfromlist("Weapon", 1)), henchman3loot, 100, "maskulin");
         Room room3 = new Room(3, null, henchman3, null);
         
         // Raum 4 
@@ -166,10 +166,10 @@ public class Game {
         System.out.println(" ");
         
         //Ein neuen Parser erstellen für das Spielerobjekt.
-        Parser mainParser = new Parser(player1);
+        Parser mainParser = new Parser(this, player1);
     }
     
-    public static ArrayList<Room> getroomlist() {
+    public ArrayList<Room> getroomlist() {
         return roomlist;
     }
 }
