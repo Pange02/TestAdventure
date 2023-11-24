@@ -1,5 +1,6 @@
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.lang.Math;
 /**
  * Beschreiben Sie hier die Klasse Parser.
  * 
@@ -78,13 +79,13 @@ public class Parser
                     System.out.println();
                 }
                 if(poisonrounds > 1 && mobattack) {
-                    activemob.setmobhealth(activemob.getmobhealth() - (activemob.getmobhealth() * (poisoneffect/100)));
+                    activemob.setmobhealth(Math.round(activemob.getmobhealth() - (activemob.getmobhealth() * (poisoneffect * 0.01)) * 10)/10);
                     poisonrounds -= 1;
                     System.out.println("Durch das Gift nimmt " + activemob.getArtikel("nominativ", "bestimmt") + " " + activemob.getmobname() + " " + poisoneffect + "% Schaden. " + activemob.getArtikel("nominativ", "bestimmt").substring(0, 1).toUpperCase() 
                     + activemob.getArtikel("nominativ", "bestimmt").substring(1) + " " + activemob.getmobname() + " hat jetzt " + activemob.getmobhealth() + " Leben. Das Gift hält noch " + poisonrounds + " weitere Runden.");
                 }
                 else if(poisonrounds == 1 && mobattack) {
-                    activemob.setmobhealth(activemob.getmobhealth() - (activemob.getmobhealth() * (poisoneffect/100)));
+                    activemob.setmobhealth(Math.floor(activemob.getmobhealth() - (activemob.getmobhealth() * (poisoneffect * 0.01))*10)/10);
                     poisonrounds -= 1;
                     System.out.println("Durch das Gift nimmt " + activemob.getArtikel("nominativ", "bestimmt") + " " + activemob.getmobname() + " " + poisoneffect + "% Schaden. " + activemob.getArtikel("nominativ", "bestimmt").substring(0, 1).toUpperCase() 
                     + activemob.getArtikel("nominativ", "bestimmt").substring(1) + " " + activemob.getmobname() + " hat jetzt " + activemob.getmobhealth() + " Leben. Der Gifteffekt hat nun seine Wirkung verloren.");
