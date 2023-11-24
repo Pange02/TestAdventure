@@ -28,9 +28,9 @@ public class Potion extends Item
      */
     public static void createPotions()
     {
-        // Potions (Name, Beschreibung, Seltenheit, Grammatikalisches Geschlecht, Art des Trankes, Stärke des Effektes)
-        Potion potion0 = new Potion("Gifttrank", "Eine Flasche  mit grüner leicht brodelnder Flüssigkeit. Die Hexe die diesen Trank braute hinterließ eine Notiz an der Flasche: 'nicht trinken'.", "(Gewöhnlich)", "maskulin", "Poison", 1);
-        Potion potion1 = new Potion("Schadenstrank", "Ein mächtiger Trank, gebraut von den Hexen der Sumpfgebiete. Wenn er einen Gegner trifft verursacht er Schaden.", "(Ungewöhnlich)", "maskulin", "Damage", 2);
+        // Potions (Name, Beschreibung, Seltenheit, Grammatikalisches Geschlecht, Art des Trankes, Stärke des Effektes (in % bei Gift))
+        Potion potion0 = new Potion("Gifttrank", "Eine Flasche  mit grüner leicht brodelnder Flüssigkeit. Die Hexe die diesen Trank braute hinterließ eine Notiz an der Flasche: 'nicht trinken'.", "(Gewöhnlich)", "maskulin", "Poison", 10);
+        Potion potion1 = new Potion("Schadenstrank", "Ein mächtiger Trank, gebraut von den Hexen der Sumpfgebiete. Wenn er einen Gegner trifft verursacht er Schaden.", "(Ungewöhnlich)", "maskulin", "Damage", 3);
         Potion potion2 = new Potion("Heilungstrank", "Rot leuchtend stahlt dieser Trank wärme aus. Wenn Ihr die Flasche berührt wirbeln kleine orangene Partikel vom Boden der Flasche auf und verteilen sich dort wo die Finger die Flasche berühren.", "(Selten)", "maskulin", "Healing", 3);
         
         //Potions zur Potionlist hinzufügen

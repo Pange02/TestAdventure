@@ -10,6 +10,7 @@ public class Mob
 {
     // Instanzvariablen - ersetzen Sie das folgende Beispiel mit Ihren Variablen
     private String name;
+    private int level;
     private double health;
     private int mobxp;
     protected int damage;
@@ -22,9 +23,10 @@ public class Mob
     /**
      * Konstruktor für Objekte der Klasse Mob
      */
-    public Mob(String parsename, int parsehealth, Weapon parseweapon, ArrayList parsemobloot, int parsemobxp, String parsegender)
+    public Mob(String parsename, int parselevel, int parsehealth, Weapon parseweapon, ArrayList parsemobloot, int parsemobxp, String parsegender)
     {
         name = parsename;
+        level = parselevel;
         health = parsehealth;
         damage = parseweapon.getweapondamage();
         mobloot = parsemobloot;
@@ -81,6 +83,10 @@ public class Mob
     
     public int getmobxp() {
         return mobxp;
+    }
+    
+    public int getlevel() {
+        return level;
     }
     
     public void attack(Player parseplayer) {

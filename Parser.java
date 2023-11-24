@@ -26,6 +26,8 @@ public class Parser
     //Boolean gibt an, ob der Parser (das Spiel) aktiv ist.
     private boolean running;
     
+    private Game activegame;
+    
     private boolean combat;
     
     //Aktiver Spieler vom Parser
@@ -52,9 +54,10 @@ public class Parser
     /**
      * Konstruktor für Objekte der Klasse Parser mit Spieler
      */
-    public Parser(Player parseplayer)
+    public Parser(Game parsegame, Player parseplayer)
     {
         running = true;
+        activegame = parsegame;
         combat = false;
         firstfight = true;
         weaponselected = false;
@@ -75,23 +78,26 @@ public class Parser
                     System.out.println();
                 }
                 if(poisonrounds > 1 && mobattack) {
-                    activemob.setmobhealth(activemob.getmobhealth() - poisoneffect);
+                    activemob.setmobhealth(activemob.getmobhealth() - (activemob.getmobhealth() * (poisoneffect/100)));
                     poisonrounds -= 1;
-                    System.out.println("Durch das Gift nimmt " + activemob.getArtikel("nominativ", "bestimmt") + " " + activemob.getmobname() + " " + poisoneffect + " Schaden. " + activemob.getArtikel("nominativ", "bestimmt").substring(0, 1).toUpperCase() 
+                    System.out.println("Durch das Gift nimmt " + activemob.getArtikel("nominativ", "bestimmt") + " " + activemob.getmobname() + " " + poisoneffect + "% Schaden. " + activemob.getArtikel("nominativ", "bestimmt").substring(0, 1).toUpperCase() 
                     + activemob.getArtikel("nominativ", "bestimmt").substring(1) + " " + activemob.getmobname() + " hat jetzt " + activemob.getmobhealth() + " Leben. Das Gift hält noch " + poisonrounds + " weitere Runden.");
                 }
                 else if(poisonrounds == 1 && mobattack) {
-                    activemob.setmobhealth(activemob.getmobhealth() - poisoneffect);
+                    activemob.setmobhealth(activemob.getmobhealth() - (activemob.getmobhealth() * (poisoneffect/100)));
                     poisonrounds -= 1;
-                    System.out.println("Durch das Gift nimmt " + activemob.getArtikel("nominativ", "bestimmt") + " " + activemob.getmobname() + " " + poisoneffect + " Schaden. " + activemob.getArtikel("nominativ", "bestimmt").substring(0, 1).toUpperCase() 
+                    System.out.println("Durch das Gift nimmt " + activemob.getArtikel("nominativ", "bestimmt") + " " + activemob.getmobname() + " " + poisoneffect + "% Schaden. " + activemob.getArtikel("nominativ", "bestimmt").substring(0, 1).toUpperCase() 
                     + activemob.getArtikel("nominativ", "bestimmt").substring(1) + " " + activemob.getmobname() + " hat jetzt " + activemob.getmobhealth() + " Leben. Der Gifteffekt hat nun seine Wirkung verloren.");
                 }
                 Scanner compatparser = new Scanner(System.in);
                 getcombataction(parser.nextLine(), activeplayer, activemob);
                 if(activemob.getmobhealth() > 0 && mobattack) {
                     activemob.attack(activeplayer);
+                    if(activeplayer.getplayerhealth() < 0) {
+                        activeplayer.setplayerhealth(0);
+                    }
                 }
-                if(parseplayer.getplayerhealth() <= 0) {
+                if(parseplayer.getplayerhealth() == 0) {
                     System.out.println("Du bist gestorben!");
                     System.out.println("Schreibe \"Neustart\" um das Level zu wiederholen.");
                     Scanner endparser = new Scanner(System.in);
@@ -324,6 +330,29 @@ public class Parser
                 System.out.println("Du musst einen Inventarslot angeben");
             }
         }
+        else if(input[0].equals("skill")) {
+            try {
+                if(input[1].toLowerCase().equals("stärke")) {
+                    try {
+                        parseplayer.addskillpoints("strength", Integer.parseInt(input[2]));
+                    }
+                    catch(Exception e) {
+                        System.out.println("Du musst als Zahl angeben, wie viele Punkte du in Stärke investieren möchtest.");
+                    }
+                }
+                else if(input[1].toLowerCase().equals("verteidigung")) {
+                    try {
+                        parseplayer.addskillpoints("defense", Integer.parseInt(input[2]));
+                    }
+                    catch(Exception e) {
+                        System.out.println("Du musst als Zahl angeben, wie viele Punkte du in Verteidigung investieren möchtest.");
+                    }
+                }
+            }
+            catch(Exception e) {
+                System.out.println("Du musst angeben, in welche Fähigkeit du deine Skillpunkte investieren möchtest. Möglich sind Stärke und Verteidigung");
+            }
+        }
         else if(input[0].equals("gehe")) {
             try {
                 if(input[1].equals("norden") && parseplayer.getcurrentroom().getConnectedRooms("north") != null) {
@@ -398,6 +427,13 @@ public class Parser
                 System.out.println("Du musst eine Richtung angeben. Gültige Richtung sind: north, east, south, west.");
             }
         }
+        else if(input[0].equals("tp") && parseplayer.getplayername().equals("Leonard")) {
+            parseplayer.setcurrentroom(activegame.getroomlist().get(Integer.parseInt(input[1])));
+            if(parseplayer.getcurrentroom().getMobInfo() == true && parseplayer.getcurrentroom().getRoomMob().getmobstatus() == true) {
+                entercombat(parseplayer, parseplayer.getcurrentroom().getRoomMob());
+                combat = true;
+            }
+        }
         else if(input[0].equals("exit")) {
             System.out.println("Du verlässt das Dungeon.");
             running = false;
@@ -410,7 +446,7 @@ public class Parser
     public void entercombat(Player parseplayer, Mob parsemob) {
         activemob = parsemob;
         weaponselected = false;
-        System.out.println("Als du den Raum betrittst, entdeckst du " + parsemob.getArtikel("akkusativ", "unbestimmt") + " " + parsemob.getmobname() + ". Es kommt zum Kampf.");
+        System.out.println("Als du den Raum betrittst, entdeckst du " + parsemob.getArtikel("akkusativ", "unbestimmt") + " [Level " + parsemob.getlevel() + "] " + parsemob.getmobname() + ". Es kommt zum Kampf.");
         System.out.println("Welche Waffe möchtest du für den Kampf benutzen?");
         parseplayer.getinventorycontent();
         System.out.println();
@@ -471,6 +507,7 @@ public class Parser
                 }
                 else {
                     System.out.println("Du kannst nur Tränke und Essen im Kampf verwenden");
+                    mobattack = false;
                 }
             }
             catch(Exception e) {
@@ -480,6 +517,10 @@ public class Parser
         else if(input[0].equals("attackiere")) {
             parseplayer.attack(parsemob, playerweapon);
             if(parsemob.getmobhealth() <= 0) {
+                if(parseplayer.getWeakened()) {
+                    parseplayer.setStrength(parseplayer.getPlayerStrength() * 1.25);
+                    parseplayer.setWeakened(false);
+                }
                 System.out.println("Du greifst " + parsemob.getArtikel("akkusativ", "bestimmt") + " " + parsemob.getmobname() + " mit " + playerweapon.getArtikel("dativ", "bestimmt") + " " + playerweapon.getitemname() + " an und machst " + parseplayer.getplayerdamage() + " Schaden.");
                 parsemob.setmobstatus(false);
                 System.out.println("Du hast den " + parsemob.getmobname() + " besiegt. ");
@@ -496,6 +537,10 @@ public class Parser
         else if(input[0].equals("exit")) {
             System.out.println("Du verlässt den Kampf.");
             combat = false;
+        }
+        else {
+            System.out.println("Dies ist kein gültiger Befehl");
+            mobattack = false;
         }
     }
 }
