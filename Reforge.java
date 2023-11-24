@@ -7,7 +7,7 @@ import java.util.ArrayList;
  */
 public class Reforge
 {
-    // instance variables - replace the example below with your own
+    // Instanzvariablen der Klasse Reforge (verschiedene Boosts die die Reforges geben) und ArrayLists zum Speichern der Reforges
     private String name;
     private int[] health;
     private int[] defense;
@@ -16,9 +16,8 @@ public class Reforge
     private int[] critdamage;
     private static ArrayList<Reforge> weaponreforgelist;
     private static ArrayList<Reforge> armorreforgelist;
-    /**
-     * Constructor for objects of class Reforge
-     */
+    
+    // Konstruktor der Klasse Reforge
     public Reforge(String parsename, int[] parsehealth, int[] parsedefense, int[] parsestrength, int[] parsecritchance, int[] parsecritdamage)
     {
         health = new int[6];
@@ -34,6 +33,7 @@ public class Reforge
         critdamage = parsecritdamage;
     }
     
+    // Methode zum erstellen und abspeichern der Reforges
     public static void makeReforges() {
         weaponreforgelist = new ArrayList<>();
         armorreforgelist = new ArrayList<>();
@@ -47,14 +47,17 @@ public class Reforge
         armorreforgelist.add(armorreforge0);
     }
     
+    // Ausgeben der Liste von Waffenreforges
     public static ArrayList<Reforge> getweaponreforgelist() {
         return weaponreforgelist;
     }
     
+    // Ausgeben der Liste von Rüstungsreforges
     public static ArrayList<Reforge> getarmorreforgelist() {
         return armorreforgelist;
     }
     
+    // Ausgeben einzelner Werte von Reforges z.B. Name, Stärke, Verteidigung ...
     public String getname() {
         return name;
     }

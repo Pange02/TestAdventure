@@ -25,6 +25,7 @@ public class Lock
         parseroom.setLock(this);
     }
     
+    
     public String getname() {
         return name;
     }

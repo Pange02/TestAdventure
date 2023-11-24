@@ -7,9 +7,10 @@ import java.util.Random;
  */
 public class Blacksmith extends NPC
 {
-    // instance variables - replace the example below with your own
+    // Instanzvariablen der Klasse Blacksmith
     private Random reforgegenerator;
     private Reforge randomreforge;
+    
     /**
      * Constructor for objects of class Blacksmith
      */
@@ -19,6 +20,7 @@ public class Blacksmith extends NPC
         reforgegenerator = new Random();
     }
     
+    // Methode zum Interagieren mit dem Spieler
     public void speak(Player parseplayer) {
         System.out.println("Guten Tag! Mein Name ist " + name + ".");
         try {
@@ -37,6 +39,7 @@ public class Blacksmith extends NPC
         parseplayer.getinventorycontent();
     }
     
+    // Methode um einen Reforge auf ein Item anzuwenden Übergabewert (Item)
     public void reforge(Item parseitem) {
         if(parseitem.getClass() == Weapon.class) {
             randomreforge = Reforge.getweaponreforgelist().get(reforgegenerator.nextInt(Reforge.getweaponreforgelist().size()));  
