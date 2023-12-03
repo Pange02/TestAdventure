@@ -29,6 +29,8 @@ public class Parser
     
     private Game activegame;
     
+    private Stage activestage;
+    
     private boolean combat;
     
     //Aktiver Spieler vom Parser
@@ -55,10 +57,11 @@ public class Parser
     /**
      * Konstruktor für Objekte der Klasse Parser mit Spieler
      */
-    public Parser(Game parsegame, Player parseplayer)
+    public Parser(Game parsegame, Stage parsestage, Player parseplayer)
     {
         running = true;
         activegame = parsegame;
+        activestage = parsestage;
         combat = false;
         firstfight = true;
         weaponselected = false;
@@ -429,7 +432,7 @@ public class Parser
             }
         }
         else if(input[0].equals("tp") && parseplayer.getplayername().equals("Leonard")) {
-            parseplayer.setcurrentroom(activegame.getroomlist().get(Integer.parseInt(input[1])));
+            parseplayer.setcurrentroom(activestage.getroomlist().get(Integer.parseInt(input[1])));
             if(parseplayer.getcurrentroom().getMobInfo() == true && parseplayer.getcurrentroom().getRoomMob().getmobstatus() == true) {
                 entercombat(parseplayer, parseplayer.getcurrentroom().getRoomMob());
                 combat = true;
