@@ -2,7 +2,7 @@ import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.HashMap;
 /**
- * Beschreibung der Klasse Game.
+ * Die Klasse Game erstellt die Räume und ordnet diese so an, dass eine Karte entsteht, durch welche sich der Spieler bewegen kann. Sie stellt Truhen in die Räume.
  *
  * @author (your name)
  * @version (a version number or a date)

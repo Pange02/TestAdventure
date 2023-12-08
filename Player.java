@@ -73,6 +73,7 @@ public class Player
         }
     }
     
+    // Methoden zum Verwenden / Entfernen von Items aus dem Inventar des Spielers
     public Item getitemfrominventory(int itemnumber) {
         return inventory.get(itemnumber);
     }
@@ -85,6 +86,7 @@ public class Player
         inventory.remove(itemnumber);
     }
     
+    // Methoden zum Ausgeben von Name und Leben des Spielers
     public String getplayername() {
         return name;
     }
@@ -93,10 +95,12 @@ public class Player
         return health;
     }
     
+    // Methode zum verändern des Leben des Spielers
     public void setplayerhealth(double parsehealth) {
         health = parsehealth;
     }
     
+    // Methoden zum Verwalten der Coins des Spielers
     public int getcoins() {
         return coins;
     }
@@ -109,6 +113,7 @@ public class Player
         coins -= parseamount;
     }
     
+    // Methoden zum Ausgeben oder verändern des Raumes in dem der Spieler sich befindet.
     public Room getcurrentroom() {
         return currentroom;
     }
@@ -117,9 +122,7 @@ public class Player
         currentroom = parseroom;
     }
     
-    /**
-     * Gibt den Inventarinhalt des Spielers auf der Konsole aus.
-     */
+    // Gibt den Inventarinhalt des Spielers auf der Konsole aus.
     public void getinventorycontent() {
         System.out.println("Dein Inventar:");
         for(int i = 0; i < inventory.size(); i++) {
@@ -156,6 +159,7 @@ public class Player
         }
     }
     
+    // Gibt die Werte des Spielers aus.
     public void getplayerstats() {
         System.out.println("Level: " + level + " Erfahrungspunkte: " + xp + " Fehlende Erfahrung zum nächsten Level: " + ((level+1)*(level+1) - xp));
         System.out.println("Skill: " + strengthskillpoints + " Stärke " + defenseskillpoints + " Verteidigung");
@@ -165,6 +169,7 @@ public class Player
         System.out.println(strength + " Stärke  " + critchance + "% Crit Chance  " + critdamage + "% Crit Schaden");
     }
     
+    // Methode zum Angreifen von Mobs übergeben werden das Mob und die verwendete Waffe.
     public void attack(Mob parsemob, Weapon parseweapon) {
         weapondamage = parseweapon.getweapondamage();
         strength += parseweapon.getstrength();
@@ -185,6 +190,7 @@ public class Player
         critdamage -= parseweapon.getcritdamage();
     }
     
+    // Methoden zum Ausgeben des Schadens den der Spieler verursacht, seiner Verteidigungswerte und der maximalen Leben des Spielers
     public double getplayerdamage() {
         return playerdamage;
     }
@@ -197,8 +203,10 @@ public class Player
         return healthcap;
     }
     
+    // Methode zum Anlegen von Rüstung 
     public void equiparmor(Armor parsearmor) {
-       if(parsearmor.getarmortype() == "Helmet") {
+       // Helme
+        if(parsearmor.getarmortype() == "Helmet") {
            if(helmet != null) {
                System.out.println("Du hast bereits einen Helm aufgesetzt. Du musst ihn erst ablegen.");
            }
@@ -209,6 +217,7 @@ public class Player
                removeitemfrominventory(inventory.indexOf(parsearmor));
            }
        }
+       // Brustplatten
        if(parsearmor.getarmortype() == "Chestplate") {
            if(chestplate != null) {
                System.out.println("Du hast bereits eine Brustplatte angelegt. Du musst sie erst ablegen.");
@@ -220,6 +229,7 @@ public class Player
                removeitemfrominventory(inventory.indexOf(parsearmor));
            }
        }
+       // Beinschützer
        if(parsearmor.getarmortype() == "Leggings") {
            if(leggings != null) {
                System.out.println("Du hast bereits einen Beinschutz angelegt. Du musst ihn erst ablegen.");
@@ -231,6 +241,7 @@ public class Player
                removeitemfrominventory(inventory.indexOf(parsearmor));
             }
        }
+       // Schuhe
        if(parsearmor.getarmortype() == "Boots") {
            if(boots != null) {
                System.out.println("Du hast bereits Schuhe angezogen. Du musst sie erst ablegen."); 
@@ -243,26 +254,30 @@ public class Player
            }
        }
     }
-    
+    // Methode zum Ablegen von Rüstung
     public void unequiparmor(String parsearmor) {
+        // Helme
         if(parsearmor.equals("helmet")) {
             defense -= helmet.getarmordefense();
             additemtoinventory(helmet);
             System.out.println("Du legst den " + helmet.getitemname() + " ab.");
             helmet = null;
         }
+        // Brustplatten
         if(parsearmor.equals("chestplate")) {
             defense -= chestplate.getarmordefense();
             additemtoinventory(chestplate);
             System.out.println("Du legst die " + chestplate.getitemname() + " ab.");
             chestplate = null;
         }
+        // Beinschützer
         if(parsearmor.equals("leggings")) {
             defense -= leggings.getarmordefense();
             additemtoinventory(leggings);
             System.out.println("Du legst die " + leggings.getitemname() + " ab.");
             leggings = null;
         }
+        // Schuhe
         if(parsearmor.equals("boots")) {
             defense -= boots.getarmordefense();
             additemtoinventory(boots);
@@ -271,6 +286,7 @@ public class Player
         }
     }
     
+    // Methode zum Konsumieren von Konsumgegenständen
     public void consume(int inventorynumber) {
         if(getplayerhealth() + ((Consumable) getitemfrominventory(inventorynumber)).getconsumableeffect() == getplayerhealthcap()) {
             setplayerhealth(getplayerhealth() + ((Consumable) getitemfrominventory(inventorynumber)).getconsumableeffect());
@@ -291,9 +307,10 @@ public class Player
         }
     }
     
+    // Methode zum Tringen von Tränken
     public void drink(int inventorynumber) {
         if(((Potion) getitemfrominventory(inventorynumber)).getpotiontype() == "Healing") {
-            if(getplayerhealth() == getplayerhealthcap()) {
+            if(getplayerhealth() == getplayerhealthcap()) { // Der Spieler kann sich nicht unendlich heilen
                 System.out.println("Du hast bereits " + getplayerhealth() + "/" + getplayerhealthcap() + " Leben."); 
             }
             else {
@@ -309,17 +326,20 @@ public class Player
                 } 
             }
         }
+        // Tränke die nicht getrunken werden können:
         else if(((Potion) getitemfrominventory(inventorynumber)).getpotiontype() == "Damage") {
                 System.out.println("Du kannst diesen Schadenstrank nur im Kampf verwenden");
         }
         else if(((Potion) getitemfrominventory(inventorynumber)).getpotiontype() == "Poison") {
                 System.out.println("Du kannst diesen Gifttrank nur im Kampf verwenden");
         }
+        // Falls der Spieler eine nicht vergebene Zahl aus seinem Inventar angibt.
         else {
                 System.out.println("Diese Zahl aus deinem Inventar ist nicht belegt! Wähle eine gültige Zahl.");
         }
     }
     
+    // Methode zum Hinzufügen von Erfahrungspunkten
     public void addexperience(int parsexp) {
         xp += parsexp;
         for(int i = level; i <= 100; i++) {
@@ -334,6 +354,7 @@ public class Player
         }
     }
     
+    // Methoden zum Ausgeben und Verändern der Stärke des Spielers
     public double getPlayerStrength(){
         return strength;
     }
@@ -342,6 +363,7 @@ public class Player
         strength = amount;
     }
     
+    // Methoden zum Setzten oder Feststellen eine Schwächeeffekt beim Spieler
     public void setWeakened(boolean parsestatus) {
         weakened = parsestatus;
     }
@@ -350,7 +372,9 @@ public class Player
         return weakened;
     }
     
+    // Methode zum verwenden von Fähigkeitspunkten
     public void addskillpoints(String type, int amount) {
+        // Stärke
         if(type.equals("strength")) {
             strength -= strengthskillpoints;
             strengthskillpoints += amount;
@@ -358,6 +382,7 @@ public class Player
             strength += strengthskillpoints;
             System.out.println("Du fügst " + amount + " Skillpunkte zu Stärke hinzu. Du hast jetzt " + strengthskillpoints + " Punkte in Stärke");
         }
+        // Verteidigung
         else if(type.equals("defense")) {
             defense -= defenseskillpoints;
             defenseskillpoints += amount;
@@ -365,9 +390,11 @@ public class Player
             defense += defenseskillpoints;
             System.out.println("Du fügst " + amount + " Skillpunkte zu Verteidigung hinzu. Du hast jetzt " + defenseskillpoints + " Punkte in Verteidigung");
         }
+        // Intelligenz (noch nicht fertig eventuell für spätere Versionen oder mit dem Vollversions DLC)
         else if(type.equals("intelligence")) {
             
         }
+        // Glück (noch nicht fertig eventuell für spätere Versionen oder mit dem    Vollversions DLC)
         else if(type.equals("luck")) {
             
         }

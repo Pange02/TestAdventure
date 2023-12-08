@@ -7,15 +7,13 @@
  */
 public class Key extends Item
 {
-    
-    /**
-     * Konstruktor für Objekte der Klasse Key
-     */
+    // Konstruktor der Key-Klasse
     public Key(String parsename, String parsedescription, String parserarity, String parsegender)
     {
         super(parsename, parsedescription, parserarity, parsegender);
     }
     
+    // Ausgeben des Namens des Schlüssels
     public String getname() {
         return name;
     }

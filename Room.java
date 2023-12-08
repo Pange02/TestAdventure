@@ -1,4 +1,10 @@
 import java.util.ArrayList;
+/**
+ * Die Klasse “Room” gestaltet die Räume so, dass der Spieler sich nach Truhen umschauen
+ * kann und Türen in den vier Himmelsrichtungen entdecken kann, außerdem verortet sie in
+ * die Räume zugewiesene Mobs.
+ */
+
 public class Room {
     //Boolean zur Überprüfung, ob sich eine Kiste im Raum befindet.
     private boolean hasChest;

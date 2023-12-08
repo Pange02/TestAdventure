@@ -1,27 +1,26 @@
-
 /**
- * Write a description of class NPC here.
+ * Die Klasse NPC kann andere Charaktere erstellen, mit denen der Spieler kommunizieren kann. 
  *
  * @author (your name)
  * @version (a version number or a date)
  */
 public class NPC
 {
-    // instance variables - replace the example below with your own
+    // Varibalben für NPC's
     protected String name;
     
-    /**
-     * Constructor for objects of class NPC
-     */
+    // Konstruktor der NPC-Klasse
     public NPC(String parsename)
     {
         name = parsename;
     }
     
+    // Methode zum Begrüßen des Spielers
     public void speak() {
         System.out.println("Hallo! Ich bin " + name);
     }
     
+    // Methode zum Ausgeben des Names des NPC's
     public String getNPCname() {
         return name;
     }

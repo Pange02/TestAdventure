@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=Game
-comment0.text=\r\n\ Beschreibung\ der\ Klasse\ Game.\r\n\r\n\ @author\ (your\ name)\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\r\n\ Die\ Klasse\ Game\ erstellt\ die\ R\u00E4ume\ und\ ordnet\ diese\ so\ an,\ dass\ eine\ Karte\ entsteht,\ durch\ welche\ sich\ der\ Spieler\ bewegen\ kann.\ Sie\ stellt\ Truhen\ in\ die\ R\u00E4ume.\r\n\r\n\ @author\ (your\ name)\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
 comment1.params=
 comment1.target=Game()
 numComments=2

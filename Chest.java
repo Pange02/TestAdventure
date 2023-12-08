@@ -1,7 +1,8 @@
 import java.util.ArrayList;
 import java.util.Random;
 /**
- * Beschreiben Sie hier die Klasse Chest.
+ * Diese Klasse erstellt Kisten, welche von dem Spieler in Räumen gefunden werden können und geöffnet werden können,
+ * die Befüllung der Kisten ist statisch und wird entsprechend der Positionierung passend befüllt.
  * 
  * @creator: Leonard
  * @editors: 

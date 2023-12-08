@@ -14,7 +14,6 @@ comment13.params=parseroom
 comment13.target=void\ setcurrentroom(Room)
 comment14.params=
 comment14.target=void\ getinventorycontent()
-comment14.text=\r\n\ Gibt\ den\ Inventarinhalt\ des\ Spielers\ auf\ der\ Konsole\ aus.\r\n
 comment15.params=
 comment15.target=void\ getplayerstats()
 comment16.params=parsemob\ parseweapon

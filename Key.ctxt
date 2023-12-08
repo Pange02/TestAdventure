@@ -3,7 +3,6 @@ comment0.target=Key
 comment0.text=\r\n\ Beschreiben\ Sie\ hier\ die\ Klasse\ Key.\r\n\ \r\n\ @author\ (Ihr\ Name)\ \r\n\ @version\ (eine\ Versionsnummer\ oder\ ein\ Datum)\r\n
 comment1.params=parsename\ parsedescription\ parserarity\ parsegender
 comment1.target=Key(java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String)
-comment1.text=\r\n\ Konstruktor\ f\u00FCr\ Objekte\ der\ Klasse\ Key\r\n
 comment2.params=
 comment2.target=java.lang.String\ getname()
 numComments=3

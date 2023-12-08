@@ -44,6 +44,7 @@ public class Armor extends Item
         armorlist.add(armor4);
     }
     
+    // Ausgeben des Verteidigungs Wertes und der Rüstungsart
     public int getarmordefense() {
         return defense;
     }

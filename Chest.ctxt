@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=Chest
-comment0.text=\r\n\ Beschreiben\ Sie\ hier\ die\ Klasse\ Chest.\r\n\ \r\n\ @creator\:\ Leonard\r\n\ @editors\:\ \r\n\ @version\ (eine\ Versionsnummer\ oder\ ein\ Datum)\r\n
+comment0.text=\r\n\ Diese\ Klasse\ erstellt\ Kisten,\ welche\ von\ dem\ Spieler\ in\ R\u00E4umen\ gefunden\ werden\ k\u00F6nnen\ und\ ge\u00F6ffnet\ werden\ k\u00F6nnen,\r\n\ die\ Bef\u00FCllung\ der\ Kisten\ ist\ statisch\ und\ wird\ entsprechend\ der\ Positionierung\ passend\ bef\u00FCllt.\r\n\ \r\n\ @creator\:\ Leonard\r\n\ @editors\:\ \r\n\ @version\ (eine\ Versionsnummer\ oder\ ein\ Datum)\r\n
 comment1.params=parseItemList
 comment1.target=Chest(java.util.ArrayList)
 comment2.params=
