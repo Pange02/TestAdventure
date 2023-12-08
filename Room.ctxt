@@ -1,7 +1,7 @@
 #BlueJ class context
 comment0.target=Room
-comment1.params=parseChest\ parseMob\ parseNPC
-comment1.target=Room(Chest,\ Mob,\ NPC)
+comment1.params=RoomNumber\ parseChest\ parseMob\ parseNPC
+comment1.target=Room(int,\ Chest,\ Mob,\ NPC)
 comment1.text=\r\n\ \ Konstruktor\ f\u00FCr\ die\ Klasse\ Raum\ mit\ dem\ Truhenobjekt\ als\ Argument.\r\n
 comment10.params=parseLock
 comment10.target=java.lang.String\ getLockDirection(Lock)

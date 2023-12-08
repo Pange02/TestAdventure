@@ -33,7 +33,7 @@ public class Room {
     /**
      *  Konstruktor für die Klasse Raum mit dem Truhenobjekt als Argument.
      */    
-    public Room(Chest parseChest, Mob parseMob, NPC parseNPC) {
+    public Room(int RoomNumber, Chest parseChest, Mob parseMob, NPC parseNPC) {
         if(parseChest != null) {
             hasChest = true;
             chest1 = parseChest;
