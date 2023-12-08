@@ -11,4 +11,6 @@ comment3.params=parseplayer
 comment3.target=void\ doubleAttack(Player)
 comment4.params=parseplayer
 comment4.target=void\ reduceDamage(Player)
-numComments=5
+comment5.params=parseplayer
+comment5.target=void\ poisiningHit(Player)
+numComments=6

@@ -47,6 +47,10 @@ public class Boss extends Mob //die Klasse Boss wird aus der Klasse Mob vererbt
         "Dabei kannst du allerdings nicht angegriffen werden.");
         setMobDefense(90);
     }
+    
+    public void poisiningHit(Player parseplayer){
+        
+    }
 }
 
 
