@@ -23,6 +23,8 @@ public class Player
     private double critchance;
     private double critdamage;
     private boolean weakened;
+    private boolean poisoned;
+    private int poisonrounds;
     private int skillpoints;
     private int strengthskillpoints;
     private int defenseskillpoints;
@@ -83,6 +85,22 @@ public class Player
     
     public void removeitemfrominventory(int itemnumber) {
         inventory.remove(itemnumber);
+    }
+    
+    public void setpoisoned(boolean parsepoisoned) {
+        poisoned = parsepoisoned;
+    }
+    
+    public boolean getpoisoned() {
+        return poisoned;
+    }
+    
+    public void setpoisonrounds(int parsepoisonrounds) {
+        poisonrounds = parsepoisonrounds;
+    }
+    
+    public int getpoisonrounds() {
+        return poisonrounds;
     }
     
     public String getplayername() {

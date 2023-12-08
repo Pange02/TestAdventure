@@ -46,9 +46,13 @@ public class Parser
     
     private boolean mobattack;
     
-    private int poisonrounds;
+    private int mobpoisonrounds;
     
-    private int poisoneffect;
+    private int mobpoisoneffect;
+    
+    private int playerpoisonrounds;
+    
+    private int playerpoisoneffect;
     
     private boolean firstfight;
     
@@ -81,16 +85,30 @@ public class Parser
                     }
                     System.out.println();
                 }
-                if(poisonrounds > 1 && mobattack) {
-                    activemob.setmobhealth(Math.round((activemob.getmobhealth() - (activemob.getmobhealth() * (poisoneffect * 0.01))) * 10)/10);
-                    poisonrounds -= 1;
-                    System.out.println("Durch das Gift nimmt " + activemob.getArtikel("nominativ", "bestimmt") + " " + activemob.getmobname() + " " + poisoneffect + "% Schaden. " + activemob.getArtikel("nominativ", "bestimmt").substring(0, 1).toUpperCase() 
-                    + activemob.getArtikel("nominativ", "bestimmt").substring(1) + " " + activemob.getmobname() + " hat jetzt " + activemob.getmobhealth() + " Leben. Das Gift hält noch " + poisonrounds + " weitere Runden.");
+                if(activeplayer.getpoisonrounds() > 1) {
+                    playerpoisoneffect = 5;
+                    playerpoisonrounds = activeplayer.getpoisonrounds();
+                    activeplayer.setplayerhealth(Math.round((activeplayer.getplayerhealth() - (activemob.getmobhealth() * (mobpoisoneffect * 0.01))) * 10)/10);
+                    playerpoisonrounds -= 1;
+                    System.out.println("Durch das Gift nimmst du " + playerpoisoneffect + "% Schaden. Du hast jetzt " + activeplayer.getplayerhealth() + " Leben.");
+                    System.out.println("Das Gift hält noch " + playerpoisonrounds + " weitere Runden. ");
                 }
-                else if(poisonrounds == 1 && mobattack) {
-                    activemob.setmobhealth(Math.floor((activemob.getmobhealth() - (activemob.getmobhealth() * (poisoneffect * 0.01))) * 10)/10);
-                    poisonrounds -= 1;
-                    System.out.println("Durch das Gift nimmt " + activemob.getArtikel("nominativ", "bestimmt") + " " + activemob.getmobname() + " " + poisoneffect + "% Schaden. " + activemob.getArtikel("nominativ", "bestimmt").substring(0, 1).toUpperCase() 
+                if(activeplayer.getpoisonrounds() == 1) {
+                    activeplayer.setplayerhealth(Math.round((activeplayer.getplayerhealth() - (activemob.getmobhealth() * (mobpoisoneffect * 0.01))) * 10)/10);
+                    playerpoisonrounds -= 1;
+                    System.out.println("Durch das Gift nimmst du " + playerpoisoneffect + "% Schaden. Du hast jetzt " + activeplayer.getplayerhealth() + " Leben.");
+                    System.out.println("Das Gift hat nun seine Wirkung verloren.");
+                }
+                if(mobpoisonrounds > 1 && mobattack) {
+                    activemob.setmobhealth(Math.round((activemob.getmobhealth() - (activemob.getmobhealth() * (mobpoisoneffect * 0.01))) * 10)/10);
+                    mobpoisonrounds -= 1;
+                    System.out.println("Durch das Gift nimmt " + activemob.getArtikel("nominativ", "bestimmt") + " " + activemob.getmobname() + " " + mobpoisoneffect + "% Schaden. " + activemob.getArtikel("nominativ", "bestimmt").substring(0, 1).toUpperCase() 
+                    + activemob.getArtikel("nominativ", "bestimmt").substring(1) + " " + activemob.getmobname() + " hat jetzt " + activemob.getmobhealth() + " Leben. Das Gift hält noch " + mobpoisonrounds + " weitere Runden.");
+                }
+                else if(mobpoisonrounds == 1 && mobattack) {
+                    activemob.setmobhealth(Math.floor((activemob.getmobhealth() - (activemob.getmobhealth() * (mobpoisoneffect * 0.01))) * 10)/10);
+                    mobpoisonrounds -= 1;
+                    System.out.println("Durch das Gift nimmt " + activemob.getArtikel("nominativ", "bestimmt") + " " + activemob.getmobname() + " " + mobpoisoneffect + "% Schaden. " + activemob.getArtikel("nominativ", "bestimmt").substring(0, 1).toUpperCase() 
                     + activemob.getArtikel("nominativ", "bestimmt").substring(1) + " " + activemob.getmobname() + " hat jetzt " + activemob.getmobhealth() + " Leben. Der Gifteffekt hat nun seine Wirkung verloren.");
                 }
                 Scanner compatparser = new Scanner(System.in);
@@ -497,8 +515,8 @@ public class Parser
                         System.out.println("Du wirfst den Schadenstrank auf " + parsemob.getArtikel("akkusativ", "bestimmt") + " " + parsemob.getmobname() + " und machst " + ((Potion) parseplayer.getitemfrominventory(inventorynumber)).getpotioneffect() + " Schaden!");
                     }
                     else if(((Potion) parseplayer.getitemfrominventory(inventorynumber)).getpotiontype() == "Poison") {
-                        poisonrounds = 3;
-                        poisoneffect = ((Potion) parseplayer.getitemfrominventory(inventorynumber)).getpotioneffect();
+                        mobpoisonrounds = 3;
+                        mobpoisoneffect = ((Potion) parseplayer.getitemfrominventory(inventorynumber)).getpotioneffect();
                         parseplayer.removeitemfrominventory(inventorynumber);
                         System.out.println("Du wirfst den Gifttrank auf " + parsemob.getArtikel("akkusativ", "bestimmt") + " " + parsemob.getmobname() + ". " + parsemob.getArtikel("nominativ", "bestimmt").substring(0, 1).toUpperCase() + parsemob.getArtikel("nominativ", "bestimmt").substring(1) + " " + parsemob.getmobname() + " ist nun vergiftet.");
                     }

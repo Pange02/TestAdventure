@@ -48,8 +48,10 @@ public class Boss extends Mob //die Klasse Boss wird aus der Klasse Mob vererbt
         setMobDefense(90);
     }
     
-    public void poisiningHit(Player parseplayer){
-        
+    public void poisoningHit(Player parseplayer){
+        parseplayer.setpoisoned(true);
+        parseplayer.setpoisonrounds(3);
+        System.out.println(getArtikel("nominativ", "bestimmt").substring(0, 1).toUpperCase() + getArtikel("nominativ", "bestimmt").substring(1) + " " + name + " trifft dich mit seiner Giftattacke. Du bist nun für drei Runden vergiftet.");
     }
 }
 
