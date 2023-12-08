@@ -1,5 +1,6 @@
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.lang.Math;
 /**
  * Beschreiben Sie hier die Klasse Parser.
  * 
@@ -28,6 +29,8 @@ public class Parser
     
     private Game activegame;
     
+    private Stage activestage;
+    
     private boolean combat;
     
     //Aktiver Spieler vom Parser
@@ -54,10 +57,11 @@ public class Parser
     /**
      * Konstruktor für Objekte der Klasse Parser mit Spieler
      */
-    public Parser(Game parsegame, Player parseplayer)
+    public Parser(Game parsegame, Stage parsestage, Player parseplayer)
     {
         running = true;
         activegame = parsegame;
+        activestage = parsestage;
         combat = false;
         firstfight = true;
         weaponselected = false;
@@ -78,13 +82,13 @@ public class Parser
                     System.out.println();
                 }
                 if(poisonrounds > 1 && mobattack) {
-                    activemob.setmobhealth(activemob.getmobhealth() - (activemob.getmobhealth() * (poisoneffect/100)));
+                    activemob.setmobhealth(Math.round((activemob.getmobhealth() - (activemob.getmobhealth() * (poisoneffect * 0.01))) * 10)/10);
                     poisonrounds -= 1;
                     System.out.println("Durch das Gift nimmt " + activemob.getArtikel("nominativ", "bestimmt") + " " + activemob.getmobname() + " " + poisoneffect + "% Schaden. " + activemob.getArtikel("nominativ", "bestimmt").substring(0, 1).toUpperCase() 
                     + activemob.getArtikel("nominativ", "bestimmt").substring(1) + " " + activemob.getmobname() + " hat jetzt " + activemob.getmobhealth() + " Leben. Das Gift hält noch " + poisonrounds + " weitere Runden.");
                 }
                 else if(poisonrounds == 1 && mobattack) {
-                    activemob.setmobhealth(activemob.getmobhealth() - (activemob.getmobhealth() * (poisoneffect/100)));
+                    activemob.setmobhealth(Math.floor((activemob.getmobhealth() - (activemob.getmobhealth() * (poisoneffect * 0.01))) * 10)/10);
                     poisonrounds -= 1;
                     System.out.println("Durch das Gift nimmt " + activemob.getArtikel("nominativ", "bestimmt") + " " + activemob.getmobname() + " " + poisoneffect + "% Schaden. " + activemob.getArtikel("nominativ", "bestimmt").substring(0, 1).toUpperCase() 
                     + activemob.getArtikel("nominativ", "bestimmt").substring(1) + " " + activemob.getmobname() + " hat jetzt " + activemob.getmobhealth() + " Leben. Der Gifteffekt hat nun seine Wirkung verloren.");
@@ -428,7 +432,7 @@ public class Parser
             }
         }
         else if(input[0].equals("tp") && parseplayer.getplayername().equals("Leonard")) {
-            parseplayer.setcurrentroom(activegame.getroomlist().get(Integer.parseInt(input[1])));
+            parseplayer.setcurrentroom(activestage.getroomlist().get(Integer.parseInt(input[1])));
             if(parseplayer.getcurrentroom().getMobInfo() == true && parseplayer.getcurrentroom().getRoomMob().getmobstatus() == true) {
                 entercombat(parseplayer, parseplayer.getcurrentroom().getRoomMob());
                 combat = true;

@@ -1,8 +1,8 @@
 #BlueJ class context
 comment0.target=Player
 comment0.text=\r\n\ Beschreiben\ Sie\ hier\ die\ Klasse\ Player.\r\n\ \r\n\ @author\ (Ihr\ Name)\ \r\n\ @version\ (eine\ Versionsnummer\ oder\ ein\ Datum)\r\n
-comment1.params=parsename\ parseroom
-comment1.target=Player(java.lang.String,\ Room)
+comment1.params=parsename\ parsestage
+comment1.target=Player(java.lang.String,\ Stage)
 comment1.text=\r\n\ Konstruktor\ f\u00FCr\ Objekte\ der\ Klasse\ Player\ mit\ Namen\ und\ Anfangsraum.\r\n
 comment10.params=parseamount
 comment10.target=void\ addcoins(int)

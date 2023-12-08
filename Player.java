@@ -39,7 +39,7 @@ public class Player
     /**
      * Konstruktor für Objekte der Klasse Player mit Namen und Anfangsraum.
      */
-    public Player(String parsename, Room parseroom)
+    public Player(String parsename, Stage parsestage)
     {
         name = parsename;
         level = 1;
@@ -56,7 +56,7 @@ public class Player
         boots = null;
         inventory = new ArrayList<>();
         accessories = new ArrayList<>();
-        currentroom = parseroom;
+        currentroom = parsestage.getstartroom();
     }
 
     /**

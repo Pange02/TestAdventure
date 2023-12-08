@@ -1,8 +1,8 @@
 #BlueJ class context
 comment0.target=Parser
 comment0.text=\r\n\ Beschreiben\ Sie\ hier\ die\ Klasse\ Parser.\r\n\ \r\n\ @author\ (Ihr\ Name)\ \r\n\ @version\ (eine\ Versionsnummer\ oder\ ein\ Datum)\r\n
-comment1.params=parsegame\ parseplayer
-comment1.target=Parser(Game,\ Player)
+comment1.params=parsegame\ parsestage\ parseplayer
+comment1.target=Parser(Game,\ Stage,\ Player)
 comment1.text=\r\n\ Konstruktor\ f\u00FCr\ Objekte\ der\ Klasse\ Parser\ mit\ Spieler\r\n
 comment2.params=parseaction\ parseplayer
 comment2.target=void\ getaction(java.lang.String,\ Player)
