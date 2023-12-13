@@ -13,10 +13,12 @@ public class Stage0 extends Stage
     private ArrayList<Item> room2Loot = new ArrayList<>();
     private ArrayList<Item> mob2Loot = new ArrayList<>();
     private ArrayList<Item> room3Loot = new ArrayList<>();
+    private ArrayList<Item> mob3Loot = new ArrayList<>();
     private ArrayList<Item> room4Loot = new ArrayList<>();
     private ArrayList<Item> room5Loot = new ArrayList<>();
     private ArrayList<Item> room7Loot = new ArrayList<>();
     private ArrayList<Item> room9Loot = new ArrayList<>();
+    private ArrayList<Item> bossLoot = new ArrayList<>();
     
     private HashMap merchantloot1 = new HashMap<Item, Integer>();
     private ArrayList<String> speakerdialogue = new ArrayList<>();
@@ -69,61 +71,39 @@ public class Stage0 extends Stage
         Room room3 = new Room(3, chest3, null, null);
         Lock lock4 = new Lock("Holzschloss", room3, "north", key1, "neutrum");
         
-        // Raum 4 ||in Arbeit||
-        speakerdialogue.add("Einst gingen Legenden diese Pfade. " );
-        speakerdialogue.add("Es scheint du bist der Auserwählte!");
-        Speaker speaker4 = new Speaker("Harry", speakerdialogue);
-        Room room4 = new Room(4, null, null, speaker4);
+        // Raum 4
+        mob3Loot.add(Item.getitemfromlist("Consumable", 0));
+        Mob mob3 = new Mob("Zombie", 5, 10, ((Weapon) Item.getitemfromlist("Weapon", 1)), mob1Loot, 10, "maskulin");
+        Room room4 = new Room(4, null, mob3, null);
         
-        // Raum 5 eine Truhe
+        // Raum 5 Boss
+        speakerdialogue.add("Boss Fight");
+        Speaker speakerBoss = new Speaker("Harry", speakerdialogue);
+        bossLoot.add(Item.getitemfromlist("Armor", 1));
+        bossLoot.add(Item.getitemfromlist("Potion", 2));
+        Henchman hans = new Henchman("Hans der Handlanger", 10, 50, ((Weapon) Item.getitemfromlist("Weapon", 3)),bossLoot , 20, "");
         room5Loot.add(Item.getitemfromlist("Weapon", 2));
         room5Loot.add(Item.getitemfromlist("Consumable", 0));
         Chest chest5 = new Chest(room5Loot);
-        Room room5 = new Room(5, chest5, null, null);
+        Room room5 = new Room(5, chest5, hans, speakerBoss);
         
-        // Raum 6 leer
-        Blacksmith blacksmith1 = new Blacksmith("Elliot");
-        Room room6 = new Room(6, null, null, blacksmith1);
-        
-        // Raum 7 eine Truhe mit 2 Loot
-        room7Loot.add(Item.getitemfromlist("Weapon", 3));
-        room7Loot.add(Item.getitemfromlist("Accessory", 1));
-        room7Loot.add(Item.getitemfromlist("Armor", 1));
-        Chest chest7 = new Chest(room7Loot);
-        Room room7 = new Room(7, chest7, null, null);
-        
-        // Raum 8 leer
-        Room room8 = new Room(8, null, null, null);
-        
-        // Raum 9 eine Truhe mit 2 Loot
-        room9Loot.add(Item.getitemfromlist("Accessory", 0));
-        room9Loot.add(Item.getitemfromlist("Potion", 2));
-        Chest chest9 = new Chest(room9Loot);
-        Room room9 = new Room(9, chest9, null, null);
         
         //Hier werden alle Verbindungen zwischen den Räumen eingetraden mit (Norden, Osten, Süden, Westen).
         // <Raumname>.setchonnectedrooms(<Raum im Norden>, <Raum im Osten>, <Raum im Süden>, <Raum im Westen>);
         
-        // Startraum verbunden mit Raum 1, 4 und 6
-        startRoom.setConnectedRooms(room1, room6, null, room4);
+        // Startraum verbunden mit Raum 1
+        startRoom.setConnectedRooms(room1, null, null, null);
         // Raum 1 verbunden mit Startraum und Raum 2
         room1.setConnectedRooms(room2, null, startRoom, null);
-        // Raum 2 verbunden mit Raum 1 und 3
-        room2.setConnectedRooms(room3, null, room1, null);
-        // Raum 3 verbunden mit Raum 2
-        room3.setConnectedRooms(null, null, room2, null);
-        // Raum 4 verbunden mit Startraum und Raum 5
-        room4.setConnectedRooms(room5, startRoom, null, null);
+        // Raum 2 verbunden mit Raum 3 und 1
+        room2.setConnectedRooms(null, null, room1, room3);
+        // Raum 3 verbunden mit Raum 4 und 2
+        room3.setConnectedRooms(room4, null, null, room2);
+        // Raum 4 verbunden mit Raum 5 und 3
+        room4.setConnectedRooms(room5, null, room3, null);
         // Raum 5 verbunden mit Raum 4
         room5.setConnectedRooms(null, null, room4, null);
-        // Raum 6 verbunden mit Startraum und Raum 7
-        room6.setConnectedRooms(null, room7, null, startRoom);
-        // Raum 7 verbunden mit Raum 6 und 8
-        room7.setConnectedRooms(room8, null, null, room6);
-        // Raum 8 verbunden mit Raum 7 und 9
-        room8.setConnectedRooms(room9, null, room7, null);
-        // Raum 9 verbunden mit Raum 8
-        room9.setConnectedRooms(null, null, room8, null);
+       
         
         roomlist.add(startRoom);
         roomlist.add(room1);
@@ -131,10 +111,6 @@ public class Stage0 extends Stage
         roomlist.add(room3);
         roomlist.add(room4);
         roomlist.add(room5);
-        roomlist.add(room6);
-        roomlist.add(room7);
-        roomlist.add(room8);
-        roomlist.add(room9);
         
         playerstartroom = startRoom;
     }
