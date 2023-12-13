@@ -6,14 +6,12 @@ import java.util.HashMap;
  * @author (Ihr Name) 
  * @version (eine Versionsnummer oder ein Datum)
  */
-public class Stage0 extends Stage
+public class TestStage extends Stage
 {
     private ArrayList<Item> startroomLoot = new ArrayList<>();
+    private ArrayList<Item> room1Loot = new ArrayList<>();
     private ArrayList<Item> mob1Loot = new ArrayList<>();
     private ArrayList<Item> room2Loot = new ArrayList<>();
-    private ArrayList<Item> mob2Loot = new ArrayList<>();
-    private ArrayList<Item> room3Loot = new ArrayList<>();
-    private ArrayList<Item> room4Loot = new ArrayList<>();
     private ArrayList<Item> room5Loot = new ArrayList<>();
     private ArrayList<Item> room7Loot = new ArrayList<>();
     private ArrayList<Item> room9Loot = new ArrayList<>();
@@ -24,7 +22,7 @@ public class Stage0 extends Stage
     /**
      * Konstruktor für Objekte der Klasse Stage0
      */
-    public Stage0()
+    public TestStage()
     {
         /* Hier werden alle Räume im Spiel nach folgendem Schema erstellt:
          * 
@@ -38,38 +36,35 @@ public class Stage0 extends Stage
          */
         
         // Spawnraum mit einem Holzschwert zum Anfang
+        Key key1 = new Key("Holzschlüssel", "Ein einfacher Holzschlüssel", "(Gewöhnlich)", "maskulin");
         startroomLoot.add(Item.getitemfromlist("Weapon", 1));
+        startroomLoot.add(key1);
         merchantloot1.put(Item.getitemfromlist("Potion", 2), 100);
         merchantloot1.put(Item.getitemfromlist("Potion", 0), 50);
+        Merchant merchant1 = new Merchant("TraderJoe", merchantloot1);
         Chest startChest = new Chest(startroomLoot);
-        speakerdialogue.add("Tutorial Basics");
-        Speaker startSpeaker = new Speaker("Harry", speakerdialogue);
-        Room startRoom = new Room(0, startChest, null, startSpeaker);
+        Room startRoom = new Room(0, startChest, null, merchant1);
+        Lock lock1 = new Lock("Holzschloss", startRoom, "north", key1, "neutrum");
         
-        
-        
-        // Raum 1 Tutorial Fight
-        speakerdialogue.add("Tutorial Fight");
-        Speaker speaker1 = new Speaker("Harry", speakerdialogue);
+        // Raum 1 mit einer Truhe und einem Gegner
+        room1Loot.add(Item.getitemfromlist("Potion", 0));
+        Chest chest1 = new Chest(room1Loot);
         mob1Loot.add(Item.getitemfromlist("Potion", 2));
-        Mob mob1 = new Mob("Troll", 5, 10, ((Weapon) Item.getitemfromlist("Weapon", 1)), mob1Loot, 10, "maskulin");
-        Room room1 = new Room(1, null, mob1, speaker1);
+        Mob mob1 = new Mob("Zombie", 5, 10, ((Weapon) Item.getitemfromlist("Weapon", 1)), mob1Loot, 10, "maskulin");
+        Room room1 = new Room(1, chest1, mob1, null);
         
-        // Raum 2 mit Mob
+        // Raum 2 mit einer Truhe
         room2Loot.add(Item.getitemfromlist("Potion", 1));
         Chest chest2 = new Chest(room2Loot);
-        mob2Loot.add(Item.getitemfromlist("Consumable", 0));
-        Mob mob2 = new Mob("Zombie", 5, 10, ((Weapon) Item.getitemfromlist("Weapon", 1)), mob1Loot, 10, "maskulin");
-        Room room2 = new Room(2, chest2, mob2, null);
+        Room room2 = new Room(2, chest2, null, null);
         
-        // Raum 3 mit Schlüssel
-        Key key1 = new Key("Holzschlüssel", "Ein einfacher Holzschlüssel", "(Gewöhnlich)", "maskulin");
-        room3Loot.add(key1);
-        Chest chest3 = new Chest(room3Loot);
-        Room room3 = new Room(3, chest3, null, null);
-        Lock lock4 = new Lock("Holzschloss", room3, "north", key1, "neutrum");
+        // Raum 3 leer
+        ArrayList<Item> hangman3loot = new ArrayList<>();
+        hangman3loot.add(Item.getitemfromlist("Weapon", 5));
+        Hangman hangman3 = new Hangman("Henker", 100, 100, ((Weapon) Item.getitemfromlist("Weapon", 1)), hangman3loot, 100, "maskulin");
+        Room room3 = new Room(3, null, hangman3, null);
         
-        // Raum 4 ||in Arbeit||
+        // Raum 4 
         speakerdialogue.add("Einst gingen Legenden diese Pfade. " );
         speakerdialogue.add("Es scheint du bist der Auserwählte!");
         Speaker speaker4 = new Speaker("Harry", speakerdialogue);

@@ -39,6 +39,7 @@ public class Game {
         
         Grammar grammar = new Grammar();
         
+        TestStage teststage = new TestStage();
         Stage0 stage0 = new Stage0();
         Stage1 stage1 = new Stage1();
         
@@ -63,6 +64,6 @@ public class Game {
         System.out.println(" ");
         
         //Ein neuen Parser erstellen für das Spielerobjekt.
-        Parser mainParser = new Parser(this, stage0, player1);
+        Parser mainParser = new Parser(this, teststage, player1);
     }
 }
