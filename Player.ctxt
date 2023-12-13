@@ -4,24 +4,6 @@ comment0.text=\r\n\ Beschreiben\ Sie\ hier\ die\ Klasse\ Player.\r\n\ \r\n\ @aut
 comment1.params=parsename\ parsestage
 comment1.target=Player(java.lang.String,\ Stage)
 comment1.text=\r\n\ Konstruktor\ f\u00FCr\ Objekte\ der\ Klasse\ Player\ mit\ Namen\ und\ Anfangsraum.\r\n
-<<<<<<< HEAD
-comment10.params=parseamount
-comment10.target=void\ addcoins(int)
-comment11.params=parseamount
-comment11.target=void\ removecoins(int)
-comment12.params=
-comment12.target=Room\ getcurrentroom()
-comment13.params=parseroom
-comment13.target=void\ setcurrentroom(Room)
-comment14.params=
-comment14.target=void\ getinventorycontent()
-comment15.params=
-comment15.target=void\ getplayerstats()
-comment16.params=parsemob\ parseweapon
-comment16.target=void\ attack(Mob,\ Weapon)
-comment17.params=
-comment17.target=double\ getplayerdamage()
-=======
 comment10.params=
 comment10.target=java.lang.String\ getplayername()
 comment11.params=
@@ -38,10 +20,8 @@ comment16.params=
 comment16.target=Room\ getcurrentroom()
 comment17.params=parseroom
 comment17.target=void\ setcurrentroom(Room)
->>>>>>> 0b25d3b1fbb9a6706e725adef36ca878dab881ac
 comment18.params=
 comment18.target=void\ getinventorycontent()
-comment18.text=\r\n\ Gibt\ den\ Inventarinhalt\ des\ Spielers\ auf\ der\ Konsole\ aus.\r\n
 comment19.params=
 comment19.target=void\ getplayerstats()
 comment2.params=parseitem
