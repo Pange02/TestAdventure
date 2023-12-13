@@ -85,16 +85,18 @@ public class Parser
                     }
                     System.out.println();
                 }
-                if(activeplayer.getpoisonrounds() > 1) {
+                if(playerpoisonrounds > 1) {
+                    if(playerpoisoneffect == 0) {
+                        playerpoisonrounds = activeplayer.getpoisonrounds();
+                    }
                     playerpoisoneffect = 5;
-                    playerpoisonrounds = activeplayer.getpoisonrounds();
-                    activeplayer.setplayerhealth(Math.round((activeplayer.getplayerhealth() - (activemob.getmobhealth() * (mobpoisoneffect * 0.01))) * 10)/10);
+                    activeplayer.setplayerhealth(Math.round((activeplayer.getplayerhealth() - (activeplayer.getplayerhealth() * (playerpoisoneffect * 0.01))) * 10) * 0.1);
                     playerpoisonrounds -= 1;
                     System.out.println("Durch das Gift nimmst du " + playerpoisoneffect + "% Schaden. Du hast jetzt " + activeplayer.getplayerhealth() + " Leben.");
                     System.out.println("Das Gift hält noch " + playerpoisonrounds + " weitere Runden. ");
                 }
                 if(activeplayer.getpoisonrounds() == 1) {
-                    activeplayer.setplayerhealth(Math.round((activeplayer.getplayerhealth() - (activemob.getmobhealth() * (mobpoisoneffect * 0.01))) * 10)/10);
+                    activeplayer.setplayerhealth(Math.round((activeplayer.getplayerhealth() - (activeplayer.getplayerhealth() * (playerpoisoneffect * 0.01))) * 10) * 0.1);
                     playerpoisonrounds -= 1;
                     System.out.println("Durch das Gift nimmst du " + playerpoisoneffect + "% Schaden. Du hast jetzt " + activeplayer.getplayerhealth() + " Leben.");
                     System.out.println("Das Gift hat nun seine Wirkung verloren.");

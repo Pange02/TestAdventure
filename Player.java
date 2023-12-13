@@ -87,7 +87,8 @@ public class Player
     public void removeitemfrominventory(int itemnumber) {
         inventory.remove(itemnumber);
     }
-    
+    // Methoden zum Ausgeben von Name und Leben des Spielers
+
     // Methoden zum Ausgeben von Name und Leben des Spielers
     public void setpoisoned(boolean parsepoisoned) {
         poisoned = parsepoisoned;
@@ -394,19 +395,29 @@ public class Player
     public void addskillpoints(String type, int amount) {
         // Stärke
         if(type.equals("strength")) {
-            strength -= strengthskillpoints;
-            strengthskillpoints += amount;
-            skillpoints -= amount;
-            strength += strengthskillpoints;
-            System.out.println("Du fügst " + amount + " Skillpunkte zu Stärke hinzu. Du hast jetzt " + strengthskillpoints + " Punkte in Stärke");
+            if(amount > skillpoints) {
+                System.out.println("Du hast nicht genügend Skillpunkte dafür.");
+            }
+            else {
+                strength -= strengthskillpoints;
+                strengthskillpoints += amount;
+                skillpoints -= amount;
+                strength += strengthskillpoints;
+                System.out.println("Du fügst " + amount + " Skillpunkte zu Stärke hinzu. Du hast jetzt " + strengthskillpoints + " Punkte in Stärke"); 
+            }
         }
         // Verteidigung
         else if(type.equals("defense")) {
-            defense -= defenseskillpoints;
-            defenseskillpoints += amount;
-            skillpoints -= amount;
-            defense += defenseskillpoints;
-            System.out.println("Du fügst " + amount + " Skillpunkte zu Verteidigung hinzu. Du hast jetzt " + defenseskillpoints + " Punkte in Verteidigung");
+            if(amount > skillpoints) {
+                System.out.println("Du hast nicht genügend Skillpunkte dafür.");
+            }
+            else {
+                defense -= defenseskillpoints;
+                defenseskillpoints += amount;
+                skillpoints -= amount;
+                defense += defenseskillpoints;
+                System.out.println("Du fügst " + amount + " Skillpunkte zu Verteidigung hinzu. Du hast jetzt " + defenseskillpoints + " Punkte in Verteidigung");
+            }
         }
         // Intelligenz (noch nicht fertig eventuell für spätere Versionen oder mit dem Vollversions DLC)
         else if(type.equals("intelligence")) {
