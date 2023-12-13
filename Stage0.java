@@ -40,13 +40,14 @@ public class Stage0 extends Stage
          */
         
         // Spawnraum mit einem Holzschwert zum Anfang
+        Key key2 = new Key("Holzschlüssel", "Ein einfacher Holzschlüssel", "(Gewöhnlich)", "maskulin");
+        startroomLoot.add(key2);
         startroomLoot.add(Item.getitemfromlist("Weapon", 1));
-        merchantloot1.put(Item.getitemfromlist("Potion", 2), 100);
-        merchantloot1.put(Item.getitemfromlist("Potion", 0), 50);
         Chest startChest = new Chest(startroomLoot);
         speakerdialogue.add("Tutorial Basics");
         Speaker startSpeaker = new Speaker("Harry", speakerdialogue);
         Room startRoom = new Room(0, startChest, null, startSpeaker);
+        Lock lock0 = new Lock("Holzschloss", startRoom, "north", key2, "neutrum");
         
         
         
@@ -54,14 +55,15 @@ public class Stage0 extends Stage
         speakerdialogue.add("Tutorial Fight");
         Speaker speaker1 = new Speaker("Harry", speakerdialogue);
         mob1Loot.add(Item.getitemfromlist("Potion", 2));
-        Mob mob1 = new Mob("Troll", 5, 10, ((Weapon) Item.getitemfromlist("Weapon", 1)), mob1Loot, 10, "maskulin");
+        Mob mob1 = new Mob("Troll", 1, 3, ((Weapon) Item.getitemfromlist("Weapon", 1)), mob1Loot, 10, "maskulin");
         Room room1 = new Room(1, null, mob1, speaker1);
+        
         
         // Raum 2 mit Mob
         room2Loot.add(Item.getitemfromlist("Potion", 1));
         Chest chest2 = new Chest(room2Loot);
         mob2Loot.add(Item.getitemfromlist("Consumable", 0));
-        Mob mob2 = new Mob("Zombie", 5, 10, ((Weapon) Item.getitemfromlist("Weapon", 1)), mob1Loot, 10, "maskulin");
+        Mob mob2 = new Mob("Zombie", 1, 3, ((Weapon) Item.getitemfromlist("Weapon", 1)), mob1Loot, 10, "maskulin");
         Room room2 = new Room(2, chest2, mob2, null);
         
         // Raum 3 mit Schlüssel
@@ -73,7 +75,7 @@ public class Stage0 extends Stage
         
         // Raum 4
         mob3Loot.add(Item.getitemfromlist("Consumable", 0));
-        Mob mob3 = new Mob("Zombie", 5, 10, ((Weapon) Item.getitemfromlist("Weapon", 1)), mob1Loot, 10, "maskulin");
+        Mob mob3 = new Mob("Zombie", 1, 3, ((Weapon) Item.getitemfromlist("Weapon", 1)), mob1Loot, 10, "maskulin");
         Room room4 = new Room(4, null, mob3, null);
         
         // Raum 5 Boss
@@ -81,7 +83,7 @@ public class Stage0 extends Stage
         Speaker speakerBoss = new Speaker("Harry", speakerdialogue);
         bossLoot.add(Item.getitemfromlist("Armor", 1));
         bossLoot.add(Item.getitemfromlist("Potion", 2));
-        Henchman hans = new Henchman("Hans der Handlanger", 10, 50, ((Weapon) Item.getitemfromlist("Weapon", 3)),bossLoot , 20, "");
+        Henchman hans = new Henchman("Hans der Handlanger", 10, 5, ((Weapon) Item.getitemfromlist("Weapon", 3)),bossLoot , 20, "maskulin");
         room5Loot.add(Item.getitemfromlist("Weapon", 2));
         room5Loot.add(Item.getitemfromlist("Consumable", 0));
         Chest chest5 = new Chest(room5Loot);
