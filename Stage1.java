@@ -46,7 +46,9 @@ public class Stage1 extends Stage
         Room room1 = new Room(1, chest1, null, null);
         
         // Raum 2 mit einer Truhe
+        Key key5 = new Key("Holzschlüssel", "Ein einfacher Holzschlüssel", "(Gewöhnlich)", "maskulin");
         mob2Loot.add(Item.getitemfromlist("Potion", 1));
+        mob2Loot.add(key5);
         Mob mob2 = new Mob("Riesenspinne", 10, 15, ((Weapon) Item.getitemfromlist("Weapon", 3)), mob2Loot, 50, "feminin");
         Room room2 = new Room(2, null, mob2, null);
         
@@ -64,7 +66,6 @@ public class Stage1 extends Stage
         Room room4 = new Room(4, chest4, null, null);
         
         // Raum 5 eine Truhe
-        Key key5 = new Key("Holzschlüssel", "Ein einfacher Holzschlüssel", "(Gewöhnlich)", "maskulin");
         merchantloot1.put(Item.getitemfromlist("Potion", 2), 100);
         merchantloot1.put(Item.getitemfromlist("Potion", 0), 50);
         Merchant merchant1 = new Merchant("TraderJoe", merchantloot1);
@@ -90,21 +91,21 @@ public class Stage1 extends Stage
         // <Raumname>.setchonnectedrooms(<Raum im Norden>, <Raum im Osten>, <Raum im Süden>, <Raum im Westen>);
         
         // Startraum verbunden mit Raum 1, 4 und 6
-        startRoom.setConnectedRooms(room1, room6, null, room4);
+        startRoom.setConnectedRooms(room1, null, null, null);
         // Raum 1 verbunden mit Startraum und Raum 2
-        room1.setConnectedRooms(room2, null, startRoom, null);
+        room1.setConnectedRooms(room3, room2, startRoom, null);
         // Raum 2 verbunden mit Raum 1 und 3
-        room2.setConnectedRooms(room3, null, room1, null);
+        room2.setConnectedRooms(null, null, null, room1);
         // Raum 3 verbunden mit Raum 2
-        room3.setConnectedRooms(null, null, room2, null);
+        room3.setConnectedRooms(room4, null, room2, null);
         // Raum 4 verbunden mit Startraum und Raum 5
-        room4.setConnectedRooms(room5, startRoom, null, null);
+        room4.setConnectedRooms(null, null, room3, room5);
         // Raum 5 verbunden mit Raum 4
-        room5.setConnectedRooms(null, null, room4, null);
+        room5.setConnectedRooms(room6, null, room4, room7);
         // Raum 6 verbunden mit Startraum und Raum 7
-        room6.setConnectedRooms(null, room7, null, startRoom);
+        room6.setConnectedRooms(null, null, null, room5);
         // Raum 7 verbunden mit Raum 6 und 8
-        room7.setConnectedRooms(null, null, null, room6);
+        room7.setConnectedRooms(null, room6, null, null);
 
         
         roomlist.add(startRoom);

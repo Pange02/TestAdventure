@@ -12,7 +12,7 @@ public class Parser
     // Instanzvariablen - ersetzen Sie das folgende Beispiel mit Ihren Variablen
     
     //Aktionsliste für alle möglichen Aktionen. Verwendet von help Befehl.
-    private String[] actionlist = {"hilfe", "öffne (truhe)", "stats", "inv", "rede <Name>", "info <Inventarslot>", "benutze <Inventarslot>", "ablegen <Inventarslot>", "umgucken", "gehe <Himmelsrichtung>"};
+    private String[] actionlist = {"hilfe", "öffne (truhe)", "stats", "inv", "rede <Name>", "info <Inventarslot>", "benutze <Inventarslot>", "ablegen <Inventarslot>", "umgucken", "skill <Fähigkeit> <Punkte>", "gehe <Himmelsrichtung>"};
     
     private String[] combatactionlist = {"attackiere", "benutze <Inventarslot>"};
     
@@ -58,14 +58,24 @@ public class Parser
     
     private boolean weaponselected;
     
+    private Stage[] stagelist;
+    
+    private int currentstage;
+    
+    private boolean stagecompleted;
+    
     /**
      * Konstruktor für Objekte der Klasse Parser mit Spieler
      */
-    public Parser(Game parsegame, Stage parsestage, Player parseplayer)
+    public Parser(Game parsegame, Stage parsestage, Player parseplayer, Stage[] parsestages)
     {
         running = true;
         activegame = parsegame;
         activestage = parsestage;
+        stagelist = new Stage[3];
+        stagelist = parsestages;
+        currentstage = 0;
+        stagecompleted = false;
         combat = false;
         firstfight = true;
         weaponselected = false;
@@ -377,6 +387,13 @@ public class Parser
                 System.out.println("Du musst angeben, in welche Fähigkeit du deine Skillpunkte investieren möchtest. Möglich sind Stärke und Verteidigung");
             }
         }
+        else if(input[0].equals("weiter") && stagecompleted) {
+            currentstage += 1;
+            parseplayer.setstage(stagelist[currentstage]);
+            parseplayer.setcurrentroom(stagelist[currentstage].getstartroom());
+            stagecompleted = false;
+            System.out.println("Du bist nun im neuen Level angekommen.");
+        }
         else if(input[0].equals("gehe")) {
             try {
                 if(input[1].equals("norden") && parseplayer.getcurrentroom().getConnectedRooms("north") != null) {
@@ -452,7 +469,9 @@ public class Parser
             }
         }
         else if(input[0].equals("tp") && parseplayer.getplayername().equals("Leonard")) {
-            parseplayer.setcurrentroom(activestage.getroomlist().get(Integer.parseInt(input[1])));
+            activestage = stagelist[Integer.parseInt(input[1])];
+            parseplayer.setstage(activestage);
+            parseplayer.setcurrentroom(activestage.getroomlist().get(Integer.parseInt(input[2])));
             if(parseplayer.getcurrentroom().getMobInfo() == true && parseplayer.getcurrentroom().getRoomMob().getmobstatus() == true) {
                 entercombat(parseplayer, parseplayer.getcurrentroom().getRoomMob());
                 combat = true;
@@ -552,6 +571,10 @@ public class Parser
                 parseplayer.addexperience(parsemob.getmobxp());
                 combat = false;
                 running = true;
+                if(parsemob instanceof Boss) {
+                    stagecompleted = true;
+                    System.out.println("Du hast dieses Level geschafft! Du kannst nun \"weiter\" schreiben, um das nächste Level zu beginnen");
+                }
             }
             else {
                 System.out.println("Du greifst " + parsemob.getArtikel("akkusativ", "bestimmt") + " " + parsemob.getmobname() + " mit " + playerweapon.getArtikel("dativ", "bestimmt") + " " + playerweapon.getitemname() + " an und machst " + parseplayer.getplayerdamage() + " Schaden.");

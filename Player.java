@@ -37,6 +37,7 @@ public class Player
     private Armor boots;
     private ArrayList<Accessory> accessories;
     private Room currentroom;
+    private Stage currentstage;
     
     /**
      * Konstruktor für Objekte der Klasse Player mit Namen und Anfangsraum.
@@ -139,6 +140,10 @@ public class Player
     
     public void setcurrentroom(Room parseroom) {
         currentroom = parseroom;
+    }
+    
+    public void setstage(Stage parsestage) {
+        currentstage = parsestage;
     }
     
     // Gibt den Inventarinhalt des Spielers auf der Konsole aus.

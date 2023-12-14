@@ -65,6 +65,6 @@ public class Game {
         System.out.println(" ");
         
         //Ein neuen Parser erstellen für das Spielerobjekt.
-        Parser mainParser = new Parser(this, stage0, player1);
+        Parser mainParser = new Parser(this, stage0, player1, new Stage[]{stage0, stage1, stage2});
     }
 }
