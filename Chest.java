@@ -44,9 +44,9 @@ public class Chest
    
     
     // Methode für das Öffnen von Kisten. 
-    public void openChest(Player parsePlayer, Chest parseChest)
+    public void openChest(Player parsePlayer)
     {
-        if(parseChest.isOpenable == true) {
+        if(isOpenable == true) {
             System.out.println("Die Kiste öffnet sich:");
             for(int i = 0; i < chestLoot.size(); i++) {
                 // Hinzufügen des Loots in das Inventar des Spielers
@@ -82,7 +82,7 @@ public class Chest
             parsePlayer.addexperience(5);
             System.out.println("Du findest " + coinamount + " Coins in der Truhe.");
             // Kiste wird "verschlossen" und kann nicht mehr geöffnet werden
-            parseChest.isOpenable = false;
+            isOpenable = false;
         }
         else {
             System.out.println("Du hast diese Kiste bereits geöffnet!");
@@ -92,8 +92,8 @@ public class Chest
     /**
      * Methode zur Überprüfung von isopenable (privat).
      */
-    public boolean getIsOpenable(Chest parseChest) 
+    public boolean getIsOpenable() 
     {
-        return parseChest.isOpenable;
+        return isOpenable;
     }
 }

@@ -167,7 +167,7 @@ public class Parser
         else if(input[0].equals("öffne")) {
             try {
                 if(input[1].equals("truhe") && parseplayer.getcurrentroom().getChestInfo()) {
-                    parseplayer.getcurrentroom().getChest().openChest(Parser.activeplayer, parseplayer.getcurrentroom().getChest());
+                    parseplayer.getcurrentroom().getChest().openChest(Parser.activeplayer);
                 }
                 else if(input[1].equals("truhe") && (parseplayer.getcurrentroom().getChestInfo() == false)) {
                     System.out.println("Dieser Raum hat keine Truhe");
@@ -182,7 +182,12 @@ public class Parser
         }    
         else if(input[0].equals("umgucken")) {
             if(parseplayer.getcurrentroom().getChestInfo()) {
-                System.out.println("Du entdeckst eine Truhe in dem Raum.");
+                if(parseplayer.getcurrentroom().getChest().getIsOpenable() == true) {
+                    System.out.println("Du entdeckst eine Truhe in dem Raum.");
+                }
+                else {
+                    System.out.println("Du entdeckst eine geöffnete Truhe in dem Raum.");
+                }
             }
             if(parseplayer.getcurrentroom().getNPCInfo()) {
                 System.out.println("Du entdeckst die Person " + parseplayer.getcurrentroom().getNPC().getNPCname() + " im Raum.");
@@ -408,7 +413,12 @@ public class Parser
                         }
                         else {
                             if(parseplayer.getcurrentroom().getChestInfo()) {
-                                System.out.println("Du entdeckst eine Truhe in dem Raum.");
+                                if(parseplayer.getcurrentroom().getChest().getIsOpenable() == true) {
+                                    System.out.println("Du entdeckst eine Truhe in dem Raum.");
+                                }
+                                else {
+                                    System.out.println("Du entdeckst eine geöffnete Truhe in dem Raum.");
+                                }
                             }
                             if(parseplayer.getcurrentroom().getNPCInfo()) {
                                 System.out.println("Du entdeckst die Person " + parseplayer.getcurrentroom().getNPC().getNPCname() + " im Raum.");
@@ -436,7 +446,12 @@ public class Parser
                         }
                         else {
                             if(parseplayer.getcurrentroom().getChestInfo()) {
-                                System.out.println("Du entdeckst eine Truhe in dem Raum.");
+                                if(parseplayer.getcurrentroom().getChest().getIsOpenable() == true) {
+                                    System.out.println("Du entdeckst eine Truhe in dem Raum.");
+                                }
+                                else {
+                                    System.out.println("Du entdeckst eine geöffnete Truhe in dem Raum.");
+                                }
                             }
                             if(parseplayer.getcurrentroom().getNPCInfo()) {
                                 System.out.println("Du entdeckst die Person " + parseplayer.getcurrentroom().getNPC().getNPCname() + " im Raum.");
@@ -464,7 +479,12 @@ public class Parser
                         }
                         else {
                             if(parseplayer.getcurrentroom().getChestInfo()) {
-                                System.out.println("Du entdeckst eine Truhe in dem Raum.");
+                                if(parseplayer.getcurrentroom().getChest().getIsOpenable() == true) {
+                                    System.out.println("Du entdeckst eine Truhe in dem Raum.");
+                                }
+                                else {
+                                    System.out.println("Du entdeckst eine geöffnete Truhe in dem Raum.");
+                                }
                             }
                             if(parseplayer.getcurrentroom().getNPCInfo()) {
                                 System.out.println("Du entdeckst die Person " + parseplayer.getcurrentroom().getNPC().getNPCname() + " im Raum.");
@@ -492,7 +512,12 @@ public class Parser
                         }
                         else {
                             if(parseplayer.getcurrentroom().getChestInfo()) {
-                                System.out.println("Du entdeckst eine Truhe in dem Raum.");
+                                if(parseplayer.getcurrentroom().getChest().getIsOpenable() == true) {
+                                    System.out.println("Du entdeckst eine Truhe in dem Raum.");
+                                }
+                                else {
+                                    System.out.println("Du entdeckst eine geöffnete Truhe in dem Raum.");
+                                }
                             }
                             if(parseplayer.getcurrentroom().getNPCInfo()) {
                                 System.out.println("Du entdeckst die Person " + parseplayer.getcurrentroom().getNPC().getNPCname() + " im Raum.");
