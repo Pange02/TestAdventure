@@ -34,10 +34,8 @@ public class Hangman extends Boss
     
     public void addSpecialAttacks() {
         try {
-            specialattacklist.add(Boss.class.getMethod("weakeningHit", Player.class));
             specialattacklist.add(Boss.class.getMethod("doubleAttack", Player.class));
             specialattacklist.add(Boss.class.getMethod("reduceDamage", Player.class));
-            specialattacklist.add(Boss.class.getMethod("poisoningHit", Player.class));
         }
         catch(Exception e) {
             System.out.println(e);

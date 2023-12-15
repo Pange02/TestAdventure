@@ -168,7 +168,6 @@ public class Parser
             try {
                 if(input[1].equals("truhe") && parseplayer.getcurrentroom().getChestInfo()) {
                     parseplayer.getcurrentroom().getChest().openChest(Parser.activeplayer, parseplayer.getcurrentroom().getChest());
-                    parseplayer.addexperience(5);
                 }
                 else if(input[1].equals("truhe") && (parseplayer.getcurrentroom().getChestInfo() == false)) {
                     System.out.println("Dieser Raum hat keine Truhe");
@@ -407,6 +406,18 @@ public class Parser
                             entercombat(parseplayer, parseplayer.getcurrentroom().getRoomMob());
                             combat = true;
                         }
+                        else {
+                            if(parseplayer.getcurrentroom().getChestInfo()) {
+                                System.out.println("Du entdeckst eine Truhe in dem Raum.");
+                            }
+                            if(parseplayer.getcurrentroom().getNPCInfo()) {
+                                System.out.println("Du entdeckst die Person " + parseplayer.getcurrentroom().getNPC().getNPCname() + " im Raum.");
+                            }
+                            System.out.println("Du siehst Türen im:");
+                            for(int i = 0; i < parseplayer.getcurrentroom().getRoomDirections().size(); i++) {
+                                System.out.println(parseplayer.getcurrentroom().getRoomDirections().get(i));
+                            } 
+                        }
                     }
                 }
                 else if(input[1].equals("norden") && parseplayer.getcurrentroom().getConnectedRooms("north") == null) {
@@ -422,7 +433,19 @@ public class Parser
                         if(parseplayer.getcurrentroom().getMobInfo() == true && parseplayer.getcurrentroom().getRoomMob().getmobstatus() == true) {
                             entercombat(parseplayer, parseplayer.getcurrentroom().getRoomMob());
                             combat = true;
-                        }   
+                        }
+                        else {
+                            if(parseplayer.getcurrentroom().getChestInfo()) {
+                                System.out.println("Du entdeckst eine Truhe in dem Raum.");
+                            }
+                            if(parseplayer.getcurrentroom().getNPCInfo()) {
+                                System.out.println("Du entdeckst die Person " + parseplayer.getcurrentroom().getNPC().getNPCname() + " im Raum.");
+                            }
+                            System.out.println("Du siehst Türen im:");
+                            for(int i = 0; i < parseplayer.getcurrentroom().getRoomDirections().size(); i++) {
+                                System.out.println(parseplayer.getcurrentroom().getRoomDirections().get(i));
+                            } 
+                        }
                     }
                 }
                 else if(input[1].equals("osten") && parseplayer.getcurrentroom().getConnectedRooms("east") == null) {
@@ -439,6 +462,18 @@ public class Parser
                             entercombat(parseplayer, parseplayer.getcurrentroom().getRoomMob());
                             combat = true;
                         }
+                        else {
+                            if(parseplayer.getcurrentroom().getChestInfo()) {
+                                System.out.println("Du entdeckst eine Truhe in dem Raum.");
+                            }
+                            if(parseplayer.getcurrentroom().getNPCInfo()) {
+                                System.out.println("Du entdeckst die Person " + parseplayer.getcurrentroom().getNPC().getNPCname() + " im Raum.");
+                            }
+                            System.out.println("Du siehst Türen im:");
+                            for(int i = 0; i < parseplayer.getcurrentroom().getRoomDirections().size(); i++) {
+                                System.out.println(parseplayer.getcurrentroom().getRoomDirections().get(i));
+                            } 
+                        }
                     }
                 }
                 else if(input[1].equals("süden") && parseplayer.getcurrentroom().getConnectedRooms("south") == null) {
@@ -454,6 +489,18 @@ public class Parser
                         if(parseplayer.getcurrentroom().getMobInfo() == true && parseplayer.getcurrentroom().getRoomMob().getmobstatus() == true) {
                             entercombat(parseplayer, parseplayer.getcurrentroom().getRoomMob());
                             combat = true;
+                        }
+                        else {
+                            if(parseplayer.getcurrentroom().getChestInfo()) {
+                                System.out.println("Du entdeckst eine Truhe in dem Raum.");
+                            }
+                            if(parseplayer.getcurrentroom().getNPCInfo()) {
+                                System.out.println("Du entdeckst die Person " + parseplayer.getcurrentroom().getNPC().getNPCname() + " im Raum.");
+                            }
+                            System.out.println("Du siehst Türen im:");
+                            for(int i = 0; i < parseplayer.getcurrentroom().getRoomDirections().size(); i++) {
+                                System.out.println(parseplayer.getcurrentroom().getRoomDirections().get(i));
+                            } 
                         }
                     }
                 }

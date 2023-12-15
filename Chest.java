@@ -79,6 +79,7 @@ public class Chest
                 }
             }
             parsePlayer.addcoins(coinamount);
+            parsePlayer.addexperience(5);
             System.out.println("Du findest " + coinamount + " Coins in der Truhe.");
             // Kiste wird "verschlossen" und kann nicht mehr geöffnet werden
             parseChest.isOpenable = false;

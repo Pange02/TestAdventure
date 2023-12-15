@@ -97,13 +97,13 @@ public class Stage1 extends Stage
         // Raum 2 verbunden mit Raum 1 und 3
         room2.setConnectedRooms(null, null, null, room1);
         // Raum 3 verbunden mit Raum 2
-        room3.setConnectedRooms(room4, null, room2, null);
+        room3.setConnectedRooms(room4, null, room1, null);
         // Raum 4 verbunden mit Startraum und Raum 5
         room4.setConnectedRooms(null, null, room3, room5);
         // Raum 5 verbunden mit Raum 4
-        room5.setConnectedRooms(room6, null, room4, room7);
+        room5.setConnectedRooms(room6, room4, null, room7);
         // Raum 6 verbunden mit Startraum und Raum 7
-        room6.setConnectedRooms(null, null, null, room5);
+        room6.setConnectedRooms(null, null, room5, null);
         // Raum 7 verbunden mit Raum 6 und 8
         room7.setConnectedRooms(null, room6, null, null);
 

@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Random;
 /**
  * Write a description of class Boss here.
  *
@@ -8,7 +9,14 @@ import java.util.ArrayList;
 public class Boss extends Mob //die Klasse Boss wird aus der Klasse Mob vererbt
 {
     // instance variables - replace the example below with your own
-    private String name;
+    protected String name;
+    Random random = new Random();
+    protected boolean specialAttack;
+    protected int nextSpecialAttack;
+    protected int randombound;
+    protected int shieldrounds;
+    protected boolean shieldactive;
+    protected ArrayList<java.lang.reflect.Method> specialattacklist;
     /**
      * Constructor for objects of class Boss
      */
