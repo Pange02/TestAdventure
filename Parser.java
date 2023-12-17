@@ -12,7 +12,7 @@ public class Parser
     // Instanzvariablen - ersetzen Sie das folgende Beispiel mit Ihren Variablen
     
     //Aktionsliste für alle möglichen Aktionen. Verwendet von help Befehl.
-    private String[] actionlist = {"hilfe", "öffne (truhe)", "stats", "inv", "rede <Name>", "info <Inventarslot>", "benutze <Inventarslot>", "ablegen <Inventarslot>", "umgucken", "skill <Fähigkeit> <Punkte>", "gehe <Himmelsrichtung>"};
+    private String[] actionlist = {"hilfe", "öffne (truhe)", "stats", "inv", "rede <Name>", "info <Inventarslot>", "benutze <Inventarslot>", "ablegen <Rüstungsteil>", "umgucken", "skill <Fähigkeit> <Punkte>", "gehe <Himmelsrichtung>"};
     
     private String[] combatactionlist = {"attackiere", "benutze <Inventarslot>"};
     
@@ -158,9 +158,48 @@ public class Parser
     {
         input = parseaction.toLowerCase().split("\\s+");
         if(input[0].equals("hilfe")) {
-            System.out.println("Aktuell kannst du folgenden Aktionen machen:");
-            for(int i = 1; i < actionlist.length; i++) {
-                System.out.println(actionlist[i]);
+            try {
+                if(input[1].toLowerCase().equals("hilfe")) {
+                    System.out.println("Dieser Befehl hilft dir bei den verschiedenen Aktionen, die du im Spiel machen kannst und generiert diese Texte.");
+                }
+                else if(input[1].toLowerCase().equals("öffne")) {
+                    System.out.println("Dieser Befehl öffnet eine Truhe, die in deinem aktuellen Raum ist. Schreibe dazu \"öffne truhe\". Eine Truhe kann nur einmal geöffnet werden.");
+                }
+                else if(input[1].toLowerCase().equals("stats")) {
+                    System.out.println("Dieser Befehl gibt dir Auskunft über deine aktuellen Charakter Statistiken.");
+                }
+                else if(input[1].toLowerCase().equals("inv")) {
+                    System.out.println("Dieser Befehl zeigt dir dein Inventar inklusive Rüstung und Accessoires.");
+                }
+                else if(input[1].toLowerCase().equals("rede")) {
+                    System.out.println("So kannst du mit Personen sprechen, die dir im Spiel begenen. Dazu musst du ebenfalls ihren Namen angeben mit \"rede <Name>\".");
+                }
+                else if(input[1].toLowerCase().equals("info")) {
+                    System.out.println("Dieser Befehl gibt dir Auskunft über einen deiner Gegenstände im Inventar. Zusätzlich musst du angeben, über welchen Gegenstand du mehr lernen willst mit \"info <Inventarplatz>\".");
+                }
+                else if(input[1].toLowerCase().equals("benutze")) {
+                    System.out.println("So kannst du Gegenstände aus deinem Inventar benutzen. Dies können sehr viele verschiedene Dinge sein. Achte darauf, dass du auch angibst, welchen Gegenstand du benutzen willst mit \"benutze <Inventarplatz>\".");
+                }
+                else if(input[1].toLowerCase().equals("ablegen")) {
+                    System.out.println("Mit diesem Befehl kannst du ein bereits angezogenes Rüstungsteil wieder ablegen. Verwende ihn in der Form \"ablegen (Helm/Brustplatte/Hose/Schuhe)\". Das ausgezogene Rüstungsteil wird danach deinem Inventar hinzugefügt.");
+                }
+                else if(input[1].toLowerCase().equals("umgucken")) {
+                    System.out.println("Dieser Befehl zeigt dir deine aktuelle Umgebung aus deinem Raum.");
+                }
+                else if(input[1].toLowerCase().equals("skill")) {
+                    System.out.println("So kannst du deine mit einem Levelaufstieg verdienten Skillpunkte ausgeben. Du kannst sie entweder in die Fähigkeit Stärke oder in die Fähigkeit Verteidigung investieren. Schreibe dazu \"skill <Fähigkeit> <Punkte>\".");
+                }
+                else if(input[1].toLowerCase().equals("gehe")) {
+                    System.out.println("Mit diesem Befehl kannst du deinen Raum wechseln. Die Räume liegen immer in einer der vier Himmelsrichtungen Norden, Osten, Süden und Westen. Schreibe dazu \"gehe <Himmelsrichtung>\".");
+                }
+            }
+            catch(Exception e) {
+                System.out.println("Aktuell kannst du folgenden Aktionen machen:");
+                for(int i = 1; i < actionlist.length; i++) {
+                    System.out.println(actionlist[i]);
+                }
+                System.out.println();
+                System.out.println("Du kannst auch \"hilfe (Befehl)\" schreiben, um genauere Informationen zu den einzelnen Befehlen zu erhalten");
             }
         }
         

@@ -108,7 +108,7 @@ public class Stage2 extends Stage
         
         //dreizehnter Raum der Stage
         bossLoot.add(Item.getitemfromlist("Weapon", 5));
-        Hangman hangman = new Hangman("Sir Archibald Duncan", 100, 50, ((Weapon) Item.getitemfromlist("Weapon", 5)), bossLoot, 200, "maskulin");
+        Prince prince = new Prince("Sir Archibald Duncan", 100, 50, ((Weapon) Item.getitemfromlist("Weapon", 5)), bossLoot, 200, "maskulin");
         Room room13 = new Room(13, null, null, null);
         
         //Verbinden der Räume miteinander

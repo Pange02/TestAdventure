@@ -6,14 +6,14 @@ import java.util.Random;
  * @author (your name)
  * @version (a version number or a date)
  */
-public class Lord extends Boss
+public class Prince extends Boss
 {
     // instance variables - replace the example below with your own
     
     /**
      * Constructor for objects of class Henchman
      */
-    public Lord(String parsename, int parselevel, int parsehealth, Weapon parseweapon, ArrayList parsemobloot, int parsemobxp, String parsegender)
+    public Prince(String parsename, int parselevel, int parsehealth, Weapon parseweapon, ArrayList parsemobloot, int parsemobxp, String parsegender)
     {
         super(parsename, parselevel, parsehealth, parseweapon, parsemobloot, parsemobxp, parsegender);
         name = parsename;
@@ -30,7 +30,6 @@ public class Lord extends Boss
             specialattacklist.add(Boss.class.getMethod("weakeningHit", Player.class));
             specialattacklist.add(Boss.class.getMethod("doubleAttack", Player.class));
             specialattacklist.add(Boss.class.getMethod("reduceDamage", Player.class));
-            specialattacklist.add(Boss.class.getMethod("poisoningHit", Player.class));
         }
         catch(Exception e) {
             System.out.println(e);
@@ -60,7 +59,7 @@ public class Lord extends Boss
             shieldrounds -= 1;
             nextSpecialAttack += 1;
             if(shieldrounds > 0) {
-                System.out.println("Hans der Lord behält sein Schild noch für " + shieldrounds + " Runden.");
+                System.out.println("Hans der Prinz behält sein Schild noch für " + shieldrounds + " Runden.");
             }
             if(shieldrounds == 0) {
                 setMobDefense(0);
@@ -76,7 +75,7 @@ public class Lord extends Boss
                         shieldrounds = 3;
                     }
                     if(zufall == 0 && parseplayer.getWeakened()) {
-                        System.out.println("Hans der Lord nutzt einen schwächenden Schlag. Da du bereits geschwächt bist, verliert die Spezialattacke ihre Wirkung");
+                        System.out.println("Hans der Prinz nutzt einen schwächenden Schlag. Da du bereits geschwächt bist, verliert die Spezialattacke ihre Wirkung");
                     }
                     else {
                         specialattacklist.get(zufall).invoke(this, parseplayer);
@@ -86,7 +85,7 @@ public class Lord extends Boss
                     nextSpecialAttack = 4;
                     }
                 catch(Exception e) {
-                    System.out.println("Argument Fehler in Lord: " + e);
+                    System.out.println("Argument Fehler in Prince: " + e);
                 }
             }
             else if(specialAttack == true){
@@ -96,7 +95,7 @@ public class Lord extends Boss
                 else {
                     randombound = specialattacklist.size();
                 }
-                System.out.println("Der Lord hat versucht eine Spezialattacke durchzuführen, es schlug fehl. Er wird es in der nächsten Runde mit erhöhter Wahrscheinlichkeit erneut versuchen.");
+                System.out.println("Der Prinz hat versucht eine Spezialattacke durchzuführen, es schlug fehl. Er wird es in der nächsten Runde mit erhöhter Wahrscheinlichkeit erneut versuchen.");
                 finaldamage = Math.round((1 - (parseplayer.getplayerdefense()/(10 + parseplayer.getplayerdefense()))) * damage * 10.0) / 10.0;
                 parseplayer.setplayerhealth(Math.round((parseplayer.getplayerhealth() - finaldamage) * 10.0) / 10.0);
                 System.out.println(name + " greift dich an und macht " + finaldamage + " Schaden.");
