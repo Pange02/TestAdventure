@@ -81,7 +81,6 @@ public class Parser
         weaponselected = false;
         mobattack = true;
         activeplayer = parseplayer;
-        System.out.println("Was möchtest du tun? Für Hilfe: hilfe");
         while(running && !combat) {
             Scanner parser = new Scanner(System.in);
             getaction(parser.nextLine(), activeplayer);

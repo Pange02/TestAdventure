@@ -74,7 +74,7 @@ public class Speaker extends NPC
         for(int i = 0; i < dialogue.size(); i++) {
             System.out.println(dialogue.get(i));
             try {
-                Thread.sleep(1500);
+                Thread.sleep(6000);
             }   
             catch(Exception e) {
                 Thread.currentThread().interrupt();

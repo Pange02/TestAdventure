@@ -49,7 +49,10 @@ public class Stage2 extends Stage
          */
         
         //erster Raum der Stage
-        speakerdialogue.add("Willkommen in Stage 3!");
+        speakerdialogue.add("Da seid ihr ja, kommt, nun ist es nur noch ein Ritt bis zum Schloss von Sir Archibald Dunkan.");
+        speakerdialogue.add("Hier sind wir, seid Ihr euch wirklich sicher, dass Ihr weiter gehen wollt? Man sagt sich, Sie Archibald Dunkan sei einer der besten Kämpfer unserer Lande.");
+        speakerdialogue.add("Für das Umkehren ist jedoch nun zu spät.");
+        speakerdialogue.add("Also gut, ich wünsche euch viel Glück!");
         Speaker startSpeaker = new Speaker("Harry", speakerdialogue);
         Room startRoom = new Room(1, null, null, startSpeaker);
         
@@ -108,7 +111,7 @@ public class Stage2 extends Stage
         
         //dreizehnter Raum der Stage
         bossLoot.add(Item.getitemfromlist("Weapon", 5));
-        Prince prince = new Prince("Sir Archibald Duncan", 100, 50, ((Weapon) Item.getitemfromlist("Weapon", 5)), bossLoot, 200, "maskulin");
+        Lord lord = new Lord("Sir Archibald Duncan", 100, 50, ((Weapon) Item.getitemfromlist("Weapon", 5)), bossLoot, 200, "maskulin");
         Room room13 = new Room(13, null, null, null);
         
         //Verbinden der Räume miteinander

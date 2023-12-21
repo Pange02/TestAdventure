@@ -21,7 +21,8 @@ public class Stage0 extends Stage
     private ArrayList<Item> bossLoot = new ArrayList<>();
     
     private HashMap merchantloot1 = new HashMap<Item, Integer>();
-    private ArrayList<String> speakerdialogue = new ArrayList<>();
+    private ArrayList<String> startspeakerdialogue = new ArrayList<>();
+    private ArrayList<String> bossspeakerdialogue = new ArrayList<>();
     
     /**
      * Konstruktor für Objekte der Klasse Stage0
@@ -44,19 +45,20 @@ public class Stage0 extends Stage
         startroomLoot.add(key2);
         startroomLoot.add(Item.getitemfromlist("Weapon", 1));
         Chest startChest = new Chest(startroomLoot);
-        speakerdialogue.add("Tutorial Basics");
-        Speaker startSpeaker = new Speaker("Harry", speakerdialogue);
+        startspeakerdialogue.add("Ich habe euch schon erwartet. Wir sind in die Festung vorgedrungen, können aber bisher in der Dunkelheit nichts erkennen. Benutzt \"umgucken\" um euch in diesem Raum umzuschauen.");
+        startspeakerdialogue.add("Die Tür zum nächsten Raum scheint verschlossen. Vielleicht findet ihr in diesem Raum etwas, um weiter zu kommen.");
+        startspeakerdialogue.add("Hier habe ich ein Pergament mit nützlichen Aktionen. Um auf es zuzugreifen, schreibt \"hilfe\"");
+        startspeakerdialogue.add("Ach und seit vorsichtig, es lauern viele Monster in diesen Gängen.");
+        Speaker startSpeaker = new Speaker("Harry", startspeakerdialogue);
         Room startRoom = new Room(0, startChest, null, startSpeaker);
         Lock lock0 = new Lock("Holzschloss", startRoom, "north", key2, "neutrum");
         
         
         
         // Raum 1 Tutorial Fight
-        speakerdialogue.add("Tutorial Fight");
-        Speaker speaker1 = new Speaker("Harry", speakerdialogue);
         mob1Loot.add(Item.getitemfromlist("Potion", 2));
         Mob mob1 = new Mob("Troll", 1, 3, ((Weapon) Item.getitemfromlist("Weapon", 1)), mob1Loot, 10, "maskulin");
-        Room room1 = new Room(1, null, mob1, speaker1);
+        Room room1 = new Room(1, null, mob1, null);
         
         
         // Raum 2 mit Mob
@@ -74,20 +76,20 @@ public class Stage0 extends Stage
         Lock lock4 = new Lock("Holzschloss", room3, "north", key1, "neutrum");
         
         // Raum 4
+        bossspeakerdialogue.add("Aus dem Raum im Westen hörte ich eben komische Geräusche. Es scheint, als wäre jemand dort drin. Wir müssen auf Alles gefasst sein!");
+        Speaker speakerBoss = new Speaker("Harry", bossspeakerdialogue);
         mob3Loot.add(Item.getitemfromlist("Consumable", 0));
         Mob mob3 = new Mob("Zombie", 1, 3, ((Weapon) Item.getitemfromlist("Weapon", 1)), mob1Loot, 10, "maskulin");
-        Room room4 = new Room(4, null, mob3, null);
+        Room room4 = new Room(4, null, mob3, speakerBoss);
         
         // Raum 5 Boss
-        speakerdialogue.add("Boss Fight");
-        Speaker speakerBoss = new Speaker("Harry", speakerdialogue);
         bossLoot.add(Item.getitemfromlist("Armor", 1));
         bossLoot.add(Item.getitemfromlist("Potion", 2));
         Henchman hans = new Henchman("Hans der Handlanger", 10, 5, ((Weapon) Item.getitemfromlist("Weapon", 3)),bossLoot , 20, "maskulin");
         room5Loot.add(Item.getitemfromlist("Weapon", 2));
         room5Loot.add(Item.getitemfromlist("Consumable", 0));
         Chest chest5 = new Chest(room5Loot);
-        Room room5 = new Room(5, chest5, hans, speakerBoss);
+        Room room5 = new Room(5, chest5, hans, null);
         
         
         //Hier werden alle Verbindungen zwischen den Räumen eingetraden mit (Norden, Osten, Süden, Westen).

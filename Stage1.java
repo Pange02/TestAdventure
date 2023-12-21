@@ -36,7 +36,8 @@ public class Stage1 extends Stage
          */
         
         // Spawnraum mit einem Holzschwert zum Anfang
-        speakerdialogue.add("INSERT DIALOGUE HERE" );
+        speakerdialogue.add("Mein Herr Ihr habt überlebt?");
+        speakerdialogue.add("Ausgezeichnet, dann ist die erste Hürde geschafft, nun folgt die nächste. Folgt mir zur nächsten Festung. Aber seid auf der acht, desto näher wir an unser Ziel kommen, desto gefährlicher wird es.");
         Speaker speaker0 = new Speaker("Tom", speakerdialogue);
         Room startRoom = new Room(0, null, null, speaker0);
         
