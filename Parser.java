@@ -12,7 +12,7 @@ public class Parser
     // Instanzvariablen - ersetzen Sie das folgende Beispiel mit Ihren Variablen
     
     //Aktionsliste für alle möglichen Aktionen. Verwendet von help Befehl.
-    private String[] actionlist = {"hilfe", "öffne (truhe)", "stats", "inv", "rede <Name>", "info <Inventarslot>", "benutze <Inventarslot>", "ablegen <Rüstungsteil>", "umgucken", "skill <Fähigkeit> <Punkte>", "gehe <Himmelsrichtung>"};
+    private String[] actionlist = {"umgucken", "öffne (truhe)", "stats", "benutze <Inventarslot>", "gehe <Himmelsrichtung>", "rede <Name>", "skill <Fähigkeit> <Punkte>", "info <Inventarslot>", "inv", "ablegen <Rüstungsteil>", "hilfe"};
     
     private String[] combatactionlist = {"attackiere", "benutze <Inventarslot>"};
     
@@ -198,7 +198,7 @@ public class Parser
                     System.out.println(actionlist[i]);
                 }
                 System.out.println();
-                System.out.println("Du kannst auch \"hilfe (Befehl)\" schreiben, um genauere Informationen zu den einzelnen Befehlen zu erhalten");
+                System.out.println("Du kannst auch \"hilfe <Befehl>\" schreiben, um genauere Informationen zu den einzelnen Befehlen zu erhalten");
             }
         }
         
@@ -328,15 +328,15 @@ public class Parser
                             parseplayer.getcurrentroom().getLock("north").openLock(parseplayer.getcurrentroom(), ((Key) parseplayer.getitemfrominventory(inventorynumber)));
                             parseplayer.removeitemfrominventory(inventorynumber);
                         }
-                        else if(parseplayer.getcurrentroom().getLock(input[2]) != null && input[2].toLowerCase().equals("osten")) {
+                        else if(parseplayer.getcurrentroom().getLock("east") != null && input[2].toLowerCase().equals("osten")) {
                             parseplayer.getcurrentroom().getLock("east").openLock(parseplayer.getcurrentroom(), ((Key) parseplayer.getitemfrominventory(inventorynumber)));
                             parseplayer.removeitemfrominventory(inventorynumber);
                         }
-                        else if(parseplayer.getcurrentroom().getLock(input[2]) != null && input[2].toLowerCase().equals("süden")) {
+                        else if(parseplayer.getcurrentroom().getLock("south") != null && input[2].toLowerCase().equals("süden")) {
                             parseplayer.getcurrentroom().getLock("south").openLock(parseplayer.getcurrentroom(), ((Key) parseplayer.getitemfrominventory(inventorynumber)));
                             parseplayer.removeitemfrominventory(inventorynumber);
                         }
-                        else if(parseplayer.getcurrentroom().getLock(input[2]) != null && input[2].toLowerCase().equals("westen")) {
+                        else if(parseplayer.getcurrentroom().getLock("west") != null && input[2].toLowerCase().equals("westen")) {
                             parseplayer.getcurrentroom().getLock("west").openLock(parseplayer.getcurrentroom(), ((Key) parseplayer.getitemfrominventory(inventorynumber)));
                             parseplayer.removeitemfrominventory(inventorynumber);
                         }
@@ -674,8 +674,15 @@ public class Parser
                     combat = false;
                     running = true;
                     if(parsemob instanceof Boss) {
-                        stagecompleted = true;
-                        System.out.println("Du hast dieses Level geschafft! Du kannst nun \"weiter\" schreiben, um das nächste Level zu beginnen");
+                        if(parsemob.getmobname().equals("Sir Archibald Duncan")) {
+                            System.out.println("Du hast es geschafft! Die Welt muss sich nun nicht mehr vor dem bösen Lord fürchten.");
+                            System.out.println("Gut gemacht!");
+                            running = false;
+                        }
+                        else {
+                            stagecompleted = true;
+                            System.out.println("Du hast dieses Level geschafft! Du kannst nun \"weiter\" schreiben, um das nächste Level zu beginnen");
+                        }
                     }
                 }
                 else {
@@ -701,8 +708,15 @@ public class Parser
                 combat = false;
                 running = true;
                 if(parsemob instanceof Boss) {
-                    stagecompleted = true;
-                    System.out.println("Du hast dieses Level geschafft! Du kannst nun \"weiter\" schreiben, um das nächste Level zu beginnen");
+                    if(parsemob.getmobname().equals("Sir Archibald Duncan")) {
+                        System.out.println("Du hast es geschafft! Die Welt muss sich nun nicht mehr vor dem bösen Lord fürchten.");
+                        System.out.println("Gut gemacht!");
+                        running = false;
+                    }
+                    else {
+                        stagecompleted = true;
+                        System.out.println("Du hast dieses Level geschafft! Du kannst nun \"weiter\" schreiben, um das nächste Level zu beginnen");
+                    }
                 }
             }
             else {
