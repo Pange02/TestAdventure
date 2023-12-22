@@ -54,6 +54,8 @@ public class Game {
         story.add("Doch bevor du dich Sir Archibald Dunkan stellen kannst, musst du dich durch die zahlreichen Festungen seiner Handlanger k‰mpfen und diesen schlussendlich besiegen.");
         story.add("Allerdings musst du alleine losziehen, damit der Feind davon nichts mitbekommt. Deswegen ziehst du k‰mpfend durchs Land, bis du vor der groﬂen, imposanten Festung von Sir Archibald Dunkan stehst und nur noch einen letzten Kampf beschreiten musst.");
         
+        Scanner nameParser = new Scanner(System.in);
+        
         System.out.println("Geschichte:");
         System.out.println();
         try {
@@ -64,6 +66,10 @@ public class Game {
         }
         for(String i: story) {
             System.out.println(i);
+            if(nameParser.nextLine().equals("skip")) {
+                System.out.println("Geschichte skipped!");
+                break;
+            }
             try {
                 Thread.sleep(6000);
             }   
@@ -77,7 +83,6 @@ public class Game {
         System.out.println("Hallo mein Herr. Wie darf ich euch nennen?");
         System.out.println("Lege deinen Namen fest:");
         // Texteingabe des Namens abfragen
-        Scanner nameParser = new Scanner(System.in);
         Player player1 = new Player(nameParser.nextLine(), stage0);
         // Cheatcode zum Testen
         if(player1.getplayername().equals("Leonard")) {
@@ -102,6 +107,10 @@ public class Game {
         }
         for(String i: intro) {
             System.out.println(i);
+            if(nameParser.nextLine().equals("skip")) {
+                System.out.println("Intro skipped");
+                break;
+            }
             try {
                 Thread.sleep(6000);
             }   

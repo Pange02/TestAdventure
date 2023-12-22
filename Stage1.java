@@ -37,7 +37,7 @@ public class Stage1 extends Stage
         
         // Spawnraum mit einem Holzschwert zum Anfang
         speakerdialogue.add("Mein Herr Ihr habt überlebt?");
-        speakerdialogue.add("Ausgezeichnet, dann ist die erste Hürde geschafft, nun folgt die nächste. Folgt mir zur nächsten Festung. Aber seid auf der acht, desto näher wir an unser Ziel kommen, desto gefährlicher wird es.");
+        speakerdialogue.add("Ausgezeichnet, dann ist die erste Hürde geschafft, nun folgt die nächste. Folgt mir zur nächsten Festung. Aber seid auf der Hut, desto näher wir an unser Ziel kommen, desto gefährlicher wird es.");
         Speaker speaker0 = new Speaker("Tom", speakerdialogue);
         Room startRoom = new Room(0, null, null, speaker0);
         
@@ -106,7 +106,7 @@ public class Stage1 extends Stage
         // Raum 6 verbunden mit Startraum und Raum 7
         room6.setConnectedRooms(null, null, room5, null);
         // Raum 7 verbunden mit Raum 6 und 8
-        room7.setConnectedRooms(null, room6, null, null);
+        room7.setConnectedRooms(null, room5, null, null);
 
         
         roomlist.add(startRoom);

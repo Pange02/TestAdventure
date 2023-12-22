@@ -43,16 +43,25 @@ public class Mob
                    System.out.println("Du findest " + parsemob.mobloot.get(i).getArtikel("akkusativ", "unbestimmt") + " " + parsemob.mobloot.get(i).getitemname() + " " + parsemob.mobloot.get(i).getitemrarity() + " mit " + ((Weapon) parsemob.mobloot.get(i)).getweapondamage() + " Schaden."); 
                 }
                 if(parsemob.mobloot.get(i).getClass() == Armor.class) {
-                   System.out.println("Du findest eine " + parsemob.mobloot.get(i).getArtikel("akkusativ", "unbestimmt") + " " + parsemob.mobloot.get(i).getitemname() + " " + parsemob.mobloot.get(i).getitemrarity() + " mit " + ((Armor) parsemob.mobloot.get(i)).getarmordefense() + " Verteidigung."); 
+                   System.out.println("Du findest " + parsemob.mobloot.get(i).getArtikel("akkusativ", "unbestimmt") + " " + parsemob.mobloot.get(i).getitemname() + " " + parsemob.mobloot.get(i).getitemrarity() + " mit " + ((Armor) parsemob.mobloot.get(i)).getarmordefense() + " Verteidigung."); 
                 }
                 if(parsemob.mobloot.get(i).getClass() == Potion.class && ((Potion) mobloot.get(i)).getpotiontype() == "Damage") {
-                   System.out.println("Du findest ein " + parsemob.mobloot.get(i).getArtikel("akkusativ", "unbestimmt") + " " + parsemob.mobloot.get(i).getitemname() + " " + parsemob.mobloot.get(i).getitemrarity() + " mit " + ((Potion) parsemob.mobloot.get(i)).getpotioneffect() + " Schaden."); 
+                   System.out.println("Du findest " + parsemob.mobloot.get(i).getArtikel("akkusativ", "unbestimmt") + " " + parsemob.mobloot.get(i).getitemname() + " " + parsemob.mobloot.get(i).getitemrarity() + " mit " + ((Potion) parsemob.mobloot.get(i)).getpotioneffect() + " Schaden."); 
+                }
+                if(parsemob.mobloot.get(i).getClass() == Potion.class && ((Potion) mobloot.get(i)).getpotiontype() == "Poison") {
+                   System.out.println("Du findest " + parsemob.mobloot.get(i).getArtikel("akkusativ", "unbestimmt") + " " + parsemob.mobloot.get(i).getitemname() + " " + parsemob.mobloot.get(i).getitemrarity() + " mit " + ((Potion) parsemob.mobloot.get(i)).getpotioneffect() + " Gifteffekt."); 
                 }
                 if(parsemob.mobloot.get(i).getClass() == Potion.class && ((Potion) mobloot.get(i)).getpotiontype() == "Healing") {
-                   System.out.println("Du findest ein " + parsemob.mobloot.get(i).getArtikel("akkusativ", "unbestimmt") + " " + parsemob.mobloot.get(i).getitemname() + " " + parsemob.mobloot.get(i).getitemrarity() + " mit " + ((Potion) parsemob.mobloot.get(i)).getpotioneffect() + " Heilung."); 
+                   System.out.println("Du findest " + parsemob.mobloot.get(i).getArtikel("akkusativ", "unbestimmt") + " " + parsemob.mobloot.get(i).getitemname() + " " + parsemob.mobloot.get(i).getitemrarity() + " mit " + ((Potion) parsemob.mobloot.get(i)).getpotioneffect() + " Heilung."); 
                 }
                 if(parsemob.mobloot.get(i).getClass() == Accessory.class) {
-                   System.out.println("Du findest ein " + parsemob.mobloot.get(i).getArtikel("akkusativ", "unbestimmt") + " " + parsemob.mobloot.get(i).getitemname() + " " + parsemob.mobloot.get(i).getitemrarity() + " mit " + ((Accessory) parsemob.mobloot.get(i)).getaccessorystrength() + " Stärke."); 
+                   System.out.println("Du findest " + parsemob.mobloot.get(i).getArtikel("akkusativ", "unbestimmt") + " " + parsemob.mobloot.get(i).getitemname() + " " + parsemob.mobloot.get(i).getitemrarity() + " mit " + ((Accessory) parsemob.mobloot.get(i)).getaccessorystrength() + " Stärke."); 
+                }
+                if(parsemob.mobloot.get(i).getClass() == Consumable.class) {
+                   System.out.println("Du findest " + parsemob.mobloot.get(i).getArtikel("akkusativ", "unbestimmt") + " " + parsemob.mobloot.get(i).getitemname() + " " + parsemob.mobloot.get(i).getitemrarity() + " mit " + ((Consumable) parsemob.mobloot.get(i)).getconsumableeffect() + " Heilung."); 
+                }
+                if(parsemob.mobloot.get(i).getClass() == Key.class) {
+                   System.out.println("Du findest " + parsemob.mobloot.get(i).getArtikel("akkusativ", "unbestimmt") + " " + parsemob.mobloot.get(i).getitemname() + " " + parsemob.mobloot.get(i).getitemrarity());
                 }
         }
     }
@@ -93,7 +102,9 @@ public class Mob
         finaldamage = Math.round((1 - (parseplayer.getplayerdefense()/(10 + parseplayer.getplayerdefense()))) * damage * 10.0) / 10.0;
         parseplayer.setplayerhealth(Math.round((parseplayer.getplayerhealth() - finaldamage) * 10.0) / 10.0);
         System.out.println(getArtikel("nominativ", "bestimmt").substring(0, 1).toUpperCase() + getArtikel("nominativ", "bestimmt").substring(1) + " " + name + " greift dich an und macht " + finaldamage + " Schaden.");
-        System.out.println("Du hast durch den Angriff jetzt " + parseplayer.getplayerhealth() + " Leben.");
+        if(parseplayer.getplayerhealth() > 0) {
+            System.out.println("Du hast durch den Angriff jetzt " + parseplayer.getplayerhealth() + " Leben.");    
+        }
     }
     
     /**

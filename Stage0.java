@@ -76,7 +76,7 @@ public class Stage0 extends Stage
         Lock lock4 = new Lock("Holzschloss", room3, "north", key1, "neutrum");
         
         // Raum 4
-        bossspeakerdialogue.add("Aus dem Raum im Westen hörte ich eben komische Geräusche. Es scheint, als wäre jemand dort drin. Wir müssen auf Alles gefasst sein!");
+        bossspeakerdialogue.add("Aus dem Raum im Norden hörte ich eben komische Geräusche. Es scheint, als wäre jemand dort drin. Wir müssen auf Alles gefasst sein!");
         Speaker speakerBoss = new Speaker("Harry", bossspeakerdialogue);
         mob3Loot.add(Item.getitemfromlist("Consumable", 0));
         Mob mob3 = new Mob("Zombie", 1, 3, ((Weapon) Item.getitemfromlist("Weapon", 1)), mob1Loot, 10, "maskulin");

@@ -94,7 +94,7 @@ public class Parser
                     }
                     System.out.println();
                 }
-                if(playerpoisonrounds > 1) {
+                if(playerpoisonrounds > 1 && mobattack) {
                     if(playerpoisoneffect == 0) {
                         playerpoisonrounds = activeplayer.getpoisonrounds();
                     }
@@ -104,7 +104,7 @@ public class Parser
                     System.out.println("Durch das Gift nimmst du " + playerpoisoneffect + "% Schaden. Du hast jetzt " + activeplayer.getplayerhealth() + " Leben.");
                     System.out.println("Das Gift hält noch " + playerpoisonrounds + " weitere Runden. ");
                 }
-                if(activeplayer.getpoisonrounds() == 1) {
+                if(activeplayer.getpoisonrounds() == 1 && mobattack) {
                     activeplayer.setplayerhealth(Math.round((activeplayer.getplayerhealth() - (activeplayer.getplayerhealth() * (playerpoisoneffect * 0.01))) * 10) * 0.1);
                     playerpoisonrounds -= 1;
                     System.out.println("Durch das Gift nimmst du " + playerpoisoneffect + "% Schaden. Du hast jetzt " + activeplayer.getplayerhealth() + " Leben.");
@@ -122,6 +122,7 @@ public class Parser
                     System.out.println("Durch das Gift nimmt " + activemob.getArtikel("nominativ", "bestimmt") + " " + activemob.getmobname() + " " + mobpoisoneffect + "% Schaden. " + activemob.getArtikel("nominativ", "bestimmt").substring(0, 1).toUpperCase() 
                     + activemob.getArtikel("nominativ", "bestimmt").substring(1) + " " + activemob.getmobname() + " hat jetzt " + activemob.getmobhealth() + " Leben. Der Gifteffekt hat nun seine Wirkung verloren.");
                 }
+                mobattack = true;
                 Scanner compatparser = new Scanner(System.in);
                 getcombataction(parser.nextLine(), activeplayer, activemob);
                 if(activemob.getmobhealth() > 0 && mobattack) {
@@ -144,7 +145,6 @@ public class Parser
                         running = false;
                     }
                 }
-                mobattack = true;
                 System.out.println();
                 }
         }
@@ -434,7 +434,7 @@ public class Parser
             parseplayer.setstage(stagelist[currentstage]);
             parseplayer.setcurrentroom(stagelist[currentstage].getstartroom());
             stagecompleted = false;
-            System.out.println("Du bist nun im neuen Level angekommen.");
+            System.out.println("Du bist am Tore der neuen Festung angekommen.");
         }
         else if(input[0].equals("gehe")) {
             try {
@@ -642,14 +642,14 @@ public class Parser
                 if(parseplayer.getitemfrominventory(inventorynumber).getClass() == Potion.class) {
                     if(((Potion) parseplayer.getitemfrominventory(inventorynumber)).getpotiontype() == "Damage") {
                         parsemob.setmobhealth(parsemob.getmobhealth() - ((Potion) parseplayer.getitemfrominventory(inventorynumber)).getpotioneffect());
-                        parseplayer.removeitemfrominventory(inventorynumber);
                         System.out.println("Du wirfst den Schadenstrank auf " + parsemob.getArtikel("akkusativ", "bestimmt") + " " + parsemob.getmobname() + " und machst " + ((Potion) parseplayer.getitemfrominventory(inventorynumber)).getpotioneffect() + " Schaden!");
+                        parseplayer.removeitemfrominventory(inventorynumber);
                     }
                     else if(((Potion) parseplayer.getitemfrominventory(inventorynumber)).getpotiontype() == "Poison") {
                         mobpoisonrounds = 3;
                         mobpoisoneffect = ((Potion) parseplayer.getitemfrominventory(inventorynumber)).getpotioneffect();
-                        parseplayer.removeitemfrominventory(inventorynumber);
                         System.out.println("Du wirfst den Gifttrank auf " + parsemob.getArtikel("akkusativ", "bestimmt") + " " + parsemob.getmobname() + ". " + parsemob.getArtikel("nominativ", "bestimmt").substring(0, 1).toUpperCase() + parsemob.getArtikel("nominativ", "bestimmt").substring(1) + " " + parsemob.getmobname() + " ist nun vergiftet.");
+                        parseplayer.removeitemfrominventory(inventorynumber);
                     }
                     else if(((Potion) parseplayer.getitemfrominventory(inventorynumber)).getpotiontype() == "Healing") {
                         parseplayer.drink(inventorynumber);
@@ -661,6 +661,25 @@ public class Parser
                 else {
                     System.out.println("Du kannst nur Tränke und Essen im Kampf verwenden");
                     mobattack = false;
+                }
+                if(parsemob.getmobhealth() <= 0) {
+                    if(parseplayer.getWeakened()) {
+                        parseplayer.setStrength(parseplayer.getPlayerStrength() * 1.25);
+                        parseplayer.setWeakened(false);
+                    }
+                    parsemob.setmobstatus(false);
+                    System.out.println("Du hast den " + parsemob.getmobname() + " besiegt. ");
+                    parsemob.droploot(parseplayer, parsemob);
+                    parseplayer.addexperience(parsemob.getmobxp());
+                    combat = false;
+                    running = true;
+                    if(parsemob instanceof Boss) {
+                        stagecompleted = true;
+                        System.out.println("Du hast dieses Level geschafft! Du kannst nun \"weiter\" schreiben, um das nächste Level zu beginnen");
+                    }
+                }
+                else {
+                    System.out.println(parsemob.getArtikel("nominativ", "bestimmt").substring(0, 1).toUpperCase() + parsemob.getArtikel("nominativ", "bestimmt").substring(1) + " " + parsemob.getmobname() + " hat nun " + parsemob.getmobhealth() + " Leben.");
                 }
             }
             catch(Exception e) {

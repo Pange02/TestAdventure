@@ -49,7 +49,7 @@ public class Stage2 extends Stage
          */
         
         //erster Raum der Stage
-        speakerdialogue.add("Da seid ihr ja, kommt, nun ist es nur noch ein Ritt bis zum Schloss von Sir Archibald Dunkan.");
+        speakerdialogue.add("Nun ist es nur noch ein Ritt bis zum Schloss von Sir Archibald Dunkan.");
         speakerdialogue.add("Hier sind wir, seid Ihr euch wirklich sicher, dass Ihr weiter gehen wollt? Man sagt sich, Sie Archibald Dunkan sei einer der besten Kämpfer unserer Lande.");
         speakerdialogue.add("Für das Umkehren ist jedoch nun zu spät.");
         speakerdialogue.add("Also gut, ich wünsche euch viel Glück!");
@@ -112,7 +112,7 @@ public class Stage2 extends Stage
         //dreizehnter Raum der Stage
         bossLoot.add(Item.getitemfromlist("Weapon", 5));
         Lord lord = new Lord("Sir Archibald Duncan", 100, 50, ((Weapon) Item.getitemfromlist("Weapon", 5)), bossLoot, 200, "maskulin");
-        Room room13 = new Room(13, null, null, null);
+        Room room13 = new Room(13, null, lord, null);
         
         //Verbinden der Räume miteinander
         
@@ -155,6 +155,20 @@ public class Stage2 extends Stage
         //Raum 13 verbunden mit Raum 12
         room13.setConnectedRooms(null, room12, null, null);
         
+        roomlist.add(startRoom);
+        roomlist.add(room2);
+        roomlist.add(room3);
+        roomlist.add(room4);
+        roomlist.add(room5);
+        roomlist.add(room6);
+        roomlist.add(room7);
+        roomlist.add(room8);
+        roomlist.add(room9);
+        roomlist.add(room10);
+        roomlist.add(room11);
+        roomlist.add(room12);
+        roomlist.add(room13);
         
+        playerstartroom = startRoom;
     }
 }
