@@ -19,9 +19,11 @@ public class Speaker extends NPC
         dialogue = parsedialogue;
     }
     
+    // Methode damit NPCs sprechen können
     public void speak(Player parseplayer) {
         Random randomentry = new Random();
         entrydialogue = randomentry.nextInt(0, 3);
+        // Begrüßen des Spielers und vorstellen
         if(entrydialogue == 0) {
             System.out.println("Hallo " + parseplayer.getplayername() + "!");
             try {

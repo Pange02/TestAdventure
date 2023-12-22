@@ -20,6 +20,7 @@ public class Merchant extends NPC
         itembought = false;
     }
     
+    // Ausgabe des "Einkaufsmenüs"
     @Override public void speak() {
         System.out.println("Hallo! Ich bin " + name);
         try {
@@ -38,6 +39,7 @@ public class Merchant extends NPC
         getmerchantshop();
     }
     
+    // Methode zum Zurückgeben der Ware des Händlers
     public void getmerchantshop() {
         for(Map.Entry<Item, Integer> entry : merchantshop.entrySet()) {
             Item key = entry.getKey();
@@ -46,6 +48,7 @@ public class Merchant extends NPC
         }
     }
     
+    // Methode damit der Spieler Items kaufen kann
     public void buyitem(Player parseplayer, String parseitemname) {
         for(Map.Entry<Item, Integer> entry : merchantshop.entrySet()) {
             if(entry.getKey().getitemname().toLowerCase().equals(parseitemname.toLowerCase())) {

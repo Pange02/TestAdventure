@@ -72,7 +72,7 @@ public class Room {
     }
     
     /**
-     * Methode gibt die Kiste des Raumes zurück.
+     * Methode gibt die Kiste, Mobs und andere Inhalte des Raumes zurück.
      */
     public Chest getChest() {
         return chest1;
@@ -94,6 +94,7 @@ public class Room {
         return npc1;
     }
     
+    // Methoden zum Festlegen von Schlössern an Räumen
     public void setLock(Lock parseLock) {
         lock = parseLock;
     }

@@ -17,6 +17,7 @@ public class Henchman extends Boss
     private int shieldrounds;
     private boolean shieldactive;
     private ArrayList<java.lang.reflect.Method> specialattacklist;
+    
     /**
      * Constructor for objects of class Henchman
      */

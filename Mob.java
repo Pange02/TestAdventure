@@ -36,6 +36,7 @@ public class Mob
         defense = 0.0;
     }
     
+    // Methode zum droppen des Loots eines Mobs, wenn es besiegt wird
     public void droploot(Player parseplayer, Mob parsemob) {
         for(int i = 0; i < parsemob.mobloot.size(); i++) {
                 parseplayer.additemtoinventory(parsemob.mobloot.get(i));
@@ -66,6 +67,7 @@ public class Mob
         }
     }
     
+    // Methoden zum Ausgeben der Attribute eines Mobs
     public double getmobhealth() {
         return health;
     }
@@ -98,6 +100,7 @@ public class Mob
         return level;
     }
     
+    // Methode zum Angreifen des Spielers
     public void attack(Player parseplayer) {
         finaldamage = Math.round((1 - (parseplayer.getplayerdefense()/(10 + parseplayer.getplayerdefense()))) * damage * 10.0) / 10.0;
         parseplayer.setplayerhealth(Math.round((parseplayer.getplayerhealth() - finaldamage) * 10.0) / 10.0);
@@ -122,6 +125,7 @@ public class Mob
         }
     }
     
+    // Legt für den Kampf wichtige Attribute des Mobs fest
     public void setMobDefense(double newDefense){
         defense = newDefense;
     }
