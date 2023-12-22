@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=Stage2
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ Stage2\ here.\r\n\r\n\ @author\ (your\ name)\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\r\n\ Die\ Klasse\ Stage0\ wird\ von\ der\ Klasse\ Stage\ vererbt.\ Im\ Konstruktor\ der\ Klasse\ werden\ hierbei\ die\ R\u00E4ume\ 0\ bis\ 13\ erstellt\ und\ entsprechend\ der\ Karte\ verbunden.\r\n\ Ebenfalls\ werden\ die\ verschiedenen\ Kisten\ und\ Monster\ mit\ entsprechenden\ Loot\ bef\u00FCllt\ und\ in\ den\ R\u00E4umen\ positioniert,\ gleiches\ gilt\ auch\ f\u00FCr\ die\ NPC\ die\ einen\ entsprechenden\ Text\r\n\ f\u00FCr\ Interaktionen\ zugewiesen\ bekommen.\ Alle\ diese\ Informationen\ werden\ in\ ArrayListen\ hinterlegt,\ die\ entsprechend\ erzeugt\ werden.\ Der\ \u201EstartRoom\u201C\ wird\ als\ \u201Eplayerstartroom\u201C\ festgelegt.\r\n\r\n\ @author\ (your\ name)\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
 comment1.params=
 comment1.target=Stage2()
 numComments=2

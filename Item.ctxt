@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=Item
-comment0.text=\r\n\ Diese\ Klasse\ macht\ es\ dem\ Spieler\ m\u00F6glich\ auf\ Gegenst\u00E4nde\ zuzugreifen.\r\n\ \r\n\ @author\ (Ihr\ Name)\ \r\n\ @version\ 1.1.1\r\n
+comment0.text=\r\n\ Diese\ Klasse\ macht\ es\ dem\ Spieler\ m\u00F6glich\ auf\ Gegenst\u00E4nde\ zuzugreifen.\ Und\ dient\ als\ Elternklasse\ f\u00FCr\ die\ Klassen\ \u201EAccessory\u201C,\ \u201EWeapon\u201C,\ \u201EArmor\u201C,\ \u201EPotion\u201C\ und\ \u201EConsumable\u201C.\r\n\ Au\u00DFerdem\ \u201Everwaltet\u201C\ diese\ Klasse\ alle\ im\ Spiel\ sammelbaren\ Objekte,\ sodass\ \u00FCber\ diese\ s\u00E4mtlichen\ Listen\ \u00FCber\ diese\ Objekte\ abrufbar\ sind.\ Auch\ bestimmt\ sie\ die\ Seltenheit\ der\ \u201EReforges\u201C.\r\n\ \r\n\ @author\ (Ihr\ Name)\ \r\n\ @version\ 1.1.1\r\n
 comment1.params=parsename\ parsedescription\ parserarity\ parsegender
 comment1.target=Item(java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String)
 comment1.text=\r\n\ Konstruktor\ f\u00FCr\ Objekte\ der\ Klasse\ Item\ mit\ Namen,\ Damage,\ Seltenheit\ und\ Typ.\r\n

@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=Mob
-comment0.text=\r\n\ Beschreiben\ Sie\ hier\ die\ Klasse\ Mob.\r\n\ \r\n\ @author\ (Ihr\ Name)\ \r\n\ @version\ (eine\ Versionsnummer\ oder\ ein\ Datum)\r\n
+comment0.text=\r\n\ Die\ Klasse\ Mob\ hat\ die\ F\u00E4higkeit\ Gegner\ zu\ erstellen,\ diese\ m\u00FCssen\ bek\u00E4mpft\ werden,\ bevor\ der\ Raum\ verlassen\ werden\ kann.\ Mobs\ k\u00F6nnen\ bek\u00E4mpft\ werden,\ indem\ diese\ mit\ einer\ Waffe\r\n\ angegriffen\ werden,\ dabei\ wird\ abwechselnd\ geschlagen,\ entsprechend\ dem\ Schaden\ der\ Waffe\ werden\ bei\ dem\ Kampf\ Lebenspunkte\ abgezogen.\r\n\ Jeder\ Mob\ kann\ bei\ seiner\ Erstellung\ individuell\ benannt\ werden,\ ebenso\ k\u00F6nnen\ Leben,\ Waffe,\ Loot,\ XP\ und\ Geschlecht\ f\u00FCr\ jedes\ Individuum\ einzeln\ festgelegt\ werden.\r\n\ Ebenso\ besitzt\ er\ das\ Attribut\ \u201Edefense\u201C,\ welches\ f\u00FCr\ die\ Klasse\ \u201EBoss\u201C\ ben\u00F6tigt\ wird.\r\n\ \r\n\ @author\ (Ihr\ Name)\ \r\n\ @version\ (eine\ Versionsnummer\ oder\ ein\ Datum)\r\n
 comment1.params=parsename\ parselevel\ parsehealth\ parseweapon\ parsemobloot\ parsemobxp\ parsegender
 comment1.target=Mob(java.lang.String,\ int,\ int,\ Weapon,\ java.util.ArrayList,\ int,\ java.lang.String)
 comment1.text=\r\n\ Konstruktor\ f\u00FCr\ Objekte\ der\ Klasse\ Mob\r\n

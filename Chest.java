@@ -1,8 +1,9 @@
 import java.util.ArrayList;
 import java.util.Random;
 /**
- * Diese Klasse erstellt Kisten, welche von dem Spieler in Räumen gefunden werden können und geöffnet werden können,
- * die Befüllung der Kisten ist statisch und wird entsprechend der Positionierung passend befüllt.
+ * Diese Klasse erstellt Kisten, welche von dem Spieler in Räumen gefunden werden können und geöffnet werden können, die Befüllung der Kisten ist statisch und wird entsprechend der
+ * Positionierung passend befüllt, dies wird in den Klassen der Stages vorgenommen, sie enthält ebenfalls eine zufällige Menge an Coins, diese begrenzen sich zwischen 10 und 25.
+ * Jede Kiste ist kann nur einmal geöffnet werden.
  * 
  * @creator: Leonard
  * @editors: 

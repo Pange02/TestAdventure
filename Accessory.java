@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 /**
- * Diese Klasse erstellt besondere sammelbare Objekte.
+ * Diese Klasse wird von der Klasse „Item“ vererbt und erstellt besondere sammelbare Objekte. Diese Objekte erhöhen die Stärke, die Kritchance und den Kritschaden des Spielers.
  *
  * @author (your name)
  * @version 1.0.1

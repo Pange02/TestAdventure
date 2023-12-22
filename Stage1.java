@@ -1,7 +1,9 @@
 import java.util.ArrayList;
 import java.util.HashMap;
 /**
- * Beschreiben Sie hier die Klasse Stage1.
+ * Die Klasse Stage1 wird von der Klasse Stage vererbt. Im Konstruktor der Klasse werden hierbei die Räume 0 bis 7 erstellt und entsprechend der Karte verbunden.
+ * Ebenfalls werden die verschiedenen Kisten und Monster mit entsprechenden Loot befüllt und in den Räumen positioniert, gleiches gilt auch für die NPC die einen entsprechenden Text
+ * für Interaktionen zugewiesen bekommen. Alle diese Informationen werden in ArrayListen hinterlegt, die entsprechend erzeugt werden. Der „startRoom“ wird als „playerstartroom“ festgelegt.
  * 
  * @author (Ihr Name) 
  * @version (eine Versionsnummer oder ein Datum)

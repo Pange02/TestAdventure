@@ -1,7 +1,7 @@
 import java.util.HashMap;
 import java.util.Map;
 /**
- * Beschreiben Sie hier die Klasse Merchant.
+ * Diese Klasse wird von der Klasse „NPC“ vererbt. Bei dem Händler können entsprechend für Coins andere Items im Shop erworben werden.
  * 
  * @author (Ihr Name) 
  * @version (eine Versionsnummer oder ein Datum)

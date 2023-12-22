@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 /**
- * Diese Klasse macht es dem Spieler möglich auf Gegenstände zuzugreifen.
+ * Diese Klasse macht es dem Spieler möglich auf Gegenstände zuzugreifen. Und dient als Elternklasse für die Klassen „Accessory“, „Weapon“, „Armor“, „Potion“ und „Consumable“.
+ * Außerdem „verwaltet“ diese Klasse alle im Spiel sammelbaren Objekte, sodass über diese sämtlichen Listen über diese Objekte abrufbar sind. Auch bestimmt sie die Seltenheit der „Reforges“.
  * 
  * @author (Ihr Name) 
  * @version 1.1.1

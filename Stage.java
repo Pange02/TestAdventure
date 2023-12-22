@@ -1,7 +1,8 @@
 import java.util.ArrayList;
 import java.util.HashMap;
 /**
- * Beschreiben Sie hier die Klasse Stage.
+ * Die Klasse Stage wird als Elternklasse für die verschiedenen Klassen der Stages eingesetzt, hierbei wird eine Methode „getstartroom()“
+ * eingeführt, welche den Startraum der entsprechenden Stage wiedergibt. Die Methode „getroomlist()“ kann eine ArrayList der Räume zurückgeben, welche in der jeweiligen Stage implementiert wurden.
  * 
  * @author (Ihr Name) 
  * @version (eine Versionsnummer oder ein Datum)

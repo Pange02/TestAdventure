@@ -1,7 +1,9 @@
 import java.util.ArrayList;
 import java.util.Random;
 /**
- * Beschreiben Sie hier die Klasse Speaker.
+ * Diese Klasse wird von der Klasse „NPC“ vererbt und kann lediglich dem Spieler etwas erzählen, was vorher in festgelegt wurde, hierfür wird eine ArrayList benötigt.
+ * Die Begrüßung, die jeder Interaktion vorangeht wird mit einer von drei zufällig ausgelösten Begrüßungen gestartet, anschließend wird das was in der ArrayList hinterlegt ist wieder gegeben,
+ * wobei zwischen jedem Eintrag eine kurze Wartesequenz folgt, was das Gefühl von einem sprechen vermitteln soll.
  * 
  * @author (Ihr Name) 
  * @version (eine Versionsnummer oder ein Datum)

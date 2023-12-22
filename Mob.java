@@ -1,7 +1,10 @@
 import java.util.ArrayList;
 import java.lang.Math;
 /**
- * Beschreiben Sie hier die Klasse Mob.
+ * Die Klasse Mob hat die Fähigkeit Gegner zu erstellen, diese müssen bekämpft werden, bevor der Raum verlassen werden kann. Mobs können bekämpft werden, indem diese mit einer Waffe
+ * angegriffen werden, dabei wird abwechselnd geschlagen, entsprechend dem Schaden der Waffe werden bei dem Kampf Lebenspunkte abgezogen.
+ * Jeder Mob kann bei seiner Erstellung individuell benannt werden, ebenso können Leben, Waffe, Loot, XP und Geschlecht für jedes Individuum einzeln festgelegt werden.
+ * Ebenso besitzt er das Attribut „defense“, welches für die Klasse „Boss“ benötigt wird.
  * 
  * @author (Ihr Name) 
  * @version (eine Versionsnummer oder ein Datum)

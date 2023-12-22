@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=NPC
-comment0.text=\r\n\ Die\ Klasse\ NPC\ kann\ andere\ Charaktere\ erstellen,\ mit\ denen\ der\ Spieler\ kommunizieren\ kann.\ \r\n\r\n\ @author\ (your\ name)\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\r\n\ Bildet\ die\ Elternklasse\ der\ Klassen\ Merchant\ und\ Speaker.\ Jedem\ Individuum\ der\ Klasse\ kann\ ein\ Name\ zugeteilt\ werden,\ mit\ welchem\ er\ sich\ vorstellen\ kann\ und\ den\ er\ zur\u00FCckgeben\ kann.\r\n\r\n\ @author\ (your\ name)\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
 comment1.params=parsename
 comment1.target=NPC(java.lang.String)
 comment2.params=

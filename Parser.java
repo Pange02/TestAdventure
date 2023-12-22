@@ -2,7 +2,8 @@ import java.util.Scanner;
 import java.util.ArrayList;
 import java.lang.Math;
 /**
- * Die Klasse “Parser” nimmt die Eingaben des Spielers entgegen und gibt entsprechend der Eingaben die Befehle weiter und löst somit andere Ereignisse aus.
+ * Die Klasse “Parser” nimmt die Eingaben des Spielers mittels Scanner entgegen und gibt entsprechend der Eingaben die Befehle weiter und löst somit andere Ereignisse aus.
+ * Auch sind hier die Kämpfe und anderen Befehle definiert
  * 
  * @author (Ihr Name) 
  * @version (eine Versionsnummer oder ein Datum)

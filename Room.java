@@ -1,8 +1,8 @@
 import java.util.ArrayList;
 /**
- * Die Klasse “Room” gestaltet die Räume so, dass der Spieler sich nach Truhen umschauen
- * kann und Türen in den vier Himmelsrichtungen entdecken kann, außerdem verortet sie in
- * die Räume zugewiesene Mobs.
+ * Die Klasse “Room” gestaltet die Räume so, dass der Spieler sich nach Truhen umschauen kann und Türen in den vier Himmelsrichtungen entdecken kann,
+ * außerdem verortet sie in die Räume zugewiesene Mobs, sowie NPCs und Händler. Ein Raum kann in den vier Himmelsrichtungen verlassen werden, solange in den
+ * Klassen der Stages in dieser Himmelsrichtung eine weitere Tür verortet wurde. Ebenso kann Raum verschlossen werden.
  */
 
 public class Room {

@@ -1,6 +1,6 @@
 import java.util.Random;
 /**
- * Write a description of class Blacksmith here.
+ * Diese Klasse wird von der Klasse „NPC“ vererbt. Bei dem Merchant sollen später Reforges möglich sein, allerdings konnte diese Konzept nicht rechtzeitig umgesetzt werden. 
  *
  * @author (your name)
  * @version (a version number or a date)

@@ -1,7 +1,9 @@
 import java.util.ArrayList;
 import java.util.HashMap;
 /**
- * Write a description of class Stage2 here.
+ * Die Klasse Stage0 wird von der Klasse Stage vererbt. Im Konstruktor der Klasse werden hierbei die Räume 0 bis 13 erstellt und entsprechend der Karte verbunden.
+ * Ebenfalls werden die verschiedenen Kisten und Monster mit entsprechenden Loot befüllt und in den Räumen positioniert, gleiches gilt auch für die NPC die einen entsprechenden Text
+ * für Interaktionen zugewiesen bekommen. Alle diese Informationen werden in ArrayListen hinterlegt, die entsprechend erzeugt werden. Der „startRoom“ wird als „playerstartroom“ festgelegt.
  *
  * @author (your name)
  * @version (a version number or a date)
@@ -124,8 +126,8 @@ public class Stage2 extends Stage
         
         //Verbinden der Räume miteinander
         
-        //Startraum verbunden mit Raum 2.
-        startRoom.setConnectedRooms(room2, null, null, null);
+        //Startraum verbunden mit Raum 1.
+        startRoom.setConnectedRooms(room1, null, null, null);
         
         //Raum 2 verbunden mit: Raum 3, Raum 4, Raum 1 und Raum 8
         room1.setConnectedRooms(room2, room3, startRoom, room7);

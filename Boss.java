@@ -1,7 +1,9 @@
 import java.util.ArrayList;
 import java.util.Random;
 /**
- * Write a description of class Boss here.
+ * Diese Klasse wird von der Klasse Mob vererbt. Diese Klasse hat verschiedene besondere Angriffe, auf welche der Boss zugreifen kann, während er sich im Kampf befindet,
+ * hierbei kann er den Spieler schwächen, wobei seine Stärker gesenkt wird (weakiningHit), er kann zweimal angreifen (doubleAttack), er kann ein Schild benutzen und so den Schaden
+ * des Spielers minimeren (reduceDamage) und er kann den Spieler vergiften (poisningHit).
  *
  * @author (your name)
  * @version (a version number or a date)

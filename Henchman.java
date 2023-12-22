@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Random;
 /**
- * Write a description of class Henchman here.
+ * Diese Klasse wird von der Klasse „Boss“ vererbt
  *
  * @author (your name)
  * @version (a version number or a date)

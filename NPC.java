@@ -1,5 +1,5 @@
 /**
- * Die Klasse NPC kann andere Charaktere erstellen, mit denen der Spieler kommunizieren kann. 
+ * Bildet die Elternklasse der Klassen Merchant und Speaker. Jedem Individuum der Klasse kann ein Name zugeteilt werden, mit welchem er sich vorstellen kann und den er zurückgeben kann.
  *
  * @author (your name)
  * @version (a version number or a date)

@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=Room
-comment0.text=\r\n\ Die\ Klasse\ \u201CRoom\u201D\ gestaltet\ die\ R\u00E4ume\ so,\ dass\ der\ Spieler\ sich\ nach\ Truhen\ umschauen\r\n\ kann\ und\ T\u00FCren\ in\ den\ vier\ Himmelsrichtungen\ entdecken\ kann,\ au\u00DFerdem\ verortet\ sie\ in\r\n\ die\ R\u00E4ume\ zugewiesene\ Mobs.\r\n
+comment0.text=\r\n\ Die\ Klasse\ \u201CRoom\u201D\ gestaltet\ die\ R\u00E4ume\ so,\ dass\ der\ Spieler\ sich\ nach\ Truhen\ umschauen\ kann\ und\ T\u00FCren\ in\ den\ vier\ Himmelsrichtungen\ entdecken\ kann,\r\n\ au\u00DFerdem\ verortet\ sie\ in\ die\ R\u00E4ume\ zugewiesene\ Mobs,\ sowie\ NPCs\ und\ H\u00E4ndler.\ Ein\ Raum\ kann\ in\ den\ vier\ Himmelsrichtungen\ verlassen\ werden,\ solange\ in\ den\r\n\ Klassen\ der\ Stages\ in\ dieser\ Himmelsrichtung\ eine\ weitere\ T\u00FCr\ verortet\ wurde.\ Ebenso\ kann\ Raum\ verschlossen\ werden.\r\n
 comment1.params=RoomNumber\ parseChest\ parseMob\ parseNPC
 comment1.target=Room(int,\ Chest,\ Mob,\ NPC)
 comment1.text=\r\n\ \ Konstruktor\ f\u00FCr\ die\ Klasse\ Raum\ mit\ dem\ Truhenobjekt\ als\ Argument.\r\n
