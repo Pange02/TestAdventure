@@ -113,6 +113,5 @@ public class Henchman extends Boss
                 System.out.println("Du hast durch den Angriff jetzt " + parseplayer.getplayerhealth() + " Leben.");
             }
         }
-        System.out.println("randombound: " + randombound + " shieldactive: " + shieldactive + " shieldrounds: " + shieldrounds + " specialAttack: " + specialAttack + " nextSpecialAttack: " + nextSpecialAttack + " Zufall: " + zufall);
     }
 }

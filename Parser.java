@@ -135,7 +135,7 @@ public class Parser
                     System.out.println("Du bist gestorben!");
                     System.out.println("Schreibe \"Neustart\" um das Level zu wiederholen.");
                     Scanner endparser = new Scanner(System.in);
-                    if(endparser.nextLine().equals("Neustart")) {
+                    if(endparser.nextLine().toLowerCase().equals("Neustart")) {
                         combat = false;
                         running = false;
                         Game nextGame = new Game();
@@ -423,6 +423,9 @@ public class Parser
                     catch(Exception e) {
                         System.out.println("Du musst als Zahl angeben, wie viele Punkte du in Verteidigung investieren möchtest.");
                     }
+                }
+                else {
+                    System.out.println("Dies ist keine gültige Fähigkeit.");
                 }
             }
             catch(Exception e) {
