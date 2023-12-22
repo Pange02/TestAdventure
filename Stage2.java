@@ -50,7 +50,6 @@ public class Stage2 extends Stage
          */
         
         //Startraum der Stage
-        speakerdialogue.add("Nun ist es nur noch ein Ritt bis zum Schloss von Sir Archibald Dunkan.");
         speakerdialogue.add("Hier sind wir, seid Ihr euch wirklich sicher, dass Ihr weiter gehen wollt? Man sagt sich, Sie Archibald Dunkan sei einer der besten Kämpfer unserer Lande.");
         speakerdialogue.add("Für das Umkehren ist jedoch nun zu spät.");
         speakerdialogue.add("Also gut, ich wünsche euch viel Glück!");
