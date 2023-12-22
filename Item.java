@@ -1,18 +1,23 @@
 import java.util.ArrayList;
 /**
- * Beschreiben Sie hier die Klasse Item.
+ * Diese Klasse macht es dem Spieler möglich auf Gegenstände zuzugreifen. Und dient als Elternklasse für die Klassen „Accessory“, „Weapon“, „Armor“, „Potion“ und „Consumable“.
+ * Außerdem „verwaltet“ diese Klasse alle im Spiel sammelbaren Objekte, sodass über diese sämtlichen Listen über diese Objekte abrufbar sind. Auch bestimmt sie die Seltenheit der „Reforges“.
  * 
  * @author (Ihr Name) 
- * @version (eine Versionsnummer oder ein Datum)
+ * @version 1.1.1
  */
 public class Item
 {
     // Attribute eines Items
     protected String name;
+    protected String description;
     protected String rarity;
+    protected String descriptionstring;
+    protected String statsstring;
+    protected int spaces;
     protected String gender;
         
-    //Liste mit allen möglichen Seltenheitsgraden. Dient nur als Übersicht aktuell.
+    //Liste mit allen möglichen Seltenheitsgraden.
     private static String[] itemtiers = {"(Gewöhnlich)", "(Ungewöhnlich)", "(Selten)", "(Episch)", "(Legendär)", "(Mythisch)"};
     
     private static ArrayList[] itemlist = new ArrayList[5];
@@ -20,9 +25,10 @@ public class Item
     /**
      * Konstruktor für Objekte der Klasse Item mit Namen, Damage, Seltenheit und Typ.
      */
-    public Item(String parsename, String parserarity, String parsegender)
+    public Item(String parsename, String parsedescription, String parserarity, String parsegender)
     {
         name = parsename;
+        description = parsedescription;
         rarity = parserarity;
         gender = parsegender;
     }
@@ -39,6 +45,7 @@ public class Item
         itemlist[4] = Consumable.consumablelist;
     }
     
+    //Zugriff auf jedes Item im game übergeben wird die Art von Item und sein Platz in der entsprechenden Liste.
     public static Item getitemfromlist(String type, int arrayslot) 
     {
         if(type.toLowerCase().equals("weapon")) {
@@ -54,44 +61,96 @@ public class Item
             return ((Accessory) itemlist[3].get(arrayslot));
         }
         else if(type.toLowerCase().equals("consumable")) {
-            return ((Accessory) itemlist[3].get(arrayslot));
+            return ((Consumable) itemlist[4].get(arrayslot));
         }
         else {
             return null;
         }
     }
     
+    //Rückgabe des Namen eines Items
     public String getitemname()
     {
         return name;
     }
     
+    //Rückgabe der Menge an Items in einer Kategorie
     public static int getitemlistsize()
     {
         return itemlist.length;
     }
     
+    //Rückgabe der Seltenheit eines Items
     public String getitemrarity()
     {
         return rarity;
     }
     
+    //Rückgabe der ArrayList eines Itemtypes
     public static ArrayList[] getitemlist() {
         return itemlist;
     }
     
-    /**
-     * Gibt zu einem Item und einem Kasus einen bestimmten oder unbestimmten Artikel aus.
-     */
+    //Rückgabe der Seltenheit eines Reforges
+    public int getreforgerarity() {
+        if(rarity.equals("(Gewöhnlich)")) {
+            return 0;
+        }
+        else if(rarity.equals("(Ungewöhnlich)")) {
+            return 1;
+        }
+        else if(rarity.equals("(Selten)")) {
+            return 2;
+        }
+        else if(rarity.equals("(Episch)")) {
+            return 3;
+        }
+        else if(rarity.equals("(Legendär)")) {
+            return 4;
+        }
+        else if(rarity.equals("(Mytisch)")) {
+            return 5;
+        }
+        else {
+            return -1;
+        }
+    }
+    
+    //Ausgabe der Informationen eines Items
+    public void getiteminfo() {
+        for(int i = 0; i <= (description.length() - name.length())/2; i++) {
+            System.out.print("-");
+        }
+        System.out.print(name);
+        for(int i = 0; i <= (description.length() - name.length())/2; i++) {
+            if(i == (description.length() - name.length())/2) {
+                System.out.println("-");
+            }
+            else {
+                System.out.print("-");
+            }
+        }
+        System.out.println(" " + description);
+        for(int i = 0; i <= (description.length() - rarity.length() + 1)/2; i++) {
+            System.out.print("-");
+        }
+        System.out.print(rarity);
+        for(int i = 0; i <= (description.length() - rarity.length() + 1)/2; i++) {
+            System.out.print("-");
+        }
+        System.out.println();
+    }
+    
+    //Gibt zu einem Item und einem Kasus einen bestimmten oder unbestimmten Artikel aus.
     public String getArtikel(String kasus, String art){
-        if (art.toLowerCase().equals("bestimmter")){
+        if (art.toLowerCase().equals("bestimmt")){
             return Grammar.getArtikel(kasus, gender);
         }
-        else if (art.toLowerCase().equals("unbestimmter")){
+        else if (art.toLowerCase().equals("unbestimmt")){
             return Grammar.getUnArtikel(kasus, gender);
         }
         else {
-            return null;
+            return "kein Artikel in Item";
         }
     }
 }

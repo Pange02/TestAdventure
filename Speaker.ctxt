@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=Speaker
+comment0.text=\r\n\ Diese\ Klasse\ wird\ von\ der\ Klasse\ \u201ENPC\u201C\ vererbt\ und\ kann\ lediglich\ dem\ Spieler\ etwas\ erz\u00E4hlen,\ was\ vorher\ in\ festgelegt\ wurde,\ hierf\u00FCr\ wird\ eine\ ArrayList\ ben\u00F6tigt.\r\n\ Die\ Begr\u00FC\u00DFung,\ die\ jeder\ Interaktion\ vorangeht\ wird\ mit\ einer\ von\ drei\ zuf\u00E4llig\ ausgel\u00F6sten\ Begr\u00FC\u00DFungen\ gestartet,\ anschlie\u00DFend\ wird\ das\ was\ in\ der\ ArrayList\ hinterlegt\ ist\ wieder\ gegeben,\r\n\ wobei\ zwischen\ jedem\ Eintrag\ eine\ kurze\ Wartesequenz\ folgt,\ was\ das\ Gef\u00FChl\ von\ einem\ sprechen\ vermitteln\ soll.\r\n\ \r\n\ @author\ (Ihr\ Name)\ \r\n\ @version\ (eine\ Versionsnummer\ oder\ ein\ Datum)\r\n
+comment1.params=parsename\ parsedialogue
+comment1.target=Speaker(java.lang.String,\ java.util.ArrayList)
+comment1.text=\r\n\ Konstruktor\ f\u00FCr\ Objekte\ der\ Klasse\ Speaker\r\n
+comment2.params=parseplayer
+comment2.target=void\ speak(Player)
+numComments=3

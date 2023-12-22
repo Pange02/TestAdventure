@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=Merchant
+comment0.text=\r\n\ Diese\ Klasse\ wird\ von\ der\ Klasse\ \u201ENPC\u201C\ vererbt.\ Bei\ dem\ H\u00E4ndler\ k\u00F6nnen\ entsprechend\ f\u00FCr\ Coins\ andere\ Items\ im\ Shop\ erworben\ werden.\r\n\ \r\n\ @author\ (Ihr\ Name)\ \r\n\ @version\ (eine\ Versionsnummer\ oder\ ein\ Datum)\r\n
+comment1.params=parsename\ parsemerchantshop
+comment1.target=Merchant(java.lang.String,\ java.util.HashMap)
+comment1.text=\r\n\ Konstruktor\ f\u00FCr\ Objekte\ der\ Klasse\ Merchant\r\n
+comment2.params=
+comment2.target=void\ speak()
+comment3.params=
+comment3.target=void\ getmerchantshop()
+comment4.params=parseplayer\ parseitemname
+comment4.target=void\ buyitem(Player,\ java.lang.String)
+numComments=5

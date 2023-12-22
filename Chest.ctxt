@@ -1,13 +1,13 @@
 #BlueJ class context
 comment0.target=Chest
-comment0.text=\r\n\ Beschreiben\ Sie\ hier\ die\ Klasse\ Chest.\r\n\ \r\n\ @creator\:\ Leonard\r\n\ @editors\:\ \r\n\ @version\ (eine\ Versionsnummer\ oder\ ein\ Datum)\r\n
+comment0.text=\r\n\ Diese\ Klasse\ erstellt\ Kisten,\ welche\ von\ dem\ Spieler\ in\ R\u00E4umen\ gefunden\ werden\ k\u00F6nnen\ und\ ge\u00F6ffnet\ werden\ k\u00F6nnen,\ die\ Bef\u00FCllung\ der\ Kisten\ ist\ statisch\ und\ wird\ entsprechend\ der\r\n\ Positionierung\ passend\ bef\u00FCllt,\ dies\ wird\ in\ den\ Klassen\ der\ Stages\ vorgenommen,\ sie\ enth\u00E4lt\ ebenfalls\ eine\ zuf\u00E4llige\ Menge\ an\ Coins,\ diese\ begrenzen\ sich\ zwischen\ 10\ und\ 25.\r\n\ Jede\ Kiste\ ist\ kann\ nur\ einmal\ ge\u00F6ffnet\ werden.\r\n\ \r\n\ @creator\:\ Leonard\r\n\ @editors\:\ \r\n\ @version\ (eine\ Versionsnummer\ oder\ ein\ Datum)\r\n
 comment1.params=parseItemList
 comment1.target=Chest(java.util.ArrayList)
 comment2.params=
 comment2.target=void\ fillChest()
-comment3.params=parsePlayer\ parseChest
-comment3.target=void\ openChest(Player,\ Chest)
-comment4.params=parseChest
-comment4.target=boolean\ getIsOpenable(Chest)
+comment3.params=parsePlayer
+comment3.target=void\ openChest(Player)
+comment4.params=
+comment4.target=boolean\ getIsOpenable()
 comment4.text=\r\n\ Methode\ zur\ \u00DCberpr\u00FCfung\ von\ isopenable\ (privat).\r\n
 numComments=5

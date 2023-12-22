@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.target=Blacksmith
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ Blacksmith\ here.\r\n\r\n\ @author\ (your\ name)\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=parsename
+comment1.target=Blacksmith(java.lang.String)
+comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ Blacksmith\r\n
+comment2.params=parseplayer
+comment2.target=void\ speak(Player)
+comment3.params=parseitem
+comment3.target=void\ reforge(Item)
+numComments=4

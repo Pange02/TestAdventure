@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.target=Stage
+comment0.text=\r\n\ Die\ Klasse\ Stage\ wird\ als\ Elternklasse\ f\u00FCr\ die\ verschiedenen\ Klassen\ der\ Stages\ eingesetzt,\ hierbei\ wird\ eine\ Methode\ \u201Egetstartroom()\u201C\r\n\ eingef\u00FChrt,\ welche\ den\ Startraum\ der\ entsprechenden\ Stage\ wiedergibt.\ Die\ Methode\ \u201Egetroomlist()\u201C\ kann\ eine\ ArrayList\ der\ R\u00E4ume\ zur\u00FCckgeben,\ welche\ in\ der\ jeweiligen\ Stage\ implementiert\ wurden.\r\n\ \r\n\ @author\ (Ihr\ Name)\ \r\n\ @version\ (eine\ Versionsnummer\ oder\ ein\ Datum)\r\n
+comment1.params=
+comment1.target=Stage()
+comment1.text=\r\n\ Konstruktor\ f\u00FCr\ Objekte\ der\ Klasse\ Stage\r\n
+comment2.params=
+comment2.target=Room\ getstartroom()
+comment2.text=\r\n\ Ein\ Beispiel\ einer\ Methode\ -\ ersetzen\ Sie\ diesen\ Kommentar\ mit\ Ihrem\ eigenen\r\n\ \r\n\ @param\ \ y\ \ \ \ ein\ Beispielparameter\ f\u00FCr\ eine\ Methode\r\n\ @return\ \ \ \ \ \ \ \ die\ Summe\ aus\ x\ und\ y\r\n
+comment3.params=
+comment3.target=java.util.ArrayList\ getroomlist()
+numComments=4

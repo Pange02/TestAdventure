@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.target=Lord
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ Henchman\ here.\r\n\r\n\ @author\ (your\ name)\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=parsename\ parselevel\ parsehealth\ parseweapon\ parsemobloot\ parsemobxp\ parsegender
+comment1.target=Lord(java.lang.String,\ int,\ int,\ Weapon,\ java.util.ArrayList,\ int,\ java.lang.String)
+comment2.params=
+comment2.target=void\ addSpecialAttacks()
+comment3.params=parseplayer
+comment3.target=void\ attack(Player)
+numComments=4

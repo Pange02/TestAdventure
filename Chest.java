@@ -1,7 +1,9 @@
 import java.util.ArrayList;
 import java.util.Random;
 /**
- * Beschreiben Sie hier die Klasse Chest.
+ * Diese Klasse erstellt Kisten, welche von dem Spieler in Räumen gefunden werden können und geöffnet werden können, die Befüllung der Kisten ist statisch und wird entsprechend der
+ * Positionierung passend befüllt, dies wird in den Klassen der Stages vorgenommen, sie enthält ebenfalls eine zufällige Menge an Coins, diese begrenzen sich zwischen 10 und 25.
+ * Jede Kiste ist kann nur einmal geöffnet werden.
  * 
  * @creator: Leonard
  * @editors: 
@@ -20,12 +22,15 @@ public class Chest
     //Der Loot für jede Kiste
     private ArrayList<Item> chestLoot;
     
-
+    private int coinamount;
+    
     // Konstruktor für Objekte der Klasse Chest mit der Loot ArrayList aus der Game Klasse als Argument.
     public Chest(ArrayList<Item> parseItemList)
     {
         chestLoot = parseItemList;
         isOpenable = true;
+        Random coingenerator = new Random();
+        coinamount = coingenerator.nextInt(10, 26);
     }
     
     // Methode für das Befüllen von Kisten. Nicht verwendet, da es aktuell klar definiert ist, welcher Loot wo zu finden ist.
@@ -40,9 +45,9 @@ public class Chest
    
     
     // Methode für das Öffnen von Kisten. 
-    public void openChest(Player parsePlayer, Chest parseChest)
+    public void openChest(Player parsePlayer)
     {
-        if(parseChest.isOpenable == true) {
+        if(isOpenable == true) {
             System.out.println("Die Kiste öffnet sich:");
             for(int i = 0; i < chestLoot.size(); i++) {
                 // Hinzufügen des Loots in das Inventar des Spielers
@@ -50,23 +55,35 @@ public class Chest
                 
                 // Überprüfen der Art von Loot und Beschreibung des Loots
                 if(chestLoot.get(i).getClass() == Weapon.class) {
-                   System.out.println("Du findest ein "  + " "+ chestLoot.get(i).getitemname() + " " + chestLoot.get(i).getitemrarity() + " mit " + ((Weapon) chestLoot.get(i)).getweapondamage() + " Schaden."); 
+                   System.out.println("Du findest " + chestLoot.get(i).getArtikel("akkusativ", "unbestimmt") +  " " + chestLoot.get(i).getitemname() + " " + chestLoot.get(i).getitemrarity() + " mit " + ((Weapon) chestLoot.get(i)).getweapondamage() + " Schaden."); 
+                }
+                if(chestLoot.get(i).getClass() == Consumable.class) {
+                   System.out.println("Du findest " + chestLoot.get(i).getArtikel("akkusativ", "unbestimmt") +  " " + chestLoot.get(i).getitemname() + " " + chestLoot.get(i).getitemrarity() + " mit " + ((Consumable) chestLoot.get(i)).getconsumableeffect() + " Heilung."); 
                 }
                 if(chestLoot.get(i).getClass() == Armor.class) {
-                   System.out.println("Du findest eine "  + " "+ chestLoot.get(i).getitemname() + " " + chestLoot.get(i).getitemrarity() + " mit " + ((Armor) chestLoot.get(i)).getarmordefense() + " Verteidigung."); 
+                   System.out.println("Du findest " + chestLoot.get(i).getArtikel("akkusativ", "unbestimmt") +  " " + chestLoot.get(i).getitemname() + " " + chestLoot.get(i).getitemrarity() + " mit " + ((Armor) chestLoot.get(i)).getarmordefense() + " Verteidigung."); 
                 }
                 if(chestLoot.get(i).getClass() == Potion.class && ((Potion) chestLoot.get(i)).getpotiontype() == "Damage") {
-                   System.out.println("Du findest eine "  + " "+ chestLoot.get(i).getitemname() + " " + chestLoot.get(i).getitemrarity() + " mit " + ((Potion) chestLoot.get(i)).getpotioneffect() + " Schaden."); 
+                   System.out.println("Du findest " + chestLoot.get(i).getArtikel("akkusativ", "unbestimmt") + " " + chestLoot.get(i).getitemname() + " " + chestLoot.get(i).getitemrarity() + " mit " + ((Potion) chestLoot.get(i)).getpotioneffect() + " Schaden."); 
+                }
+                if(chestLoot.get(i).getClass() == Potion.class && ((Potion) chestLoot.get(i)).getpotiontype() == "Poison") {
+                   System.out.println("Du findest " + chestLoot.get(i).getArtikel("akkusativ", "unbestimmt") + " " + chestLoot.get(i).getitemname() + " " + chestLoot.get(i).getitemrarity() + " mit " + ((Potion) chestLoot.get(i)).getpotioneffect() + " Schaden über 3 Runden."); 
                 }
                 if(chestLoot.get(i).getClass() == Potion.class && ((Potion) chestLoot.get(i)).getpotiontype() == "Healing") {
-                   System.out.println("Du findest eine "  + " "+ chestLoot.get(i).getitemname() + " " + chestLoot.get(i).getitemrarity() + " mit " + ((Potion) chestLoot.get(i)).getpotioneffect() + " Heilung."); 
+                   System.out.println("Du findest " + chestLoot.get(i).getArtikel("akkusativ", "unbestimmt") +  " " + chestLoot.get(i).getitemname() + " " + chestLoot.get(i).getitemrarity() + " mit " + ((Potion) chestLoot.get(i)).getpotioneffect() + " Heilung."); 
                 }
                 if(chestLoot.get(i).getClass() == Accessory.class) {
-                   System.out.println("Du findest eine "  + " "+ chestLoot.get(i).getitemname() + " " + chestLoot.get(i).getitemrarity() + " mit " + ((Accessory) chestLoot.get(i)).getaccessorystrength() + " Stärke."); 
+                   System.out.println("Du findest " + chestLoot.get(i).getArtikel("akkusativ", "unbestimmt") +  " " + chestLoot.get(i).getitemname() + " " + chestLoot.get(i).getitemrarity() + " mit " + ((Accessory) chestLoot.get(i)).getaccessorystrength() + " Stärke."); 
+                }
+                if(chestLoot.get(i).getClass() == Key.class) {
+                   System.out.println("Du findest " + chestLoot.get(i).getArtikel("akkusativ", "unbestimmt") +  " " + chestLoot.get(i).getitemname() + " " + chestLoot.get(i).getitemrarity());
                 }
             }
+            parsePlayer.addcoins(coinamount);
+            parsePlayer.addexperience(5);
+            System.out.println("Du findest " + coinamount + " Coins in der Truhe.");
             // Kiste wird "verschlossen" und kann nicht mehr geöffnet werden
-            parseChest.isOpenable = false;
+            isOpenable = false;
         }
         else {
             System.out.println("Du hast diese Kiste bereits geöffnet!");
@@ -76,8 +93,8 @@ public class Chest
     /**
      * Methode zur Überprüfung von isopenable (privat).
      */
-    public boolean getIsOpenable(Chest parseChest) 
+    public boolean getIsOpenable() 
     {
-        return parseChest.isOpenable;
+        return isOpenable;
     }
 }

@@ -1,10 +1,21 @@
 import java.util.ArrayList;
+/**
+ * Die Klasse “Room” gestaltet die Räume so, dass der Spieler sich nach Truhen umschauen kann und Türen in den vier Himmelsrichtungen entdecken kann,
+ * außerdem verortet sie in die Räume zugewiesene Mobs, sowie NPCs und Händler. Ein Raum kann in den vier Himmelsrichtungen verlassen werden, solange in den
+ * Klassen der Stages in dieser Himmelsrichtung eine weitere Tür verortet wurde. Ebenso kann Raum verschlossen werden.
+ */
+
 public class Room {
     //Boolean zur Überprüfung, ob sich eine Kiste im Raum befindet.
     private boolean hasChest;
     
     //Boolean zur Überprüfung, ob sich ein Mob im Raum befindet.
     private boolean hasMob;
+    
+    //Boolean zur Überprüfung, ob sich ein NPC im Raum befindet.
+    private boolean hasNPC;
+    
+    private boolean hasLock;
     
     //ArrayList mit allen Richtungen, die aus einem Raum führen.
     private ArrayList<String> roomDirections;
@@ -21,10 +32,14 @@ public class Room {
     
     Mob mob1;
     
+    NPC npc1;
+    
+    Lock lock;
+    
     /**
      *  Konstruktor für die Klasse Raum mit dem Truhenobjekt als Argument.
      */    
-    public Room(Chest parseChest, Mob parseMob) {
+    public Room(int RoomNumber, Chest parseChest, Mob parseMob, NPC parseNPC) {
         if(parseChest != null) {
             hasChest = true;
             chest1 = parseChest;
@@ -39,6 +54,13 @@ public class Room {
         else {
             hasMob = false;
         }
+        if(parseNPC != null) {
+            hasNPC = true;
+            npc1 = parseNPC;
+        }
+        else {
+            hasNPC = false;
+        }
         roomDirections = new ArrayList<>();
     }
     
@@ -46,32 +68,48 @@ public class Room {
      * Methode prüft, ob sich in dem Raum eine Kiste befindet.
      */
     public boolean getChestInfo() {
-        if(hasChest == true) {
-            return true;
-        }
-        else {
-            return false;
-        }
+        return hasChest;
     }
     
     /**
-     * Methode gibt die Kiste des Raumes zurück.
+     * Methode gibt die Kiste, Mobs und andere Inhalte des Raumes zurück.
      */
     public Chest getChest() {
         return chest1;
     }
     
     public boolean getMobInfo() {
-        if(hasMob == true) {
-            return true;
-        }
-        else {
-            return false;
-        }
+        return hasMob;
     }
     
     public Mob getRoomMob() {
         return mob1;
+    }
+    
+    public boolean getNPCInfo() {
+        return hasNPC;
+    }
+    
+    public NPC getNPC() {
+        return npc1;
+    }
+    
+    // Methoden zum Festlegen von Schlössern an Räumen
+    public void setLock(Lock parseLock) {
+        lock = parseLock;
+    }
+    
+    public Lock getLock(String parseLockDirection) {
+        if(lock != null && parseLockDirection == lock.getDirection()) {
+            return lock;
+        }
+        else {
+            return null;
+        }
+    }
+    
+    public String getLockDirection(Lock parseLock) {
+        return parseLock.getDirection();
     }
     
     /**

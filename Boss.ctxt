@@ -1,0 +1,15 @@
+#BlueJ class context
+comment0.target=Boss
+comment0.text=\r\n\ Diese\ Klasse\ wird\ von\ der\ Klasse\ Mob\ vererbt.\ Diese\ Klasse\ hat\ verschiedene\ besondere\ Angriffe,\ auf\ welche\ der\ Boss\ zugreifen\ kann,\ w\u00E4hrend\ er\ sich\ im\ Kampf\ befindet,\r\n\ hierbei\ kann\ er\ den\ Spieler\ schw\u00E4chen,\ wobei\ seine\ St\u00E4rker\ gesenkt\ wird\ (weakiningHit),\ er\ kann\ zweimal\ angreifen\ (doubleAttack),\ er\ kann\ ein\ Schild\ benutzen\ und\ so\ den\ Schaden\r\n\ des\ Spielers\ minimeren\ (reduceDamage)\ und\ er\ kann\ den\ Spieler\ vergiften\ (poisningHit).\r\n\r\n\ @author\ (your\ name)\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=parsename\ parselevel\ parsehealth\ parseweapon\ parsemobloot\ parsemobxp\ parsegender
+comment1.target=Boss(java.lang.String,\ int,\ int,\ Weapon,\ java.util.ArrayList,\ int,\ java.lang.String)
+comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ Boss\r\n
+comment2.params=parseplayer
+comment2.target=void\ weakeningHit(Player)
+comment3.params=parseplayer
+comment3.target=void\ doubleAttack(Player)
+comment4.params=parseplayer
+comment4.target=void\ reduceDamage(Player)
+comment5.params=parseplayer
+comment5.target=void\ poisoningHit(Player)
+numComments=6

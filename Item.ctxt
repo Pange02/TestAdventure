@@ -1,9 +1,11 @@
 #BlueJ class context
 comment0.target=Item
-comment0.text=\r\n\ Beschreiben\ Sie\ hier\ die\ Klasse\ Item.\r\n\ \r\n\ @author\ (Ihr\ Name)\ \r\n\ @version\ (eine\ Versionsnummer\ oder\ ein\ Datum)\r\n
-comment1.params=parsename\ parserarity\ parsegender
-comment1.target=Item(java.lang.String,\ java.lang.String,\ java.lang.String)
+comment0.text=\r\n\ Diese\ Klasse\ macht\ es\ dem\ Spieler\ m\u00F6glich\ auf\ Gegenst\u00E4nde\ zuzugreifen.\ Und\ dient\ als\ Elternklasse\ f\u00FCr\ die\ Klassen\ \u201EAccessory\u201C,\ \u201EWeapon\u201C,\ \u201EArmor\u201C,\ \u201EPotion\u201C\ und\ \u201EConsumable\u201C.\r\n\ Au\u00DFerdem\ \u201Everwaltet\u201C\ diese\ Klasse\ alle\ im\ Spiel\ sammelbaren\ Objekte,\ sodass\ \u00FCber\ diese\ s\u00E4mtlichen\ Listen\ \u00FCber\ diese\ Objekte\ abrufbar\ sind.\ Auch\ bestimmt\ sie\ die\ Seltenheit\ der\ \u201EReforges\u201C.\r\n\ \r\n\ @author\ (Ihr\ Name)\ \r\n\ @version\ 1.1.1\r\n
+comment1.params=parsename\ parsedescription\ parserarity\ parsegender
+comment1.target=Item(java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String)
 comment1.text=\r\n\ Konstruktor\ f\u00FCr\ Objekte\ der\ Klasse\ Item\ mit\ Namen,\ Damage,\ Seltenheit\ und\ Typ.\r\n
+comment10.params=kasus\ art
+comment10.target=java.lang.String\ getArtikel(java.lang.String,\ java.lang.String)
 comment2.params=
 comment2.target=void\ fillitemlist()
 comment2.text=\r\n\ Methode\ zur\ Generierung\ von\ allen\ Items\ im\ Spiel.\ Wird\ am\ Anfang\ von\ der\ Game\ Klasse\ aufgerufen.\r\n
@@ -17,7 +19,8 @@ comment6.params=
 comment6.target=java.lang.String\ getitemrarity()
 comment7.params=
 comment7.target=java.util.ArrayList[]\ getitemlist()
-comment8.params=kasus\ art
-comment8.target=java.lang.String\ getArtikel(java.lang.String,\ java.lang.String)
-comment8.text=\r\n\ Gibt\ zu\ einem\ Item\ und\ einem\ Kasus\ einen\ bestimmten\ oder\ unbestimmten\ Artikel\ aus.\r\n
-numComments=9
+comment8.params=
+comment8.target=int\ getreforgerarity()
+comment9.params=
+comment9.target=void\ getiteminfo()
+numComments=11
