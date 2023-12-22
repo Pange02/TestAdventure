@@ -6,7 +6,6 @@ comment1.target=Boss(java.lang.String,\ int,\ int,\ Weapon,\ java.util.ArrayList
 comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ Boss\r\n
 comment2.params=parseplayer
 comment2.target=void\ weakeningHit(Player)
-comment2.text=\r\n\ An\ example\ of\ a\ method\ -\ replace\ this\ comment\ with\ your\ own\r\n\r\n\ @param\ \ y\ \ a\ sample\ parameter\ for\ a\ method\r\n\ @return\ \ \ \ the\ sum\ of\ x\ and\ y\r\n
 comment3.params=parseplayer
 comment3.target=void\ doubleAttack(Player)
 comment4.params=parseplayer

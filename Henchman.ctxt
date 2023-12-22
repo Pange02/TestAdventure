@@ -8,5 +8,4 @@ comment2.params=
 comment2.target=void\ addSpecialAttacks()
 comment3.params=parseplayer
 comment3.target=void\ attack(Player)
-comment3.text=\r\n\ An\ example\ of\ a\ method\ -\ replace\ this\ comment\ with\ your\ own\r\n\r\n\ @param\ \ y\ \ a\ sample\ parameter\ for\ a\ method\r\n\ @return\ \ \ \ the\ sum\ of\ x\ and\ y\r\n
 numComments=4

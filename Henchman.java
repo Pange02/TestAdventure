@@ -33,6 +33,7 @@ public class Henchman extends Boss
         addSpecialAttacks();
     }
     
+    // Hinzufügen des Spezialangriffes (Doppelangriff)
     public void addSpecialAttacks() {
         try {
             specialattacklist.add(Boss.class.getMethod("doubleAttack", Player.class));
@@ -42,13 +43,7 @@ public class Henchman extends Boss
         }
     }
 
-    /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
-     */
-    
+    // Nutzen der Methode attack (aus der Klasse Mob)    
     @Override
     public void attack(Player parseplayer){
         int zufall = random.nextInt(0, randombound);

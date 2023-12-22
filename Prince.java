@@ -10,9 +10,7 @@ public class Prince extends Boss
 {
     // instance variables - replace the example below with your own
     
-    /**
-     * Constructor for objects of class Henchman
-     */
+    // Konstruktor der Prinzenklasse
     public Prince(String parsename, int parselevel, int parsehealth, Weapon parseweapon, ArrayList parsemobloot, int parsemobxp, String parsegender)
     {
         super(parsename, parselevel, parsehealth, parseweapon, parsemobloot, parsemobxp, parsegender);
@@ -25,6 +23,7 @@ public class Prince extends Boss
         addSpecialAttacks();
     }
     
+    // Hinzufügen der Spezialangriffe (Doppenangriff, Schwächender Angriff und Schild)
     public void addSpecialAttacks() {
         try {
             specialattacklist.add(Boss.class.getMethod("weakeningHit", Player.class));
@@ -36,13 +35,7 @@ public class Prince extends Boss
         }
     }
 
-    /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
-     */
-    
+    // Nutzen der Methode attack (aus der Klasse Mob)
     @Override
     public void attack(Player parseplayer){
         int zufall = random.nextInt(0, randombound);

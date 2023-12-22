@@ -26,12 +26,7 @@ public class Boss extends Mob //die Klasse Boss wird aus der Klasse Mob vererbt
         name = parsename;
     }
 
-    /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
-     */
+    // Spezialattacke für Endgegner (Schwächender Angriff)
     public void weakeningHit(Player parseplayer) {
         if (parseplayer.getPlayerStrength() != 0){
             parseplayer.setStrength(parseplayer.getPlayerStrength() * 0.8);

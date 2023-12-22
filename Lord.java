@@ -10,9 +10,7 @@ public class Lord extends Boss
 {
     // instance variables - replace the example below with your own
     
-    /**
-     * Constructor for objects of class Henchman
-     */
+    // Konstrukor der Klasse Lord
     public Lord(String parsename, int parselevel, int parsehealth, Weapon parseweapon, ArrayList parsemobloot, int parsemobxp, String parsegender)
     {
         super(parsename, parselevel, parsehealth, parseweapon, parsemobloot, parsemobxp, parsegender);
@@ -25,6 +23,7 @@ public class Lord extends Boss
         addSpecialAttacks();
     }
     
+    // Hinzufügen aller Spezialangriffe für den letzten Boss
     public void addSpecialAttacks() {
         try {
             specialattacklist.add(Boss.class.getMethod("weakeningHit", Player.class));
@@ -37,13 +36,7 @@ public class Lord extends Boss
         }
     }
 
-    /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
-     */
-    
+    // Nutzen der Methode attack (aus der Klasse Mob)
     @Override
     public void attack(Player parseplayer){
         int zufall = random.nextInt(0, randombound);
