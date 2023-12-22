@@ -83,7 +83,7 @@ public class Stage2 extends Stage
         //fünfter Raum der Stage
         merchantloot5.put(Item.getitemfromlist("Potion", 2), 100);
         merchantloot5.put(Item.getitemfromlist("Potion", 0), 50);
-        Merchant merchant5 = new Merchant("Tante Emma", merchantloot5);
+        Merchant merchant5 = new Merchant("Emma", merchantloot5);
         Room room5 = new Room(5, null, null, merchant5);
         
         //sechster Raum der Stage
@@ -144,7 +144,7 @@ public class Stage2 extends Stage
         room5.setConnectedRooms(null, room6, room4, null);
         
         //Raum 7 verbunden mit: Raum 6
-        room6.setConnectedRooms(null, null, room5, null);
+        room6.setConnectedRooms(null, null, null, room5);
         
         //Raum 8 verbunden mit Raum 2 und Raum 9
         room7.setConnectedRooms(null, room1, null, room8);

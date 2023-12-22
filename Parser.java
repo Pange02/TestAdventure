@@ -14,6 +14,7 @@ public class Parser
     //Aktionsliste für alle möglichen Aktionen. Verwendet von help Befehl.
     private String[] actionlist = {"umgucken", "öffne (truhe)", "stats", "benutze <Inventarslot>", "gehe <Himmelsrichtung>", "rede <Name>", "skill <Fähigkeit> <Punkte>", "info <Inventarslot>", "inv", "ablegen <Rüstungsteil>", "hilfe"};
     
+    //Aktionsliste im Kampf.
     private String[] combatactionlist = {"attackiere", "benutze <Inventarslot>"};
     
     //Array für den Input des Spielers
@@ -22,53 +23,69 @@ public class Parser
     //Array für den BuyInput des Spielers
     private String[] buyinput = new String[10];
     
-    private int reforgeinputint;
-    
     //Boolean gibt an, ob der Parser (das Spiel) aktiv ist.
     private boolean running;
     
+    //Das aktive Spiel
     private Game activegame;
     
+    //Die aktive Stage
     private Stage activestage;
     
+    //Boolean, ob sich der Spieler im Kampf befindet.
     private boolean combat;
     
     //Aktiver Spieler vom Parser
     private static Player activeplayer;
     
+    //Zahl, die am Anfang des Kampfes als Waffe vom Spieler ausgewählt wird
     private int weaponnumber;
     
+    //Zahl für viele Inventaraktionen
     private int inventorynumber;
     
+    //Waffe des Spielers im Kampf
     private Weapon playerweapon;
     
+    //Aktiver Mob
     private Mob activemob;
     
+    //Boolean gibt an, ob der Mob eine Attacke machen kann. Ist false, wenn der Spieler im Kampf Aktionen wie inv oder einen falschen Input nutzt.
     private boolean mobattack;
     
+    //Anzahl der Runden, die der Mob vergiftet ist.
     private int mobpoisonrounds;
     
+    //Stärke des Gifteffekts bei Mobs in Prozent
     private int mobpoisoneffect;
     
+    //Anzahl der Runden, die der Spieler vergiftet ist.
     private int playerpoisonrounds;
     
+    //Stärke des Gifteffekts bei Spielern in Prozent.
     private int playerpoisoneffect;
     
+    //Boolean für den ersten Kampf.
     private boolean firstfight;
     
+    //Boolean, ob eine Waffe ausgewählt wurde, um falsche Eingaben zu vermeiden.
     private boolean weaponselected;
     
+    //Alle Stages als Array für das Wechseln zwischen den Stages.
     private Stage[] stagelist;
     
+    //Aktuelle Stage des Spielers
     private int currentstage;
     
+    //Boolean, ob der Boss der Stage besiegt wurde.
     private boolean stagecompleted;
     
     /**
-     * Konstruktor für Objekte der Klasse Parser mit Spieler
+     * Hier wird das Spiel ausgeführt und zum 
      */
     public Parser(Game parsegame, Stage parsestage, Player parseplayer, Stage[] parsestages)
     {
+        //Alle Anfangswerte werden gesetzt
         running = true;
         activegame = parsegame;
         activestage = parsestage;
@@ -81,11 +98,14 @@ public class Parser
         weaponselected = false;
         mobattack = true;
         activeplayer = parseplayer;
+        //Hier die Hauptschleife des Spiels.
         while(running && !combat) {
             Scanner parser = new Scanner(System.in);
             getaction(parser.nextLine(), activeplayer);
             System.out.println();
+            //Wenn der Spieler sich im Kampf befindet.
             while(running && combat) {
+                //Beim ersten Kampf werden noch die Aktionen angezeigt.
                 if(firstfight == true) {
                     firstfight = false;
                     System.out.println("Aktuell kannst du folgenden Kampfaktionen machen:");
@@ -94,6 +114,7 @@ public class Parser
                     }
                     System.out.println();
                 }
+                //Giftlogik für Spieler und Mob. Zieht einen prozentualen Anteil des Lebens ab.
                 if(playerpoisonrounds > 1 && mobattack) {
                     if(playerpoisoneffect == 0) {
                         playerpoisonrounds = activeplayer.getpoisonrounds();
@@ -125,17 +146,19 @@ public class Parser
                 mobattack = true;
                 Scanner compatparser = new Scanner(System.in);
                 getcombataction(parser.nextLine(), activeplayer, activemob);
+                //Wenn der Mob noch lebt, macht er eine Attacke, außer der Spieler hat selbst keinen Angriff gemacht (mobattack).
                 if(activemob.getmobhealth() > 0 && mobattack) {
                     activemob.attack(activeplayer);
                     if(activeplayer.getplayerhealth() < 0) {
                         activeplayer.setplayerhealth(0);
                     }
                 }
+                //Man kann auch sterben und wird somit zuürck an den Anfang gesetzt.
                 if(parseplayer.getplayerhealth() == 0) {
                     System.out.println("Du bist gestorben!");
                     System.out.println("Schreibe \"Neustart\" um das Level zu wiederholen.");
                     Scanner endparser = new Scanner(System.in);
-                    if(endparser.nextLine().toLowerCase().equals("Neustart")) {
+                    if(endparser.nextLine().toLowerCase().equals("neustart")) {
                         combat = false;
                         running = false;
                         Game nextGame = new Game();
@@ -155,7 +178,9 @@ public class Parser
      */
     public void getaction(String parseaction, Player parseplayer)
     {
+        //Den Spielerinput in einzelne Wörter splittet.
         input = parseaction.toLowerCase().split("\\s+");
+        //Der Hilfe Befehl
         if(input[0].equals("hilfe")) {
             try {
                 if(input[1].toLowerCase().equals("hilfe")) {
@@ -201,7 +226,7 @@ public class Parser
                 System.out.println("Du kannst auch \"hilfe <Befehl>\" schreiben, um genauere Informationen zu den einzelnen Befehlen zu erhalten");
             }
         }
-        
+        //Zum Truhen öffnen.
         else if(input[0].equals("öffne")) {
             try {
                 if(input[1].equals("truhe") && parseplayer.getcurrentroom().getChestInfo()) {
@@ -217,8 +242,10 @@ public class Parser
             catch(Exception e) {
                 System.out.println("Du musst angeben, was du öffnen willst.");
             }
-        }    
+        }
+        //umgucken Befehl
         else if(input[0].equals("umgucken")) {
+            //Wenn der Raum eine Truhe hat.
             if(parseplayer.getcurrentroom().getChestInfo()) {
                 if(parseplayer.getcurrentroom().getChest().getIsOpenable() == true) {
                     System.out.println("Du entdeckst eine Truhe in dem Raum.");
@@ -227,16 +254,20 @@ public class Parser
                     System.out.println("Du entdeckst eine geöffnete Truhe in dem Raum.");
                 }
             }
+            //Wenn der Raum ein NPC hat.
             if(parseplayer.getcurrentroom().getNPCInfo()) {
                 System.out.println("Du entdeckst die Person " + parseplayer.getcurrentroom().getNPC().getNPCname() + " im Raum.");
             }
+            //Die verbundenen Türen des Raums.
             System.out.println("Du siehst Türen im:");
             for(int i = 0; i < parseplayer.getcurrentroom().getRoomDirections().size(); i++) {
                     System.out.println(parseplayer.getcurrentroom().getRoomDirections().get(i));
             }            
         }
+        //Mit NPCs reden
         else if(input[0].equals("rede")) {
             try {
+                //Für Merchants.
                 if(input[1].toLowerCase().equals(parseplayer.getcurrentroom().getNPC().getNPCname().toLowerCase())) {
                     if(parseplayer.getcurrentroom().getNPC().getClass() == Merchant.class) {
                         ((Merchant) parseplayer.getcurrentroom().getNPC()).speak();
@@ -257,9 +288,11 @@ public class Parser
                             System.out.println("Ok, vielleicht später!");
                         }
                     }
+                    //Für Speaker
                     else if(parseplayer.getcurrentroom().getNPC().getClass() == Speaker.class) {
                         ((Speaker) parseplayer.getcurrentroom().getNPC()).speak(parseplayer);
                     }
+                    //Für Blacksmiths
                     else if(parseplayer.getcurrentroom().getNPC().getClass() == Blacksmith.class) {
                         ((Blacksmith) parseplayer.getcurrentroom().getNPC()).speak(parseplayer);
                         Scanner reforgeparser = new Scanner(System.in);
@@ -304,15 +337,19 @@ public class Parser
                 System.out.println("Du musst angeben, mit wem du reden willst!");
             }
         }
+        //Der Inventar Befehl.
         else if(input[0].equals("inv")) {
             parseplayer.getinventorycontent();
         }
+        //Der stats Befehl.
         else if(input[0].equals("stats")) {
             parseplayer.getplayerstats();
         }
+        //Zum Inventarobjekte benutzen.
         else if(input[0].equals("benutze")) {
             try {
                 inventorynumber = Integer.parseInt(input[1]);
+                //Unterscheidung der Itemtypen:
                 if(parseplayer.getitemfrominventory(inventorynumber).getClass() == Potion.class) {
                     parseplayer.drink(inventorynumber);
                 }
@@ -356,6 +393,7 @@ public class Parser
                 System.out.println("Dies ist keine gültige Zahl aus deinem Inventar!");
             }
         }
+        //Rüstungsteile ablegen.
         else if(input[0].equals("ablegen")) {
             try {
                 if(input[1].toLowerCase().equals("helm")) {
@@ -378,6 +416,7 @@ public class Parser
                 System.out.println("Du musst das Rüstungsteil, welches du ablegen willst, angeben.");
             }
         }
+        //Zusätzliche Informationen zu dem Inventarobjekt bekommen.
         else if(input[0].equals("info")) {
             try {
                 try {
@@ -392,6 +431,7 @@ public class Parser
                 System.out.println("Du musst einen Inventarslot angeben");
             }
         }
+        //Zusätzliche Informationen zu dem Accessoire bekommen.
         else if(input[0].equals("ainfo")) {
             try {
                 try {
@@ -406,6 +446,7 @@ public class Parser
                 System.out.println("Du musst einen Inventarslot angeben");
             }
         }
+        //Skillpunkte verteilen
         else if(input[0].equals("skill")) {
             try {
                 if(input[1].toLowerCase().equals("stärke")) {
@@ -432,6 +473,7 @@ public class Parser
                 System.out.println("Du musst angeben, in welche Fähigkeit du deine Skillpunkte investieren möchtest. Möglich sind Stärke und Verteidigung");
             }
         }
+        //Wenn die Stage geschafft wurde und der Boss besiegt, kann eine neue Stage begonnen werden.
         else if(input[0].equals("weiter") && stagecompleted) {
             currentstage += 1;
             parseplayer.setstage(stagelist[currentstage]);
@@ -439,6 +481,7 @@ public class Parser
             stagecompleted = false;
             System.out.println("Du bist am Tore der neuen Festung angekommen.");
         }
+        //Räume im Spiel wechseln.
         else if(input[0].equals("gehe")) {
             try {
                 if(input[1].equals("norden") && parseplayer.getcurrentroom().getConnectedRooms("north") != null) {
@@ -581,6 +624,7 @@ public class Parser
                 System.out.println("Du musst eine Richtung angeben. Gültige Richtung sind: north, east, south, west.");
             }
         }
+        //Teleport Cheat zum Testen.
         else if(input[0].equals("tp") && parseplayer.getplayername().equals("Leonard")) {
             activestage = stagelist[Integer.parseInt(input[1])];
             parseplayer.setstage(activestage);
@@ -590,15 +634,18 @@ public class Parser
                 combat = true;
             }
         }
+        //Exit Cheat zum Testen.
         else if(input[0].equals("exit")) {
             System.out.println("Du verlässt das Dungeon.");
             running = false;
         }
+        //Sonst kein gültiger Befehl.
         else {
             System.out.println("Dies ist kein gültiger Befehl");
         }
     }
     
+    //Wenn man im neuen Raum einen Mob entdeckt.
     public void entercombat(Player parseplayer, Mob parsemob) {
         activemob = parsemob;
         weaponselected = false;
@@ -606,6 +653,7 @@ public class Parser
         System.out.println("Welche Waffe möchtest du für den Kampf benutzen?");
         parseplayer.getinventorycontent();
         System.out.println();
+        //Waffe auswählen
         while(!weaponselected) {
             Scanner weaponparser = new Scanner(System.in);
             try {
@@ -626,8 +674,10 @@ public class Parser
         System.out.println();
     }
     
+    //Aktionen im Kampf.
     public void getcombataction(String parseaction, Player parseplayer, Mob parsemob) {
-        input = parseaction.toLowerCase().split("\\s+"); 
+        input = parseaction.toLowerCase().split("\\s+");
+        //Hilfe im Kampf.
         if(input[0].equals("hilfe")) {
             System.out.println("Aktuell kannst du folgenden Aktionen machen:");
             for(int i = 0; i < combatactionlist.length; i++) {
@@ -635,10 +685,12 @@ public class Parser
             }
             mobattack = false;
         }
+        //Inventar im Kampf.
         else if(input[0].equals("inv")) {
             parseplayer.getinventorycontent();
             mobattack = false;
         }
+        //Tränke und Consumables im Kampf benutzen.
         else if(input[0].equals("benutze")) {
             try {
                 inventorynumber = Integer.parseInt(input[1]);
@@ -665,7 +717,9 @@ public class Parser
                     System.out.println("Du kannst nur Tränke und Essen im Kampf verwenden");
                     mobattack = false;
                 }
+                //Wenn der Mob stirbt, soll der Spieler belohnt werden
                 if(parsemob.getmobhealth() <= 0) {
+                    //Wenn ein Boss die Stärke des Spielers mit einer Spezialattacke um 0.8 multipliziert hat, soll der Wert nach dem Kampf mit 1.25 multipliziert werden, um wieder auf den Anfangswert zu kommen. 
                     if(parseplayer.getWeakened()) {
                         parseplayer.setStrength(parseplayer.getPlayerStrength() * 1.25);
                         parseplayer.setWeakened(false);
@@ -676,6 +730,7 @@ public class Parser
                     parseplayer.addexperience(parsemob.getmobxp());
                     combat = false;
                     running = true;
+                    //Wenn es ein Boss ist, hat man entweder die Stage oder das gesamte Spiel geschafft.
                     if(parsemob instanceof Boss) {
                         if(parsemob.getmobname().equals("Sir Archibald Duncan")) {
                             System.out.println("Du hast es geschafft! Die Welt muss sich nun nicht mehr vor dem bösen Lord fürchten.");
@@ -696,9 +751,11 @@ public class Parser
                 System.out.println("Dies ist keine gültige Zahl für dein Inventar");
             }
         }
+        //Den Mob im Kampf attackieren
         else if(input[0].equals("attackiere")) {
             parseplayer.attack(parsemob, playerweapon);
             if(parsemob.getmobhealth() <= 0) {
+                //gleiche Logik wie oben.
                 if(parseplayer.getWeakened()) {
                     parseplayer.setStrength(parseplayer.getPlayerStrength() * 1.25);
                     parseplayer.setWeakened(false);
@@ -727,6 +784,7 @@ public class Parser
                 System.out.println(parsemob.getArtikel("nominativ", "bestimmt").substring(0, 1).toUpperCase() + parsemob.getArtikel("nominativ", "bestimmt").substring(1) + " " + parsemob.getmobname() + " hat nun " + parsemob.getmobhealth() + " Leben.");
             }
         }
+        //exit Cheat zum Testen.
         else if(input[0].equals("exit")) {
             System.out.println("Du verlässt den Kampf.");
             combat = false;
