@@ -220,7 +220,7 @@ public class Parser
             }
             catch(Exception e) {
                 System.out.println("Aktuell kannst du folgenden Aktionen machen:");
-                for(int i = 1; i < actionlist.length; i++) {
+                for(int i = 0; i < actionlist.length; i++) {
                     System.out.println(actionlist[i]);
                 }
                 System.out.println();

@@ -66,10 +66,6 @@ public class Game {
         }
         for(String i: story) {
             System.out.println(i);
-            if(nameParser.nextLine().equals("skip")) {
-                System.out.println("Geschichte skipped!");
-                break;
-            }
             try {
                 Thread.sleep(6000);
             }   
@@ -85,7 +81,7 @@ public class Game {
         // Texteingabe des Namens abfragen
         Player player1 = new Player(nameParser.nextLine(), stage0);
         // Cheatcode zum Testen
-        if(player1.getplayername().equals("Leonard")) {
+        if(player1.getplayername().equals("LeonardFreistedt")) {
             for(int i = 0; i < Item.getitemlist().length; i++) {
                 for(int j = 0; j < Item.getitemlist()[i].size(); j++) {
                     player1.additemtoinventory(((Item) Item.getitemlist()[i].get(j)));
@@ -107,10 +103,6 @@ public class Game {
         }
         for(String i: intro) {
             System.out.println(i);
-            if(nameParser.nextLine().equals("skip")) {
-                System.out.println("Intro skipped");
-                break;
-            }
             try {
                 Thread.sleep(6000);
             }   
